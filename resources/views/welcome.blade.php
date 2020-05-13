@@ -51,7 +51,7 @@
                 <div class="navbar-brand">
                     <span class="navbar-logo">
                         <a href="#">
-                            <img src="/assets/images/a-1-122x30.png" alt="" title="" style="height: 3.8rem;">
+                            <img src="/assets/images/a-1-122x30.png" alt="" style="width: 240px;" title="" >
                         </a>
                     </span>
 
@@ -67,10 +67,10 @@
                             href="#">Loans</a>
 
                             <a class="dropdown-item text-primary display-4 text-left" href="#"
-                            aria-expanded="false">Yes Conference</a>
+                            aria-expanded="false">Yes Conference(s)</a>
 
                             <a class="dropdown-item text-primary display-4 text-left" href="#"
-                            aria-expanded="false">Training</a>
+                            aria-expanded="false">Training & Workshop</a>
 
                         
                         </div>
@@ -91,10 +91,10 @@
                             
                             
                             <a class="dropdown-item text-primary display-4 text-left" href="#"
-                            aria-expanded="false">NGO</a>
+                            aria-expanded="false">NGOs</a>
 
                             <a class="dropdown-item text-primary display-4 text-left" href="#"
-                            aria-expanded="false">Funder Manager</a>
+                            aria-expanded="false">MicroFund Manager</a>
                         
                         </div>
                 </li>
@@ -107,7 +107,7 @@
                     <li class="nav-item"><a class="nav-link link text-primary display-4" href="#">Donate</span></a></li>
 
                     <li class="nav-item"><a class="nav-link link text-primary display-4" href="#">
-                            Entriprises</a></li>
+                    Enterprises</a></li>
                     <li class="nav-item"><a class="nav-link link text-primary display-4" href="#">Profiles</a></li>
                     <li class="nav-item"><a class="nav-link link text-primary display-4" href="#">Fillings</a></li>
 
@@ -124,6 +124,11 @@
             
                                         <a class="dropdown-item text-primary display-4 text-left" href="#"
                                         aria-expanded="false">Contact</a>
+                                        <a class="dropdown-item text-primary display-4 text-left" href="#"
+                                        aria-expanded="false">Photos</a>
+
+                                        <a class="dropdown-item text-primary display-4 text-left" href="#"
+                                        aria-expanded="false">Video & Links</a>
             
                                       
                                     
@@ -148,15 +153,20 @@
                     <h1 class="mbr-section-title align-center py-2 mbr-bold mbr-fonts-style display-1">
                         <br><br>A<span style="font-weight: normal;">ll </span>T<span style="font-weight: normal;">rust
                         </span>C<span style="font-weight: normal;">onsult</span></h1>
-                    <p class="mbr-text align-center py-2 mbr-fonts-style display-5">- AllTrust consult Empower Africa -</p>
+                    <p class="mbr-text align-center py-2 mbr-fonts-style display-5">- a Freinds in Business -</p>
                     <div class="mbr-media show-modal align-center py-2" data-modal=".modalWindow">
                         <span class="mbr-iconfont mbri-play"
                             style="color: rgb(250, 135, 9); fill: rgb(250, 135, 9);"></span>
                     </div>
-                    <div class="icon-description align-center font-italic pb-3 mbr-fonts-style display-7">short more content
+                    <div style="color: #58d77a !important;" class="icon-description align-center font-italic pb-3 mbr-fonts-style display-7">short more content
                     </div>
                     <div class="mbr-section-btn text-center"><a class="btn btn-md btn-primary display-4"
-                            href="3">MORE</a></div>
+                            href="3">MORE</a>  
+                            <a style="background:#fa8709!important;border:#fa8709!important;" class="btn btn-md btn-primary display-4"
+                            href="3">REPAY</a>
+                            <a class="btn btn-md btn-primary display-4"
+                            href="3" style="border:#ffff!important;background:#ffff!important;color:#fa8709!important;">BORROW</a>
+                            </div>
                 </div>
             </div>
         </div>
