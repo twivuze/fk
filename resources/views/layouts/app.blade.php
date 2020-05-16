@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>InfyOm Generator</title>
+    <title>All Trust Consult</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Bootstrap 3.3.7 -->
@@ -24,10 +24,17 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
+    <script src="https://cdn.tiny.cloud/1/dc3qfuqt55rrl2yp1i22827v9l0hh91figeq4aiya3dnbr9c/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
+
+    <!-- <link rel="stylesheet" href="/css/gallery-grid.css"> -->
+
+  <script>tinymce.init({selector:'#textarea'}); tinymce.init({selector:'#textarea2'});</script>
+
     @yield('css')
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body class="skin-green sidebar-mini">
 @if (!Auth::guest())
     <div class="wrapper">
         <!-- Main Header -->
@@ -35,7 +42,7 @@
 
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>InfyOm</b>
+                <b>All Trust Consult</b>
             </a>
 
             <!-- Header Navbar -->
@@ -52,7 +59,7 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                <img src="/images/logo.png"
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{{ Auth::user()->name }}</span>
@@ -60,7 +67,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                    <img src="/images/logo.png"
                                          class="img-circle" alt="User Image"/>
                                     <p>
                                         {{ Auth::user()->name }}
@@ -70,7 +77,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <!-- <a href="#" class="btn btn-default btn-flat">Profile</a> -->
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
@@ -98,7 +105,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer" style="max-height: 100px;text-align: center">
-            <strong>Copyright © 2016 <a href="#">Company</a>.</strong> All rights reserved.
+            <strong>Copyright © 2020 <a href="#">All Trust Consult</a>.</strong> All rights reserved.
         </footer>
 
     </div>
@@ -118,7 +125,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    InfyOm Generator
+                All Trust Consult
                 </a>
             </div>
 
@@ -160,6 +167,33 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+
+<script src="/js/dropzone.js"></script>
+
+<script type="text/javascript">
+        Dropzone.options.dropzone =
+         {
+            maxFilesize: 12,
+            renameFile: function(file) {
+                var dt = new Date();
+                var time = dt.getTime();
+               return time+file.name;
+            },
+            acceptedFiles: ".jpeg,.jpg,.png,.gif",
+            addRemoveLinks: true,
+            timeout: 5000,
+            success: function(file, response) 
+            {
+                window.location.reload();
+            },
+            error: function(file, response)
+            {
+               return false;
+            }
+};
+
+
+</script>
 
     @stack('scripts')
 </body>

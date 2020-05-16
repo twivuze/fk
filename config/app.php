@@ -174,7 +174,14 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        \Torann\GeoIP\GeoIPServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
+        \InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
+        \InfyOm\AdminLTETemplates\AdminLTETemplatesServiceProvider::class,
+        \InfyOm\GeneratorBuilder\GeneratorBuilderServiceProvider::class,
+        Cohensive\Embed\EmbedServiceProvider::class,
     ],
 
     /*
@@ -229,6 +236,11 @@ return [
         'Form'         => Collective\Html\FormFacade::class,
         'Html'         => Collective\Html\HtmlFacade::class,
         'Flash'        => Laracasts\Flash\Flash::class,
+        'Datatables' => Yajra\DataTables\Facades\DataTables::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'Embed' => Cohensive\Embed\Facades\Embed::class,
     ],
 
 ];

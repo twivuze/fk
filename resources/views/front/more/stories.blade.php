@@ -2,6 +2,9 @@
 
 @section('content')
 
+<?php $stories= \App\Models\Stories::where('published', true)->get()
+             ?>
+
 <section class="mbr-section content4 cid-rYUfm4cV5h mt-5" id="content4-2t">
 
     
@@ -21,7 +24,39 @@
 <section class="features17 cid-rYUhzEzUWQ" id="features17-2w">
     
     
-@include('front.common.enterprise-card')
+
+<div class="container-fluid">
+        <div class="media-container-row">
+
+          @foreach($stories AS $row)
+            <div class="card p-3 col-12 col-md-6 col-lg-3">
+                <div class="card-wrapper">
+                    <div class="card-img">
+                        <img src="/thumbnail/{{$row->image}}" alt="Mobirise">
+                    </div>
+                    <div class="card-box">
+                        <h4 class="card-title pb-3 mbr-fonts-style display-7">
+                          
+                            <?php  $end = ' <a  href="/more/story/'.$row->id.'" target="_blank"> ...</a>';
+                        ?> 
+                            {!!html_entity_decode(Str::limit($row->title, $limit = 30,$end)) !!}
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                           
+                        <?php  $end = ' <a  href="/more/story/'.$row->id.'" target="_blank"> read more ....</a>';
+                        ?> 
+    
+                            {!!html_entity_decode(Str::limit($row->description, $limit = 100,$end))!!}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+         
+            
+            
+        </div>
+    </div>
     
    
 </section>

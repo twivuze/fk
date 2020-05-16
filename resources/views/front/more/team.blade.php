@@ -6,6 +6,7 @@
 <section class="testimonials1 cid-rYUtsXJVWG" id="testimonials1-3v">
 
     
+<?php $teams= \App\Models\Teams::where('published', true)->get() ?>
 
     
     <div class="container">
@@ -19,130 +20,32 @@
 
     <div class="container pt-3 mt-2">
         <div class="media-container-row">
+
+        @foreach($teams AS $row)
             <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4">
                 <div class="panel-item p-3">
                     <div class="card-block">
                         <div class="testimonial-photo">
-                            <img src="/assets/images/face1.jpg">
+                            <img src="/thumbnail/{{$row->avatar}}">
                         </div>
+                       
+                    </div>
+                    <div class="card-footer">
+                        <div class="mbr-author-name mbr-bold mbr-fonts-style display-7">
+                             {{$row->full_name}}
+                        </div>
+                        <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
+                        {{$row->title}}
+                        </small>
+                        <hr>
                         <p class="mbr-text mbr-fonts-style display-7">
-                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae.
+                        {!!html_entity_decode($row->bio) !!}
                         </p>
                     </div>
-                    <div class="card-footer">
-                        <div class="mbr-author-name mbr-bold mbr-fonts-style display-7">
-                             Vanessa
-                        </div>
-                        <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
-                               Sales Manager
-                        </small>
-                    </div>
                 </div>
             </div>
+            @endforeach
 
-            <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4">
-                <div class="panel-item p-3">
-                    <div class="card-block">
-                        <div class="testimonial-photo">
-                            <img src="/assets/images/face2.jpg">
-                        </div>
-                        <p class="mbr-text mbr-fonts-style display-7">
-                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="mbr-author-name mbr-bold mbr-fonts-style display-7">
-                             Vanessa
-                        </div>
-                        <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
-                               Sales Manager
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4">
-                <div class="panel-item p-3">
-                    <div class="card-block">
-                        <div class="testimonial-photo">
-                            <img src="/assets/images/face3.jpg">
-                        </div>
-                        <p class="mbr-text mbr-fonts-style display-7">
-                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="mbr-author-name mbr-bold mbr-fonts-style display-7">
-                             Vanessa
-                        </div>
-                        <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
-                               Sales Manager
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4">
-                <div class="panel-item p-3">
-                    <div class="card-block">
-                        <div class="testimonial-photo">
-                            <img src="/assets/images/face2.jpg">
-                        </div>
-                        <p class="mbr-text mbr-fonts-style display-7">
-                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="mbr-author-name mbr-bold mbr-fonts-style display-7">
-                             Vanessa
-                        </div>
-                        <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
-                               Sales Manager
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4">
-                <div class="panel-item p-3">
-                    <div class="card-block">
-                        <div class="testimonial-photo">
-                            <img src="/assets/images/face2.jpg">
-                        </div>
-                        <p class="mbr-text mbr-fonts-style display-7">
-                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="mbr-author-name mbr-bold mbr-fonts-style display-7">
-                             Vanessa
-                        </div>
-                        <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
-                               Sales Manager
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4">
-                <div class="panel-item p-3">
-                    <div class="card-block">
-                        <div class="testimonial-photo">
-                            <img src="/assets/images/face2.jpg">
-                        </div>
-                        <p class="mbr-text mbr-fonts-style display-7">
-                           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, aspernatur, voluptatibus, atque, tempore molestiae.
-                    </p></div>
-                    <div class="card-footer">
-                        <div class="mbr-author-name mbr-bold mbr-fonts-style display-7">
-                             Vanessa
-                        </div>
-                        <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
-                               Sales Manager
-                        </small>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>   
 </section>

@@ -17,9 +17,6 @@ Route::get('/', function () {
     return view('front.welcome');
 });
 
-Auth::routes(['verify' => true]);
-
-Route::get('/home', 'HomeController@index')->middleware('verified');
 
 Route::get('/lend', function () {
     return view('front.lend');
@@ -84,9 +81,22 @@ Route::group(['prefix' => 'more'], function(){
     Route::get('/stories', function () {
         return view('front.more.stories');
     });
+    Route::get('/story/{id}', function ($id) {
+        return view('front.more.story')->with('id',$id);
+    });
+
+    Route::get('/links/{id}', function ($id) {
+        return view('front.more.link')->with('id',$id);
+    });
+    Route::get('/history/{id}', function ($id) {
+        return view('front.more.history')->with('id',$id);
+    });
 
     Route::get('/news', function () {
         return view('front.more.news');
+    });
+    Route::get('/new/{id}', function ($id) {
+        return view('front.more.new')->with('id',$id);
     });
 
     Route::get('/team', function () {
@@ -109,3 +119,41 @@ Route::group(['prefix' => 'more'], function(){
     });
 
 });
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->middleware('verified');
+
+
+Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
+
+Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate')->name('io_field_template');
+
+Route::get('relation_field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@relationFieldTemplate')->name('io_relation_field_template');
+
+Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate')->name('io_generator_builder_generate');
+
+Route::post('generator_builder/rollback', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@rollback')->name('io_generator_builder_rollback');
+
+Route::post(
+    'generator_builder/generate-from-file',
+    '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
+)->name('io_generator_builder_generate_from_file');
+
+Route::resource('stories', 'StoriesController');
+
+Route::resource('news', 'NewsController');
+
+Route::resource('teams', 'TeamsController');
+
+Route::resource('aboutSections', 'AboutSectionsController');
+
+Route::resource('aboutContents', 'AboutContentsController');
+
+Route::resource('aboutUsHistories', 'AboutUsHistoryController');
+
+Route::resource('photos', 'PhotosController');
+
+Route::resource('contacts', 'ContactsController');
+
+Route::resource('videosLinks', 'VideosLinksController');

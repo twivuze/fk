@@ -17,3 +17,22 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::resource('stories', 'StoriesAPIController');
+
+Route::resource('news', 'NewsAPIController');
+
+Route::resource('teams', 'TeamsAPIController');
+
+Route::resource('about_sections', 'AboutSectionsAPIController');
+
+Route::resource('about_contents', 'AboutContentsAPIController');
+
+Route::resource('about_us_histories', 'AboutUsHistoryAPIController');
+
+Route::resource('photos', 'PhotosAPIController');
+
+Route::resource('contacts', 'ContactsAPIController');
+
+Route::resource('videos_links', 'VideosLinksAPIController');

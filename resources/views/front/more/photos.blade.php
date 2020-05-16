@@ -2,6 +2,7 @@
 
 @section('content')
 
+<?php $photos= \App\Models\Photos::get() ?>
 
 <section class="mbr-section content4 cid-rYUq0W1Zxh" id="content4-3i">
 
@@ -26,54 +27,17 @@
                 <div class="mbr-gallery-layout-default">
                     <div>
                         <div>
+                        <?php $i=0; ?>
+                        @foreach($photos AS $photo)
                             <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false"
                                 data-tags="Awesome">
-                                <div href="#lb-gallery1-3j" data-slide-to="0" data-toggle="modal"><img
-                                        src="/assets/images/background1.jpg" alt="" title=""><span
+                                <div href="#lb-gallery1-3j" data-slide-to="{{$i}}" data-toggle="modal"><img
+                                        src="/{{$photo->image}}" alt="" title=""><span
                                         class="icon-focus"></span></div>
                             </div>
-                            <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false"
-                                data-tags="Responsive">
-                                <div href="#lb-gallery1-3j" data-slide-to="1" data-toggle="modal"><img
-                                        src="/assets/images/background2.jpg" alt="" title=""><span
-                                        class="icon-focus"></span></div>
-                            </div>
-                            <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false"
-                                data-tags="Creative">
-                                <div href="#lb-gallery1-3j" data-slide-to="2" data-toggle="modal"><img
-                                        src="/assets/images/background3.jpg" alt="" title=""><span
-                                        class="icon-focus"></span></div>
-                            </div>
-                            <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false"
-                                data-tags="Animated">
-                                <div href="#lb-gallery1-3j" data-slide-to="3" data-toggle="modal"><img
-                                        src="/assets/images/background4.jpg" alt="" title=""><span
-                                        class="icon-focus"></span></div>
-                            </div>
-                            <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false"
-                                data-tags="Awesome">
-                                <div href="#lb-gallery1-3j" data-slide-to="4" data-toggle="modal"><img
-                                        src="/assets/images/background5.jpg" alt="" title=""><span
-                                        class="icon-focus"></span></div>
-                            </div>
-                            <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false"
-                                data-tags="Awesome">
-                                <div href="#lb-gallery1-3j" data-slide-to="5" data-toggle="modal"><img
-                                        src="/assets/images/background6.jpg" alt="" title=""><span
-                                        class="icon-focus"></span></div>
-                            </div>
-                            <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false"
-                                data-tags="Responsive">
-                                <div href="#lb-gallery1-3j" data-slide-to="6" data-toggle="modal"><img
-                                        src="/assets/images/background7.jpg" alt="" title=""><span
-                                        class="icon-focus"></span></div>
-                            </div>
-                            <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false"
-                                data-tags="Animated">
-                                <div href="#lb-gallery1-3j" data-slide-to="7" data-toggle="modal"><img
-                                        src="/assets/images/background8.jpg" alt="" title=""><span
-                                        class="icon-focus"></span></div>
-                            </div>
+                            <?php $i++; ?>
+                            @endforeach
+                         
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -85,33 +49,23 @@
                     <div class="modal-content">
                         <div class="modal-body">
                             <ol class="carousel-indicators">
-                                <li data-app-prevent-settings="" data-target="#lb-gallery1-3j" class=" active"
-                                    data-slide-to="0"></li>
-                                <li data-app-prevent-settings="" data-target="#lb-gallery1-3j" data-slide-to="1"></li>
-                                <li data-app-prevent-settings="" data-target="#lb-gallery1-3j" data-slide-to="2"></li>
-                                <li data-app-prevent-settings="" data-target="#lb-gallery1-3j" data-slide-to="3"></li>
-                                <li data-app-prevent-settings="" data-target="#lb-gallery1-3j" data-slide-to="4"></li>
-                                <li data-app-prevent-settings="" data-target="#lb-gallery1-3j" data-slide-to="5"></li>
-                                <li data-app-prevent-settings="" data-target="#lb-gallery1-3j" data-slide-to="6"></li>
-                                <li data-app-prevent-settings="" data-target="#lb-gallery1-3j" data-slide-to="7"></li>
+                            <?php $y=0; ?>
+                           @foreach($photos AS $row)
+                                <li data-app-prevent-settings="" data-target="#lb-gallery1-3j" class="{{$y==0?'active':''}}"
+                                    data-slide-to="{{$y}}"></li>
+
+                             <?php $y++; ?>
+                            @endforeach 
                             </ol>
                             <div class="carousel-inner">
-                                <div class="carousel-item active"><img src="/assets/images/background1.jpg" alt=""
+                            <?php $x=0; ?>
+                            @foreach($photos AS $photo )
+                                <div class="carousel-item {{$x==0?'active':''}}"><img src="/{{$photo->image}}" alt=""
                                         title=""></div>
-                                <div class="carousel-item"><img src="/assets/images/background2.jpg" alt="" title="">
-                                </div>
-                                <div class="carousel-item"><img src="/assets/images/background3.jpg" alt="" title="">
-                                </div>
-                                <div class="carousel-item"><img src="/assets/images/background4.jpg" alt="" title="">
-                                </div>
-                                <div class="carousel-item"><img src="/assets/images/background5.jpg" alt="" title="">
-                                </div>
-                                <div class="carousel-item"><img src="/assets/images/background6.jpg" alt="" title="">
-                                </div>
-                                <div class="carousel-item"><img src="/assets/images/background7.jpg" alt="" title="">
-                                </div>
-                                <div class="carousel-item"><img src="/assets/images/background8.jpg" alt="" title="">
-                                </div>
+                                        <?php $x++; ?>
+                             @endforeach          
+                               
+                            
                             </div><a class="carousel-control carousel-control-prev" role="button" data-slide="prev"
                                 href="#lb-gallery1-3j"><span class="mbri-left mbr-iconfont"
                                     aria-hidden="true"></span><span class="sr-only">Previous</span></a><a
