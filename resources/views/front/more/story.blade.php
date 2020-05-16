@@ -34,7 +34,7 @@
   <div class="card p-3 col-12 col-md-8 col-lg-8">
       <div class="card-wrapper">
           <div class="card-img">
-              <img src="/images/{{$row->image}}" alt="Mobirise">
+              <img src="/images/{{$story->image}}" alt="Mobirise">
           </div>
           <div class="card-box">
               <h4 class="card-title pb-3 mbr-fonts-style display-7">
@@ -42,7 +42,7 @@
               </h4>
               <p class="mbr-text mbr-fonts-style display-7">
                
-                  {!!html_entity_decode($row->description)!!}
+                  {!!html_entity_decode($story->description)!!}
               </p>
           </div>
       </div>
