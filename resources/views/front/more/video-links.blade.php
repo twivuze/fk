@@ -32,7 +32,7 @@
                     <div class="card-box p-3 bg-white">
                         <h4 class="card-title pb-3 mbr-fonts-style display-7">
                             <?php  $end = ' <a  href="/more/links/'.$story->id.'" target="_blank"> ...</a>'; ?>
-                            {!!html_entity_decode(Str::limit($story->title, $limit = 100,$end)) !!}
+                            {!!html_entity_decode(Str::limit($story->title, $limit = 400,$end)) !!}
                         </h4>
                         <p class="mbr-text mbr-fonts-style display-7">
                             <?php  $end = ' <a  href="/more/links/'.$story->id.'" target="_blank"> read more ....</a>'; ?>
@@ -53,7 +53,7 @@
                         <div class="card-box p-3 bg-white">
                             <h4 class="card-title pb-3 mbr-fonts-style display-7">
                                 <?php  $end = ' <a  href="/more/links/'.$story->id.'" target="_blank"> ...</a>'; ?>
-                                {!!html_entity_decode(Str::limit($story->title, $limit = 30,$end)) !!}
+                                {!!html_entity_decode(Str::limit($story->title, $limit = 400,$end)) !!}
                             </h4>
                             <p class="mbr-text mbr-fonts-style display-7">
                                 <?php  $end = ' <a  href="/more/links/'.$story->id.'" target="_blank"> read more ....</a>'; ?>
