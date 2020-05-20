@@ -51,6 +51,8 @@
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
+                
+                <b style="color:#fff;position:relative;top:15px">{{Auth::user()->type}}</b>
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
@@ -70,7 +72,8 @@
                                     <img src="/images/logo.png"
                                          class="img-circle" alt="User Image"/>
                                     <p>
-                                        {{ Auth::user()->name }}
+                                    {{Auth::user()->type}}
+                                        
                                         <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
                                     </p>
                                 </li>

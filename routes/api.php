@@ -36,3 +36,7 @@ Route::resource('photos', 'PhotosAPIController');
 Route::resource('contacts', 'ContactsAPIController');
 
 Route::resource('videos_links', 'VideosLinksAPIController');
+
+Route::resource('micro_fund_applications', 'MicroFundApplicationAPIController');
+
+Route::resource('user_accounts', 'UserAccountAPIController');

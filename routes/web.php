@@ -114,11 +114,18 @@ Route::group(['prefix' => 'more'], function(){
         return view('front.more.photos');
     });
 
+
     Route::get('/video-links', function () {
         return view('front.more.video-links');
     });
 
 });
+
+
+Route::get('/microfund-manager-application-submitted', function () {
+    return view('front.message.microfund-manager-application-submitted');
+});
+
 
 Auth::routes(['verify' => true]);
 
@@ -157,3 +164,11 @@ Route::resource('photos', 'PhotosController');
 Route::resource('contacts', 'ContactsController');
 
 Route::resource('videosLinks', 'VideosLinksController');
+
+Route::resource('microFundApplications', 'MicroFundApplicationController');
+
+Route::resource('userAccounts', 'UserAccountController');
+
+Route::get('check-microfound-user/{id}', 'UserAccountController@storeDefaultUser');
+
+//check-microfound-user

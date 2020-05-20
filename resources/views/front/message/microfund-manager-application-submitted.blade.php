@@ -8,7 +8,7 @@
     <div class="container mt-3">
         <div class="media-container-row">
             <div class="title col-12 col-md-8">
-                <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>Become MicroFund Manager Form</strong></h2>
+                <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>MicroFund Manager Form Submission.</strong></h2>
                 
                 
             </div>
@@ -21,16 +21,14 @@
     <div class="container">
         <div class="row justify-content-center">
                 <div class="media-container-column col-lg-8">
-                <style>ul{color: red;} li{color: red;}</style>
-                @include('adminlte-templates::common.errors')
                 <div class="row">
-                <a name="error"></a>
 
-                    {!! Form::open(['route' => 'microFundApplications.store']) !!}
-
-                        @include('micro_fund_applications.fields')
-
-                    {!! Form::close() !!}
+                <div class="col-lg-3"></div>
+            <div class="alert alert-success alert-dismissible fade show mt-5 ml-5 text-center title"
+                role="alert">
+                <strong>Thank you for applying to become MicroFund Manager. Your application submitted successfully!</strong>
+            </div>
+            <div class="col-lg-3"></div>
                     </div>
                 </div>
             </div>
