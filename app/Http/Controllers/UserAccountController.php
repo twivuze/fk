@@ -161,15 +161,15 @@ class UserAccountController extends AppBaseController
             return redirect(route('userAccounts.index'));
         }
         $input= $request->all();
-        $newPassword=$request->password;
-        if ($newPassword){
+        $newPassword=$input['password'];
+        if ($input['password']){
             $input['password']= Hash::make($newPassword);
         }
 
      
 
          $userAccount = $this->userAccountRepository->update($input, $id);
-         if ($newPassword){
+         if ($input['password']){
             Mail::to($request->email)->send(new UserAccount($request->email,$newPassword));
          }
         Flash::success('User Account updated successfully.');
