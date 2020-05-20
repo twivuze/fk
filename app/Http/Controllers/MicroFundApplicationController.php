@@ -11,6 +11,7 @@ use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 use Auth;
+use Illuminate\Http\Request;
 class MicroFundApplicationController extends AppBaseController
 {
     /** @var  MicroFund ApplicationRepository */
@@ -113,9 +114,23 @@ class MicroFundApplicationController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateMicroFundApplicationRequest $request)
+    public function update($id, Request $request)
     {
+
+        $request->validate([
+            'full_name' => 'required',
+            'email' =>  'required',
+            'address' => 'required',
+            'religion' => 'required',
+            'marital_status' => 'required',
+            'gender' => 'required',
+            'phone_number' => 'required'
+        ]);
+
         $microFundApplication = $this->microFundApplicationRepository->find($id);
+        $input=$request->all();
+
+        $application=\App\Models\MicroFundApplication::where('email', $input['email'])->first();
 
         if (empty($microFundApplication)) {
             Flash::error('Micro Fund Application not found');
@@ -123,7 +138,13 @@ class MicroFundApplicationController extends AppBaseController
             return redirect(route('microFundApplications.index'));
         }
 
-        $microFundApplication = $this->microFundApplicationRepository->update($request->all(), $id);
+        if ($application && $application->email && $microFundApplication->email!=$application->email) {
+            Flash::error('Email Already Taken by another one');
+            return back()
+            ->with('error','Email Already Taken by another one');
+        }
+
+        $microFundApplication = $this->microFundApplicationRepository->update($input, $id);
 
         Flash::success('Micro Fund Application updated successfully.');
 
