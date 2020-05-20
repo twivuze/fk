@@ -162,15 +162,35 @@ class UserAccountController extends AppBaseController
         }
         $input= $request->all();
         $newPassword=$input['password'];
-        if ($input['password']){
+
+        $sendMail=false;
+        
+        if (isset($input['password'])){
+            $sendMail=true;
             $input['password']= Hash::make($newPassword);
+        }else{
+            $sendMail=false;
+            $input['password']=$userAccount->password;
+        }
+
+        if (isset($input['email'])){
+            $input['email']= $input['email'];
+        }else{
+            $input['email']=$userAccount->email;
+        }
+
+        if (isset($input['name'])){
+            $input['name']= $input['name'];
+        }else{
+            $input['name']=$userAccount->name;
         }
 
      
 
          $userAccount = $this->userAccountRepository->update($input, $id);
-         if ($input['password']){
-            Mail::to($request->email)->send(new UserAccount($request->email,$newPassword));
+
+         if ($sendMail==true){
+            Mail::to($request->email)->send(new UserAccount($input['email'],$newPassword));
          }
         Flash::success('User Account updated successfully.');
 
