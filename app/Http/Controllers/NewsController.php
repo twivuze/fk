@@ -10,6 +10,7 @@ use App\Repositories\NewsRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Illuminate\Http\Request;
 
 class NewsController extends AppBaseController
 {
@@ -119,7 +120,7 @@ class NewsController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateNewsRequest $request)
+    public function update($id, Request $request)
     {
         $news = $this->newsRepository->find($id);
 

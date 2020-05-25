@@ -16,7 +16,11 @@
 
 <section class="mbr-section content4 cid-rYUfuivAPG" id="content4-2u">
 
-    
+<?php 
+     $pending=\App\Models\LoanApplication::where('category','=','Pending-Enterprises')->take(3)->get();
+     $shortlisted=\App\Models\LoanApplication::where('category','=','Short-listed-Enterprises')->take(3)->get();
+     $diasporaBank=\App\Models\LoanApplication::where('category','=','Diaspora-Bank')->take(3)->get();
+    ?>
 
     <div class="container">
         <div class="media-container-row">
@@ -30,9 +34,9 @@
 </section>
 
 <section class="features17 cid-rYUhzEzUWQ" id="features17-2w">
+
     
-    
-@include('front.common.enterprise-card')
+@include('front.common.enterprise-card',['enterprises'=>$shortlisted])
     
    
 </section>
@@ -54,7 +58,7 @@
 
 <section class="features17 cid-rYUihfOEje" id="features17-2x">
     
-@include('front.common.enterprise-card')
+@include('front.common.enterprise-card',['enterprises'=>$diasporaBank])
 
 </section>
 
@@ -76,7 +80,7 @@
 
 <section class="features17 cid-rYUiJVUB3K" id="features17-2z">
     
-@include('front.common.enterprise-card')
+@include('front.common.enterprise-card',['enterprises'=>$pending])
 
 </section>
 

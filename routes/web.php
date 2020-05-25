@@ -56,8 +56,8 @@ Route::group(['prefix' => 'apply'], function(){
 
 Route::group(['prefix' => 'become'], function(){
 
-    Route::get('/ngo', function () {
-        return view('front.become.ngo');
+    Route::get('/center', function () {
+        return view('front.become.center');
     });
 
     Route::get('/lender', function () {
@@ -126,10 +126,24 @@ Route::get('/microfund-manager-application-submitted', function () {
     return view('front.message.microfund-manager-application-submitted');
 });
 
+Route::get('/lender-submitted', function () {
+    return view('front.message.lender-submitted');
+});
+Route::get('/donor-submitted', function () {
+    return view('front.message.donor-submitted');
+});
+
+Route::get('/center-submitted', function () {
+    return view('front.message.center-submitted');
+});
+Route::get('/loan-submitted', function () {
+    return view('front.message.loan-submitted');
+});
+
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->middleware('verified');
+Route::get('home', 'HomeController@index')->middleware('verified')->name('home');
 
 
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
@@ -172,3 +186,25 @@ Route::resource('userAccounts', 'UserAccountController');
 Route::get('check-microfound-user/{id}', 'UserAccountController@storeDefaultUser');
 
 //check-microfound-user
+
+Route::resource('loanSessions', 'LoanSessionsController');
+
+Route::resource('loanApplications', 'LoanApplicationController');
+
+Route::resource('lenders', 'LenderController');
+
+Route::resource('donors', 'DonorController');
+
+Route::resource('lenderSessions', 'LenderSessionController');
+
+Route::resource('donorSessions', 'DonorSessionController');
+
+Route::resource('lenderCategories', 'LenderCategoryController');
+
+Route::resource('businessCategories', 'BusinessCategoryController');
+
+Route::resource('enterpriseCategories', 'EnterpriseCategoryController');
+
+Route::resource('centers', 'CenterController');
+
+Route::resource('centerSessions', 'CenterSessionController');

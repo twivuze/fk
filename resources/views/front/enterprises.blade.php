@@ -2,6 +2,9 @@
 
 @section('content')
 
+<?php 
+     $enterprises=\App\Models\LoanApplication::orderBy('id','DESC')->get();
+    ?>
 
 <section class="mbr-section content4 cid-rYUfuivAPG mt-5" id="content4-2u">
 
@@ -21,7 +24,7 @@
 <section class="features17 cid-rYUhzEzUWQ" id="features17-2w">
     
     
-@include('front.common.enterprise-card')
+@include('front.common.enterprise-card',['enterprises'=>$enterprises])
     
    
 </section>

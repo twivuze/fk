@@ -40,3 +40,25 @@ Route::resource('videos_links', 'VideosLinksAPIController');
 Route::resource('micro_fund_applications', 'MicroFundApplicationAPIController');
 
 Route::resource('user_accounts', 'UserAccountAPIController');
+
+Route::resource('loan_sessions', 'LoanSessionsAPIController');
+
+Route::resource('loan_applications', 'LoanApplicationAPIController');
+
+Route::resource('lenders', 'LenderAPIController');
+
+Route::resource('donors', 'DonorAPIController');
+
+Route::resource('lender_sessions', 'LenderSessionAPIController');
+
+Route::resource('donor_sessions', 'DonorSessionAPIController');
+
+Route::resource('lender_categories', 'LenderCategoryAPIController');
+
+Route::resource('business_categories', 'BusinessCategoryAPIController');
+
+Route::resource('enterprise_categories', 'EnterpriseCategoryAPIController');
+
+Route::resource('centers', 'CenterAPIController');
+
+Route::resource('center_sessions', 'CenterSessionAPIController');

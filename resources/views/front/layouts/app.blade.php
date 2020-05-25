@@ -25,7 +25,35 @@
   <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
   <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
   
-
+ <style>
+ .label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+.label-success {
+    background-color: #5cb85c;
+}
+.label-primary {
+    background-color: #337ab7;
+}
+.label-info {
+    background-color: #5bc0de;
+}
+.label-warning {
+    background-color: #f0ad4e;
+}
+.label-default {
+    background-color: #777;
+}
+ </style>
 
     @yield('css')
 </head>
@@ -83,8 +111,7 @@
                             class="nav-link link dropdown-toggle text-primary display-4 {{ Request::is('become/*') ? 'active' : '' }}" href="#"
                             data-toggle="dropdown-submenu" aria-expanded="false">Become</a>
                         <div class="dropdown-menu text-left">
-                        <a class="dropdown-item text-primary display-4 text-left" href="/become/ngo"
-                                aria-expanded="false">NGOs</a>
+                      
 
                             <a class="dropdown-item text-primary display-4 text-left" href="/become/lender">Lender</a>
 
@@ -96,6 +123,8 @@
 
                             <a class="dropdown-item text-primary display-4 text-left" href="/become/microfund-manager"
                                 aria-expanded="false">MicroFund Manager</a>
+                                <a class="dropdown-item text-primary display-4 text-left" href="/become/center"
+                                aria-expanded="false">Micro-finance Center</a>
 
                         </div>
                     </li>
