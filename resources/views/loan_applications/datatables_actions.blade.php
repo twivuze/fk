@@ -1,5 +1,6 @@
 {!! Form::open(['route' => ['loanApplications.destroy', $id], 'method' => 'delete']) !!}
 <div class='btn-group'>
+
     <a href="{{ route('loanApplications.show', $id) }}" class='btn btn-default btn-xs'>
         <i class="glyphicon glyphicon-eye-open"></i>
     </a>

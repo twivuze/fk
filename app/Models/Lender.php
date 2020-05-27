@@ -86,7 +86,7 @@ class Lender extends Model
         'lenders_bank_details' => "required|mimes:pdf",
         'lenders_passport_photo' => "required|image|mimes:jpeg,png,jpg",
         'lenders_copy_of_identity_card_or_passport' => "required|mimes:pdf",
-        'email' => 'required',
+        'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
         'lender_category_id'=> 'required'
     ];
     public function lenderCategory(){

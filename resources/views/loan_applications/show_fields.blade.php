@@ -252,6 +252,13 @@
     <p>{{ $loanApplication->alternative_contact_id_number }}</p>
 </div>
 
+<div class="form-group col-sm-12">
+<h2>Social Section</h2>
+</div>
+<div class="form-group">
+    {!! Form::label('category', 'Category:') !!}
+    <p>{{ $loanApplication->category }}</p>
+</div>
 <!-- Microfinance Center Field -->
 <?php if( $loanApplication->center){ ?>
 <div class="form-group">
@@ -260,7 +267,36 @@
 </div>
 <?php } ?>
 
+<?php if( $loanApplication->businessCategory){ ?>
+<div class="form-group">
+    {!! Form::label('business_category_id', 'Business Category:') !!}
+    <p>{{ $loanApplication->businessCategory? $loanApplication->businessCategory->category:'' }}</p>
+</div>
+<?php } ?>
 
+<?php if( $loanApplication->business_model_file){ ?>
+<!-- Passport Size Photos Zipped Field -->
+<div class="form-group">
+{!! Form::label('business_model_file', "Download Business Model") !!}
+<br>
+    
+    <a href="/documents/{{ $loanApplication->business_model_file }}" class="btn btn-info"> <i class="fa fa-download"></i> Download business model</a>
+</div>
+
+
+
+<?php } ?>
+
+<div class="form-group">
+    {!! Form::label('short_summary', 'Short Summary:') !!}
+    <p>{{ $loanApplication->short_summary }}</p>
+</div>
+
+<div class="form-group">
+    {!! Form::label('description', 'Description:') !!}
+    <p>{!!html_entity_decode($loanApplication->description)!!}</p>
+    
+</div>
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

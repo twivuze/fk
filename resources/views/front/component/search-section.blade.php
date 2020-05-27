@@ -1,33 +1,68 @@
+<?php 
+$centers= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->get();
+$businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id','DESC')->get();
+?>
+<div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(46, 46, 46);">
+</div>
 
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="title col-12 col-lg-8">
+            <h2 class="align-center pb-2 mbr-fonts-style display-2"><strong>
+                    Search Enterprise Profile</strong></h2>
 
-    <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(46, 46, 46);">
+        </div>
     </div>
+  
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-12 col-lg-8">
-                <h2 class="align-center pb-2 mbr-fonts-style display-2"><strong>
-                    Search Profile</strong></h2>
+    <div class="row py-2 justify-content-center">
+        <div class="col-12 col-lg-12 col-md-12">
+            <!---Formbuilder Form--->
+            <form action="enterprises/search" method="GET" class="mbr-form form-with-styler" data-form-title="Search Form">
+           
+                <div class="dragArea row">
                 
-            </div>
-        </div>
+                <?php if(count($centers) > 0) {?>
+                    <div class="form-group col" data-for="center">
+                        <select name="center" id="center" class="form-control">
 
-        <div class="row py-2 justify-content-center">
-            <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
-                <!---Formbuilder Form--->
-                <form action="https://mobirise.com/" method="POST" class="mbr-form form-with-styler" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="GhQ1mNWjBvm+Ljr+Sqt9XoKpUQuI34/rbnL2gCDiMJ4Ax3QWCv3WT5l/dVIzFzg7Xu4fe/kaaJpjXKoB68cObMChOz74HbXDyAlVZ8xFD3X++Fze5QuYPW7+/m3zjgBr">
-                    <div class="row">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                           
+                            <option value="">Filter By Center</option>
+                          
+                            @foreach($centers as $center)
+                            <option value="{{$center->id}}"> {{$center->region}} - {{$center->country}}</option>
+                            @endforeach
+                        </select>
                         </div>
-                    </div>
-                    <div class="dragArea row">
-                        <div class="form-group col" data-for="email">
-                            <input type="email" name="email" placeholder="Search" data-form-field="Email" required="required" class="form-control display-7" id="email-form3-21">
+                    <?php } ?>
+
+                <div class="form-group col" data-for="category">
+                {!! Form::select('category', ['' => 'Filter By Enterprise Category','Pending-Enterprises' => 'Pending-Enterprises', 'Diaspora-Bank' => 'Diaspora-Bank', 'Short-listed-Enterprises' => 'Short-listed-Enterprises'], null, ['class' => 'form-control']) !!}
+                </div>
+                <?php if(count($businessCategories) > 0) {?>
+                    <div class="form-group col" data-for="business_category">
+                        <select name="business_category" id="business_category" class="form-control">
+
+                           
+                            <option value="">Filter By Business Category</option>
+                          
+                            @foreach($businessCategories as $businessCategory)
+                            <option value="{{$businessCategory->id}}"> {{$businessCategory->category}}</option>
+                            @endforeach
+                        </select>
                         </div>
-                        <div class="col-auto input-group-btn"><button type="submit" class="btn btn-primary display-4">Search</button></div>
+                    <?php } ?>
+               
+                    <div class="form-group col" data-for="search">
+                   
+
+                        <input type="search" name="search" placeholder="Search Enterprise" data-form-field="Serach" class="form-control display-7" id="email-form3-21">
                     </div>
-                </form><!---Formbuilder Form--->
-            </div>
+                    <div class="col-auto input-group-btn"><button type="submit"
+                            class="btn btn-primary display-4">Search</button></div>
+                </div>
+            </form>
+            <!---Formbuilder Form--->
         </div>
     </div>
+</div>

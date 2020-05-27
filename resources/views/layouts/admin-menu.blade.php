@@ -41,16 +41,16 @@
 <ul class="dropdown-menu dropdown-menu-right" data-widget="tree">
 
             <li class="{{ Request::is('lenderCategories*') ? 'active' : '' }}">
-                  <a href="{{ route('lenderCategories.index') }}"><i class="fa fa-edit"></i><span>Lender</span></a>
+                  <a href="{{ route('lenderCategories.index') }}"><i class="fa fa-edit"></i><span>Lender/Donor</span></a>
             </li>
 
             <li class="{{ Request::is('businessCategories*') ? 'active' : '' }}">
                   <a href="{{ route('businessCategories.index') }}"><i class="fa fa-edit"></i><span>Business</span></a>
             </li>
 
-            <li class="{{ Request::is('enterpriseCategories*') ? 'active' : '' }}">
+            <!-- <li class="{{ Request::is('enterpriseCategories*') ? 'active' : '' }}">
                   <a href="{{ route('enterpriseCategories.index') }}"><i class="fa fa-edit"></i><span>Enterprise</span></a>
-            </li>
+            </li> -->
 
     </ul>
 

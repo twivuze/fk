@@ -98,7 +98,13 @@ class LoanApplication extends Model
         'alternative_contact_id_number',
         'microfinance_center',
         'session_id',
-        'category'
+        'category',
+        'short_summary',
+        'description',
+        'business_model_file',
+        'business_category_id',
+        'user_id',
+        'approved'
     ];
 
     /**
@@ -142,7 +148,8 @@ class LoanApplication extends Model
         'alternative_contact_id_number' => 'string',
         'microfinance_center' => 'integer',
         'session_id' => 'integer',
-        'category' => 'string'
+        'category' => 'string',
+        'business_model_file'=>'string'
     ];
 
     /**
@@ -152,7 +159,7 @@ class LoanApplication extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'email' =>  ['required', 'string', 'email', 'max:255', 'unique:loan_applications'],
+        'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
         'address' => 'required',
         'country' => 'required',
         'region' => 'required',
@@ -194,4 +201,8 @@ class LoanApplication extends Model
     public function center(){
         return $this->belongsTo('App\Models\Center','microfinance_center');
     }
+    public function businessCategory(){
+        return $this->belongsTo('App\Models\BusinessCategory','business_category_id');
+    }
+    //businessCategory
 }

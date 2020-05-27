@@ -12,6 +12,7 @@ use App\Http\Controllers\AppBaseController;
 use Response;
 use Illuminate\Http\Request;
 use App\Mail\ApplicationSenderMail;
+use App\Mail\CredentialMail;
 use Illuminate\Support\Facades\Mail;
 class LoanApplicationController extends AppBaseController
 {
@@ -177,9 +178,12 @@ class LoanApplicationController extends AppBaseController
      *
      * @return Response
      */
+
+     
     public function update($id, Request $request)
     {
         $loanApplication = $this->loanApplicationRepository->find($id);
+        $application=$loanApplication;
 
         if (empty($loanApplication)) {
             Flash::error('Loan Application not found');
@@ -187,6 +191,23 @@ class LoanApplicationController extends AppBaseController
             return redirect(route('loanApplications.index'));
         }
         $input = $request->all();
+
+       
+
+        if($request->file('business_model_file')){
+
+            $request->validate([
+                'business_model_file' => 'required|mimes:xls,xlsx'
+            ]);
+
+            $filex=$request->file('business_model_file');
+            $docNamex ='business_model_file-'.time().'.'.$filex->extension();
+            $request->business_model_file->move(public_path('documents/'), $docNamex);
+            $input['business_model_file']=$docNamex;
+            }else{
+                $input['business_model_file']=$loanApplication->business_model_file;
+            }
+        
 
         if($request->file('upload_passport_photo')){
             $image = $this->updateImage($request,'upload_passport_photo');  
@@ -230,6 +251,42 @@ class LoanApplicationController extends AppBaseController
 
 
         $loanApplication = $this->loanApplicationRepository->update($input, $id);
+
+        if($loanApplication->approved){
+                      
+            $user= \App\User::where('id',$loanApplication->user_id)->where('type','Enterprise')->first();
+                 
+            if(!$user){
+                $request->validate([
+                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
+                ]);
+
+                        $user= new \App\User();
+                        $password=\Illuminate\Support\Str::random(6);
+
+                        $user->email=$loanApplication->email;
+                        $user->name=$loanApplication->name;
+                        $user->password= \Illuminate\Support\Facades\Hash::make($password);
+                        $user->type="Enterprise";
+                        $user->status="Active";
+                        $user->save();
+
+                        $loanApplication->user_id=$user->id;
+                        $loanApplication->save(); 
+
+                        if( isset($loanApplication->email) ){
+                            Mail::to($loanApplication->email)
+                            ->send(new CredentialMail($loanApplication->name,
+                            $loanApplication->email,$password,
+                            'credential','MY credentials for sign in into my account'));
+                        }
+            }else{
+                $user->name=$loanApplication->name;  
+                $user->save();
+            }
+        }
+       
+
 
         Flash::success('Loan Application updated successfully.');
 

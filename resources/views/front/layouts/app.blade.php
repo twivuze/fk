@@ -39,7 +39,7 @@
     border-radius: .25em;
 }
 .label-success {
-    background-color: #5cb85c;
+    background-color: #58d77a;
 }
 .label-primary {
     background-color: #337ab7;
@@ -48,10 +48,10 @@
     background-color: #5bc0de;
 }
 .label-warning {
-    background-color: #f0ad4e;
+    background-color: #fa8709;
 }
 .label-default {
-    background-color: #777;
+    background-color:rgb(69, 80, 91);
 }
  </style>
 
@@ -129,12 +129,12 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link link text-primary display-4 {{ Request::is('lend*') ? 'active' : '' }}" href="/lend">
                             Lend
                         </a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link link text-primary display-4 {{ Request::is('donate*') ? 'active' : '' }}" href="/donate">Donate</span></a></li>
+                    </li> -->
+                    <!-- <li class="nav-item"><a class="nav-link link text-primary display-4 {{ Request::is('donate*') ? 'active' : '' }}" href="/donate">Donate</span></a></li> -->
 
                     <li class="nav-item"><a class="nav-link link text-primary display-4 {{ Request::is('enterprises*') ? 'active' : '' }}" href="/enterprises">
                             Enterprises</a></li>

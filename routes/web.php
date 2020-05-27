@@ -76,6 +76,10 @@ Route::group(['prefix' => 'become'], function(){
     });
 });
 
+Route::get('/enterprises/view/{id}', function ($id) {
+    return view('front.view-enterprise')->with('id',$id);
+});
+
 Route::group(['prefix' => 'more'], function(){
 
     Route::get('/stories', function () {
@@ -145,6 +149,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('home', 'HomeController@index')->middleware('verified')->name('home');
 
+Route::get('enterprises/search', 'SearchController@search');
 
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
 

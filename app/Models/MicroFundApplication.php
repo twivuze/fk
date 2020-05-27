@@ -93,7 +93,7 @@ class MicroFundApplication extends Model
      */
     public static $rules = [
         'full_name' => 'required',
-        'email' =>  ['required', 'string', 'email', 'max:255', 'unique:microfund_applications'],
+        'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
         'address' => 'required',
         'religion' => 'required',
         'marital_status' => 'required',

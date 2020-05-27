@@ -80,7 +80,7 @@ class Donor extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'email' => 'required',
+        'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
         'address' => 'required',
         'contact' => 'required',
         'country'  => 'required',

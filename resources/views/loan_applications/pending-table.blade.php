@@ -2,17 +2,15 @@
     <table class="table" id="links-table">
         <thead>
         <tr>
-            <th>Full Name</th>
+        <th>Full Name</th>
             <th>Email</th>
             <th>Address</th>
             <th>Country </th>
-            <th>National ID</th>
-            <th>Contact</th>
-            <th>Religion</th>
+            <th>Region </th>
             <th>Marital status</th>
             <th>Status</th>
             <th>category</th>
-        <th >Action</th>
+           <th >Action</th>
        
          </tr>
         </thead>
@@ -25,21 +23,17 @@
                 <td>{!! $activeApplicant->address !!}</td>
                 <td>{!! $activeApplicant->country !!} </td>
               
-                <td>{!! $activeApplicant->national_identity_number !!}</td>
+                <td>{!! $activeApplicant->region !!}</td>
                 
-                <td>{!! $activeApplicant->contact !!}</td>
-                <td>{!! $activeApplicant->religion !!}</td>
 
                 <td>{!! $activeApplicant->marital_status !!}</td>
                 <td>{!! $activeApplicant->status !!}</td>
                 <td>{!! $activeApplicant->category !!}</td>
-
                 <td>
                    
                 {!! Form::open(['route' => ['loanApplications.destroy', $activeApplicant->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
                       
-
                             <a href="{{ route('microFundApplications.show', $activeApplicant->id) }}" class='btn btn-default btn-xs'>
                                 <i class="glyphicon glyphicon-eye-open"></i>
                             </a>

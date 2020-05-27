@@ -70,9 +70,6 @@ class LoanApplicationDataTable extends DataTable
             'address',
             'country',
             'region',
-            'national_identity_number',
-            'contact',
-            'religion',
             'marital_status',
             'status',
             'category'

@@ -1,5 +1,7 @@
 
-<?php $centers= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->get();
+<?php 
+$centers= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->get();
+$businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id','DESC')->get();
 ?>
 <div class="form-group col-sm-12">
     {!! Form::label('microfinance_center', 'Center:') !!}
@@ -489,11 +491,76 @@
 
 
 <?php if(Auth::check()){ ?>
-<!-- Status Field -->
+
 <div class="form-group col-sm-12">
+<hr>
+<h2>Admin Section</h2>
+<hr>
+</div>
+
+<!-- Status Field -->
+<div class="form-group col-sm-6">
     {!! Form::label('category', 'Category:') !!}
     {!! Form::select('category', ['Pending-Enterprises' => 'Pending-Enterprises', 'Diaspora-Bank' => 'Diaspora-Bank', 'Short-listed-Enterprises' => 'Short-listed-Enterprises'], null, ['class' => 'form-control']) !!}
 </div>
+
+
+<div class="form-group col-sm-6">
+    {!! Form::label('business_category_id', 'Business Category:') !!}
+    <select name="business_category_id" id="business_category_id" class="form-control" required>
+        
+        <?php if(isset($loanApplication->businessCategory)) {?>
+        <option value="{{$loanApplication->businessCategory->id}}">
+        {{$loanApplication->businessCategory->category}}</option>
+    <?php }else{ ?>
+        <option value="">Choose Business Category</option>
+        <?php } ?>
+        @foreach($businessCategories as $businessCategory)
+        <option value="{{$businessCategory->id}}">  {{$businessCategory->category}}</option>
+        @endforeach
+    </select>
+</div>
+<!-- What Is Integrity To You Field -->
+<div class="form-group col-sm-12 {{ $errors->has('short_summary') ? ' has-error' : '' }}">
+    {!! Form::label('short_summary', 'Write a short Summary (MAX words - 500)') !!}
+    {!! Form::textarea('short_summary', old('short_summary'), ['class' => 'form-control','required'=>'required']) !!}
+    @if ($errors->has('short_summary'))
+    <span class="help-block">
+        <strong>{{ $errors->first('short_summary') }}</strong>
+    </span>
+    @endif
+</div>
+
+<!-- What Is Integrity To You Field -->
+<div class="form-group col-sm-12 {{ $errors->has('description') ? ' has-error' : '' }}">
+    {!! Form::label('description', 'Write a description') !!}
+    {!! Form::textarea('description', old('description'), ['class' => 'form-control','id'=>'textarea']) !!}
+    @if ($errors->has('description'))
+    <span class="help-block">
+        <strong>{{ $errors->first('description') }}</strong>
+    </span>
+    @endif
+</div>
+
+<div class="form-group col-sm-6 {{ $errors->has('business_model_file') ? ' has-error' : '' }}">
+    {!! Form::label('business_model_file', 'Upload a business model file (only excel required)') !!}<br />
+    {!! Form::file('business_model_file') !!}
+    @if ($errors->has('business_model_file'))<br/>
+    <span class="help-block">
+        <strong>{{ $errors->first('business_model_file') }}</strong>
+    </span>
+    @endif
+</div>
+
+<!-- 'bootstrap / Toggle Switch Published Field' -->
+<div class="form-group col-sm-6">
+    {!! Form::label('approved', 'Approved?') !!}
+    <label class="checkbox-inline">
+        {!! Form::hidden('approved', 0) !!}
+        {!! Form::checkbox('approved', 1, null,  ['data-toggle' => 'toggle']) !!}
+    </label>
+</div>
+
 <?php } ?>
 <?php if(Auth::check()){ ?>
 <!-- Submit Field -->
