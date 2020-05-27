@@ -22,7 +22,7 @@
             <div class="modalWindow-container">
                 <div class="modalWindow-video-container">
                     <div class="modalWindow-video">
-                        <iframe width="100%" height="100%" frameborder="0" allowfullscreen="1" data-src="https://www.youtube.com/watch?v=5uzZiqM5gIc&amp;list=RDMM5uzZiqM5gIc&amp;start_radio=1"></iframe>
+                        <iframe width="100%" height="100%" frameborder="0" allowfullscreen="1" data-src="https://www.youtube.com/watch?v=ZQ2gjZqT-8s&amp;list=RDMMZQ2gjZqT-8s&amp;start_radio=1"></iframe>
                     </div>
                     <a class="close" role="button" data-dismiss="modal">
                         <span aria-hidden="true" class="mbri-close mbr-iconfont closeModal"></span>
