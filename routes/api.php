@@ -62,3 +62,5 @@ Route::resource('enterprise_categories', 'EnterpriseCategoryAPIController');
 Route::resource('centers', 'CenterAPIController');
 
 Route::resource('center_sessions', 'CenterSessionAPIController');
+
+Route::resource('messages', 'MessageAPIController');

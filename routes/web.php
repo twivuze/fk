@@ -213,3 +213,5 @@ Route::resource('enterpriseCategories', 'EnterpriseCategoryController');
 Route::resource('centers', 'CenterController');
 
 Route::resource('centerSessions', 'CenterSessionController');
+
+Route::resource('messages', 'MessageController');

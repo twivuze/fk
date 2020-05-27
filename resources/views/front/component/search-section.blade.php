@@ -30,7 +30,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
                             <option value="">Filter By Center</option>
                           
                             @foreach($centers as $center)
-                            <option value="{{$center->id}}"> {{$center->region}} - {{$center->country}}</option>
+                            <option value="{{$center->id}}"> {{$center->name}} - {{$center->country}}</option>
                             @endforeach
                         </select>
                         </div>

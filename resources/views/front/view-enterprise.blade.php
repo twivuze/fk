@@ -139,7 +139,7 @@ if($enterprise){
                             <label>Center</label>
                         </div>
                         <div class="col-6">
-                            <p>{{ $enterprise->center? $enterprise->center->region.' - '.$enterprise->center->country :'' }}
+                            <p>{{ $enterprise->center? $enterprise->center->name.' - '.$enterprise->center->country :'' }}
                             </p>
                         </div>
                     </div>
@@ -224,7 +224,7 @@ if($enterprise){
 
                     @foreach($centers as $center)
                     <li class="list-group-item "><a href="/enterprises/search?center={{$center->id}}" 
-                    class="mbr-bold text-primary"> {{$center->region.' - '.$center->country}}</a>
+                    class="mbr-bold text-primary"> {{$center->name.' - '.$center->country}}</a>
                     </li>
                     @endforeach
                 </ul>

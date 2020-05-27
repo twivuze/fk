@@ -263,7 +263,7 @@
 <?php if( $loanApplication->center){ ?>
 <div class="form-group">
     {!! Form::label('microfinance_center', 'Microfinance Center:') !!}
-    <p>{{ $loanApplication->center? $loanApplication->center->region.' - '.$loanApplication->center->country :'' }}</p>
+    <p>{{ $loanApplication->center? $loanApplication->center->name.' - '.$loanApplication->center->country :'' }}</p>
 </div>
 <?php } ?>
 

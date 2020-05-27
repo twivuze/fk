@@ -1,4 +1,3 @@
-
 <?php 
 $centers= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->get();
 $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id','DESC')->get();
@@ -6,15 +5,16 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <div class="form-group col-sm-12">
     {!! Form::label('microfinance_center', 'Center:') !!}
     <select name="microfinance_center" id="microfinance_center" class="form-control">
-        
+
         <?php if(isset($loanApplication->center)) {?>
         <option value="{{$loanApplication->center->id}}">
-        {{$loanApplication->center->region}} - {{$loanApplication->center->country}}</option>
-    <?php }else{ ?>
+            {{$loanApplication->center->name}} - {{$loanApplication->center->country}}
+        </option>
+        <?php }else{ ?>
         <option value="0">Choose your Microfinance Center</option>
         <?php } ?>
         @foreach($centers as $center)
-        <option value="{{$center->id}}">{{$center->region}} - {{$center->country}}</option>
+        <option value="{{$center->id}}">{{$center->name}} - {{$center->country}}</option>
         @endforeach
     </select>
 </div>
@@ -115,7 +115,8 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 <div class="form-group col-sm-12 {{ $errors->has('marital_status') ? ' has-error' : '' }}">
     {!! Form::label('marital_status', 'Marital Status:') !!}
-    {!! Form::select('marital_status', ['Single' => 'Single', 'Married' => 'Married'],old('marital_status'), ['class' => 'form-control']) !!}
+    {!! Form::select('marital_status', ['Single' => 'Single', 'Married' => 'Married'],old('marital_status'), ['class' =>
+    'form-control']) !!}
     @if ($errors->has('marital_status'))
     <span class="help-block">
         <strong>{{ $errors->first('marital_status') }}</strong>
@@ -127,7 +128,8 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 <div class="form-group col-sm-12 {{ $errors->has('status') ? ' has-error' : '' }}">
     {!! Form::label('status', 'Status:') !!}
-    {!! Form::select('status', ['Personal beneficiary' => 'Personal beneficiary', 'Enterprise' => 'Enterprise', 'Cooperative' => 'Cooperative', 'Other' => 'Other'],old('marital_status'), ['class' => 'form-control']) !!}
+    {!! Form::select('status', ['Personal beneficiary' => 'Personal beneficiary', 'Enterprise' => 'Enterprise',
+    'Cooperative' => 'Cooperative', 'Other' => 'Other'],old('marital_status'), ['class' => 'form-control']) !!}
     @if ($errors->has('status'))
     <span class="help-block">
         <strong>{{ $errors->first('status') }}</strong>
@@ -174,7 +176,8 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <!-- Expected Average Customers Per Week Field -->
 <div class="form-group col-sm-12 {{ $errors->has('expected_average_customers_per_week') ? ' has-error' : '' }}">
     {!! Form::label('expected_average_customers_per_week', 'Expected Average Customers Per Week:') !!}
-    {!! Form::text('expected_average_customers_per_week', old('expected_average_customers_per_week'), ['class' => 'form-control']) !!}
+    {!! Form::text('expected_average_customers_per_week', old('expected_average_customers_per_week'), ['class' =>
+    'form-control']) !!}
     @if ($errors->has('expected_average_customers_per_week'))
     <span class="help-block">
         <strong>{{ $errors->first('expected_average_customers_per_week') }}</strong>
@@ -208,7 +211,8 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <!-- What Makes You Eligible For The Loan Field -->
 <div class="form-group col-sm-12 {{ $errors->has('what_makes_you_eligible_for_the_loan') ? ' has-error' : '' }}">
     {!! Form::label('what_makes_you_eligible_for_the_loan', 'What Makes You Eligible For The Loan?') !!}
-    {!! Form::textarea('what_makes_you_eligible_for_the_loan', old('what_makes_you_eligible_for_the_loan'), ['class' => 'form-control']) !!}
+    {!! Form::textarea('what_makes_you_eligible_for_the_loan', old('what_makes_you_eligible_for_the_loan'), ['class' =>
+    'form-control']) !!}
     @if ($errors->has('what_makes_you_eligible_for_the_loan'))
     <span class="help-block">
         <strong>{{ $errors->first('what_makes_you_eligible_for_the_loan') }}</strong>
@@ -218,8 +222,10 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 <!-- Does Your Business Have The Ability To Make The Loan Repayment On Time Field -->
 <div class="form-group col-sm-12 {{ $errors->has('can_make_loan_repayment_on_time') ? ' has-error' : '' }}">
-    {!! Form::label('can_make_loan_repayment_on_time', 'Does Your Business Have The Ability To Make The Loan Repayment On Time?') !!}
-    {!! Form::textarea('can_make_loan_repayment_on_time', old('can_make_loan_repayment_on_time'), ['class' => 'form-control']) !!}
+    {!! Form::label('can_make_loan_repayment_on_time', 'Does Your Business Have The Ability To Make The Loan Repayment
+    On Time?') !!}
+    {!! Form::textarea('can_make_loan_repayment_on_time', old('can_make_loan_repayment_on_time'), ['class' =>
+    'form-control']) !!}
     @if ($errors->has('can_make_loan_repayment_on_time'))
     <span class="help-block">
         <strong>{{ $errors->first('can_make_loan_repayment_on_time') }}</strong>
@@ -230,7 +236,8 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <!-- What Makes You Move On In Life Field -->
 <div class="form-group col-sm-12 {{ $errors->has('what_makes_you_move_on_in_life') ? ' has-error' : '' }}">
     {!! Form::label('what_makes_you_move_on_in_life', 'What Makes You Move On In Life?') !!}
-    {!! Form::textarea('what_makes_you_move_on_in_life', old('what_makes_you_move_on_in_life'), ['class' => 'form-control']) !!}
+    {!! Form::textarea('what_makes_you_move_on_in_life', old('what_makes_you_move_on_in_life'), ['class' =>
+    'form-control']) !!}
     @if ($errors->has('what_makes_you_move_on_in_life'))
     <span class="help-block">
         <strong>{{ $errors->first('what_makes_you_move_on_in_life') }}</strong>
@@ -242,7 +249,8 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 <div class="form-group col-sm-12 {{ $errors->has('what_is_your_ultimate_goal_in_life') ? ' has-error' : '' }}">
     {!! Form::label('what_is_your_ultimate_goal_in_life', 'What Is Your Ultimate Goal In Life?') !!}
-    {!! Form::textarea('what_is_your_ultimate_goal_in_life', old('what_is_your_ultimate_goal_in_life'), ['class' => 'form-control']) !!}
+    {!! Form::textarea('what_is_your_ultimate_goal_in_life', old('what_is_your_ultimate_goal_in_life'), ['class' =>
+    'form-control']) !!}
     @if ($errors->has('what_is_your_ultimate_goal_in_life'))
     <span class="help-block">
         <strong>{{ $errors->first('what_is_your_ultimate_goal_in_life') }}</strong>
@@ -263,7 +271,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 
 <div class="form-group col-sm-12">
-<h2>Additional information</h2>
+    <h2>Additional information</h2>
 </div>
 <!-- Additional Q1 Field -->
 
@@ -322,7 +330,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 
 <div class="form-group col-sm-12">
-<h2>Formal Reference</h2>
+    <h2>Formal Reference</h2>
 </div>
 <!-- Formal Reference Name Field -->
 <div class="form-group col-sm-12 {{ $errors->has('formal_reference_name') ? ' has-error' : '' }}">
@@ -360,7 +368,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 
 <div class="form-group col-sm-12">
-<h2>Alternative Contact</h2>
+    <h2>Alternative Contact</h2>
 </div>
 
 
@@ -406,7 +414,8 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 <div class="form-group col-sm-12 {{ $errors->has('alternative_contact_id_number') ? ' has-error' : '' }}">
     {!! Form::label('alternative_contact_id_number', 'Id Number:') !!}
-    {!! Form::text('alternative_contact_id_number', old('alternative_contact_id_number'), ['class' => 'form-control']) !!}
+    {!! Form::text('alternative_contact_id_number', old('alternative_contact_id_number'), ['class' => 'form-control'])
+    !!}
     @if ($errors->has('alternative_contact_id_number'))
     <span class="help-block">
         <strong>{{ $errors->first('alternative_contact_id_number') }}</strong>
@@ -415,7 +424,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 </div>
 
 <div class="form-group col-sm-12">
-<h2>Attachments</h2>
+    <h2>Attachments</h2>
 </div>
 <!-- Upload Passport  Photo Field -->
 
@@ -423,7 +432,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <div class="form-group col-sm-12 {{ $errors->has('upload_passport_photo') ? ' has-error' : '' }}">
     {!! Form::label('upload_passport_photo', 'Upload your passport photo') !!}<br />
     {!! Form::file('upload_passport_photo') !!}
-    @if ($errors->has('upload_passport_photo'))<br/>
+    @if ($errors->has('upload_passport_photo'))<br />
     <span class="help-block">
         <strong>{{ $errors->first('upload_passport_photo') }}</strong>
     </span>
@@ -436,7 +445,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <div class="form-group col-sm-12 {{ $errors->has('national_identity_copy') ? ' has-error' : '' }}">
     {!! Form::label('national_identity_copy', 'National Identity Copy.(Allow Only Pdf)') !!}<br />
     {!! Form::file('national_identity_copy') !!}
-    @if ($errors->has('national_identity_copy'))<br/>
+    @if ($errors->has('national_identity_copy'))<br />
     <span class="help-block">
         <strong>{{ $errors->first('national_identity_copy') }}</strong>
     </span>
@@ -449,7 +458,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <div class="form-group col-sm-12 {{ $errors->has('business_certificate') ? ' has-error' : '' }}">
     {!! Form::label('business_certificate', 'Attach your Business Certificate.(Allow Only Pdf)') !!}<br />
     {!! Form::file('business_certificate') !!}
-    @if ($errors->has('business_certificate'))<br/>
+    @if ($errors->has('business_certificate'))<br />
     <span class="help-block">
         <strong>{{ $errors->first('business_certificate') }}</strong>
     </span>
@@ -463,7 +472,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <div class="form-group col-sm-12 {{ $errors->has('business_patent') ? ' has-error' : '' }}">
     {!! Form::label('business_patent', 'Attach your Business Patent.(Allow Only Pdf)') !!}<br />
     {!! Form::file('business_patent') !!}
-    @if ($errors->has('business_patent'))<br/>
+    @if ($errors->has('business_patent'))<br />
     <span class="help-block">
         <strong>{{ $errors->first('business_patent') }}</strong>
     </span>
@@ -474,9 +483,10 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <!-- Any Recent Transactions Documents Field -->
 
 <div class="form-group col-sm-12 {{ $errors->has('any_recent_transactions_documents') ? ' has-error' : '' }}">
-    {!! Form::label('any_recent_transactions_documents', 'Attach Any Recent Transactions Documents.(Allow Only Pdf)') !!}<br/>
+    {!! Form::label('any_recent_transactions_documents', 'Attach Any Recent Transactions Documents.(Allow Only Pdf)')
+    !!}<br />
     {!! Form::file('any_recent_transactions_documents') !!}
-    @if ($errors->has('any_recent_transactions_documents'))<br/>
+    @if ($errors->has('any_recent_transactions_documents'))<br />
     <span class="help-block">
         <strong>{{ $errors->first('any_recent_transactions_documents') }}</strong>
     </span>
@@ -493,30 +503,31 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <?php if(Auth::check()){ ?>
 
 <div class="form-group col-sm-12">
-<hr>
-<h2>Admin Section</h2>
-<hr>
+    <hr>
+    <h2>Social Section</h2>
+    <hr>
 </div>
 
 <!-- Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('category', 'Category:') !!}
-    {!! Form::select('category', ['Pending-Enterprises' => 'Pending-Enterprises', 'Diaspora-Bank' => 'Diaspora-Bank', 'Short-listed-Enterprises' => 'Short-listed-Enterprises'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('category', ['Pending-Enterprises' => 'Pending-Enterprises', 'Diaspora-Bank' => 'Diaspora-Bank',
+    'Short-listed-Enterprises' => 'Short-listed-Enterprises'], null, ['class' => 'form-control']) !!}
 </div>
 
 
 <div class="form-group col-sm-6">
     {!! Form::label('business_category_id', 'Business Category:') !!}
     <select name="business_category_id" id="business_category_id" class="form-control" required>
-        
+
         <?php if(isset($loanApplication->businessCategory)) {?>
         <option value="{{$loanApplication->businessCategory->id}}">
-        {{$loanApplication->businessCategory->category}}</option>
-    <?php }else{ ?>
+            {{$loanApplication->businessCategory->category}}</option>
+        <?php }else{ ?>
         <option value="">Choose Business Category</option>
         <?php } ?>
         @foreach($businessCategories as $businessCategory)
-        <option value="{{$businessCategory->id}}">  {{$businessCategory->category}}</option>
+        <option value="{{$businessCategory->id}}"> {{$businessCategory->category}}</option>
         @endforeach
     </select>
 </div>
@@ -545,7 +556,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <div class="form-group col-sm-6 {{ $errors->has('business_model_file') ? ' has-error' : '' }}">
     {!! Form::label('business_model_file', 'Upload a business model file (only excel required)') !!}<br />
     {!! Form::file('business_model_file') !!}
-    @if ($errors->has('business_model_file'))<br/>
+    @if ($errors->has('business_model_file'))<br />
     <span class="help-block">
         <strong>{{ $errors->first('business_model_file') }}</strong>
     </span>
@@ -553,22 +564,59 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 </div>
 
 <!-- 'bootstrap / Toggle Switch Published Field' -->
+<?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
 <div class="form-group col-sm-6">
     {!! Form::label('approved', 'Approved?') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('approved', 0) !!}
-        {!! Form::checkbox('approved', 1, null,  ['data-toggle' => 'toggle']) !!}
+        {!! Form::checkbox('approved', 1, null, ['data-toggle' => 'toggle']) !!}
     </label>
 </div>
+<?php }?>
+
+<?php if(Auth::check() && Auth::user()->type=='Enterprise'){ ?>
+
+<div class="form-group col-sm-6 mr-5">
+    <?php if(isset($loanApplication) && $loanApplication->approved) { ?>
+    <div class="alert alert-success show mt-5  mr-5  text-center title" role="alert">
+        <strong>APPLICATION APPROVED</strong>
+    </div>
+
+    <?php }else{ ?>
+
+    <div class="alert alert-warning show mt-5 mr-5 text-center title" role="alert">
+        <strong>APPLICATION PENDING</strong>
+    </div>
+    <?php }?>
+</div>
+<?php }?>
 
 <?php } ?>
 <?php if(Auth::check()){ ?>
 <!-- Submit Field -->
 
-<div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('loanApplications.index') }}" class="btn btn-default">Cancel</a>
+<?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
+    <hr>
+<div class="form-group container">
+    <div class="row m-5">
+        <div class="col-sm-6">
+            {!! Form::submit('Save', ['class' => 'btn btn-primary btn-block']) !!}
+        </div>
+        <div class="col-sm-6">
+            <a href="{{ route('loanApplications.index') }}" class="btn btn-default btn-block">Cancel</a>
+
+        </div>
+    </div>
 </div>
+<?php }?>
+
+<?php if(Auth::check() && Auth::user()->type=='Enterprise'){ ?>
+   
+    <hr>
+    <div class="form-group col-sm-12">
+    {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block']) !!}
+</div>
+    <?php }?>
 
 <?php }else{
 ?>

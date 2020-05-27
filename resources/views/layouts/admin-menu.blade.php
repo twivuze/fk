@@ -4,6 +4,10 @@
     <a href="/home"><i class="fa fa-th"></i><span>Dashboard</span></a>
 </li>
 
+<!-- <li class="{{ Request::is('messages*') ? 'active' : '' }}">
+    <a href="{{ route('messages.index') }}"><i class="fa fa-message"></i><span>Messages</span></a>
+</li> -->
+
 <li class="nav-item  dropdown {{ (Request::is('centerSessions*') || Request::is('loanSessions*') || Request::is('lenderSessions*') || Request::is('donorSessions*')) ? 'active' : '' }}">
 
 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -180,6 +184,8 @@
 <li class="{{ Request::is('userAccounts*') ? 'active' : '' }}">
     <a href="{{ route('userAccounts.index') }}"><i class="fa fa-users"></i><span>User Accounts</span></a>
 </li>
+
+
 
 
 
