@@ -17,15 +17,15 @@
 <section class="mbr-section content4 cid-rYUfuivAPG" id="content4-2u">
 
 <?php 
-     $pending=\App\Models\LoanApplication::where('category','=','Pending-Enterprises')->where('approved',1)->take(3)->get();
-     $shortlisted=\App\Models\LoanApplication::where('category','=','Short-listed-Enterprises')->where('approved',1)->take(3)->get();
-     $diasporaBank=\App\Models\LoanApplication::where('category','=','Diaspora-Bank')->where('approved',1)->take(3)->get();
+     $pending=\App\Models\LoanApplication::where('category','=','Enterprises-Awaiting-Funding')->where('approved',1)->take(3)->get();
+     $shortlisted=\App\Models\LoanApplication::where('category','=','Fully-Funded-Enterprises')->where('approved',1)->take(3)->get();
+     $diasporaBank=\App\Models\LoanApplication::where('category','=','Diaspora-Funded-Enterprises')->where('approved',1)->take(3)->get();
     ?>
 
     <div class="container">
         <div class="media-container-row">
             <div class="title col-12 col-md-8">
-                <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>Short-listed Enterprises</strong></h2>
+                <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>Fully-Funded-Enterprises</strong></h2>
                 
                 
             </div>
@@ -49,8 +49,7 @@
     <div class="container">
         <div class="media-container-row">
             <div class="title col-12 col-md-8">
-                <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>
-                    Pending Enterprises</strong></h2>
+                <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>Enterprises-Awaiting-Funding</strong></h2>
                 
                 
             </div>
@@ -72,7 +71,7 @@
     <div class="container">
         <div class="media-container-row">
             <div class="title col-12 col-md-8">
-                <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>Diaspora Funded</strong></h2>
+                <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>Diaspora-Funded-Enterprises</strong></h2>
                 
                 
             </div>
