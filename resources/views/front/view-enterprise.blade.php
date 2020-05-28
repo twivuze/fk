@@ -109,15 +109,15 @@ if($enterprise){
                             <label>Enterprise Category</label>
                         </div>
                         <div class="col-6">
-                            <p> <?php if($enterprise->category=='Short-listed-Enterprises'){
+                            <p> <?php if($enterprise->category=='Fully-Funded-Enterprises'){
                             ?>
                                 <h6 class="label label-success">{{ $enterprise->category }}</h6>
                                 <?php } ?>
-                                <?php if($enterprise->category=='Diaspora-Bank'){
+                                <?php if($enterprise->category=='Diaspora-Funded-Enterprises'){
                             ?>
                                 <h6 class="label label-default">{{ $enterprise->category }}</h6>
                                 <?php } ?>
-                                <?php if($enterprise->category=='Pending-Enterprises'){
+                                <?php if($enterprise->category=='Enterprises-Awaiting-Funding'){
                             ?>
                                 <h6 class="label label-warning">{{ $enterprise->category }}</h6>
                                 <?php } ?>
