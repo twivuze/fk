@@ -1,9 +1,9 @@
 
 @extends('layouts.app')
 <?php if(Auth::check() || Auth::user()->type=='Admin'){
-     $pending=\App\Models\LoanApplication::where('category','=','Pending-Enterprises')->get();
-     $shortlisted=\App\Models\LoanApplication::where('category','=','Short-listed-Enterprises')->get();
-     $diasporaBank=\App\Models\LoanApplication::where('category','=','Diaspora-Bank')->get();
+     $pending=\App\Models\LoanApplication::where('category','=','Enterprises-Awaiting-Funding')->get();
+     $shortlisted=\App\Models\LoanApplication::where('category','=','Fully-Funded-Enterprises')->get();
+     $diasporaBank=\App\Models\LoanApplication::where('category','=','Diaspora-Funded-Enterprises')->get();
     ?>
 @section('content')
     <section class="content-header">
@@ -26,11 +26,11 @@
             <li class="active">
                 <a href="#1a" data-toggle="tab">All</a>
             </li>
-            <li><a href="#2a" data-toggle="tab">Short-listed-Enterprises</a>
+            <li><a href="#2a" data-toggle="tab">Enterprises-Awaiting-Funding</a>
             </li>
-            <li><a href="#3a" data-toggle="tab">Diaspora-Bank</a>
+            <li><a href="#3a" data-toggle="tab">Diaspora-Funded-Enterprises</a>
             </li>
-            <li><a href="#4a" data-toggle="tab">Pending-Enterprises</a>
+            <li><a href="#4a" data-toggle="tab">Enterprises-Awaiting-Funding</a>
             </li>
 
         </ul>
