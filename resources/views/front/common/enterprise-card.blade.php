@@ -30,8 +30,9 @@
                     <?php } ?>
                     </div>
                    </div>
-                   {{ $enterprise->center? 'Center:'.$enterprise->center->region.' - '.$enterprise->center->country.'<br />' :'' }}
-                    {{ $enterprise->businessCategory? 'Business category:'.$enterprise->businessCategory->category:'' }}
+                   {{ $enterprise->center? 'Center:'.$enterprise->center->region.' - '.$enterprise->center->country :'' }}
+                   <br />
+                    {{ $enterprise->businessCategory? 'Business:'.$enterprise->businessCategory->category:'' }}
                     <hr>
                     <p class="mbr-text mbr-fonts-style display-7">
                         {{ $enterprise->short_summary }}

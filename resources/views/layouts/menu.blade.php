@@ -11,6 +11,14 @@
     @include('layouts.enterprise-menu')
 <?php }?>
 
+<?php if(Auth::check() && Auth::user()->type=='Lender'){ ?>
+    @include('layouts.lender-menu')
+<?php }?>
+
+
+<?php if(Auth::check() && Auth::user()->type=='Donor'){ ?>
+    @include('layouts.donor-menu')
+<?php }?>
 
 
 

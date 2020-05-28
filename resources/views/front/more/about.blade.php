@@ -141,10 +141,11 @@
 </section>
 
 
-<section class="clients cid-rYUvGms2pw" data-interval="false" id="clients-3w">
 
-    @include('front.component.partners-section')
-
+<section class="clients cid-rYUvGms2pw" style="background:#ffff!important;" data-interval="false" id="clients-3w">
+      
+@include('front.component.partners-section')
+    
 </section>
 
 

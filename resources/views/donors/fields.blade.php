@@ -1,16 +1,19 @@
 
 <?php $donorCategory= \App\Models\LenderCategory::where('used',1)->orderBy('id','DESC')->get();
+function ccMasking($number) {
+    return 'XXXX-XXXX-XXXX-'.substr($number,-4);
+}
 ?>
 <div class="form-group col-sm-12 {{ $errors->has('donor_category_id') ? ' has-error' : '' }}">
-    {!! Form::label('donor_category_id', 'donor Category:') !!}
+    {!! Form::label('donor_category_id', 'Donor Category:') !!}
     <select name="donor_category_id" id="donor_category_id" class="form-control">
     <?php if(isset($donor->donorCategory)) {?>
         <option value="{{$donor->donorCategory->id}}">{{$donor->donorCategory->category}}</option>
     <?php }else{ ?>
         <option value="">Choose donor Category</option>
         <?php } ?>
-        @foreach($donorCategory as $donor)
-        <option value="{{$donor->id}}">{{$donor->category}}</option>
+        @foreach($donorCategory as $donorCat)
+        <option value="{{$donorCat->id}}">{{$donorCat->category}}</option>
         @endforeach
     </select>
 
@@ -75,6 +78,84 @@
     @endif
 </div>
 
+
+<div class="form-group col-sm-12">
+    <h2>Payment Card Details</h2>
+</div>
+
+<?php if(Auth::check() && Auth::user()->type=='Admin'){ 
+    
+    if(isset($donor)) {?>
+<div class="form-group col-sm-12">
+    {!! Form::label('card_number', 'Card number:') !!}
+    <b> {{ccMasking($donor->card_number)}}</b>
+
+</div>
+
+<div class="form-group col-sm-12">
+    {!! Form::label('expiration_month', 'Expiration Month:') !!}
+    <b> {{$donor->expiration_month}}</b>
+
+</div>
+
+<div class="form-group col-sm-12">
+    {!! Form::label('expiration_year', 'Expiration Year:') !!}
+    <b> {{$donor->expiration_year}}</b>
+
+</div>
+
+<div class="form-group col-sm-12">
+    {!! Form::label('cvc', 'cvc:') !!}
+    <b> {{$donor->cvc}}</b>
+
+</div>
+<?php }
+ } else{ ?>
+<div class="form-group col-sm-12 {{ $errors->has('card_number') ? ' has-error' : '' }}">
+    {!! Form::label('card_number', 'Card number:') !!}
+    {!! Form::number('card_number', old('card_number'), ['class' => 'form-control']) !!}
+    @if ($errors->has('card_number'))
+    <span class="help-block">
+        <strong>{{ $errors->first('card_number') }}</strong>
+    </span>
+    @endif
+</div>
+
+
+<div class="form-group col-sm-12 {{ $errors->has('expiration_month') ? ' has-error' : '' }}">
+    {!! Form::label('expiration_month', 'Expiration Month:') !!}
+    {!! Form::text('expiration_month', old('expiration_month'), ['class' =>
+    'form-control','required'=>'required','maxlength'=>'2']) !!}
+    @if ($errors->has('expiration_month'))
+    <span class="help-block">
+        <strong>{{ $errors->first('expiration_month') }}</strong>
+    </span>
+    @endif
+</div>
+
+<div class="form-group col-sm-12 {{ $errors->has('expiration_year') ? ' has-error' : '' }}">
+    {!! Form::label('expiration_year', 'Expiration Year:') !!}
+    {!! Form::text('expiration_year', old('expiration_year'), ['class' =>
+    'form-control','required'=>'required','maxlength'=>'4']) !!}
+    @if ($errors->has('expiration_year'))
+    <span class="help-block">
+        <strong>{{ $errors->first('expiration_year') }}</strong>
+    </span>
+    @endif
+</div>
+
+<div class="form-group col-sm-12 {{ $errors->has('cvc') ? ' has-error' : '' }}">
+    {!! Form::label('cvc', 'CVC:') !!}
+    {!! Form::text('cvc', old('cvc'), ['class' => 'form-control','required'=>'required','maxlength'=>'3']) !!}
+    @if ($errors->has('cvc'))
+    <span class="help-block">
+        <strong>{{ $errors->first('cvc') }}</strong>
+    </span>
+    @endif
+</div>
+<?php }
+         ?>
+
 <!-- Occupation Field -->
 
 <div class="form-group col-sm-12 {{ $errors->has('Occupation') ? ' has-error' : '' }}">
@@ -124,17 +205,6 @@
 </div>
 
 
-<!-- donors Bank Details Field -->
-<div class="form-group col-sm-12 {{ $errors->has('donors_bank_details') ? ' has-error' : '' }}">
-    {!! Form::label('donors_bank_details', "Donor's Bank Details:(Only PDF Format)") !!}<br />
-    {!! Form::file('donors_bank_details') !!}
-    @if ($errors->has('donors_bank_details'))
-    <span class="help-block">
-        <strong>{{ $errors->first('donors_bank_details') }}</strong> (Only PDF Format)
-    </span>
-    @endif
-</div>
-<div class="clearfix"></div>
 
 <!-- donors Passport Photo Field -->
 
@@ -166,21 +236,55 @@
 <!-- Session Id Field -->
 <div class="form-group col-sm-12">
     {!! Form::hidden('session_id', $session_id, ['class' => 'form-control']) !!}
-</div>
-<?php if(Auth::check()){ ?>
-<!-- Status Field -->
+</div><!-- Status Field -->
+<?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
+   
 <div class="form-group col-sm-12">
     {!! Form::label('status', 'Status:') !!}
     {!! Form::select('status', ['Inactive' => 'Inactive', 'Active' => 'Active'], null, ['class' => 'form-control']) !!}
 </div>
 <?php } ?>
+<?php if(Auth::check() && Auth::user()->type=='Donor'){ ?>
+    <div class="form-group col-sm-3"></div>
+<div class="form-group col-sm-6">
+    <?php if(isset($donor) && $donor->status=='Active') { ?>
+    <div class="alert alert-success show mt-5  mr-5  text-center title" role="alert">
+        <strong>APPLICATION APPROVED</strong>
+    </div>
+
+    <?php }else{ ?>
+
+    <div class="alert alert-warning show mt-5 mr-5 text-center title" role="alert">
+        <strong>APPLICATION PENDING</strong>
+    </div>
+    <?php }?>
+    <div class="form-group col-sm-3"></div>
+</div>
+<?php }?>
+
 <?php if(Auth::check()){ ?>
 <!-- Submit Field -->
+<?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
+
+<div class="form-group container">
+    <div class="row m-5">
+        <div class="col-sm-6">
+            {!! Form::submit('Save', ['class' => 'btn btn-primary btn-block']) !!}
+        </div>
+        <div class="col-sm-6">
+            <a href="{{ route('donors.index') }}" class="btn btn-default btn-block">Cancel</a>
+
+        </div>
+    </div>
+</div>
+<?php }?>
+
+<?php if(Auth::check() && Auth::user()->type=='Donor'){ ?>
 
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('donors.index') }}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block']) !!}
 </div>
+<?php }?>
 
 <?php }else{
 ?>

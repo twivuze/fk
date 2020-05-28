@@ -54,7 +54,7 @@ class LoanApplication extends Model
 
     public $table = 'loan_applications';
     
-
+    
 
 
     public $fillable = [
@@ -104,7 +104,10 @@ class LoanApplication extends Model
         'business_model_file',
         'business_category_id',
         'user_id',
-        'approved'
+        'approved',
+        'lender_initial_target',
+        'donor_initial_target',
+        'currency'
     ];
 
     /**

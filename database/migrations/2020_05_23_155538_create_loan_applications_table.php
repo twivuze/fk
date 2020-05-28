@@ -54,7 +54,7 @@ class CreateLoanApplicationsTable extends Migration
             $table->string('alternative_contact_id_number');
             $table->integer('microfinance_center')->nullable();
             $table->integer('session_id')->nullable();
-            $table->enum('category', ['Pending-Enterprises', 'Diaspora-Bank','Short-listed-Enterprises'])->default('Pending-Enterprises');
+            $table->enum('category', ['Enterprises-Awaiting-Funding', 'Diaspora-Funded-Enterprises','Fully-Funded-Enterprises'])->default('Enterprises-Awaiting-Funding');
             $table->timestamps();
         });
     }

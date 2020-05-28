@@ -2,9 +2,18 @@
 
 @section('content')
     <section class="content-header">
+    <?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
         <h1>
-            Loan Application
+        Enterprise
         </h1>
+        <?php }?>
+        <?php if(Auth::check() && Auth::user()->type=='Enterprise'){ ?>
+        <h1>
+        My Application
+        </h1>
+        <br>
+        @include('flash::message')
+        <?php }?>
     </section>
     <div class="content">
         <div class="box box-primary">

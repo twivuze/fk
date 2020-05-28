@@ -2,7 +2,7 @@
         <div class="container mb-5">
             <div class="media-container-row">
                 <div class="col-12 align-center">
-                    <h2 class="mbr-section-title pb-3 mbr-fonts-style display-2">Meet Our Sponsors and partners</h2>
+                    <h2 class="mbr-section-title pb-3 mbr-fonts-style display-2" style="color:rgb(69, 80, 91);">Meet Our Sponsors and partners</h2>
                     
                 </div>
             </div>
@@ -20,7 +20,7 @@
                     <div class="media-container-row">
                         <div class="col-md-12">
                             <div class="wrap-img ">
-                                <img src="/assets/images/1.png" class="img-responsive clients-img" alt="" title="">
+                                <img src="/assets/images/1.png" style="max-height:80px" class="img-responsive clients-img" alt="" title="">
                             </div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                     <div class="media-container-row">
                         <div class="col-md-12">
                             <div class="wrap-img ">
-                                <img src="/assets/images/2.png" class="img-responsive clients-img">
+                                <img src="/assets/images/2.png" style="max-height:80px"  class="img-responsive clients-img">
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                     <div class="media-container-row">
                         <div class="col-md-12">
                             <div class="wrap-img ">
-                                <img src="/assets/images/4.png" class="img-responsive clients-img">
+                                <img src="/assets/images/4.png" style="max-height:80px"  class="img-responsive clients-img">
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                     <div class="media-container-row">
                         <div class="col-md-12">
                             <div class="wrap-img ">
-                                <img src="/assets/images/5.png" class="img-responsive clients-img">
+                                <img src="/assets/images/5.png" style="max-height:80px"  class="img-responsive clients-img">
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     <div class="media-container-row">
                         <div class="col-md-12">
                             <div class="wrap-img ">
-                                <img src="/assets/images/6.png" class="img-responsive clients-img">
+                                <img src="/assets/images/6.png" style="max-height:80px"  class="img-responsive clients-img">
                             </div>
                         </div>
                     </div>

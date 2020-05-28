@@ -508,11 +508,38 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
     <hr>
 </div>
 
+<div class="form-group col-sm-12 {{ $errors->has('lender_initial_target') ? ' has-error' : '' }}">
+    {!! Form::label('lender_initial_target', 'Lender initial target:') !!}
+    {!! Form::text('lender_initial_target', old('lender_initial_target'), ['class' => 'form-control']) !!}
+    @if ($errors->has('lender_initial_target'))
+    <span class="help-block">
+        <strong>{{ $errors->first('lender_initial_target') }}</strong>
+    </span>
+    @endif
+</div>
+
+<div class="form-group col-sm-12 {{ $errors->has('donor_initial_target') ? ' has-error' : '' }}">
+    {!! Form::label('donor_initial_target', 'Donor initial target:') !!}
+    {!! Form::text('donor_initial_target', old('donor_initial_target'), ['class' => 'form-control']) !!}
+    @if ($errors->has('donor_initial_target'))
+    <span class="help-block">
+        <strong>{{ $errors->first('donor_initial_target') }}</strong>
+    </span>
+    @endif
+</div>
+
+<div class="form-group col-sm-12">
+    {!! Form::label('currency', 'Currency:') !!}
+    {!! Form::select('status', ['RWF' => 'RWF', 'USD' => 'USD'], null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Status Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('category', 'Category:') !!}
-    {!! Form::select('category', ['Pending-Enterprises' => 'Pending-Enterprises', 'Diaspora-Bank' => 'Diaspora-Bank',
-    'Short-listed-Enterprises' => 'Short-listed-Enterprises'], null, ['class' => 'form-control']) !!}
+{!! Form::select('category', ['' => 'Filter By Funding Status'
+                ,'Enterprises-Awaiting-Funding' => 'Enterprises-Awaiting-Funding',
+                 'Diaspora-Funded-Enterprises' => 'Diaspora-Funded-Enterprises',
+                 'Fully-Funded-Enterprises' => 'Fully-Funded-Enterprises'],
+                  null, ['class' => 'form-control']) !!}
 </div>
 
 
@@ -565,13 +592,14 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 <!-- 'bootstrap / Toggle Switch Published Field' -->
 <?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-6 mr-5 ">
     {!! Form::label('approved', 'Approved?') !!}
     <label class="checkbox-inline">
         {!! Form::hidden('approved', 0) !!}
         {!! Form::checkbox('approved', 1, null, ['data-toggle' => 'toggle']) !!}
     </label>
 </div>
+
 <?php }?>
 
 <?php if(Auth::check() && Auth::user()->type=='Enterprise'){ ?>
@@ -589,16 +617,18 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
     </div>
     <?php }?>
 </div>
+
 <?php }?>
 
 <?php } ?>
+
 <?php if(Auth::check()){ ?>
 <!-- Submit Field -->
 
 <?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
-    <hr>
+    </div>
 <div class="form-group container">
-    <div class="row m-5">
+    <div class="row">
         <div class="col-sm-6">
             {!! Form::submit('Save', ['class' => 'btn btn-primary btn-block']) !!}
         </div>
@@ -611,12 +641,11 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <?php }?>
 
 <?php if(Auth::check() && Auth::user()->type=='Enterprise'){ ?>
-   
-    <hr>
-    <div class="form-group col-sm-12">
+
+<div class="form-group col-sm-12">
     {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block']) !!}
 </div>
-    <?php }?>
+<?php }?>
 
 <?php }else{
 ?>
@@ -624,4 +653,4 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
     {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block']) !!}
 </div>
 
-<?php }
+<?php } ?>

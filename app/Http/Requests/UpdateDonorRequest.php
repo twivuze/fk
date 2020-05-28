@@ -23,10 +23,10 @@ class UpdateDonorRequest extends FormRequest
      *
      * @return array
      */
+    
+
     public function rules()
     {
-        $rules = Donor::$rules;
-        
-        return $rules;
+        return Donor::rules();
     }
 }

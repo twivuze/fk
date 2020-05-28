@@ -55,7 +55,7 @@
 
 
 
-<!-- Lenders Passport Photo Field -->
+<!-- donors Passport Photo Field -->
 <div class="form-group">
     {!! Form::label('donors_passport_photo', "Donor's Passport Photo:") !!}
 
@@ -67,21 +67,58 @@
     </p>
 </div>
 
-<!-- Lenders Bank Details Field -->
-<div class="form-group">
+<!-- donors Bank Details Field -->
+<!-- <div class="form-group">
     {!! Form::label('donors_bank_details', "Donor's Bank Details:") !!}
 
     <p>
     <iframe src="/documents/{{ $donor->donors_bank_details }}" width="800px" height="500px" frameborder="0"></iframe>
     </p>
-</div>
-<!-- Lenders Copy Of Identity Card Or Passport Field -->
+</div> -->
+<!-- donors Copy Of Identity Card Or Passport Field -->
 <div class="form-group">
     {!! Form::label('donors_copy_of_identity_card_or_passport', "Donor's Copy Of Identity Card Or Passport:") !!}
     <p>
     <iframe src="/documents/{{ $donor->donors_copy_of_identity_card_or_passport }}" width="800px" height="500px" frameborder="0"></iframe>
     </p>
 </div>
+
+<hr>
+<div class="form-group col-sm-12">
+   <h2>Payment Card Details</h2>
+</div>
+
+<?php if(Auth::check() && Auth::user()->type=='Admin'){?>
+ 
+    <div class="form-group">
+    {!! Form::label('card_number', 'Card number:') !!}
+    <b> {{'XXXX-XXXX-XXXX-'.substr($donor->card_number,-4) }}</b>
+   
+</div>
+<?php 
+}else{ ?>
+ <div class="form-group">
+    {!! Form::label('card_number', 'Card number:') !!}
+    <b> {{$donor->card_number}}</b>
+   
+</div>
+<?php } ?>
+
+<div class="form-group">
+    {!! Form::label('expiration_month', 'Expiration Month:') !!}
+    <b>{{ $donor->expiration_month }}</b>
+</div>
+
+<div class="form-group">
+    {!! Form::label('expiration_year', 'Expiration Year:') !!}
+    <b>{{ $donor->expiration_year }}</b>
+</div>
+
+<div class="form-group">
+    {!! Form::label('cvc', 'CVC:') !!}
+    <b>{{ $donor->cvc }}</b>
+</div>
+<hr>
 
 <!-- Status Field -->
 <div class="form-group">

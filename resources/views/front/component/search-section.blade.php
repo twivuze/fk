@@ -37,14 +37,16 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
                     <?php } ?>
 
                 <div class="form-group col" data-for="category">
-                {!! Form::select('category', ['' => 'Filter By Enterprise Category','Pending-Enterprises' => 'Pending-Enterprises', 'Diaspora-Bank' => 'Diaspora-Bank', 'Short-listed-Enterprises' => 'Short-listed-Enterprises'], null, ['class' => 'form-control']) !!}
+                {!! Form::select('category', ['' => 'Filter By Funding Status'
+                ,'Enterprises-Awaiting-Funding' => 'Enterprises-Awaiting-Funding', 'Diaspora-Funded-Enterprises' => 'Diaspora-Funded-Enterprises',
+                 'Fully-Funded-Enterprises' => 'Fully-Funded-Enterprises'], null, ['class' => 'form-control']) !!}
                 </div>
                 <?php if(count($businessCategories) > 0) {?>
                     <div class="form-group col" data-for="business_category">
                         <select name="business_category" id="business_category" class="form-control">
 
                            
-                            <option value="">Filter By Business Category</option>
+                            <option value="">Filter By Business Type</option>
                           
                             @foreach($businessCategories as $businessCategory)
                             <option value="{{$businessCategory->id}}"> {{$businessCategory->category}}</option>

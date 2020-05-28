@@ -176,7 +176,7 @@ if($enterprise){
                 <tr>
                         <td>
                             <a class="btn btn-sm btn-primary btn-block display-3"
-                             href="/enterprises/search?category=Short-listed-Enterprises">Short-listed-Enterprises
+                             href="/enterprises/search?category=Fully-Funded-Enterprises">Fully-Funded-Enterprises
                             </a>
                             </a>
                         </td>
@@ -184,17 +184,17 @@ if($enterprise){
                     <tr>
                         <td>
                             <a class="btn btn-sm btn-primary btn-block display-3"
-                             href="/enterprises/search?category=Diaspora-Bank"
+                             href="/enterprises/search?category=Diaspora-Funded-Enterprises"
                                 style="border:#58d77a !important; background:rgb(69, 80, 91)!important; color: #fff!important;">
-                                Diaspora-Bank-Enterprises </a>
+                                Diaspora-Funded-Enterprises </a>
 
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <a class="btn btn-sm btn-primary btn-block display-3" href="/enterprises/search?category=Pending-Enterprises"
+                            <a class="btn btn-sm btn-primary btn-block display-3" href="/enterprises/search?category=Enterprises-Awaiting-Funding"
                                 style="border:#58d77a !important; background:#fa8709!important; color: #fff!important;">
-                                Pending-Enterprises </a>
+                                Enterprises-Awaiting-Funding </a>
                         </td>
                     </tr>
                    
@@ -210,7 +210,8 @@ if($enterprise){
                 <hr>
 
                 <ul class="list-group">
-                    <li class="list-group-item active" style="border:#58d77a !important;background:rgb(69, 80, 91)!important;color:#fff!important">Business Categories</li>
+                    <li class="list-group-item active" 
+                    style="border:#58d77a !important;background:rgb(69, 80, 91)!important;color:#fff!important">Business Type</li>
 
                     @foreach($businessCategories as $businessCategory)
                     <li class="list-group-item "><a href="/enterprises/search?business_category={{$businessCategory->id}}" class="mbr-bold text-primary">{{$businessCategory->category}}</a>
@@ -293,8 +294,8 @@ if($enterprise){
 }
 ?>
 
-
-<section class="clients cid-rYUvGms2pw" data-interval="false" id="clients-3w">
+<hr>
+<section class="clients cid-rYUvGms2pw" style="background:#ffff!important;" data-interval="false" id="clients-3w">
 
     @include('front.component.partners-section')
 

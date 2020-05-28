@@ -4,6 +4,11 @@ namespace App\Models;
 
 use Eloquent as Model;
 
+use LVR\CreditCard\CardCvc;
+use LVR\CreditCard\CardNumber;
+use LVR\CreditCard\CardExpirationYear;
+use LVR\CreditCard\CardExpirationMonth;
+use Illuminate\Http\Request;
 /**
  * Class Lender
  * @package App\Models
@@ -46,7 +51,12 @@ class Lender extends Model
         'session_id',
         'status',
         'email',
-        'lender_category_id'
+        'lender_category_id',
+        'card_number',
+        'expiration_year',
+        'expiration_month',
+        'cvc',
+        'user_id'
     ];
 
     /**
@@ -61,13 +71,17 @@ class Lender extends Model
         'country' => 'string',
         'Occupation' => 'string',
         'recurring' => 'string',
-        'lenders_bank_details' => 'string',
         'lenders_passport_photo' => 'string',
         'lenders_copy_of_identity_card_or_passport' => 'string',
         'session_id' => 'integer',
         'status' => 'string',
         'email' => 'string',
-        'lender_category_id'
+        'lender_category_id' => 'integer',
+        'card_number' => 'integer',
+        'expiration_year' => 'integer',
+        'expiration_month' => 'integer',
+        'cvc' => 'integer',
+        'user_id' => 'integer',
     ];
 
     /**
@@ -75,7 +89,26 @@ class Lender extends Model
      *
      * @var array
      */
-    public static $rules = [
+    // public static $rules = [
+    //     'name' => 'required',
+    //     'contact' => 'required',
+    //     'country' => 'required',
+    //     'Occupation' => 'required',
+    //     'which_business_you_are_willing_to_lend_to' => 'required',
+    //     'why_did_you_choose_such_business' => 'required',
+    //     'recurring' => 'required',
+    //     'lenders_bank_details' => "required|mimes:pdf",
+    //     'lenders_passport_photo' => "required|image|mimes:jpeg,png,jpg",
+    //     'lenders_copy_of_identity_card_or_passport' => "required|mimes:pdf",
+    //     'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //     'lender_category_id'=> 'required',
+    //     'card_number' => ['required', new CardNumber],
+    // ];
+
+    public static  function rules()
+{
+
+    return [
         'name' => 'required',
         'contact' => 'required',
         'country' => 'required',
@@ -83,12 +116,16 @@ class Lender extends Model
         'which_business_you_are_willing_to_lend_to' => 'required',
         'why_did_you_choose_such_business' => 'required',
         'recurring' => 'required',
-        'lenders_bank_details' => "required|mimes:pdf",
         'lenders_passport_photo' => "required|image|mimes:jpeg,png,jpg",
         'lenders_copy_of_identity_card_or_passport' => "required|mimes:pdf",
         'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
-        'lender_category_id'=> 'required'
+        'lender_category_id'=> 'required',
+        'card_number' => ['required', new CardNumber],
+        'expiration_year' => ['required', new CardExpirationYear(request()->get('expiration_month'))],
+            'expiration_month' => ['required', new CardExpirationMonth(request()->get('expiration_year'))],
+            'cvc' => ['required', new CardCvc(request()->get('card_number'))]
     ];
+}
     public function lenderCategory(){
         return $this->belongsTo('App\Models\LenderCategory','lender_category_id');
     }

@@ -2,9 +2,18 @@
 
 @section('content')
     <section class="content-header">
+    <?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
         <h1>
-            Donor
+        Donor
         </h1>
+        <?php }?>
+        <?php if(Auth::check() && Auth::user()->type=='Donor'){ ?>
+        <h1>
+        My Application
+        </h1>
+        <br>
+        @include('flash::message')
+        <?php }?>
    </section>
    <div class="content">
        @include('adminlte-templates::common.errors')

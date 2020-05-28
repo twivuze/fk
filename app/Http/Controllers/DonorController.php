@@ -16,6 +16,13 @@ use Illuminate\Http\Request;
 use App\Mail\ApplicationSenderMail;
 use Illuminate\Support\Facades\Mail;
 
+use LVR\CreditCard\CardCvc;
+use LVR\CreditCard\CardNumber;
+use LVR\CreditCard\CardExpirationYear;
+use LVR\CreditCard\CardExpirationMonth;
+
+use App\Mail\CredentialMail;
+
 class DonorController extends AppBaseController
 {
     /** @var  DonorRepository */
@@ -58,6 +65,13 @@ class DonorController extends AppBaseController
     {
         $input = $request->all();
 
+        $request->validate(
+            ['card_number' => new CardNumber],
+            ['expiration_year' => ['required', new CardExpirationYear($request->get('expiration_month'))]],
+            ['expiration_month' => ['required', new CardExpirationMonth($request->get('expiration_year'))]],
+            ['cvc' => ['required', new CardCvc($request->get('card_number'))] ]
+        );
+
         if(!$request->file('donors_passport_photo')){
             $request->validate([
                 'donors_passport_photo' => 'required|image|mimes:jpeg,png,jpg',
@@ -66,16 +80,16 @@ class DonorController extends AppBaseController
             $donors_passport_photo = $this->updateImage($request,'donors_passport_photo');  
         }
 
-        if(!$request->file('donors_bank_details')){
-            $request->validate([
-                'donors_bank_details' => 'required|pdf',
-            ]);
+        // if(!$request->file('donors_bank_details')){
+        //     $request->validate([
+        //         'donors_bank_details' => 'required|pdf',
+        //     ]);
           
-        }else{
-        $file=$request->file('donors_bank_details');
-        $docName ='donors_bank_details-'.time().'.'.$file->extension();
-        $request->donors_bank_details->move(public_path('documents/'), $docName);
-        }
+        // }else{
+        // $file=$request->file('donors_bank_details');
+        // $docName ='donors_bank_details-'.time().'.'.$file->extension();
+        // $request->donors_bank_details->move(public_path('documents/'), $docName);
+        // }
 
         if(!$request->file('donors_copy_of_identity_card_or_passport')){
             $request->validate([
@@ -93,7 +107,7 @@ class DonorController extends AppBaseController
        
 
         $input['donors_passport_photo']=$donors_passport_photo;
-        $input['donors_bank_details']=$docName;
+        $input['donors_bank_details']='--';
         $input['donors_copy_of_identity_card_or_passport']=$docName1;
 
         $donor = $this->donorRepository->create($input);
@@ -173,6 +187,16 @@ class DonorController extends AppBaseController
         }
         
         $input = $request->all();
+
+        if(\Auth::user()->type=='Donor'){ 
+            $request->validate(
+                ['card_number' => new CardNumber],
+                ['expiration_year' => ['required', new CardExpirationYear($request->get('expiration_month'))]],
+                ['expiration_month' => ['required', new CardExpirationMonth($request->get('expiration_year'))]],
+                ['cvc' => ['required', new CardCvc($request->get('card_number'))] ]
+            );
+            }
+
             if($request->file('donors_passport_photo')){
                 $image = $this->updateImage($request,'donors_passport_photo');  
                 $input['donors_passport_photo']=$image;
@@ -190,19 +214,61 @@ class DonorController extends AppBaseController
                 }
                 
                 
-            if($request->file('donors_bank_details')){
-                $file1=$request->file('donors_bank_details');
-                $docName1 ='donors_bank_details-'.time().'.'.$file1->extension();
-                $request->donors_bank_details->move(public_path('documents/'), $docName1);
-                $input['donors_bank_details']=$docName1;
-                }else{
-                    $input['donors_bank_details']=$donor->donors_bank_details;
-                }
+            // if($request->file('donors_bank_details')){
+            //     $file1=$request->file('donors_bank_details');
+            //     $docName1 ='donors_bank_details-'.time().'.'.$file1->extension();
+            //     $request->donors_bank_details->move(public_path('documents/'), $docName1);
+            //     $input['donors_bank_details']=$docName1;
+            //     }else{
+            //         $input['donors_bank_details']=$donor->donors_bank_details;
+            //     }
         
 
         $donor = $this->donorRepository->update($input, $id);
 
         Flash::success('Donor updated successfully.');
+
+        if($donor->status=='Active'){
+                      
+            $user= \App\User::where('id',$donor->user_id)->where('type','Donor')->first();
+                 
+            if(!$user){
+                $request->validate([
+                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
+                ]);
+
+                        $user= new \App\User();
+                        $password=\Illuminate\Support\Str::random(6);
+
+                        $user->email=$donor->email;
+                        $user->name=$donor->name;
+                        $user->password= \Illuminate\Support\Facades\Hash::make($password);
+                        $user->type="Donor";
+                        $user->status="Active";
+                        $user->save();
+
+                        $donor->user_id=$user->id;
+                        $donor->save(); 
+
+                        if( isset($donor->email) ){
+                            Mail::to($donor->email)
+                            ->send(new CredentialMail($donor->name,
+                            $donor->email,$password,
+                            'credential','MY credentials for sign in into my account'));
+                        }
+            }else{
+                
+                if(\Auth::user()->email!=$donor->email){
+                    $request->validate([
+                        'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
+                    ]);
+                }
+               
+                $user->name=$donor->name;  
+                $user->email=$donor->email;  
+                $user->save();
+            }
+        }
 
         return redirect(route('donors.index'));
     }

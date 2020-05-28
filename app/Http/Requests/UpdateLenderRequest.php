@@ -25,8 +25,9 @@ class UpdateLenderRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Lender::$rules;
+        // $rules = Lender::$rules;
+        return Lender::rules();
         
-        return $rules;
+        // return $rules;
     }
 }

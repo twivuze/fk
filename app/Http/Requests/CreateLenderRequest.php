@@ -25,6 +25,6 @@ class CreateLenderRequest extends FormRequest
      */
     public function rules()
     {
-        return Lender::$rules;
+        return Lender::rules();
     }
 }
