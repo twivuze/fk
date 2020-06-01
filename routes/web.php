@@ -37,6 +37,10 @@ Route::get('/fillings', function () {
     return view('front.fillings');
 });
 
+Route::get('/fillings/{id}/documents', function ($id) {
+    return view('front.documents')->with('id',$id);
+});
+
 Route::group(['prefix' => 'apply'], function(){
 
     Route::get('/loan', function () {
@@ -159,7 +163,10 @@ Auth::routes(['verify' => true]);
 
 Route::get('home', 'HomeController@index')->middleware('verified')->name('home');
 
-Route::get('enterprises/search', 'SearchController@search');
+Route::get('enterprises/search', 'SearchController@searchEnterprise');
+
+Route::get('fillings/search', 'SearchController@searchFillings');
+
 
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
 
@@ -239,3 +246,7 @@ Route::resource('trainingWorkshops', 'TrainingWorkshopController');
 Route::resource('partenerSessions', 'PartenerSessionController');
 
 Route::resource('partners', 'PartnerController');
+
+Route::resource('fillingCategories', 'FillingCategoryController');
+
+Route::resource('fillingDocuments', 'FillingDocumentController');

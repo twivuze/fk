@@ -4,7 +4,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 ?>
 <div class="form-group col-sm-12">
     {!! Form::label('microfinance_center', 'Center:') !!}
-    <select name="microfinance_center" id="microfinance_center" class="form-control">
+    <select name="microfinance_center" id="microfinance_center" value="old('microfinance_center')" class="form-control">
 
         <?php if(isset($loanApplication->center)) {?>
         <option value="{{$loanApplication->center->id}}">
@@ -638,7 +638,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
     <?php }?>
 </div>
 
-<?php }?>
+<?php } ?>
 
 <?php } ?>
 

@@ -66,7 +66,9 @@ class MicroFundApplication extends Model
         'q5_1',
         'q5_2',
         'q5_3',
-        'phone_number','user_id','status'
+        'phone_number','user_id','status',
+        'microfinance_center',
+        'approved'
     ];
 
     /**
@@ -98,8 +100,27 @@ class MicroFundApplication extends Model
         'religion' => 'required',
         'marital_status' => 'required',
         'gender' => 'required',
-        'phone_number' => 'required'
+        'phone_number' => 'required',
+        'q1_1'=> 'required',
+        'q1_2'=> 'required',
+        'q1_3'=> 'required',
+        'q1_4'=> 'required',
+        'q2_1'=> 'required',
+        'q2_2'=> 'required',
+        'q2_3'=> 'required',
+        'q3_1'=> 'required',
+        'q3_2'=> 'required',
+        'q3_3'=> 'required',
+        'q4_1'=> 'required',
+        'q4_2'=> 'required',
+        'q4_3'=> 'required',
+        'q4_4'=> 'required',
+        'q5_1'=> 'required',
+        'q5_2'=> 'required',
+        'q5_3'=> 'required',
     ];
 
-    
+    public function center(){
+        return $this->belongsTo('App\Models\Center','microfinance_center');
+    }
 }

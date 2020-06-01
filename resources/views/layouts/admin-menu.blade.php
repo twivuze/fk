@@ -139,6 +139,9 @@
 </li>
 
 
+<li class="{{ Request::is('fillingCategories*') ? 'active' : '' }}">
+    <a href="{{ route('fillingCategories.index') }}"><i class="fa fa-list"></i><span>Fillings Categories</span></a>
+</li>
 
 
 <li class="nav-item  dropdown {{ (Request::is('aboutSections*') || Request::is('aboutContents*') || Request::is('aboutUsHistories*')) ? 'active' : '' }}">

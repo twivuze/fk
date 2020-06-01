@@ -20,7 +20,9 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('loan_applications.show_fields')
+                    <?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
                     <a href="{{ route('loanApplications.index') }}" class="btn btn-default">Back</a>
+                    <?php }?>
                 </div>
             </div>
         </div>

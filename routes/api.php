@@ -78,3 +78,7 @@ Route::resource('training_workshops', 'TrainingWorkshopAPIController');
 Route::resource('partener_sessions', 'PartenerSessionAPIController');
 
 Route::resource('partners', 'PartnerAPIController');
+
+Route::resource('filling_categories', 'FillingCategoryAPIController');
+
+Route::resource('filling_documents', 'FillingDocumentAPIController');

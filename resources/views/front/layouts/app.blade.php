@@ -53,6 +53,7 @@
 .label-default {
     background-color:rgb(69, 80, 91);
 }
+
  </style>
 
     @yield('css')

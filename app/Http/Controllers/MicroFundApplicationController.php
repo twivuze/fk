@@ -12,6 +12,11 @@ use App\Http\Controllers\AppBaseController;
 use Response;
 use Auth;
 use Illuminate\Http\Request;
+
+use App\Mail\ApplicationSenderMail;
+use App\Mail\CredentialMail;
+use Illuminate\Support\Facades\Mail;
+
 class MicroFundApplicationController extends AppBaseController
 {
     /** @var  MicroFund ApplicationRepository */
@@ -59,9 +64,14 @@ class MicroFundApplicationController extends AppBaseController
         $microFundApplication = $this->microFundApplicationRepository->create($input);
 
         Flash::success('Micro Fund Application saved successfully.');
+        
+        if( isset($input['email']) ){
+            Mail::to($microFundApplication->email)->send(new ApplicationSenderMail($microFundApplication,'microfund-manager','MicroFund Manager Application Submitted Successfully'));
+        }
             if(Auth::check()){ 
                 return redirect(route('microFundApplications.index'));
             }else{
+                
                 return redirect('/microfund-manager-application-submitted');  
             }
     }
@@ -138,17 +148,51 @@ class MicroFundApplicationController extends AppBaseController
             return redirect(route('microFundApplications.index'));
         }
 
-        if ($application && $application->email && $microFundApplication->email!=$application->email) {
-            Flash::error('Email Already Taken by another one');
-            return back()
-            ->with('error','Email Already Taken by another one');
-        }
 
         $microFundApplication = $this->microFundApplicationRepository->update($input, $id);
 
+        if($microFundApplication->approved){
+                      
+            $user= \App\User::where('id',$microFundApplication->user_id)->where('type','MicroFoundManager')->first();
+                 
+            if(!$user){
+                $request->validate([
+                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
+                ]);
+
+                        $user= new \App\User();
+                        $password=\Illuminate\Support\Str::random(6);
+
+                        $user->email=$microFundApplication->email;
+                        $user->name=$microFundApplication->full_name;
+                        $user->password= \Illuminate\Support\Facades\Hash::make($password);
+                        $user->type="MicroFoundManager";
+                        $user->status="Active";
+                        $user->save();
+
+                        $microFundApplication->user_id=$user->id;
+                        $microFundApplication->save(); 
+
+                        if( isset($microFundApplication->email) ){
+                            Mail::to($microFundApplication->email)
+                            ->send(new CredentialMail($microFundApplication->name,
+                            $microFundApplication->email,$password,
+                            'credential','MY credentials for sign in into my account'));
+                        }
+            }else{
+                $user->name=$microFundApplication->full_name;  
+                $user->save();
+            }
+        }
+
         Flash::success('Micro Fund Application updated successfully.');
 
-        return redirect(route('microFundApplications.index'));
+
+        if(\Auth::check() && \Auth::user()->type=='Admin'){ 
+            return redirect(route('microFundApplications.index'));
+            }else{
+                return redirect('/microFundApplications/'.$microFundApplication->id.'/edit'); 
+            }
     }
 
     /**

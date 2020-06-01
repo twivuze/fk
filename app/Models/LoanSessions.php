@@ -49,8 +49,9 @@ class LoanSessions extends Model
     public static $rules = [
         
     ];
+    
     public function getAllowApplicationAttribute($value){
         return $value?'Yes':'No';
-}
+    }
     
 }

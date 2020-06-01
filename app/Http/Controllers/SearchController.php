@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\LoanApplication;
+use App\Models\FillingDocument;
 use DB;
 use Log;
 class SearchController extends Controller
 {
-    public function search(Request $request)
+    public function searchEnterprise(Request $request)
     {
       
         $enterprises=LoanApplication::where('category',$request->input('category'))
@@ -26,6 +27,21 @@ class SearchController extends Controller
         ->orderBy('id','DESC')->get();
         
 
-        return view('front.search')->with(['enterprises'=>$enterprises]);
+        return view('front.search-enterprise')->with(['enterprises'=>$enterprises]);
+    }
+
+    //searchFillings
+
+    public function searchFillings(Request $request)
+    {
+      
+        $documents=FillingDocument::where('filling_category_id',$request->input('category'))
+        ->orwhere('center_id',$request->input('center'))
+        ->orwhere('name',$request->input('search'))
+        ->orwhere('country',$request->input('search'))
+        ->orderBy('id','DESC')->get();
+        
+
+        return view('front.search-filling')->with(['documents'=>$documents]);
     }
 }

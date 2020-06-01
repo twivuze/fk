@@ -27,7 +27,7 @@
             <div class="media-container-column col-lg-8">
 
                 <div class="alert alert-warning alert-dismissible fade show mt-5 ml-5 text-center title" role="alert">
-                    <strong>No Enterprise!</strong>
+                    <strong>No Enterprise found!</strong>
                 </div>
             </div>
         </div>

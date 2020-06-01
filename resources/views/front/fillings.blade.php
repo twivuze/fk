@@ -1,7 +1,9 @@
 @extends('front.layouts.app')
 
 @section('content')
-
+<?php 
+$fillings = \App\Models\FillingCategory::where('published',1)->orderBy('id','DESC')->get();
+?>
 
 <section class="mbr-section content4 cid-rYUfuivAPG mt-5" id="content4-2u">
 
@@ -15,10 +17,15 @@
         </div>
     </div>
 </section>
+<section class="mbr-section form3 cid-rYMRYFsTOi" id="form3-21" data-bg-video="http://www.youtube.com/watch?v=uNCr7NdOJgw">
 
-<section class="features17 cid-rYUhzEzUWQ text-center" id="features17-2w">
+@include('front.component.search-file-section')
+
+</section>
+
+<section class="features17 cid-rYUhzEzUWQ " id="features17-2w">
     
-<span class="text-center"> Here...</span>
+@include('front.common.filling-card',['fillings'=>$fillings])
    
 </section>
 
