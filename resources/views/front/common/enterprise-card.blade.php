@@ -38,7 +38,7 @@
                      
                         <?php $end = ' <a  href="/enterprises/view/'.$enterprise->id.'" target="_blank"> read more ....</a>'; ?>
 
-                        {!!html_entity_decode(Str::limit($enterprise->fundraising_message, $limit = 60,$end))!!}
+                        {!!html_entity_decode(Str::limit($enterprise->fundraising_message, $limit = 140,$end))!!}
                     </p>
 
 
