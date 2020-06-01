@@ -107,7 +107,10 @@ class LoanApplication extends Model
         'approved',
         'lender_initial_target',
         'donor_initial_target',
-        'currency'
+        'currency',
+        'business_name',
+        'fundraising_message',
+        'budget'
     ];
 
     /**
@@ -118,6 +121,7 @@ class LoanApplication extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
+        'business_name'=> 'string',
         'email' => 'string',
         'address' => 'string',
         'country' => 'string',
@@ -162,6 +166,7 @@ class LoanApplication extends Model
      */
     public static $rules = [
         'name' => 'required',
+        'business_name'=> 'required',
         'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
         'address' => 'required',
         'country' => 'required',

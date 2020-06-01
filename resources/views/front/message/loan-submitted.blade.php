@@ -33,9 +33,7 @@
                             out to you as soon as possible.<br />
                             If your business model gets shortlisted you will be contacted and more details will be given
                             to you.</p>
-                        <p style='Margin-top: 20px;Margin-bottom: 20px;'>Best Regards!<br />
-                            Your Friends in Business from All Trust Consult!</p>
-
+                      
                         <br>
                         Best Regards!<br />
                         Your Friends in Business from All Trust Consult!

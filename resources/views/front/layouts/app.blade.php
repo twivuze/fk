@@ -97,11 +97,10 @@
                         <div class="dropdown-menu text-left">
                             <a class="dropdown-item text-primary display-4 text-left" href="/apply/loan">Loans</a>
 
-                            <a class="dropdown-item text-primary display-4 text-left" href="/apply/yes-conferance" aria-expanded="false">Yes
-                                Conference(s)</a>
+                            <a class="dropdown-item text-primary display-4 text-left" href="/apply/yes-conferance" aria-expanded="false">Conference(s)</a>
 
-                            <a class="dropdown-item text-primary display-4 text-left" href="training-workshops"
-                                aria-expanded="false">Training & Workshops</a>
+                            <a class="dropdown-item text-primary display-4 text-left" href="/apply/training-workshops"
+                                aria-expanded="false">Trainings & Workshops</a>
 
 
                         </div>
@@ -119,7 +118,7 @@
                                 aria-expanded="false">Donor</a>
 
                             <a class="dropdown-item text-primary display-4 text-left" href="/become/partener"
-                                aria-expanded="false">Partener</a>
+                                aria-expanded="false">Partner </a>
 
                             <a class="dropdown-item text-primary display-4 text-left" href="/become/microfund-manager"
                                 aria-expanded="false">MicroFund Manager</a>
@@ -161,10 +160,9 @@
                            
                                
                                 <a class="dropdown-item text-primary display-4 text-left" href="/more/contact"
-                                aria-expanded="false">Contact</a>
+                                aria-expanded="false">Contacts </a>
                                 <a class="dropdown-item text-primary display-4 text-left" href="/more/video-links"
-                                aria-expanded="false">Video &
-                                Links</a>
+                                aria-expanded="false">Videos & Links</a>
                         </div>
                     </li>
                 </ul>

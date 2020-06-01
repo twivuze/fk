@@ -5,40 +5,40 @@
             <div class="card-wrapper">
                 <div class="card-img"
                     style="height:300px; width:100%; background-image: url('/thumbnail/{{$enterprise->upload_passport_photo}}'); background-repeat: no-repeat; background-size: cover;">
-                </div>
-                <div class="card-box">
-                   <div class="row">
-                   <div class="col-6">
-                   <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                        {{ $enterprise->name }}
-
-                    </h4>
-                  
-                    </div>
-                    <div class="col-6">
-                    <?php if($enterprise->category=='Short-listed-Enterprises'){
+                    <div style="position:relative;top:280px;right:5;float:right">
+                    <?php if($enterprise->category=='Fully-Funded-Enterprises'){
                             ?>
                     <h6 class="label label-success">{{ $enterprise->category }}</h6>
                     <?php } ?>
-                    <?php if($enterprise->category=='Diaspora-Bank'){
+                    <?php if($enterprise->category=='Diaspora-Funded-Enterprises'){
                             ?>
                     <h6 class="label label-default">{{ $enterprise->category }}</h6>
                     <?php } ?>
-                    <?php if($enterprise->category=='Pending-Enterprises'){
+                    <?php if($enterprise->category=='Enterprises-Awaiting-Funding'){
                             ?>
                     <h6 class="label label-warning">{{ $enterprise->category }}</h6>
                     <?php } ?>
                     </div>
-                   </div>
-                   {{ $enterprise->center? 'Center:'.$enterprise->center->region.' - '.$enterprise->center->country :'' }}
-                   <br />
-                    {{ $enterprise->businessCategory? 'Business:'.$enterprise->businessCategory->category:'' }}
+                </div>
+               
+                <div class="card-box">
+                 
+                   <h4 class="card-title pb-3 mbr-fonts-style display-7 text-center">
+                        {{ $enterprise->business_name }}
+
+                    </h4>
+                    <h6 class="card-title pb-3 mbr-fonts-style display-7 text-center">
+                       <b> {{ $enterprise->country }}</b>
+
+                    </h6>
                     <hr>
+                    
+                
                     <p class="mbr-text mbr-fonts-style display-7">
-                        {{ $enterprise->short_summary }}
+                     
                         <?php $end = ' <a  href="/enterprises/view/'.$enterprise->id.'" target="_blank"> read more ....</a>'; ?>
 
-                        {!!html_entity_decode(Str::limit($enterprise->short_summary, $limit = 60,$end))!!}
+                        {!!html_entity_decode(Str::limit($enterprise->fundraising_message, $limit = 60,$end))!!}
                     </p>
 
 

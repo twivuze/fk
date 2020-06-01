@@ -31,6 +31,16 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
     @endif
 </div>
 
+<div class="form-group col-sm-12 {{ $errors->has('business_name') ? ' has-error' : '' }}">
+    {!! Form::label('business_name', 'Business name:') !!}
+    {!! Form::text('business_name', old('business_name'), ['class' => 'form-control']) !!}
+    @if ($errors->has('business_name'))
+    <span class="help-block">
+        <strong>{{ $errors->first('business_name') }}</strong>
+    </span>
+    @endif
+</div>
+
 <!-- Email Field -->
 <div class="form-group col-sm-12 {{ $errors->has('email') ? ' has-error' : '' }}">
     {!! Form::label('email', 'Email:') !!}
@@ -506,6 +516,16 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
     <hr>
     <h2>Social Section</h2>
     <hr>
+</div>
+
+<div class="form-group col-sm-12 {{ $errors->has('fundraising_message') ? ' has-error' : '' }}">
+    {!! Form::label('fundraising_message', 'Fundraising Message:') !!}
+    {!! Form::textarea('fundraising_message', old('fundraising_message'), ['class' => 'form-control']) !!}
+    @if ($errors->has('fundraising_message'))
+    <span class="help-block">
+        <strong>{{ $errors->first('fundraising_message') }}</strong>
+    </span>
+    @endif
 </div>
 
 <div class="form-group col-sm-12 {{ $errors->has('lender_initial_target') ? ' has-error' : '' }}">

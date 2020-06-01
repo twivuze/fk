@@ -12,10 +12,14 @@ $centers= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->ge
     <div class="container mt-3">
         <div class="media-container-row">
             <div class="title col-12 col-md-8">
-                <h2 class="align-center pb-3 mbr-fonts-style display-2">
-                    <strong>{{ $enterprise->name." 's Profile" }}</strong>
+                <h2 class="align-center pb-3 mbr-fonts-style display-2 text-center">
+                    <strong> {{ $enterprise->business_name }} | {{ $enterprise->businessCategory? $enterprise->businessCategory->category:'' }}</strong>
+
 
                 </h2>
+                <p class="mbr-text mbr-fonts-style display-7 text-center">
+                   {{$enterprise->fundraising_message}} 
+                    </p>
                 <hr>
 
             </div>

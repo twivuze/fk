@@ -82,7 +82,7 @@ class LenderController extends AppBaseController
 
         // if(!$request->file('lenders_bank_details')){
         //     $request->validate([
-        //         'lenders_bank_details' => 'required|pdf',
+        //         'lenders_bank_details' => "required|mimes:pdf",
         //     ]);
           
         // }else{
@@ -93,7 +93,7 @@ class LenderController extends AppBaseController
 
         if(!$request->file('lenders_copy_of_identity_card_or_passport')){
             $request->validate([
-                'lenders_copy_of_identity_card_or_passport' => 'required|pdf',
+                'lenders_copy_of_identity_card_or_passport' => "required|mimes:pdf",
             ]);
           
         }else{

@@ -144,6 +144,16 @@ Route::get('/loan-submitted', function () {
     return view('front.message.loan-submitted');
 });
 
+Route::get('/conference-submitted', function () {
+    return view('front.message.conference-submitted');
+});
+//trainings-workshops-submitted
+Route::get('/trainings-workshops-submitted', function () {
+    return view('front.message.trainings-workshops-submitted');
+});
+Route::get('/partner-submitted', function () {
+    return view('front.message.partner-submitted');
+});
 
 Auth::routes(['verify' => true]);
 
@@ -215,3 +225,17 @@ Route::resource('centers', 'CenterController');
 Route::resource('centerSessions', 'CenterSessionController');
 
 Route::resource('messages', 'MessageController');
+
+Route::resource('conferenceSessions', 'ConferenceSessionController');
+
+Route::resource('funderManagerSessions', 'FunderManagerSessionController');
+
+Route::resource('trainingWorkshopSessions', 'TrainingWorkshopSessionController');
+
+Route::resource('conferenceApplications', 'ConferenceApplicationController');
+
+Route::resource('trainingWorkshops', 'TrainingWorkshopController');
+
+Route::resource('partenerSessions', 'PartenerSessionController');
+
+Route::resource('partners', 'PartnerController');

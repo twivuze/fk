@@ -2,7 +2,7 @@
         <div class="container mb-5">
             <div class="media-container-row">
                 <div class="col-12 align-center">
-                    <h2 class="mbr-section-title pb-3 mbr-fonts-style display-2" style="color:rgb(69, 80, 91);">Meet Our Sponsors and partners</h2>
+                    <h2 class="mbr-section-title pb-3 mbr-fonts-style display-2" style="color:rgb(69, 80, 91);">Meet Our Donors & Partners</h2>
                     
                 </div>
             </div>

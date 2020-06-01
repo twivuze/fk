@@ -28,8 +28,10 @@
                     <div class="alert alert-success alert-dismissible fade show mt-5 ml-5 text-center title"
                         role="alert">
                         <p>
-                        All Trust Consult is pleased to have you on board as a potential donor.<br >
-                         Thank you for your donation, because of it someone's life will be elevated hence a step towards ending World poverty.
+                        Warm Greetings from All Trust Consult Team! <br >
+                        Thank you for coming forward in regards to being an All Trust Consult center <br >
+                        in your respective region/country with the ultimate goal of  Ending world poverty. <br >
+                        Your application will be reviewed and you will soon get a notification for approval or otherwise.
                         </p>
 
                         <br>

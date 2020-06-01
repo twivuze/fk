@@ -64,3 +64,17 @@ Route::resource('centers', 'CenterAPIController');
 Route::resource('center_sessions', 'CenterSessionAPIController');
 
 Route::resource('messages', 'MessageAPIController');
+
+Route::resource('conference_sessions', 'ConferenceSessionAPIController');
+
+Route::resource('funder_manager_sessions', 'FunderManagerSessionAPIController');
+
+Route::resource('training_workshop_sessions', 'TrainingWorkshopSessionAPIController');
+
+Route::resource('conference_applications', 'ConferenceApplicationAPIController');
+
+Route::resource('training_workshops', 'TrainingWorkshopAPIController');
+
+Route::resource('partener_sessions', 'PartenerSessionAPIController');
+
+Route::resource('partners', 'PartnerAPIController');

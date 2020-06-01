@@ -66,7 +66,7 @@ class LoanApplicationController extends AppBaseController
 
         if(!$request->file('national_identity_copy')){
             $request->validate([
-                'national_identity_copy' => 'required|pdf',
+                'national_identity_copy' => "required|mimes:pdf",
             ]);
           
         }else{
@@ -77,7 +77,7 @@ class LoanApplicationController extends AppBaseController
         
         if(!$request->file('business_certificate')){
             $request->validate([
-                'business_certificate' => 'required|pdf',
+                'business_certificate' => "required|mimes:pdf",
             ]);
           
         }else{
@@ -88,7 +88,7 @@ class LoanApplicationController extends AppBaseController
 
         if(!$request->file('business_patent')){
             $request->validate([
-                'business_patent' => 'required|pdf',
+                'business_patent' => "required|mimes:pdf",
             ]);
           
         }else{
@@ -99,7 +99,7 @@ class LoanApplicationController extends AppBaseController
 
         if(!$request->file('any_recent_transactions_documents')){
             $request->validate([
-                'any_recent_transactions_documents' => 'required|pdf',
+                'any_recent_transactions_documents' => "required|mimes:pdf",
             ]);
           
         }else{
@@ -128,6 +128,7 @@ class LoanApplicationController extends AppBaseController
     }else{
         return redirect('/loan-submitted');  
     }
+    
     }
 
     /**

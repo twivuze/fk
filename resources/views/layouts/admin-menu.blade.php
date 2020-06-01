@@ -8,28 +8,43 @@
     <a href="{{ route('messages.index') }}"><i class="fa fa-message"></i><span>Messages</span></a>
 </li> -->
 
-<li class="nav-item  dropdown {{ (Request::is('centerSessions*') || Request::is('loanSessions*') || Request::is('lenderSessions*') || Request::is('donorSessions*')) ? 'active' : '' }}">
+<li class="nav-item  dropdown {{ (Request::is('centerSessions*') || Request::is('loanSessions*') || Request::is('conferenceSessions*') || Request::is('funderManagerSessions*') || Request::is('trainingWorkshopSessions*') || Request::is('donorSessions*') ) ? 'active' : '' }}">
 
 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
    <i class="fa fa-exchange"></i> <span>Sessions</span>
 </a>
 
 <ul class="dropdown-menu dropdown-menu-right" data-widget="tree">
+<li class="{{ Request::is('funderManagerSessions*') ? 'active' : '' }}">
+             <a href="{{ route('funderManagerSessions.index') }}"><i class="fa fa-edit"></i><span>Funder Managers</span></a>
+        </li>
 
             <li class="{{ Request::is('loanSessions*') ? 'active' : '' }}">
-                  <a href="{{ route('loanSessions.index') }}"><i class="fa fa-edit"></i><span>Loan</span></a>
+                  <a href="{{ route('loanSessions.index') }}"><i class="fa fa-edit"></i><span>Loans</span></a>
             </li>
 
             <li class="{{ Request::is('lenderSessions*') ? 'active' : '' }}">
-                  <a href="{{ route('lenderSessions.index') }}"><i class="fa fa-edit"></i><span>Lender</span></a>
+                  <a href="{{ route('lenderSessions.index') }}"><i class="fa fa-edit"></i><span>Lenders</span></a>
             </li>
 
             <li class="{{ Request::is('donorSessions*') ? 'active' : '' }}">
-                  <a href="{{ route('donorSessions.index') }}"><i class="fa fa-edit"></i><span>Donor</span></a>
+                  <a href="{{ route('donorSessions.index') }}"><i class="fa fa-edit"></i><span>Donors</span></a>
             </li>
             <li class="{{ Request::is('centerSessions*') ? 'active' : '' }}">
-                <a href="{{ route('centerSessions.index') }}"><i class="fa fa-edit"></i><span>Center</span></a>
+                <a href="{{ route('centerSessions.index') }}"><i class="fa fa-edit"></i><span>Centers</span></a>
             </li>
+            <li class="{{ Request::is('conferenceSessions*') ? 'active' : '' }}">
+            <a href="{{ route('conferenceSessions.index') }}"><i class="fa fa-edit"></i><span>Conferences</span></a>
+        </li>
+       
+
+        <li class="{{ Request::is('trainingWorkshopSessions*') ? 'active' : '' }}">
+            <a href="{{ route('trainingWorkshopSessions.index') }}"><i class="fa fa-edit"></i><span>Trainings & Workshops</span></a>
+        </li>
+        
+<li class="{{ Request::is('partenerSessions*') ? 'active' : '' }}">
+    <a href="{{ route('partenerSessions.index') }}"><i class="fa fa-edit"></i><span>Partener</span></a>
+</li>
 
     </ul>
 
@@ -63,14 +78,14 @@
 
 
 <li class="{{ Request::is('microFundApplications*') ? 'active' : '' }}">
-    <a href="{{ route('microFundApplications.index') }}"><i class="fa fa-user-circle"></i><span>Fund Manager</span></a>
+    <a href="{{ route('microFundApplications.index') }}"><i class="fa fa-user-circle"></i><span>Fund Managers</span></a>
 </li>
 
 <li class="{{ Request::is('centers*') ? 'active' : '' }}">
     <a href="{{ route('centers.index') }}"><i class="fa fa-sitemap"></i><span>Centers</span></a>
 </li>
 
-<li class="nav-item  dropdown {{ Request::is('loanApplications*') ? 'active' : '' }}">
+<li class="nav-item  dropdown {{ ( Request::is('loanApplications*') || Request::is('conferenceApplications*') || Request::is('trainingWorkshops*') )? 'active' : '' }}">
 
 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
    <i class="fa fa-vcard-o"></i> <span>Applications</span>
@@ -82,6 +97,13 @@
     <a href="{{ route('loanApplications.index') }}"><i class="fa fa-edit"></i><span>Enterprises</span></a>
 </li>
 
+<li class="{{ Request::is('conferenceApplications*') ? 'active' : '' }}">
+    <a href="{{ route('conferenceApplications.index') }}"><i class="fa fa-edit"></i><span>Conferences</span></a>
+</li>
+
+<li class="{{ Request::is('trainingWorkshops*') ? 'active' : '' }}">
+    <a href="{{ route('trainingWorkshops.index') }}"><i class="fa fa-edit"></i><span>Trainings & Workshops</span></a>
+</li>
 
     </ul>
 
@@ -90,7 +112,7 @@
 
 
 
-<li class="nav-item  dropdown {{ (Request::is('lenders*') || Request::is('donors*')) ? 'active' : '' }}">
+<li class="nav-item  dropdown {{ (Request::is('lenders*') || Request::is('donors*') || Request::is('partners*')) ? 'active' : '' }}">
 
 <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
    <i class="fa fa-vcard"></i> <span>Become</span>
@@ -104,6 +126,10 @@
 
 <li class="{{ Request::is('donors*') ? 'active' : '' }}">
     <a href="{{ route('donors.index') }}"><i class="fa fa-edit"></i><span>Donors</span></a>
+</li>
+
+<li class="{{ Request::is('partners*') ? 'active' : '' }}">
+    <a href="{{ route('partners.index') }}"><i class="fa fa-edit"></i><span>Partners</span></a>
 </li>
 
 

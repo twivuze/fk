@@ -82,7 +82,7 @@ class DonorController extends AppBaseController
 
         // if(!$request->file('donors_bank_details')){
         //     $request->validate([
-        //         'donors_bank_details' => 'required|pdf',
+        //         'donors_bank_details' => "required|mimes:pdf",
         //     ]);
           
         // }else{
@@ -93,7 +93,7 @@ class DonorController extends AppBaseController
 
         if(!$request->file('donors_copy_of_identity_card_or_passport')){
             $request->validate([
-                'donors_copy_of_identity_card_or_passport' => 'required|pdf',
+                'donors_copy_of_identity_card_or_passport' => "required|mimes:pdf",
             ]);
           
         }else{
