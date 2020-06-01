@@ -18,7 +18,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
     <div class="row py-2 justify-content-center">
         <div class="col-12 col-lg-12 col-md-12">
             <!---Formbuilder Form--->
-            <form action="enterprises/search" method="GET" class="mbr-form form-with-styler" data-form-title="Search Form">
+            <form action="/enterprises/search" method="GET" class="mbr-form form-with-styler" data-form-title="Search Form">
            
                 <div class="dragArea row">
                 
