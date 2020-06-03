@@ -2,7 +2,7 @@
 
 @section('content')
 
-<?php $enterprise= \App\Models\LoanApplication::where('id',$id)->orderBy('id','DESC')->first();
+<?php $enterprise= \App\Models\LoanApplication::where('id',$id)->where('approved',1)->orderBy('id','DESC')->first();
 $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id','DESC')->get();
 $centers= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->get();
 $amountLend = \App\Models\LenderInvoice::where('enterprise_id',$enterprise->id)->sum('amount');

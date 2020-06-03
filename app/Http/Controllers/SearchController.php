@@ -13,6 +13,7 @@ class SearchController extends Controller
     {
       
         $enterprises=LoanApplication::where('category',$request->input('category'))
+        ->where('approved',1)
         ->orwhere('business_category_id',$request->input('business_category'))
         ->orwhere('microfinance_center',$request->input('center'))
         ->orwhere('name',$request->input('search'))
