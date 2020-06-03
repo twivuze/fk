@@ -7,7 +7,8 @@
                     style="height:300px; width:100%; background-image: url('/thumbnail/{{$enterprise->upload_passport_photo}}'); background-repeat: no-repeat; background-size: cover;">
                     <div style="position:relative;top:280px;right:5;float:right">
                     <?php 
-                     $amount = \App\Models\LenderInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
+                    $amountLend = \App\Models\LenderInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
+                    $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
                     if($enterprise->category=='Fully-Funded-Enterprises'){
                             ?>
                     <h6 class="label label-success">{{ $enterprise->category }}</h6>
@@ -45,7 +46,7 @@
                     <?php if(intval($enterprise->lender_initial_target) > 0){?>
                         
                     <div class="progress" style="height:8px;">
-                       <div class="progress-bar" style="width:{{(intval($amount)*100)/intval($enterprise->lender_initial_target)}}%; background:#58d77a;"  role="progressbar" aria-valuenow="{{(intval($amount)*100)/intval($enterprise->lender_initial_target)}}" aria-valuemin="0" aria-valuemax="100"></div>
+                       <div class="progress-bar" style="width:{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}%; background:#58d77a;"  role="progressbar" aria-valuenow="{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}" aria-valuemin="0" aria-valuemax="100"></div>
                        
                    </div>
                    <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->lender_initial_target)-intval($amount)}} to go</div>
@@ -55,18 +56,20 @@
                 <div class="card-footer">
                     <table style="width:100%;margin-left:-10px">
                         <tr>
-                            <?php if(intval($enterprise->lender_initial_target) > 0  && (intval($amount) < intval($enterprise->lender_initial_target) ) ){?>
+                        <?php if(intval($enterprise->lender_initial_target) > 0  && (intval($amountLend) < intval($enterprise->lender_initial_target) ) ){?>
                             <td>
                                 <a class="btn btn-sm btn-primary btn-block display-3" href="/lender-enterprise?lendEnterprise={{$enterprise->id}}">Lend
                                 </a>
                             </td>
                             <?php } ?>
+                            <?php if(intval($enterprise->donor_initial_target) > 0  && (intval($amountDonate) < intval($enterprise->donor_initial_target) ) ){?>
                             <td>
                                 <a class="btn btn-sm btn-primary btn-block display-3"
                                 
                                  href="/donate-enterprise?donateEnterprise={{$enterprise->id}}" style="background:#fa8709!important;color:#fff!important; border-color:#fa8709!important;">Donote
                                 </a>
                             </td>
+                            <?php } ?>
                             <td>
                                 <a class="btn btn-sm btn-primary btn-block display-3" style="background:#fff!important;color:#000!important; border-color:#000!important;"
                                  href="/enterprises/view/{{$enterprise->id}}">View
