@@ -49,7 +49,7 @@
                        <div class="progress-bar" style="width:{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}%; background:#58d77a;"  role="progressbar" aria-valuenow="{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}" aria-valuemin="0" aria-valuemax="100"></div>
                        
                    </div>
-                   <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->lender_initial_target)-intval($amount)}} to go</div>
+                   <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->lender_initial_target)-intval($amountLend)}} to go</div>
                    <?php } ?>
 
                 </div>
