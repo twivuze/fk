@@ -12,3 +12,4 @@ Your Friends in Business from All Trust Consult!</p>";
 'link_name'=>'Contact Us',
 'link_url'=>env('APP_URL', 'http://alltrust.theeventx.com').'/more/contact'
 ])
+microfund-manager

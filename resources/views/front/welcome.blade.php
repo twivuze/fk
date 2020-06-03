@@ -3,9 +3,10 @@
 @section('content')
 
 
-<section class="header8 cid-rYMyQ3IifK " id="header8-1q">
+<section class="header8 cid-rYMyQ3IifK" id="header8-1q">
 
 @include('front.component.slider-section')
+
 </section>
 
 <section class="mbr-section form3 cid-rYMRYFsTOi" id="form3-21" data-bg-video="http://www.youtube.com/watch?v=uNCr7NdOJgw">

@@ -55,6 +55,7 @@ class Lender extends Model
         'card_number',
         'expiration_year',
         'expiration_month',
+        'address',
         'cvc',
         'user_id'
     ];
@@ -113,6 +114,7 @@ class Lender extends Model
         'contact' => 'required',
         'country' => 'required',
         'Occupation' => 'required',
+        'address'=> 'required',
         'which_business_you_are_willing_to_lend_to' => 'required',
         'why_did_you_choose_such_business' => 'required',
         'recurring' => 'required',

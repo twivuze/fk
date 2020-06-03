@@ -11,7 +11,7 @@
 
     <title>Home</title>
     <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
-    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
+   <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="/assets/facebook-plugin/style.css">
   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
@@ -169,11 +169,9 @@
                 </ul>
 
                 <div class="navbar-buttons mbr-section-btn">
-                    <a class="btn btn-sm btn-primary display-3"
-                        href="#" style="border:#58d77a !important; background:#fff!important; color: #fa8709!important;"> BORROW
-                    </a> <a class="btn btn-sm btn-primary display-3" href="#"
-                    style="border:#58d77a !important; background:#fa8709!important; color: #fff!important;">
-                        REPAY
+                    <a class="btn btn-sm btn-primary display-3" href="/apply/loan"
+                    style="border:#58d77a !important;padding-top:15px;padding-bottom:15px; background:#fa8709!important; color: #fff!important;">
+                        APPLY FOR LOAN
                     </a></div>
             </div>
         </nav>

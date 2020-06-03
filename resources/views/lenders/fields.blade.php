@@ -59,6 +59,17 @@ function ccMasking($number) {
     @endif
 </div>
 
+<div class="form-group col-sm-12 {{ $errors->has('address') ? ' has-error' : '' }}">
+    {!! Form::label('address', 'Address:') !!}
+    {!! Form::text('address', old('address'), ['class' => 'form-control']) !!}
+    @if ($errors->has('address'))
+    <span class="help-block">
+        <strong>{{ $errors->first('address') }}</strong>
+    </span>
+    @endif
+</div>
+
+
 <!-- Country Field -->
 <div class="form-group col-sm-12 {{ $errors->has('country') ? ' has-error' : '' }}">
     {!! Form::label('country', 'Country:') !!}

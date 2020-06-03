@@ -20,6 +20,11 @@
     {!! Form::label('contact', 'Contact:') !!}
     <p>{{ $lender->contact }}</p>
 </div>
+<!-- Contact Field -->
+<div class="form-group">
+    {!! Form::label('address', 'Address:') !!}
+    <p>{{ $lender->address }}</p>
+</div>
 
 <!-- Country Field -->
 <div class="form-group">

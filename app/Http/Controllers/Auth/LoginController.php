@@ -37,4 +37,26 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function sendLoginResponse($request)
+    {
+
+        \Log::info($request);
+        if(isset($request->lendEnterprise))
+        {
+            return redirect('/lender-enterprise/?lendEnterprise='.$request->lendEnterprise);  
+      
+        }
+        if(isset($request->donateEnterprise))
+        {
+            return redirect('/donate-enterprise/?donateEnterprise='.$request->donateEnterprise);   
+        }
+      
+        if(url()->previous()){
+            return redirect(url()->previous());
+        }else{
+            return $this->redirectTo;
+        }
+        
+    }
 }

@@ -151,6 +151,15 @@ Route::get('/loan-submitted', function () {
 Route::get('/conference-submitted', function () {
     return view('front.message.conference-submitted');
 });
+
+Route::get('/lended-completed/{id}', function ($id) {
+    return view('front.message.lended-completed')->with('id',$id);
+});
+
+Route::get('/donation-completed/{id}', function ($id) {
+    return view('front.message.donation-completed')->with('id',$id);
+});
+//
 //trainings-workshops-submitted
 Route::get('/trainings-workshops-submitted', function () {
     return view('front.message.trainings-workshops-submitted');
@@ -159,13 +168,17 @@ Route::get('/partner-submitted', function () {
     return view('front.message.partner-submitted');
 });
 
-Auth::routes(['verify' => true]);
+Auth::routes([ 'register' => false,'verify' => true ]);
 
 Route::get('home', 'HomeController@index')->middleware('verified')->name('home');
 
 Route::get('enterprises/search', 'SearchController@searchEnterprise');
 
 Route::get('fillings/search', 'SearchController@searchFillings');
+
+Route::get('lender-enterprise', 'LenderInvoiceController@lenderEnterprise');
+Route::get('donate-enterprise', 'DonationInvoiceController@donateEnterprise');
+
 
 
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
@@ -250,3 +263,7 @@ Route::resource('partners', 'PartnerController');
 Route::resource('fillingCategories', 'FillingCategoryController');
 
 Route::resource('fillingDocuments', 'FillingDocumentController');
+
+Route::resource('lenderInvoices', 'LenderInvoiceController');
+
+Route::resource('donationInvoices', 'DonationInvoiceController');

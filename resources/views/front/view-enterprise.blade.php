@@ -5,6 +5,8 @@
 <?php $enterprise= \App\Models\LoanApplication::where('id',$id)->orderBy('id','DESC')->first();
 $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id','DESC')->get();
 $centers= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->get();
+$amountLend = \App\Models\LenderInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
+$amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
 ?>
 
 <section class="mbr-section content4 cid-rYUfuivAPG mt-5" id="content4-2u">
@@ -153,6 +155,27 @@ if($enterprise){
 
             <div class="col-sm-5">
                 <div class="row">
+                    <div class="col-12">
+
+                    <table style="width:100%;margin-left:-10px">
+                        <tr>
+                            <?php if(intval($enterprise->lender_initial_target) > 0  && (intval($amountLend) < intval($enterprise->lender_initial_target) ) ){?>
+                            <td>
+                                <a class="btn btn-sm btn-primary btn-block display-3" href="/lender-enterprise?lendEnterprise={{$enterprise->id}}">Lend
+                                </a>
+                            </td>
+                            <?php } ?>
+                            <?php if(intval($enterprise->donor_initial_target) > 0  && (intval($amountDonate) < intval($enterprise->donor_initial_target) ) ){?>
+                            <td>
+                                <a class="btn btn-sm btn-primary btn-block display-3"
+                                
+                                 href="/donate-enterprise?donateEnterprise={{$enterprise->id}}" style="background:#fa8709!important;color:#fff!important; border-color:#fa8709!important;">Donote
+                                </a>
+                            </td>
+                            <?php } ?>
+                        </tr>
+                    </table>
+                    </div>
 
                     <div class="col-12">
                         <p><b>Short Summary</b><br />{{$enterprise->short_summary}}</p>
@@ -163,17 +186,84 @@ if($enterprise){
                         <p><b>More Details</b><br />{!!html_entity_decode($enterprise->description)!!}</p>
                         <?php } ?>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 mt-5">
                         <?php if( $enterprise->business_model_file){ ?>
+                           <hr>
 
-                        <a href="/documents/{{ $enterprise->business_model_file }}" class="btn btn-info"> <i
+                        <a href="/documents/{{ $enterprise->business_model_file }}" class="btn btn-info btn-block"> <i
                                 class="fa fa-download"></i> Download business model</a>
 
 
                         <?php } ?>
                     </div>
-                </div>
-            </div>
+
+                    <div class="col-12 mt-5">
+
+                    <?php
+                    
+
+                     if(intval($enterprise->lender_initial_target) > 0){?>
+                      <table style="width:100%;border:0px solid">
+                                <tr rowspan="2">
+                                    <th>
+                                        <b>Lended: ${{intval($amountLend)}}</b>
+                                    </th>
+                                    <th>
+                                        <b style="text-right; float:right">Target: ${{intval($enterprise->lender_initial_target)}}</b>
+                                       
+                                         
+                                    </th>
+
+                                </tr>
+                                <tr>
+                                    <th colspan="2">
+                                    <div class="progress" style="height:8px;">
+                                        <div class="progress-bar" style="width:{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}%; background:#58d77a;"  role="progressbar" aria-valuenow="{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                        
+                                    </div>
+                                            <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->lender_initial_target)-intval($amountLend)}} to go</div>
+                                    </th>
+                                    
+                                </tr>
+                            </table>
+                   
+                   <?php } ?>
+                    </div>
+
+                    <div class="col-12 mt-5">
+
+                                <?php
+
+
+                                if(intval($enterprise->donor_initial_target) > 0){?>
+                                <table style="width:100%;border:0px solid">
+                                            <tr rowspan="2">
+                                                <th>
+                                                    <b>Donated: ${{intval($amountDonate)}}</b>
+                                                </th>
+                                                <th>
+                                                    <b style="text-right; float:right">Target: ${{intval($enterprise->donor_initial_target)}}</b>
+                                                
+                                                    
+                                                </th>
+
+                                            </tr>
+                                            <tr>
+                                                <th colspan="2">
+                                                <div class="progress" style="height:8px;">
+                                                    <div class="progress-bar" style="width:{{(intval($amountDonate)*100)/intval($enterprise->donor_initial_target)}}%;"  role="progressbar" aria-valuenow="{{(intval($amountDonate)*100)/intval($enterprise->donor_initial_target)}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    
+                                                </div>
+                                                        <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->donor_initial_target)-intval($amountDonate)}} to go</div>
+                                                </th>
+                                                
+                                            </tr>
+                                        </table>
+
+                                <?php } ?>
+                                </div>
+                        </div>
+                    </div>
 
             <div class="p-3 col-sm-3">
                 <table style="width:100%;margin-left:-10px">

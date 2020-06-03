@@ -28,6 +28,9 @@
 
 
 </li>
+<li class="{{ Request::is('lenderInvoices*') ? 'active' : '' }}">
+    <a href="{{ route('lenderInvoices.index') }}"><i class="fa fa-credit-card"></i><span>Invoices</span></a>
+</li>
 
 <!-- <li class="{{ Request::is('messages*') ? 'active' : '' }}">
     <a href="{{ route('messages.index') }}"><i class="fa fa-chat"></i><span>Messages</span></a>

@@ -53,6 +53,6 @@ class CenterSession extends Model
     ];
     public function getAllowToApplyAttribute($value){
         return $value?'Yes':'No';
-}
+    }
     
 }
