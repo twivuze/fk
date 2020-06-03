@@ -56,6 +56,8 @@
                 <div class="card-footer">
                     <table style="width:100%;margin-left:-10px">
                         <tr>
+                        <?php if($enterprise->category!='Fully-Funded-Enterprises'){?>
+
                         <?php if(intval($enterprise->lender_initial_target) > 0  && (intval($amountLend) < intval($enterprise->lender_initial_target) ) ){?>
                             <td>
                                 <a class="btn btn-sm btn-primary btn-block display-3" href="/lender-enterprise?lendEnterprise={{$enterprise->id}}">Lend
@@ -69,7 +71,7 @@
                                  href="/donate-enterprise?donateEnterprise={{$enterprise->id}}" style="background:#fa8709!important;color:#fff!important; border-color:#fa8709!important;">Donote
                                 </a>
                             </td>
-                            <?php } ?>
+                            <?php } } ?>
                             <td>
                                 <a class="btn btn-sm btn-primary btn-block display-3" style="background:#fff!important;color:#000!important; border-color:#000!important;"
                                  href="/enterprises/view/{{$enterprise->id}}">View

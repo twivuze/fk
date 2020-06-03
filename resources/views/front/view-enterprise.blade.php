@@ -155,8 +155,9 @@ if($enterprise){
 
             <div class="col-sm-5">
                 <div class="row">
+                <?php if($enterprise->category!='Fully-Funded-Enterprises'){?>
                     <div class="col-12">
-
+                  
                     <table style="width:100%;margin-left:-10px">
                         <tr>
                             <?php if(intval($enterprise->lender_initial_target) > 0  && (intval($amountLend) < intval($enterprise->lender_initial_target) ) ){?>
@@ -175,7 +176,10 @@ if($enterprise){
                             <?php } ?>
                         </tr>
                     </table>
+                  
                     </div>
+
+                    <?php } ?>
 
                     <div class="col-12">
                         <p><b>Short Summary</b><br />{{$enterprise->short_summary}}</p>
@@ -229,7 +233,7 @@ if($enterprise){
                    
                    <?php } ?>
                     </div>
-
+                  <?php if($enterprise->category!='Fully-Funded-Enterprises'){?>
                     <div class="col-12 mt-5">
 
                                 <?php
@@ -264,6 +268,7 @@ if($enterprise){
                                 </div>
                         </div>
                     </div>
+                    <?php } ?>
 
             <div class="p-3 col-sm-3">
                 <table style="width:100%;margin-left:-10px">
