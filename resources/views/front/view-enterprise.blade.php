@@ -342,6 +342,7 @@ if($enterprise){
 
 <?php 
      $enterprises=\App\Models\LoanApplication::where('category',$enterprise->category)
+     ->where('approved',1)
      ->where('id','!=',$id)
      ->orderBy('id','DESC')->take(9)->get();
      if(count( $enterprises) > 0){
