@@ -14,7 +14,7 @@ class AddFieldsToLoanApplications extends Migration
     public function up()
     {
         Schema::table('loan_applications', function (Blueprint $table) {
-            $table->string('short_summary')->nullable();
+            $table->longText('short_summary')->nullable();
             $table->longText('description')->nullable();
             $table->string('business_model_file')->nullable();
             $table->integer('business_category_id')->nullable();
