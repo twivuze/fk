@@ -3,10 +3,10 @@
     <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(46, 46, 46);">
     </div>
 
-    <div class="container align-center mt-3">
+    <div class="container align-center mt-2">
         <div class="row justify-content-md-center">
             <div class="mbr-white col-md-10">
-                <h1 class="mbr-section-title align-center  mt-5 py-2 mbr-bold mbr-fonts-style display-1">
+                <h1 class="mbr-section-title align-center  mt-2 py-2 mbr-bold mbr-fonts-style display-1">
                <br><br><b style="font-weight: bold; font-size:60px;line-height: 1.19em;">We exist to end poverty in Africa
                         •••</b>
                         <!-- T<span style="font-weight: normal;">rust </span>C<span style="font-weight: normal;">onsult</span> -->
