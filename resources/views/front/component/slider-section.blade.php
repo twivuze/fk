@@ -7,11 +7,11 @@
         <div class="row justify-content-md-center">
             <div class="mbr-white col-md-10">
                 <h1 class="mbr-section-title align-center  mt-2 py-2 mbr-bold mbr-fonts-style display-1">
-               <br><br><b style="font-weight: bold; font-size:60px;line-height: 1.19em;">Let's end poverty in Africa
+               <br><br><b style="font-weight: bold; font-size:45px;line-height: 1.19em;">Let's end poverty in Africa
                         •••</b>
                         <!-- T<span style="font-weight: normal;">rust </span>C<span style="font-weight: normal;">onsult</span> -->
                         </h1>
-                <p class="mbr-text align-center py-2 mbr-fonts-style display-5">
+                <p class="mbr-text align-center py-2 mbr-fonts-style display-5" style="font-size:20px;">
                  You will receive our loan based on zero Collateral security.<br />
                  We are 100% driven by brutal trust & radical financial transparency</p>
                 <div class="mbr-media show-modal align-center py-2" data-modal=".modalWindow">
