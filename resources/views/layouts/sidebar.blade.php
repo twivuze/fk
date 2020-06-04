@@ -5,7 +5,7 @@
 
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
-            <div class="pull-left image" style="width:90px;height:45px">
+            <div class="pull-left image" style="margin-top:5px;width:90px;height:45px">
                 <img src="/images/logo.png" style="width:100%;height:45px" class="img-circle"
                      alt="User Image"/>
             </div>
@@ -19,9 +19,9 @@
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
-
+<br>
         <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
+        <!-- <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Search..."/>
           <span class="input-group-btn">
@@ -29,7 +29,7 @@
             </button>
           </span>
             </div>
-        </form>
+        </form> -->
         <!-- Sidebar Menu -->
 
         <ul class="sidebar-menu" data-widget="tree">

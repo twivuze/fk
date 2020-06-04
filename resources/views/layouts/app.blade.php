@@ -69,7 +69,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="/images/logo.png"
+                                    <img src="/images/logo.png" style="width:80px;height:80px"
                                          class="img-circle" alt="User Image"/>
                                     <p>
                                     {{Auth::user()->type}}
