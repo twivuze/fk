@@ -39,7 +39,7 @@
                 
                     <p class="mbr-text mbr-fonts-style display-7">
                      
-                        <?php $end = ' <a  href="/enterprises/view/'.$enterprise->id.'" target="_blank">  ....</a>'; ?>
+                        <?php $end = ' <a  href="/enterprises/view/'.$enterprise->id.'" target="_blank">  •••</a>'; ?>
 
                         {!!html_entity_decode(Str::limit($enterprise->fundraising_message, $limit = 64,$end))!!}
                     </p>
