@@ -611,7 +611,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 </div>
 
 <!-- 'bootstrap / Toggle Switch Published Field' -->
-<?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
+<?php if(Auth::check() && (Auth::user()->type=='Admin' || Auth::user()->type=='MicroFoundManager')){ ?>
 <div class="form-group col-sm-6 mr-5 ">
     {!! Form::label('approved', 'Approved?') !!}
     <label class="checkbox-inline">
@@ -645,7 +645,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 <?php if(Auth::check()){ ?>
 <!-- Submit Field -->
 
-<?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
+<?php if(Auth::check()  && (Auth::user()->type=='Admin' || Auth::user()->type=='MicroFoundManager')){ ?>
     </div>
 <div class="form-group container">
     <div class="row">

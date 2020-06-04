@@ -5,7 +5,7 @@ namespace App\DataTables;
 use App\Models\LoanApplication;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
-
+use Auth;
 class LoanApplicationDataTable extends DataTable
 {
     /**
@@ -29,7 +29,13 @@ class LoanApplicationDataTable extends DataTable
      */
     public function query(LoanApplication $model)
     {
-        return $model->newQuery();
+        if(Auth::check() && Auth::user()->type=='MicroFoundManager'){ 
+            $manger= \App\Models\MicroFundApplication::where('user_id',Auth::id())->orderBy('id','DESC')->first();
+            return $model->where('microfinance_center',$manger->microfinance_center)->orderBy('id','DESC');
+    
+           }else if(Auth::check() && Auth::user()->type=='Admin'){ 
+            return $model->newQuery();
+           }
     }
 
     /**

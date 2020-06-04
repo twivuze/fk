@@ -291,7 +291,7 @@ class LoanApplicationController extends AppBaseController
 
         Flash::success('Application updated successfully.');
 
-        if(\Auth::check() && \Auth::user()->type=='Admin'){ 
+        if(\Auth::check() && (\Auth::user()->type=='Admin' || \Auth::user()->type=='MicroFoundManager')){ 
         return redirect(route('loanApplications.index'));
         }else{
             return redirect('/loanApplications/'.$loanApplication->id.'/edit'); 

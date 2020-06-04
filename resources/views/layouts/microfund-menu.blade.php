@@ -28,8 +28,12 @@
 
 </li>
 
+<li class="{{ Request::is('loanApplications*') ? 'active' : '' }}">
+    <a href="{{ route('loanApplications.index') }}"><i class="fa fa-address-card"></i><span>Enterprises</span></a>
+</li>
+
 <li class="{{ Request::is('fillingDocuments*') ? 'active' : '' }}">
-    <a href="{{ route('fillingDocuments.index') }}"><i class="fa fa-edit"></i><span>Filling Documents</span></a>
+    <a href="{{ route('fillingDocuments.index') }}"><i class="fa fa-folder"></i><span>Filling Documents</span></a>
 </li>
 
 <li class="nav-item  dropdown {{ (Request::is('lenderInvoices*') ||  Request::is('donationInvoices*')) ? 'active' : '' }}">
