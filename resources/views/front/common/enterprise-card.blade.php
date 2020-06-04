@@ -48,13 +48,13 @@
                        <div class="progress-bar" style="width:{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}%; background:#58d77a;"  role="progressbar" aria-valuenow="{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}" aria-valuemin="0" aria-valuemax="100"></div>
                        
                    </div>
-                   <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->lender_initial_target)-intval($amountLend)}} loans to go</div>
+                   <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->lender_initial_target)-intval($amountLend)}} loans remaining</div>
 
                    <div class="progress" style="height:8px;">
                                                     <div class="progress-bar" style="width:{{(intval($amountDonate)*100)/intval($enterprise->donor_initial_target)}}%;"  role="progressbar" aria-valuenow="{{(intval($amountDonate)*100)/intval($enterprise->donor_initial_target)}}" aria-valuemin="0" aria-valuemax="100"></div>
                                                     
                                                 </div>
-                                                        <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->donor_initial_target)-intval($amountDonate)}} donations to go</div>
+                                                        <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->donor_initial_target)-intval($amountDonate)}} donations remaining</div>
                    <?php } ?>
 
                 </div>

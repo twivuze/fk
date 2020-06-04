@@ -56,11 +56,11 @@ class LoanApplicationController extends AppBaseController
     {
         $input = $request->all();
 
-        if(!$request->file('upload_passport_photo')){
+        if($request->file('upload_passport_photo')){
             $request->validate([
                 'upload_passport_photo' => 'required|image|mimes:jpeg,png,jpg',
             ]);
-        }else{
+        
             $upload_passport_photo = $this->updateImage($request,'upload_passport_photo');  
         }
 
@@ -75,37 +75,42 @@ class LoanApplicationController extends AppBaseController
         $request->national_identity_copy->move(public_path('documents/'), $docName);
         }
         
-        if(!$request->file('business_certificate')){
+        if($request->file('business_certificate')){
             $request->validate([
                 'business_certificate' => "required|mimes:pdf",
             ]);
           
-        }else{
+      
         $file1=$request->file('business_certificate');
         $docName1 ='business_certificate-'.time().'.'.$file1->extension();
         $request->business_certificate->move(public_path('documents/'), $docName1);
+        }else{
+            $docName1="";  
         }
 
-        if(!$request->file('business_patent')){
+        if($request->file('business_patent')){
             $request->validate([
-                'business_patent' => "required|mimes:pdf",
+                'business_patent' => "mimes:pdf",
             ]);
           
-        }else{
         $file2=$request->file('business_patent');
         $docName2 ='business_patent-'.time().'.'.$file2->extension();
         $request->business_patent->move(public_path('documents/'), $docName2);
+
+        }else{
+            $docName2=''; 
         }
 
-        if(!$request->file('any_recent_transactions_documents')){
+        if($request->file('any_recent_transactions_documents')){
             $request->validate([
-                'any_recent_transactions_documents' => "required|mimes:pdf",
+                'any_recent_transactions_documents' => "mimes:pdf",
             ]);
           
-        }else{
         $file3=$request->file('any_recent_transactions_documents');
         $docName3 ='any_recent_transactions_documents-'.time().'.'.$file3->extension();
         $request->any_recent_transactions_documents->move(public_path('documents/'), $docName3);
+        }else{
+            $docName3=''; 
         }
 
 
@@ -253,7 +258,7 @@ class LoanApplicationController extends AppBaseController
 
         $loanApplication = $this->loanApplicationRepository->update($input, $id);
 
-        if($loanApplication->approved){
+        if($loanApplication->approved && $loanApplication->email){
                       
             $user= \App\User::where('id',$loanApplication->user_id)->where('type','Enterprise')->first();
                  

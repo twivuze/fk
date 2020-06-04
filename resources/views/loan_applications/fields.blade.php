@@ -125,7 +125,9 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 <div class="form-group col-sm-12 {{ $errors->has('marital_status') ? ' has-error' : '' }}">
     {!! Form::label('marital_status', 'Marital Status:') !!}
-    {!! Form::select('marital_status', ['Single' => 'Single', 'Married' => 'Married'],old('marital_status'), ['class' =>
+    {!! Form::select('marital_status', ['Single' => 'Single',
+     'Married' => 'Married','Divorced' => 'Divorced',
+     'Widow' => 'Widow','Separated' => 'Separated'],old('marital_status'), ['class' =>
     'form-control']) !!}
     @if ($errors->has('marital_status'))
     <span class="help-block">

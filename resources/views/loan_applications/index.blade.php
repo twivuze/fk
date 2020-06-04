@@ -26,7 +26,7 @@
             <li class="active">
                 <a href="#1a" data-toggle="tab">All</a>
             </li>
-            <li><a href="#2a" data-toggle="tab">Enterprises-Awaiting-Funding</a>
+            <li><a href="#2a" data-toggle="tab">Fully-Funded-Enterprises</a>
             </li>
             <li><a href="#3a" data-toggle="tab">Diaspora-Funded-Enterprises</a>
             </li>

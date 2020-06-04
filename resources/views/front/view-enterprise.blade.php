@@ -182,7 +182,7 @@ if($enterprise){
                     <?php } ?>
 
                     <div class="col-12">
-                        <p><b>Short Summary</b><br />{{$enterprise->short_summary}}</p>
+                        <p>{{$enterprise->short_summary}}</p>
                     </div>
 
                     <div class="col-12">
@@ -225,7 +225,7 @@ if($enterprise){
                                         <div class="progress-bar" style="width:{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}%; background:#58d77a;"  role="progressbar" aria-valuenow="{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}" aria-valuemin="0" aria-valuemax="100"></div>
                                         
                                     </div>
-                                            <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->lender_initial_target)-intval($amountLend)}} loans to go</div>
+                                            <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->lender_initial_target)-intval($amountLend)}} loans remaining</div>
                                     </th>
                                     
                                 </tr>
@@ -242,10 +242,10 @@ if($enterprise){
                                 <table style="width:100%;border:0px solid">
                                             <tr rowspan="2">
                                                 <th>
-                                                    <b>Donations: ${{intval($amountDonate)}}</b>
+                                                    <b>${{intval($amountDonate)}} Donations</b>
                                                 </th>
                                                 <th>
-                                                    <b style="text-right; float:right">Target: ${{intval($enterprise->donor_initial_target)}}</b>
+                                                    <b style="text-right; float:right">${{intval($enterprise->donor_initial_target)}} Target</b>
                                                 
                                                     
                                                 </th>
@@ -257,7 +257,7 @@ if($enterprise){
                                                     <div class="progress-bar" style="width:{{(intval($amountDonate)*100)/intval($enterprise->donor_initial_target)}}%;"  role="progressbar" aria-valuenow="{{(intval($amountDonate)*100)/intval($enterprise->donor_initial_target)}}" aria-valuemin="0" aria-valuemax="100"></div>
                                                     
                                                 </div>
-                                                        <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->donor_initial_target)-intval($amountDonate)}} to go</div>
+                                                        <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->donor_initial_target)-intval($amountDonate)}} donations remaining</div>
                                                 </th>
                                                 
                                             </tr>
@@ -306,7 +306,7 @@ if($enterprise){
 
                 <hr>
 
-                <ul class="list-group">
+                <!-- <ul class="list-group">
                     <li class="list-group-item active" 
                     style="border:#58d77a !important;background:rgb(69, 80, 91)!important;color:#fff!important">Business Type</li>
 
@@ -314,7 +314,7 @@ if($enterprise){
                     <li class="list-group-item "><a href="/enterprises/search?business_category={{$businessCategory->id}}" class="mbr-bold text-primary">{{$businessCategory->category}}</a>
                     </li>
                     @endforeach
-                </ul>
+                </ul> -->
 
                 <ul class="list-group mt-3">
                     <li class="list-group-item active"

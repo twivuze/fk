@@ -167,7 +167,7 @@ class LoanApplication extends Model
     public static $rules = [
         'name' => 'required',
         'business_name'=> 'required',
-        'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'email' =>  ['unique:users'],
         'address' => 'required',
         'country' => 'required',
         'region' => 'required',
@@ -201,9 +201,9 @@ class LoanApplication extends Model
         'alternative_contact_id_number' => 'required',
         'upload_passport_photo' =>  "required|image|mimes:jpeg,png,jpg",
         'national_identity_copy' =>  "required|mimes:pdf",
-        'business_certificate' =>  "required|mimes:pdf",
-        'business_patent' =>  "required|mimes:pdf",
-        'any_recent_transactions_documents' =>  "required|mimes:pdf",
+        'business_certificate' =>  "mimes:pdf",
+        'business_patent' =>  "mimes:pdf",
+        'any_recent_transactions_documents' =>  "mimes:pdf",
     ];
 
     public function center(){
