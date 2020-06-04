@@ -81,7 +81,7 @@
                 <div class="navbar-brand">
                     <span class="navbar-logo">
                         <a href="/">
-                            <img src="/assets/images/a-122x30.png" alt="All Trust Consult" title="" style="width:200px;height:40px">
+                            <img src="/assets/images/a-122x30.png" alt="All Trust Consult" title="">
                         </a>
                     </span>
 
