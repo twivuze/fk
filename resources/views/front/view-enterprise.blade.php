@@ -210,10 +210,10 @@ if($enterprise){
                       <table style="width:100%;border:0px solid">
                                 <tr rowspan="2">
                                     <th>
-                                        <b>Loans: ${{intval($amountLend)}}</b>
+                                        <b>${{intval($amountLend)}} Loans</b>
                                     </th>
                                     <th>
-                                        <b style="text-right; float:right">Target: ${{intval($enterprise->lender_initial_target)}}</b>
+                                        <b style="text-right; float:right">${{intval($enterprise->lender_initial_target)}} Target</b>
                                        
                                          
                                     </th>
