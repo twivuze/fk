@@ -166,7 +166,7 @@ if($enterprise){
                                 </a>
                             </td>
                             <?php } ?>
-                            <?php if(intval($enterprise->donor_initial_target) > 0  && (intval($amountDonate) < intval($enterprise->donor_initial_target) ) ){?>
+                            <?php if(intval($enterprise->donor_initial_target) > 0 ){?>
                             <td>
                                 <a class="btn btn-sm btn-primary btn-block display-3"
                                 
@@ -210,7 +210,7 @@ if($enterprise){
                       <table style="width:100%;border:0px solid">
                                 <tr rowspan="2">
                                     <th>
-                                        <b>Lended: ${{intval($amountLend)}}</b>
+                                        <b>Loans: ${{intval($amountLend)}}</b>
                                     </th>
                                     <th>
                                         <b style="text-right; float:right">Target: ${{intval($enterprise->lender_initial_target)}}</b>
@@ -225,7 +225,7 @@ if($enterprise){
                                         <div class="progress-bar" style="width:{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}%; background:#58d77a;"  role="progressbar" aria-valuenow="{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}" aria-valuemin="0" aria-valuemax="100"></div>
                                         
                                     </div>
-                                            <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->lender_initial_target)-intval($amountLend)}} to go</div>
+                                            <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->lender_initial_target)-intval($amountLend)}} loans to go</div>
                                     </th>
                                     
                                 </tr>
@@ -233,17 +233,16 @@ if($enterprise){
                    
                    <?php } ?>
                     </div>
-                  <?php if($enterprise->category!='Fully-Funded-Enterprises'){?>
                     <div class="col-12 mt-5">
 
                                 <?php
 
 
-                                if(intval($enterprise->donor_initial_target) > 0){?>
+                                if(intval($enterprise->donor_initial_target) > 0){ ?>
                                 <table style="width:100%;border:0px solid">
                                             <tr rowspan="2">
                                                 <th>
-                                                    <b>Donated: ${{intval($amountDonate)}}</b>
+                                                    <b>Donations: ${{intval($amountDonate)}}</b>
                                                 </th>
                                                 <th>
                                                     <b style="text-right; float:right">Target: ${{intval($enterprise->donor_initial_target)}}</b>
@@ -268,7 +267,6 @@ if($enterprise){
                                 </div>
                         </div>
                     </div>
-                    <?php } ?>
 
             <div class="p-3 col-sm-3">
                 <table style="width:100%;margin-left:-10px">

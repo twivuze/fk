@@ -48,7 +48,13 @@
                        <div class="progress-bar" style="width:{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}%; background:#58d77a;"  role="progressbar" aria-valuenow="{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}" aria-valuemin="0" aria-valuemax="100"></div>
                        
                    </div>
-                   <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->lender_initial_target)-intval($amountLend)}} to go</div>
+                   <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->lender_initial_target)-intval($amountLend)}} loans to go</div>
+
+                   <div class="progress" style="height:8px;">
+                                                    <div class="progress-bar" style="width:{{(intval($amountDonate)*100)/intval($enterprise->donor_initial_target)}}%;"  role="progressbar" aria-valuenow="{{(intval($amountDonate)*100)/intval($enterprise->donor_initial_target)}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    
+                                                </div>
+                                                        <div class="text-center" style="color: #58d77a;font-weight:800">${{intval($enterprise->donor_initial_target)-intval($amountDonate)}} donations to go</div>
                    <?php } ?>
 
                 </div>
@@ -62,15 +68,16 @@
                                 <a class="btn btn-sm btn-primary btn-block display-3" href="/lender-enterprise?lendEnterprise={{$enterprise->id}}">Lend
                                 </a>
                             </td>
-                            <?php } ?>
-                            <?php if(intval($enterprise->donor_initial_target) > 0  && (intval($amountDonate) < intval($enterprise->donor_initial_target) ) ){?>
+                            <?php } } ?>
+
+                            <?php if(intval($enterprise->donor_initial_target) > 0 ){?>
                             <td>
                                 <a class="btn btn-sm btn-primary btn-block display-3"
                                 
                                  href="/donate-enterprise?donateEnterprise={{$enterprise->id}}" style="background:#fa8709!important;color:#fff!important; border-color:#fa8709!important;">Donate
                                 </a>
                             </td>
-                            <?php } } ?>
+                            <?php }  ?>
                             <td>
                                 <a class="btn btn-sm btn-primary btn-block display-3" style="background:#fff!important;color:#000!important; border-color:#000!important;"
                                  href="/enterprises/view/{{$enterprise->id}}">View
