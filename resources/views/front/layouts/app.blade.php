@@ -24,37 +24,7 @@
   <link rel="stylesheet" href="/assets/socicon/css/styles.css">
   <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
   <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
-  
- <style>
- .label {
-    display: inline;
-    padding: .2em .6em .3em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25em;
-}
-.label-success {
-    background-color: #58d77a;
-}
-.label-primary {
-    background-color: #337ab7;
-}
-.label-info {
-    background-color: #5bc0de;
-}
-.label-warning {
-    background-color: #fa8709;
-}
-.label-default {
-    background-color:rgb(69, 80, 91);
-}
 
- </style>
 
     @yield('css')
 </head>
@@ -94,9 +64,9 @@
 
                     <li class="nav-item dropdown text-left"><a
                             class="nav-link link dropdown-toggle text-primary display-4 {{ Request::is('apply/*') ? 'active' : '' }}" href="#"
-                            data-toggle="dropdown-submenu" aria-expanded="false">Apply</a>
+                            data-toggle="dropdown-submenu" aria-expanded="false">Attend</a>
                         <div class="dropdown-menu text-left">
-                            <a class="dropdown-item text-primary display-4 text-left" href="/apply/loan">Loans</a>
+                            <!-- <a class="dropdown-item text-primary display-4 text-left" href="/apply/loan">Loans</a> -->
 
                             <a class="dropdown-item text-primary display-4 text-left" href="/apply/yes-conferance" aria-expanded="false">Conference(s)</a>
 
@@ -172,7 +142,13 @@
                     <a class="btn btn-sm btn-primary display-3" href="/apply/loan"
                     style="border:#58d77a !important;padding-top:15px;padding-bottom:15px; background:#fa8709!important; color: #fff!important;">
                         APPLY FOR LOAN
-                    </a></div>
+                    </a>
+
+                    <a class="btn btn-sm btn-primary display-3" href="/login"
+                    style="border:#fff !important;padding-top:15px;padding-bottom:15px; background:#fff!important; color: #58d77a!important;">
+                        SIGN IN
+                    </a>
+                    </div>
             </div>
         </nav>
     </section>

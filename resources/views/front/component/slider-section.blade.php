@@ -3,16 +3,23 @@
     <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(46, 46, 46);">
     </div>
 
-    <div class="container align-center">
+    <div class="container align-center mt-3">
         <div class="row justify-content-md-center">
             <div class="mbr-white col-md-10">
-                <h1 class="mbr-section-title align-center py-2 mbr-bold mbr-fonts-style display-1">
-                        <br><br>A<span style="font-weight: normal;">ll </span>T<span style="font-weight: normal;">rust </span>C<span style="font-weight: normal;">onsult</span></h1>
-                <p class="mbr-text align-center py-2 mbr-fonts-style display-5">- Friends in Business -</p>
+                <h1 class="mbr-section-title align-center  mt-5 py-2 mbr-bold mbr-fonts-style display-1">
+               <br><br><b style="font-weight: bold; font-size:60px">We exist to end poverty in Africa
+                        •••</b>
+                        <!-- T<span style="font-weight: normal;">rust </span>C<span style="font-weight: normal;">onsult</span> -->
+                        </h1>
+                <p class="mbr-text align-center py-2 mbr-fonts-style display-5">
+                 You will receive our loan based on zero Collateral security.<br />
+                 We are 100% driven by brutal trust & radical financial transparency</p>
                 <div class="mbr-media show-modal align-center py-2" data-modal=".modalWindow">
                          <span class="mbr-iconfont mbri-play" style="color: rgb(250, 135, 9); fill: rgb(250, 135, 9);"></span>
                 </div>
-                <div class="icon-description align-center font-italic pb-3 mbr-fonts-style display-7">you can watch more videos ...</div>
+                <div class="icon-description align-center font-italic pb-3 mbr-fonts-style display-7">
+                <!-- you can watch more videos ... -->
+                </div>
                 <div class="mbr-section-btn text-center"><a class="btn btn-md btn-primary display-4" href="/more/video-links">MORE</a></div>
             </div>
         </div>

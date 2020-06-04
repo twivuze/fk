@@ -68,7 +68,7 @@
                             <td>
                                 <a class="btn btn-sm btn-primary btn-block display-3"
                                 
-                                 href="/donate-enterprise?donateEnterprise={{$enterprise->id}}" style="background:#fa8709!important;color:#fff!important; border-color:#fa8709!important;">Donote
+                                 href="/donate-enterprise?donateEnterprise={{$enterprise->id}}" style="background:#fa8709!important;color:#fff!important; border-color:#fa8709!important;">Donate
                                 </a>
                             </td>
                             <?php } } ?>
