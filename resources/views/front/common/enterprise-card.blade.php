@@ -41,7 +41,7 @@
                      
                         <?php $end = ' <a  href="/enterprises/view/'.$enterprise->id.'" target="_blank">  ....</a>'; ?>
 
-                        {!!html_entity_decode(Str::limit($enterprise->fundraising_message, $limit = 100,$end))!!}
+                        {!!html_entity_decode(Str::limit($enterprise->fundraising_message, $limit = 80,$end))!!}
                     </p>
                     <?php if(intval($enterprise->lender_initial_target) > 0){?>
                         
