@@ -532,7 +532,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 <div class="form-group col-sm-12 {{ $errors->has('lender_initial_target') ? ' has-error' : '' }}">
     {!! Form::label('lender_initial_target', 'Lender initial target:') !!}
-    {!! Form::text('lender_initial_target', old('lender_initial_target'), ['class' => 'form-control']) !!}
+    {!! Form::number('lender_initial_target', old('lender_initial_target'), ['class' => 'form-control']) !!}
     @if ($errors->has('lender_initial_target'))
     <span class="help-block">
         <strong>{{ $errors->first('lender_initial_target') }}</strong>
@@ -542,7 +542,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 <div class="form-group col-sm-12 {{ $errors->has('donor_initial_target') ? ' has-error' : '' }}">
     {!! Form::label('donor_initial_target', 'Donor initial target:') !!}
-    {!! Form::text('donor_initial_target', old('donor_initial_target'), ['class' => 'form-control']) !!}
+    {!! Form::number('donor_initial_target', old('donor_initial_target'), ['class' => 'form-control']) !!}
     @if ($errors->has('donor_initial_target'))
     <span class="help-block">
         <strong>{{ $errors->first('donor_initial_target') }}</strong>
