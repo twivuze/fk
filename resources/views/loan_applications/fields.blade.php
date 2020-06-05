@@ -552,7 +552,7 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 <div class="form-group col-sm-12">
     {!! Form::label('currency', 'Currency:') !!}
-    {!! Form::select('status', ['RWF' => 'RWF', 'USD' => 'USD'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('currency', ['RWF' => 'RWF', 'USD' => 'USD'], null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Status Field -->
