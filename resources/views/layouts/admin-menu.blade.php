@@ -238,6 +238,10 @@
 
 </li>
 
+<li class="{{ Request::is('statements*') ? 'active' : '' }}">
+    <a href="{{ route('statements.index') }}"><i class="fa fa-edit"></i><span>Statements</span></a>
+</li>
+
 
 
 

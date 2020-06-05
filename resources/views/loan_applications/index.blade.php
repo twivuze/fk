@@ -2,7 +2,7 @@
 @extends('layouts.app')
 <?php 
  if(\Auth::user()->type=='MicroFoundManager'){
-    $manger= \App\Models\MicroFundApplication::where('user_id',Auth::id())->orderBy('id','DESC')->first();
+    $manger= \App\Models\MicroFundApplication::where('user_id',\Auth::id())->orderBy('id','DESC')->first();
 
      $pending=\App\Models\LoanApplication::where('category','=','Enterprises-Awaiting-Funding')
      ->where('microfinance_center',$manger->microfinance_center)->orderBy('id','DESC')->get();

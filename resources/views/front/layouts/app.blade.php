@@ -31,6 +31,8 @@
 
 <body>
 
+<?php $statement = \App\Models\Statement::where('allow_to_apply',1)->orderBy('numbering','ASC')->first();
+?>
     <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-0">
 
 
@@ -116,8 +118,10 @@
                                 class="mobi-mbri mobi-mbri-more-vertical mbr-iconfont mbr-iconfont-btn"></span>More..</a>
 
                         <div class="dropdown-menu text-left">
-                       
-                                <a class="dropdown-item text-primary display-4 text-left" href="/more/stories">Stories</a>
+                       <?php if( $statement ){ ?>
+                        <a class="dropdown-item text-primary display-4 text-left" href="/more/statement/{{$statement->id}}#{{$statement->id}}">Policy Statements</a>
+                       <?php } ?>   
+                               <a class="dropdown-item text-primary display-4 text-left" href="/more/stories">Stories</a>
                                 <a class="dropdown-item text-primary display-4 text-left" href="/more/news">News</a>
                             <a class="dropdown-item text-primary display-4 text-left" href="/more/team">Team</a>
 

@@ -86,6 +86,10 @@ Route::get('/enterprises/view/{id}', function ($id) {
 
 Route::group(['prefix' => 'more'], function(){
 
+    Route::get('/statement/{id}', function ($id) {
+        return view('front.more.statement')->with('id',$id);
+    });
+
     Route::get('/stories', function () {
         return view('front.more.stories');
     });
@@ -267,3 +271,5 @@ Route::resource('fillingDocuments', 'FillingDocumentController');
 Route::resource('lenderInvoices', 'LenderInvoiceController');
 
 Route::resource('donationInvoices', 'DonationInvoiceController');
+
+Route::resource('statements', 'StatementController');
