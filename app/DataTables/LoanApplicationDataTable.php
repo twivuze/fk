@@ -29,11 +29,13 @@ class LoanApplicationDataTable extends DataTable
      */
     public function query(LoanApplication $model)
     {
-        if(Auth::check() && Auth::user()->type=='MicroFoundManager'){ 
+        if(Auth::user()->type=='MicroFoundManager'){ 
+          
             $manger= \App\Models\MicroFundApplication::where('user_id',Auth::id())->orderBy('id','DESC')->first();
             return $model->where('microfinance_center',$manger->microfinance_center)->orderBy('id','DESC');
     
-           }else if(Auth::check() && Auth::user()->type=='Admin'){ 
+           }else if(Auth::user()->type=='Admin'){ 
+         
             return $model->newQuery();
            }
     }

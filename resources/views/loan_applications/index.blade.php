@@ -1,9 +1,21 @@
 
 @extends('layouts.app')
-<?php if(Auth::check() || Auth::user()->type=='Admin'){
-     $pending=\App\Models\LoanApplication::where('category','=','Enterprises-Awaiting-Funding')->get();
-     $shortlisted=\App\Models\LoanApplication::where('category','=','Fully-Funded-Enterprises')->get();
-     $diasporaBank=\App\Models\LoanApplication::where('category','=','Diaspora-Funded-Enterprises')->get();
+<?php 
+ if(\Auth::user()->type=='MicroFoundManager'){
+    $manger= \App\Models\MicroFundApplication::where('user_id',Auth::id())->orderBy('id','DESC')->first();
+
+     $pending=\App\Models\LoanApplication::where('category','=','Enterprises-Awaiting-Funding')
+     ->where('microfinance_center',$manger->microfinance_center)->orderBy('id','DESC')->get();
+     $shortlisted=\App\Models\LoanApplication::where('category','=','Fully-Funded-Enterprises')
+     ->where('microfinance_center',$manger->microfinance_center)->orderBy('id','DESC')->get();
+     $diasporaBank=\App\Models\LoanApplication::where('category','=','Diaspora-Funded-Enterprises')
+     ->where('microfinance_center',$manger->microfinance_center)->orderBy('id','DESC')->get(); 
+}else{
+    $pending=\App\Models\LoanApplication::where('category','=','Enterprises-Awaiting-Funding')->get();
+    $shortlisted=\App\Models\LoanApplication::where('category','=','Fully-Funded-Enterprises')->get();
+    $diasporaBank=\App\Models\LoanApplication::where('category','=','Diaspora-Funded-Enterprises')->get();
+}
+    
     ?>
 @section('content')
     <section class="content-header">
@@ -91,6 +103,4 @@
     </div>
 @endsection
 
-<?php }else{
-    echo "<h1>You are not admin</h1>";
-} ?>
+

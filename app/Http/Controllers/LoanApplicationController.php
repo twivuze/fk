@@ -55,7 +55,11 @@ class LoanApplicationController extends AppBaseController
     public function store(CreateLoanApplicationRequest $request)
     {
         $input = $request->all();
-
+        $upload_passport_photo =null;
+        $docName=null;
+        $docName1=null;
+        $docName2=null;
+        $docName3=null;
         if($request->file('upload_passport_photo')){
             $request->validate([
                 'upload_passport_photo' => 'required|image|mimes:jpeg,png,jpg',
@@ -64,12 +68,11 @@ class LoanApplicationController extends AppBaseController
             $upload_passport_photo = $this->updateImage($request,'upload_passport_photo');  
         }
 
-        if(!$request->file('national_identity_copy')){
+        if($request->file('national_identity_copy')){
             $request->validate([
                 'national_identity_copy' => "required|mimes:pdf",
             ]);
-          
-        }else{
+   
         $file=$request->file('national_identity_copy');
         $docName ='national_identity_copy-'.time().'.'.$file->extension();
         $request->national_identity_copy->move(public_path('documents/'), $docName);
