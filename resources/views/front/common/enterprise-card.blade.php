@@ -28,7 +28,7 @@
                  
                    <h4 class="card-title pb-3 mbr-fonts-style display-7 text-center">
                    <?php $end1 = ' <a  href="/enterprises/view/'.$enterprise->id.'" target="_blank">  •••</a>'; ?>
-                        {{Str::limit($enterprise->business_name, $limit = 10,$end1) }}
+                   {!!html_entity_decode(Str::limit($enterprise->business_name, $limit = 10,$end1))!!}
 
                     </h4>
                     <h6 class="card-title pb-3 mbr-fonts-style display-7 text-center">
