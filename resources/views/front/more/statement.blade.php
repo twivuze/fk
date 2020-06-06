@@ -12,8 +12,8 @@ $statement = \App\Models\Statement::where('allow_to_apply',1)->where('id',$id)->
 <?php
 if($statement){
     $statements = \App\Models\Statement::where('allow_to_apply',1)->orderBy('numbering','ASC')->get();
-    $previous = \App\Models\Statement::where('id', '<', $id)->orderBy('numbering','ASC')->first();
-    $next = \App\Models\Statement::where('id', '>', $id)->orderBy('numbering','ASC')->first();
+    $previous = \App\Models\Statement::where('allow_to_apply',1)->where('id', '<', $id)->orderBy('numbering','ASC')->first();
+    $next = \App\Models\Statement::where('allow_to_apply',1)->where('id', '>', $id)->orderBy('numbering','ASC')->first();
 ?>
 
 
@@ -24,8 +24,7 @@ if($statement){
             <div class="card p-3 col-sm-3">
                 <ul class="list-group mt-3">
                     <li class="list-group-item active"
-                        style="border:#58d77a !important;background:#58d77a!important;color:#fff!important">Policy
-                        Statements</li>
+                        style="border:#58d77a !important;background:#58d77a!important;color:#fff!important">Statements</li>
 
                     @foreach($statements as $sts)
                     <?php if($sts->id==$id){?>
@@ -106,7 +105,7 @@ if($statement){
 
             <div class="title col-12 col-md-8">
 
-                <h2 class="align-center pb-3 mbr-fonts-style display-2" style="color:#fff; "><strong>Related</strong>
+                <h2 class="align-center pb-3 mbr-fonts-style display-2" style="color:#fff;"><strong>Enterprises</strong>
                 </h2>
 
 

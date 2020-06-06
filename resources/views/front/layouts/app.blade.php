@@ -119,7 +119,7 @@
 
                         <div class="dropdown-menu text-left">
                        <?php if( $statement ){ ?>
-                        <a class="dropdown-item text-primary display-4 text-left" href="/more/statement/{{$statement->id}}#{{$statement->id}}">Policy Statements</a>
+                        <a class="dropdown-item text-primary display-4 text-left" href="/more/statement/{{$statement->id}}#{{$statement->id}}">Statements</a>
                        <?php } ?>   
                                <a class="dropdown-item text-primary display-4 text-left" href="/more/stories">Stories</a>
                                 <a class="dropdown-item text-primary display-4 text-left" href="/more/news">News</a>
