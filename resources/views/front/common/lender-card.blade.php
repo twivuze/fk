@@ -13,7 +13,6 @@
                 <div class="card-box">
 
                     <h4 class="card-title pb-3 mbr-fonts-style display-7 text-lender" style="margin-top:15px">
-                        {{$lender->name}}
                         {{$lender->name}}<hr>
                         <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
                         {{$lender->address?$lender->address.',':''}} {{$lender->country}}
