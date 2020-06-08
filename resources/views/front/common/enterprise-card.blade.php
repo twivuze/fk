@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="media-container-row">
+    <div class="media-container-row row">
         @foreach($enterprises as $enterprise)
         <div class="card p-3 col-12 col-md-6 col-lg-3">
             <div class="card-wrapper">
