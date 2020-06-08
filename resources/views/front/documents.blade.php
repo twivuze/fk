@@ -4,7 +4,7 @@
 
 <?php 
 $filling = \App\Models\FillingCategory::find($id);
-$documents= \App\Models\FillingDocument::where('filling_category_id',$id)->get() ?>
+$documents= \App\Models\FillingDocument::where('filling_category_id',$id)->paginate(24); ?>
 
 
 
@@ -15,14 +15,18 @@ $documents= \App\Models\FillingDocument::where('filling_category_id',$id)->get()
             <div class="title col-12 col-md-8">
                 <h2 class="align-center pb-3 mbr-fonts-style display-2" style="color:#fa8709">
                     {{$filling?$filling->name:''}} - Documents</h2>
-                <hr style="color:#fff">
+                <!-- <hr style="color:#fff"> -->
 
             </div>
         </div>
     </div>
 </section>
 
+<section class="mbr-section form3 cid-rYMRYFsTOi" id="form3-21" data-bg-video="http://www.youtube.com/watch?v=uNCr7NdOJgw">
 
+@include('front.component.search-file-section')
+
+</section>
 
 
 <section class="mbr-gallery mbr-slider-carousel cid-rYUqipJbaB" id="gallery1-3j">
@@ -62,18 +66,12 @@ $documents= \App\Models\FillingDocument::where('filling_category_id',$id)->get()
 
 </section>
 
-<section class="mbr-section form3 cid-rYMRYFsTOi" id="form3-21" data-bg-video="http://www.youtube.com/watch?v=uNCr7NdOJgw">
-
-@include('front.component.search-file-section')
-
-</section>
 
 
-<section class="clients cid-rYUvGms2pw" style="background:#ffff!important;" data-interval="false" id="clients-3w">
 
-    @include('front.component.partners-section')
-
-</section>
+<div class="media-container-row" style="position:relative;top:30px;left:0;right:0">
+<span class="align-center"> {!! $documents->links() !!}</span>
+</div>
 
 
 @endsection

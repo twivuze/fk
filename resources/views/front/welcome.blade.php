@@ -18,9 +18,9 @@
 <section class="mbr-section content4 cid-rYUfuivAPG" id="content4-2u">
 
 <?php 
-     $pending=\App\Models\LoanApplication::where('category','=','Enterprises-Awaiting-Funding')->where('approved',1)->take(3)->get();
-     $shortlisted=\App\Models\LoanApplication::where('category','=','Fully-Funded-Enterprises')->where('approved',1)->take(3)->get();
-     $diasporaBank=\App\Models\LoanApplication::where('category','=','Diaspora-Funded-Enterprises')->where('approved',1)->take(3)->get();
+     $pending=\App\Models\LoanApplication::where('category','=','Enterprises-Awaiting-Funding')->where('approved',1)->orderBy('views','DESC')->take(3)->get();
+     $shortlisted=\App\Models\LoanApplication::where('category','=','Fully-Funded-Enterprises')->where('approved',1)->orderBy('views','DESC')->take(3)->get();
+     $diasporaBank=\App\Models\LoanApplication::where('category','=','Diaspora-Funded-Enterprises')->where('approved',1)->orderBy('views','DESC')->take(3)->get();
     ?>
 
     <div class="container">

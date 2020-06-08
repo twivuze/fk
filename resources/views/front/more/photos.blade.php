@@ -2,7 +2,7 @@
 
 @section('content')
 
-<?php $photos= \App\Models\Photos::get() ?>
+<?php $photos= \App\Models\Photos::paginate(24); ?>
 
 <section class="mbr-section content4 cid-rYUq0W1Zxh" id="content4-3i">
 
@@ -29,7 +29,7 @@
                         <div>
                         <?php $i=0; ?>
                         @foreach($photos AS $photo)
-                            <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false"
+                            <div class="mbr-gallery-item mbr-gallery-item--p2" style="margin-left:10px;width:250px" data-video-url="false"
                                 data-tags="Awesome">
                                 <div href="#lb-gallery1-3j" data-slide-to="{{$i}}" data-toggle="modal"><img
                                         src="/{{$photo->image}}" alt="" title=""><span
@@ -83,11 +83,10 @@
 </section>
 
 
-<section class="clients cid-rYUvGms2pw" style="background:#ffff!important;" data-interval="false" id="clients-3w">
-      
-@include('front.component.partners-section')
-    
-</section>
+
+<div class="media-container-row" style="position:relative;top:30px;left:0;right:0">
+<span class="align-center"> {!! $photos->links() !!}</span>
+</div>
 
 
 @endsection

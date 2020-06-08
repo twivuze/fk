@@ -156,7 +156,8 @@ class LoanApplication extends Model
         'microfinance_center' => 'integer',
         'session_id' => 'integer',
         'category' => 'string',
-        'business_model_file'=>'string'
+        'business_model_file'=>'string',
+        'views'
     ];
 
     /**
@@ -204,6 +205,7 @@ class LoanApplication extends Model
         'business_certificate' =>  "mimes:pdf",
         'business_patent' =>  "mimes:pdf",
         'any_recent_transactions_documents' =>  "mimes:pdf",
+        
     ];
 
     public function center(){

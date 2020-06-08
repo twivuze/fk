@@ -3,8 +3,8 @@
 @section('content')
 
 <?php $enterprise= \App\Models\LoanApplication::where('id',$id)->where('approved',1)->orderBy('id','DESC')->first();
-$businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id','DESC')->get();
-$centers= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->get();
+$businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id','DESC')->take(5)->orderBy(DB::raw('RAND()'))->get();
+$centers= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->take(5)->orderBy(DB::raw('RAND()'))->get();
 $amountLend = \App\Models\LenderInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
 $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
 ?>
@@ -23,7 +23,7 @@ $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->
                    {{$enterprise->fundraising_message}} 
                     </p>
                 <hr>
-
+                
             </div>
         </div>
     </div>
@@ -31,6 +31,9 @@ $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->
 
 <?php
 if($enterprise){
+    $enterprise->views=$enterprise->views+1;
+    $enterprise->save();
+
 ?>
 
 
@@ -46,6 +49,16 @@ if($enterprise){
                 </div>
                 <div class="profile-work">
                     <p class="text-center m-5">Profile Details</p>
+                   
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Views</label>
+                        </div>
+                        <div class="col-6">
+                        <h1 style="font-size: 15px;font-weight:800"  class="label label-default align-center">{{$enterprise->views?$enterprise->views:0}}</h1>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-6">
                             <label>Name</label>
@@ -200,7 +213,7 @@ if($enterprise){
 
                         <?php } ?>
                     </div>
-
+                    
                     <div class="col-12 mt-5">
 
                     <?php
@@ -269,6 +282,7 @@ if($enterprise){
                     </div>
 
             <div class="p-3 col-sm-3">
+           
                 <table style="width:100%;margin-left:-10px">
                 <tr>
                         <td>
@@ -306,7 +320,7 @@ if($enterprise){
 
                 <hr>
 
-                <!-- <ul class="list-group">
+                <ul class="list-group">
                     <li class="list-group-item active" 
                     style="border:#58d77a !important;background:rgb(69, 80, 91)!important;color:#fff!important">Business Type</li>
 
@@ -314,7 +328,7 @@ if($enterprise){
                     <li class="list-group-item "><a href="/enterprises/search?business_category={{$businessCategory->id}}" class="mbr-bold text-primary">{{$businessCategory->category}}</a>
                     </li>
                     @endforeach
-                </ul> -->
+                </ul>
 
                 <ul class="list-group mt-3">
                     <li class="list-group-item active"
@@ -322,9 +336,12 @@ if($enterprise){
 
                     @foreach($centers as $center)
                     <li class="list-group-item "><a href="/enterprises/search?center={{$center->id}}" 
-                    class="mbr-bold text-primary"> {{$center->name.' - '.$center->country}}</a>
+                    class="mbr-bold text-primary"> {{$center->name}}</a>
                     </li>
                     @endforeach
+                    <li class="list-group-item align-center ">
+                    <a href="/more/centers" class="align-center" style="color: #fa8709!important;">View more..</a>
+                    </li>
                 </ul>
 
 
@@ -342,7 +359,7 @@ if($enterprise){
      $enterprises=\App\Models\LoanApplication::where('category',$enterprise->category)
      ->where('approved',1)
      ->where('id','!=',$id)
-     ->orderBy('id','DESC')->take(9)->get();
+     ->orderBy('id','DESC')->take(3)->orderBy(DB::raw('RAND()'))->get();
      if(count( $enterprises) > 0){
     ?>
 

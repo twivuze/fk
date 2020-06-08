@@ -120,7 +120,9 @@
                         <div class="dropdown-menu text-left">
                        <?php if( $statement ){ ?>
                         <a class="dropdown-item text-primary display-4 text-left" href="/more/statement/{{$statement->id}}#{{$statement->id}}">Statements</a>
-                       <?php } ?>   
+                       <?php } ?>
+                       <a class="dropdown-item text-primary display-4 text-left" href="/more/centers">Centers</a>  
+                       <a class="dropdown-item text-primary display-4 text-left" href="/more/lenders">Lenders</a>   
                                <a class="dropdown-item text-primary display-4 text-left" href="/more/stories">Stories</a>
                                 <a class="dropdown-item text-primary display-4 text-left" href="/more/news">News</a>
                             <a class="dropdown-item text-primary display-4 text-left" href="/more/team">Team</a>

@@ -10,11 +10,16 @@
             <div class="title col-12 col-md-8">
                 <h2 class="align-center pb-3 mbr-fonts-style display-2" style="color:#fa8709">
                    Searching for document(s)</h2>
-                <hr style="color:#fff">
+             
 
             </div>
         </div>
     </div>
+</section>
+<section class="mbr-section form3 cid-rYMRYFsTOi" id="form3-21" data-bg-video="http://www.youtube.com/watch?v=uNCr7NdOJgw">
+
+@include('front.component.search-file-section')
+
 </section>
 
 
@@ -57,6 +62,7 @@
 
 </section>
 
+
 <?php 
 }else{
 ?>
@@ -75,29 +81,17 @@
 <?php 
 }
 ?>
+
 <?php 
 $fillings = \App\Models\FillingCategory::where('published',1)->orderBy('id','DESC')->get();
 ?>
 
-<section class="mbr-section form3 cid-rYMRYFsTOi" id="form3-21" data-bg-video="http://www.youtube.com/watch?v=uNCr7NdOJgw">
 
-@include('front.component.search-file-section')
-
-</section>
 
 <section class="features17 cid-rYUhzEzUWQ " id="features17-2w">
     
 @include('front.common.filling-card',['fillings'=>$fillings])
    
-</section>
-
-
-
-
-<section class="clients cid-rYUvGms2pw" style="background:#ffff!important;" data-interval="false" id="clients-3w">
-
-    @include('front.component.partners-section')
-
 </section>
 
 

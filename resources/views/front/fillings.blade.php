@@ -2,7 +2,7 @@
 
 @section('content')
 <?php 
-$fillings = \App\Models\FillingCategory::where('published',1)->orderBy('id','DESC')->get();
+$fillings = \App\Models\FillingCategory::where('published',1)->orderBy('id','DESC')->paginate(18);
 ?>
 
 <section class="mbr-section content4 cid-rYUfuivAPG mt-5" id="content4-2u">
@@ -31,11 +31,8 @@ $fillings = \App\Models\FillingCategory::where('published',1)->orderBy('id','DES
 
 
 
-<section class="clients cid-rYUvGms2pw" style="background:#ffff!important;" data-interval="false" id="clients-3w">
-      
-@include('front.component.partners-section')
-    
-</section>
-
+<div class="media-container-row" style="position:relative;top:30px;left:0;right:0">
+<span class="align-center"> {!! $fillings->links() !!}</span>
+</div>
 
 @endsection

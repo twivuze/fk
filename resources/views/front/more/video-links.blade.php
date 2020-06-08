@@ -9,13 +9,13 @@
 
     <div class="container">
         <h3 class="mbr-section-title align-center mbr-fonts-style display-2">
-            Videos & Links<br><br>
+            Videos<br><br>
         </h3>
         <?php $links= App\Models\VideosLinks::orderBy('id','DESC')
-        ->where('type','Link')->where('published',true)->get();
+        ->where('type','Link')->where('published',true)->paginate(9);
 
            $videos= App\Models\VideosLinks::orderBy('id','DESC')
-           ->where('type','YoutubeLink')->where('published',true)->get();
+           ->where('type','YoutubeLink')->where('published',true)->paginate(9);
         ?>
         <div class="row media-container-row">
             @foreach($videos AS $story)
@@ -44,6 +44,11 @@
 
             @endforeach
             </div>
+       
+
+            <h3 class="mbr-section-title align-center mbr-fonts-style display-2 mt-4">
+            Links<br><br>
+        </h3>
             <div class="row media-container-row">
             @foreach($links AS $story)
 
@@ -67,14 +72,17 @@
 
             @endforeach
         </div>
+        <div class="media-container-row" style="position:relative;top:30px;left:0;right:0">
+<span class="align-center"> {!! $links->links() !!}</span>
+</div>
     </div>
 </section>
 
 
-<section class="clients cid-rYUvGms2pw" style="background:#ffff!important;" data-interval="false" id="clients-3w">
+<!-- <section class="clients cid-rYUvGms2pw" style="background:#ffff!important;" data-interval="false" id="clients-3w">
       
 @include('front.component.partners-section')
     
-</section>
+</section> -->
 
 @endsection

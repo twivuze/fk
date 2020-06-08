@@ -2,7 +2,7 @@
 
 @section('content')
 
-<?php $stories= \App\Models\Stories::where('published', true)->get()
+<?php $stories= \App\Models\Stories::where('published', true)->paginate(12);
              ?>
 
 <section class="mbr-section content4 cid-rYUfm4cV5h mt-5" id="content4-2t">
@@ -26,7 +26,7 @@
     
 
 <div class="container-fluid">
-        <div class="media-container-row">
+        <div class="media-container-row row">
 
           @foreach($stories AS $row)
             <div class="card p-3 col-12 col-md-6 col-lg-3">
@@ -63,11 +63,9 @@
 
 
 
-<section class="clients cid-rYUvGms2pw" style="background:#ffff!important;" data-interval="false" id="clients-3w">
-      
-@include('front.component.partners-section')
-    
-</section>
+<div class="media-container-row" style="position:relative;top:30px;left:0;right:0">
+<span class="align-center"> {!! $stories->links() !!}</span>
+</div>
 
 
 @endsection
