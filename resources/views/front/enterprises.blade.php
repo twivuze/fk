@@ -3,7 +3,7 @@
 @section('content')
 
 <?php 
-     $enterprises=\App\Models\LoanApplication::orderBy('id','DESC')->where('approved',1)->orderBy('views','DESC')->paginate(9);
+     $enterprises=\App\Models\LoanApplication::orderBy('id','DESC')->where('approved',1)->orderBy('views','DESC')->paginate(12);
     ?>
 
 <section class="mbr-section content4 cid-rYUfuivAPG mt-5" id="content4-2u">
