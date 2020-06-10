@@ -28,31 +28,32 @@
         <div class="media-container-row row">
 
           @foreach($centers AS $row)
-          
+          <a  href="/more/center/{{$row->id}}"> 
             <div class="card p-3 col-12 col-md-6 col-lg-3">
                 <div class="card-wrapper">
-                <a  href="/more/center/{{$row->id}}"> 
+              
                 <div class="card-img"
                     style="height:150px; width:100%; background-image: url('/thumbnail/{{$row->cover_image}}'); background-repeat: no-repeat; background-size: cover;">
 
                 </div>
-                </a>
+              
                     <div class="card-box">
-                        <h4 class="card-title align-center pb-3 mbr-fonts-style display-7">
-                          
-                        <?php $end1 = ' <a  href="/more/center/'.$row->id.'">  •••</a>'; ?>
-                        {!!html_entity_decode(Str::limit($row->name, $limit = 22,$end1))!!}
-                        </h4>
-                        <p class="mbr-text mbr-fonts-style display-7">
-                           
-                        <?php  $end = ' <a  href="/more/center/'.$row->id.'"> read more ....</a>';
-                        ?> 
-    
-                            {!!html_entity_decode(Str::limit($row->short_summary, $limit = 80,$end))!!}
-                        </p>
+                    <h4 class="card-title pb-3 mbr-fonts-style display-7 text-center" style="margin-top:15px">
+                    {{$row->name}}<br><br>
+                        <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
+                        {{$row->country}}
+                        </small>
+                        <hr>
+                        <a class="btn btn-sm btn-primary display-3"
+                                    style="background:#fff!important;color:#000!important; border-color:#000!important;"
+                                    href="/more/center/{{$row->id}}">Details
+                                </a>
+                    </h4>
+                   
                     </div>
                 </div>
             </div>
+            </a>
             @endforeach
          
             

@@ -11,7 +11,7 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'microFundApplications.store']) !!}
+                    {!! Form::open(['route' => 'microFundApplications.store', 'files' => true]) !!}
 
                         @include('micro_fund_applications.fields')
 

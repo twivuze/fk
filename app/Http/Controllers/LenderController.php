@@ -264,6 +264,8 @@ class LenderController extends AppBaseController
             }
         }
 
+        
+
         Flash::success('Lender updated successfully.');
 
         if(\Auth::check() && \Auth::user()->type=='Admin'){ 

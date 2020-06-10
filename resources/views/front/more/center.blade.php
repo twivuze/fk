@@ -2,9 +2,15 @@
 
 @section('content')
 
-<?php $center= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->first();
+<?php $center= \App\Models\Center::where('status','Active')->where('id',$id)->orderBy('id','DESC')->first();
 
 
+?>
+<?php
+if($center){
+
+    $centers= \App\Models\Center::where('status','Active')->where('id','!=',$center->id)->take(5)->orderBy(DB::raw('RAND()'))->get();
+    $manager= \App\Models\MicroFundApplication::where('approved',1)->orderBy('id','DESC')->first();
 ?>
 
 <section class="mbr-section content4 cid-rYUfuivAPG mt-5" id="content4-2u">
@@ -24,12 +30,7 @@
     </div>
 </section>
 
-<?php
-if($center){
 
-    $centers= \App\Models\Center::where('status','Active')->where('id','!=',$center->id)->take(5)->orderBy(DB::raw('RAND()'))->get();
-    $manager= \App\Models\MicroFundApplication::where('approved',1)->orderBy('id','DESC')->first();
-?>
 
 
 <section class="features17 cid-rYUhzEzUWQ bg-white" id="features17-2w">
@@ -155,7 +156,7 @@ if($center){
                             <a class="btn btn-sm btn-primary btn-block display-3"
                              href="/fillings/search?center={{$id}}"
                                 style="border:#58d77a !important; background:rgb(69, 80, 91)!important; color: #fff!important;">
-                                Filling </a>
+                                Fillings </a>
 
                         </td>
                     </tr>
@@ -208,7 +209,7 @@ if($center){
 <?php 
 }else{
 ?>
-<section class="features17 cid-rYUhzEzUWQ bg-white" id="features17-2w">
+<section class="features17 cid-rYUhzEzUWQ bg-white mt-5" id="features17-2w">
     <div class="container">
         <div class="row justify-content-center">
             <div class="media-container-column col-lg-8">

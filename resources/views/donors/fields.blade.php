@@ -203,7 +203,22 @@ function ccMasking($number) {
     </span>
     @endif
 </div>
+<!-- Short Summary Field -->
+<div class="form-group col-sm-12 col-lg-12 {{ $errors->has('bio') ? ' has-error' : '' }}">
+    {!! Form::label('bio', 'Short Bio:') !!}
+    {!! Form::textarea('bio', old('bio'), ['class' => 'form-control']) !!}
+    @if ($errors->has('bio'))
+    <span class="help-block">
+        <strong>{{ $errors->first('bio') }}</strong> (Only image Format)
+    </span>
+    @endif
+</div>
 
+<!-- Description Field -->
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('more_details', 'More Details:') !!}
+    {!! Form::textarea('more_details', null, ['class' => 'form-control','id'=>'textarea']) !!}
+</div>
 
 
 <!-- donors Passport Photo Field -->

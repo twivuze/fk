@@ -56,7 +56,23 @@
     <p>{{ $lender->recurring }}</p>
 </div>
 
+<div class="form-group col-sm-12">
+<hr>
+   <h2>Short Bio</h2>
+  
+   <span style="margin-left:50px">  {{ $lender->bio }}</span>
+   <hr>
+</div>
 
+<div class="form-group col-sm-12">
+<hr>
+   <h2>More Details</h2>
+  
+   <span style="margin-left:50px">  <b>   {!!html_entity_decode($lender->more_details)!!}</b></span>
+   <hr>
+</div>
+
+<hr> 
 
 <!-- Lenders Passport Photo Field -->
 <div class="form-group">

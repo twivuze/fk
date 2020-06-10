@@ -56,7 +56,9 @@ class Donor extends Model
         'expiration_year',
         'expiration_month',
         'cvc',
-        'user_id'
+        'user_id',
+        'bio',
+        'more_details'
     ];
 
     /**
@@ -121,6 +123,8 @@ class Donor extends Model
         'which_business_models_are_you_willing_to_donate_to' => 'required',
         'why_did_you_choose_such_business' => 'required',
         'requiring' => 'required',
+        'bio'=> 'required',
+        'more_details'=> 'required',
         'donors_passport_photo' => "required|image|mimes:jpeg,png,jpg",
         'donors_copy_of_identity_card_or_passport' => "required|mimes:pdf",
         'donor_category_id' => 'required',

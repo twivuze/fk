@@ -93,8 +93,22 @@ Route::group(['prefix' => 'more'], function(){
     Route::get('/lenders', function () {
         return view('front.more.lenders');
     });
+
+    Route::get('/lender/{id}', function ($id) {
+        return view('front.more.lender')->with('id',$id);
+    });
+
     Route::get('/donors', function () {
         return view('front.more.donors');
+    });
+    Route::get('/donor/{id}', function ($id) {
+        return view('front.more.donor')->with('id',$id);
+    });
+    Route::get('/managers', function () {
+        return view('front.more.managers');
+    });
+    Route::get('/manager/{id}', function ($id) {
+        return view('front.more.manager')->with('id',$id);
     });
     Route::get('/centers', function () {
         return view('front.more.centers');

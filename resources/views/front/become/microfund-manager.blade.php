@@ -42,7 +42,7 @@ if($session){
 
                     </style>
 
-                     {!! Form::open(['route' => 'microFundApplications.store']) !!}
+                     {!! Form::open(['route' => 'microFundApplications.store', 'files' => true]) !!}
 
                     @include('micro_fund_applications.fields',['session_id'=>$session->id])
 

@@ -58,16 +58,27 @@ class MicroFundApplicationController extends AppBaseController
     public function store(CreateMicroFundApplicationRequest $request)
     {
         $input = $request->all();
-      if(!$input['q5_3']){
-        $input['q5_3']='Wrong doing'; 
-      }
+        if(!$input['q5_3']){
+            $input['q5_3']='Wrong doing'; 
+        }
+
+          if(!$request->file('profile_photo')){
+            $request->validate([
+                'profile_photo' => 'required|image|mimes:jpeg,png,jpg',
+            ]);
+            }else{
+                $profile_photo = $this->updateImage($request,'profile_photo');  
+            }
+
+        $input['profile_photo']=$profile_photo;
+
         $microFundApplication = $this->microFundApplicationRepository->create($input);
 
         Flash::success('Micro Fund Application saved successfully.');
         
-        if( isset($input['email']) ){
-            Mail::to($microFundApplication->email)->send(new ApplicationSenderMail($microFundApplication,'microfund-manager','MicroFund Manager Application Submitted Successfully'));
-        }
+            if( isset($input['email']) ){
+                    Mail::to($microFundApplication->email)->send(new ApplicationSenderMail($microFundApplication,'microfund-manager','MicroFund Manager Application Submitted Successfully'));
+                }
             if(Auth::check()){ 
                 return redirect(route('microFundApplications.index'));
             }else{
@@ -148,6 +159,12 @@ class MicroFundApplicationController extends AppBaseController
             return redirect(route('microFundApplications.index'));
         }
 
+        if($request->file('profile_photo')){
+            $image = $this->updateImage($request,'profile_photo');  
+            $input['profile_photo']=$image;
+        }else{
+            $input['profile_photo']=$microFundApplication->profile_photo; 
+        }
 
         $microFundApplication = $this->microFundApplicationRepository->update($input, $id);
 

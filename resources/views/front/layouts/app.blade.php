@@ -25,6 +25,8 @@
   <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
   <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
 
+ 
+
 
     @yield('css')
 </head>
@@ -121,8 +123,11 @@
                        <?php if( $statement ){ ?>
                         <a class="dropdown-item text-primary display-4 text-left" href="/more/statement/{{$statement->id}}#{{$statement->id}}">Statements</a>
                        <?php } ?>
+                       <a class="dropdown-item text-primary display-4 text-left" href="/more/managers">Fund Managers</a> 
                        <a class="dropdown-item text-primary display-4 text-left" href="/more/centers">Centers</a>  
-                       <a class="dropdown-item text-primary display-4 text-left" href="/more/lenders">Lenders</a>   
+                       <a class="dropdown-item text-primary display-4 text-left" href="/more/lenders">Lenders</a> 
+                       <a class="dropdown-item text-primary display-4 text-left" href="/more/donors">Donors</a>
+                         
                                <a class="dropdown-item text-primary display-4 text-left" href="/more/stories">Stories</a>
                                 <a class="dropdown-item text-primary display-4 text-left" href="/more/news">News</a>
                             <a class="dropdown-item text-primary display-4 text-left" href="/more/team">Team</a>
@@ -140,6 +145,7 @@
                                 aria-expanded="false">Contacts </a>
                                 <a class="dropdown-item text-primary display-4 text-left" href="/more/video-links"
                                 aria-expanded="false">Videos & Links</a>
+                                
                         </div>
                     </li>
                 </ul>
@@ -181,17 +187,37 @@
                 
                 
             <li class="foot-menu-item mbr-fonts-style display-7">
-                    <a class="mbr-bold text-primary" href="#" target="_blank">About us</a>
-                </li><li class="foot-menu-item mbr-fonts-style display-7">
-                    <a class="mbr-bold text-primary" href="#" target="_blank">Services</a>
-                </li><li class="foot-menu-item mbr-fonts-style display-7">
-                    <a class="mbr-bold text-primary" href="#" target="_blank">Get In Touch</a>
-                </li><li class="foot-menu-item mbr-fonts-style display-7">
-                    <a class="mbr-bold text-primary" href="#" target="_blank">Careers</a>
-                </li><li class="foot-menu-item mbr-fonts-style display-7">
-                    <a class="mbr-bold text-primary" href="#" target="_blank">Work</a>
+                    <a class="mbr-bold text-primary" href="/more/about">About us</a>
                 </li>
-                </li></ul>
+                </li><li class="foot-menu-item mbr-fonts-style display-7">
+                    <a class="mbr-bold text-primary" href="/more/contact">Get In Touch</a>
+                </li>
+                <li class="foot-menu-item mbr-fonts-style display-7">
+                    <a class="mbr-bold text-primary" href="/more/about">Team</a>
+                    </li>
+                    <?php if( $statement ){ ?>
+              <li class="foot-menu-item mbr-fonts-style display-7">
+                    <a class="mbr-bold text-primary" href="/more/statement/{{$statement->id}}#{{$statement->id}}">Statements</a>
+                </li>
+                <?php } ?>
+                <li class="foot-menu-item mbr-fonts-style display-7">
+                    <a class="mbr-bold text-primary" href="/more/photos">Photos</a>
+                    </li>
+                    <li class="foot-menu-item mbr-fonts-style display-7">
+                    <a class="mbr-bold text-primary" href="/more/video-links">Videos & Links</a>
+                    </li>
+
+                    <li class="foot-menu-item mbr-fonts-style display-7">
+                    <a class="mbr-bold text-primary" href="/more/stories">Stories</a>
+                    </li>
+
+                    <li class="foot-menu-item mbr-fonts-style display-7">
+                    <a class="mbr-bold text-primary" href="/more/news">News</a>
+                    </li>
+
+
+                    
+               </ul>
         </div>
         <div class="row social-row">
             <div class="social-list align-right pb-2">
@@ -219,9 +245,18 @@
                     </a>
                 </div></div>
         </div>
+        <br>
         <div class="row row-copirayt">
             <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-4">
                 © Copyright 2020 All Trust Consult - All Rights Reserved
+            </p>
+        </div>
+        <br>
+
+        <div class="row row-copirayt">
+            <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-4">
+               Powered by <br>
+               <img src="/images/guza.png" alt="" style="width:250px" srcset="">
             </p>
         </div>
     </div>
@@ -249,7 +284,10 @@
   <script src="/assets/mbr-clients-slider/mbr-clients-slider.js"></script>
   <script src="/assets/theme/js/script.js"></script>
   <script src="/assets/formoid/formoid.min.js"></script>
-
+  <script src="https://cdn.tiny.cloud/1/dc3qfuqt55rrl2yp1i22827v9l0hh91figeq4aiya3dnbr9c/tinymce/5/tinymce.min.js"
+   referrerpolicy="origin"></script>
+    
+  <script>tinymce.init({selector:'#textarea'}); tinymce.init({selector:'#textarea2'});</script>
 
   <input name="animation" type="hidden">
    <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>

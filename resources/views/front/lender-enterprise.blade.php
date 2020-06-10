@@ -21,6 +21,8 @@ if($enterprise){
 <?php 
 }
 if($enterprise){
+    $enterprise->views=$enterprise->views+1;
+    $enterprise->save();
 ?>
 
 <section class="features17 cid-rYUhzEzUWQ  bg-white" id="features17-2w">

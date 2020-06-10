@@ -57,7 +57,9 @@ class Lender extends Model
         'expiration_month',
         'address',
         'cvc',
-        'user_id'
+        'user_id',
+        'bio',
+        'more_details'
     ];
 
     /**
@@ -118,6 +120,8 @@ class Lender extends Model
         'which_business_you_are_willing_to_lend_to' => 'required',
         'why_did_you_choose_such_business' => 'required',
         'recurring' => 'required',
+        'bio'=> 'required',
+        'more_details'=> 'required',
         'lenders_passport_photo' => "required|image|mimes:jpeg,png,jpg",
         'lenders_copy_of_identity_card_or_passport' => "required|mimes:pdf",
         'email' =>  ['required', 'string', 'email', 'max:255', 'unique:users'],

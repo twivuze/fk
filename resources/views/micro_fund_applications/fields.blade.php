@@ -343,6 +343,36 @@ $centers= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->ge
 </div>
 
 
+<!-- Short Summary Field -->
+<div class="form-group col-sm-12 col-lg-12 {{ $errors->has('bio') ? ' has-error' : '' }}">
+    {!! Form::label('bio', 'Short Bio:') !!}
+    {!! Form::textarea('bio', old('bio'), ['class' => 'form-control']) !!}
+    @if ($errors->has('bio'))
+    <span class="help-block">
+        <strong>{{ $errors->first('bio') }}</strong> (Only image Format)
+    </span>
+    @endif
+</div>
+
+<!-- Description Field -->
+<div class="form-group col-sm-12 col-lg-12">
+    {!! Form::label('more_details', 'More Details:') !!}
+    {!! Form::textarea('more_details', null, ['class' => 'form-control','id'=>'textarea']) !!}
+</div>
+
+<!-- Lenders Passport Photo Field -->
+
+<div class="form-group col-sm-12 {{ $errors->has('profile_photo') ? ' has-error' : '' }}">
+    {!! Form::label('profile_photo', "Profile Photo:(Only image Format)") !!}<br />
+    {!! Form::file('profile_photo') !!}
+    @if ($errors->has('profile_photo'))
+    <span class="help-block">
+        <strong>{{ $errors->first('profile_photo') }}</strong> (Only image Format)
+    </span>
+    @endif
+</div>
+<div class="clearfix"></div>
+
 <?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
 
     <div class="form-group col-sm-6">

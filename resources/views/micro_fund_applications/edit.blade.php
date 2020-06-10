@@ -22,7 +22,8 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($microFundApplication, ['route' => ['microFundApplications.update', $microFundApplication->id], 'method' => 'patch']) !!}
+                   {!! Form::model($microFundApplication, ['route' => 
+                   ['microFundApplications.update', $microFundApplication->id], 'method' => 'patch', 'files' => true]) !!}
 
                         @include('micro_fund_applications.fields')
 

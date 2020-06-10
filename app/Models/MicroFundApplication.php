@@ -68,7 +68,10 @@ class MicroFundApplication extends Model
         'q5_3',
         'phone_number','user_id','status',
         'microfinance_center',
-        'approved'
+        'approved',
+        'profile_photo',
+        'bio',
+        'more_details'
     ];
 
     /**
@@ -118,6 +121,9 @@ class MicroFundApplication extends Model
         'q5_1'=> 'required',
         'q5_2'=> 'required',
         'q5_3'=> 'required',
+        'bio'=> 'required',
+        'more_details'=> 'required',
+        'profile_photo' => "required|image|mimes:jpeg,png,jpg",
     ];
 
     public function center(){

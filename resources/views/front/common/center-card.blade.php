@@ -13,9 +13,15 @@
                 <div class="card-box">
 
                     <h4 class="card-title pb-3 mbr-fonts-style display-7 text-center" style="margin-top:15px">
-                        <?php $end1 = ' <a  href="/center/'.$center->id.'" target="_blank">  •••</a>'; ?>
-                        {!!html_entity_decode(Str::limit($center->name, $limit = 22,$end1))!!}
-
+                    {{$center->name}}<br><br>
+                        <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
+                        {{$center->country}}
+                        </small>
+                        <hr>
+                        <a class="btn btn-sm btn-primary display-3"
+                                    style="background:#fff!important;color:#000!important; border-color:#000!important;"
+                                    href="/more/center/{{$center->id}}">Details
+                                </a>
                     </h4>
                    
                 </div>

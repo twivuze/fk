@@ -22,6 +22,7 @@
         <div class="media-container-row">
 
         @foreach($lenders AS $row)
+        <a  href="/more/lender/{{$row->id}}">
             <div class="mbr-testimonial p-3 align-center col-12 col-md-6 col-lg-4">
                 <div class="panel-item p-3">
                     <div class="card-block">
@@ -35,12 +36,17 @@
                              {{$row->name}}
                         </div>
                         <small class="mbr-author-desc mbr-italic mbr-light mbr-fonts-style display-7">
-                        {{$row->address?$row->address.',':''}} {{$row->country}}
+                        {{$row->country}}
                         </small>
-                       
+                        <hr>
+                        <a class="btn btn-sm btn-primary display-3"
+                                    style="background:#fff!important;color:#000!important; border-color:#000!important;"
+                                    href="/more/lender/{{$row->id}}">Details
+                                </a>
                     </div>
                 </div>
             </div>
+            </a>
             @endforeach
 
         </div>

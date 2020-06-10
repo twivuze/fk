@@ -223,6 +223,37 @@
  <span style="margin-left:50px"> <b>Ans:</b> {{ $microFundApplication->q5_3 }}</span>
 </div>
 
+<div class="form-group col-sm-12">
+<hr>
+   <h2>Profile Picture</h2>
+   <hr>
+</div>
+
+<div class="form-group">
+   <p>
+    <figure class="figure" style="width:25%">
+            <img src="/thumbnail/{{$microFundApplication->profile_photo}}" style="width:100%" class="figure-img img-fluid rounded">
+
+        </figure>
+    </p>
+</div>
+
+<div class="form-group col-sm-12">
+<hr>
+   <h2>Short Bio</h2>
+  
+   <span style="margin-left:50px">  {{ $microFundApplication->bio }}</span>
+   <hr>
+</div>
+
+<div class="form-group col-sm-12">
+<hr>
+   <h2>More Details</h2>
+  
+   <span style="margin-left:50px">  <b>   {!!html_entity_decode($microFundApplication->more_details)!!}</b></span>
+   <hr>
+</div>
+
 <hr>    
 <!-- Created At Field -->
 <div class="form-group">
