@@ -191,7 +191,7 @@ if($manager){
                                         <?php } ?>
                                         <a class="btn btn-sm btn-primary display-3"
                                             style="background:#fff!important;color:#000!important; border-color:#000!important;"
-                                            href="/enterprises/view/{{$model?$model->id:enterprise_id}}">Details
+                                            href="/enterprises/view/{{$model?$model->id:$enterprise->enterprise_id}}">Details
                                         </a>
                                         </th>
                                     </tr>
