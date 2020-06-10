@@ -168,12 +168,12 @@ if($manager){
 
                                 ?>
                                     <tr>
-                                        <td><strong> {{ $model->business_name }}</strong>
+                                        <td><strong> {{ $model?$model->business_name:$enterprise->enterprise }}</strong>
                                         </td>
                                         <td>USD {{$enterprise->amount}}</td>
 
                                         <th>
-                                            <?php if($model->category!='Fully-Funded-Enterprises'){?>
+                                            <?php if($model && $model->category!='Fully-Funded-Enterprises'){?>
                                             <?php if( intval($model->lender_initial_target) > 0  ){?>
                                       
                                             <a class="btn btn-sm btn-primary display-3"
@@ -181,7 +181,7 @@ if($manager){
                                             </a>
                                       
                                         <?php } } ?>
-                                        <?php if(intval($model->donor_initial_target) > 0 ){ ?>
+                                        <?php if($model && intval($model->donor_initial_target) > 0 ){ ?>
 
                                         <a class="btn btn-sm btn-primary display-3"
                                             href="/donate-enterprise?donateEnterprise={{$model->id}}"
@@ -191,7 +191,7 @@ if($manager){
                                         <?php } ?>
                                         <a class="btn btn-sm btn-primary display-3"
                                             style="background:#fff!important;color:#000!important; border-color:#000!important;"
-                                            href="/enterprises/view/{{$model->id}}">Details
+                                            href="/enterprises/view/{{$model?$model->id:enterprise_id}}">Details
                                         </a>
                                         </th>
                                     </tr>
