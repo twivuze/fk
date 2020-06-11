@@ -13,6 +13,17 @@ if($enterprise){
 $centers= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->take(5)->orderBy(DB::raw('RAND()'))->get();
 $amountLend = \App\Models\LenderInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
 $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
+
+$amountLoanInternalFunds = \App\Models\InternalFunder::where("type",'Loan')
+->where('enterprise_id',$enterprise->id)->sum('fund');
+
+$amountDonateInternalFunds = \App\Models\InternalFunder::where("type",'Donation')
+->where('enterprise_id',$enterprise->id)->sum('fund');
+
+$loan=intval($amountLend)+intval($amountLoanInternalFunds);
+
+$donate=intval($amountDonate)+intval($amountDonateInternalFunds);
+
     $enterprise->views=$enterprise->views+1;
     $enterprise->save();
 
@@ -177,15 +188,16 @@ $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->
 
                         <table style="width:100%;margin-left:-10px">
                             <tr>
-                                <?php if($enterprise->category!='Fully-Funded-Enterprises'){?>
-                                <?php if(intval($enterprise->lender_initial_target) > 0  && (intval($amountLend) < intval($enterprise->lender_initial_target) ) ){?>
+                                <?php if($enterprise->category!='Fully-Funded-Enterprises'){ ?>
+
+                                    <?php if(intval($enterprise->lender_initial_target) > 0  && (intval($loan) < intval($enterprise->lender_initial_target) ) ){?>
                                 <td>
                                     <a class="btn btn-sm btn-primary btn-block display-3"
                                         href="/lender-enterprise?lendEnterprise={{$enterprise->id}}">Lend
                                     </a>
                                 </td>
                                 <?php } } ?>
-                                <?php if(intval($enterprise->donor_initial_target) > 0 ){?>
+                                <?php if(intval($enterprise->donor_initial_target) > 0 ){ ?>
                                 <td>
                                     <a class="btn btn-sm btn-primary btn-block display-3"
                                         href="/donate-enterprise?donateEnterprise={{$enterprise->id}}"
@@ -218,17 +230,17 @@ $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->
 
                         <?php } ?>
                     </div>
+                    <?php
+                
+                if(intval($enterprise->lender_initial_target) > 0){ ?>
 
                     <div class="col-12 mt-5">
 
-                        <?php
-                    
-
-                     if(intval($enterprise->lender_initial_target) > 0){?>
+                     
                         <table style="width:100%;border:0px solid">
                             <tr rowspan="2">
                                 <th>
-                                    <b>{{ number_format(intval($amountLend), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Loans</b>
+                                    <b>{{ number_format(intval($loan), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Loans</b>
                                 </th>
                                 <th>
                                     <b style="text-right; float:right">{{ number_format(intval($enterprise->lender_initial_target), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}}
@@ -242,32 +254,43 @@ $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->
                                 <th colspan="2">
                                     <div class="progress" style="height:8px;">
                                         <div class="progress-bar"
-                                            style="width:{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}%; background:#58d77a;"
+                                            style="width:{{(intval($loan)*100)/intval($enterprise->lender_initial_target)}}%; background:#58d77a;"
                                             role="progressbar"
-                                            aria-valuenow="{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}"
+                                            aria-valuenow="{{(intval($loan)*100)/intval($enterprise->lender_initial_target)}}"
                                             aria-valuemin="0" aria-valuemax="100"></div>
 
                                     </div>
                                     <div class="text-center" style="color: #58d77a;font-weight:800">
-                                    {{ number_format(intval($enterprise->lender_initial_target)-intval($amountLend), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} loans
-                                        remaining</div>
+                                   
+                                            <?php if( (intval($enterprise->lender_initial_target)-$loan)  > 0){ ?>
+                                                {{ number_format( intval($enterprise->lender_initial_target)-$loan, 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Loans Remaining
+                                            
+                                            <?php }else{ ?>
+                                                {{ number_format( $loan, 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Loan Target Reached
+                                            
+                                                <?php }?>
+                                        </div>
                                 </th>
 
                             </tr>
                         </table>
 
-                        <?php } ?>
+                      
                     </div>
+
+                    <?php } ?>
+
+                    <?php
+
+                    if(intval($enterprise->donor_initial_target) > 0){ ?>
+
                     <div class="col-12 mt-5">
 
-                        <?php
-
-
-                                if(intval($enterprise->donor_initial_target) > 0){ ?>
+                      
                         <table style="width:100%;border:0px solid">
                             <tr rowspan="2">
                                 <th>
-                                    <b>{{ number_format(intval($amountDonate), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Donations</b>
+                                    <b>{{ number_format(intval($donate), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Donations</b>
                                 </th>
                                 <th>
                                     <b style="text-right; float:right">{{ number_format(intval($enterprise->donor_initial_target), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}}
@@ -281,22 +304,30 @@ $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->
                                 <th colspan="2">
                                     <div class="progress" style="height:8px;">
                                         <div class="progress-bar"
-                                            style="width:{{(intval($amountDonate)*100)/intval($enterprise->donor_initial_target)}}%;"
+                                            style="width:{{(intval($donate)*100)/intval($enterprise->donor_initial_target)}}%;"
                                             role="progressbar"
-                                            aria-valuenow="{{(intval($amountDonate)*100)/intval($enterprise->donor_initial_target)}}"
+                                            aria-valuenow="{{(intval($donate)*100)/intval($enterprise->donor_initial_target)}}"
                                             aria-valuemin="0" aria-valuemax="100"></div>
 
                                     </div>
                                     <div class="text-center" style="color: #58d77a;font-weight:800">
-                                    {{ number_format(intval($enterprise->donor_initial_target)-intval($amountDonate), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} donations
-                                        remaining</div>
+                                    <?php if( (intval($enterprise->donor_initial_target)-$donate)  > 0){ ?>
+                                    {{ number_format( intval($enterprise->donor_initial_target)-$donate, 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Donation remaining
+
+                                    <?php }else{ ?>
+                                    {{ number_format( $donate, 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Donation Target Reached
+
+                                    <?php }?>
+                                  </div>
                                 </th>
 
                             </tr>
                         </table>
 
-                        <?php } ?>
+                       
                     </div>
+                    <?php } ?>
+
                 </div>
             </div>
 

@@ -88,3 +88,7 @@ Route::resource('lender_invoices', 'LenderInvoiceAPIController');
 Route::resource('donation_invoices', 'DonationInvoiceAPIController');
 
 Route::resource('statements', 'StatementAPIController');
+
+Route::resource('internal_funders', 'InternalFunderAPIController');
+
+Route::resource('currencies', 'CurrencyAPIController');

@@ -204,6 +204,9 @@ Auth::routes([ 'register' => false,'verify' => true ]);
 Route::get('home', 'HomeController@index')->middleware('verified')->name('home');
 
 Route::get('enterprises/search', 'SearchController@searchEnterprise');
+Route::get('find-enterprise', 'SearchController@findEnterprise');
+
+
 
 Route::get('fillings/search', 'SearchController@searchFillings');
 
@@ -300,3 +303,7 @@ Route::resource('lenderInvoices', 'LenderInvoiceController');
 Route::resource('donationInvoices', 'DonationInvoiceController');
 
 Route::resource('statements', 'StatementController');
+
+Route::resource('internalFunders', 'InternalFunderController');
+
+Route::resource('currencies', 'CurrencyController');

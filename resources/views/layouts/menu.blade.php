@@ -38,3 +38,9 @@
 
 
 
+<li class="{{ Request::is('internalFunders*') ? 'active' : '' }}">
+    <a href="{{ route('internalFunders.index') }}"><i class="fa fa-edit"></i><span>Internal Funders</span></a>
+</li>
+
+
+

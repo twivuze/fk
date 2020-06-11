@@ -1,6 +1,7 @@
 <?php 
 $centers= \App\Models\Center::where('status','Active')->orderBy('id','DESC')->get();
 $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id','DESC')->get();
+$currencies=\App\Models\Currency::orderBy('id','DESC')->get();
 ?>
 <div class="form-group col-sm-12">
     {!! Form::label('microfinance_center', 'Center:') !!}
@@ -595,7 +596,13 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
 
 <div class="form-group col-sm-12">
     {!! Form::label('currency', 'Currency:') !!}
-    {!! Form::select('currency', ['RWF' => 'RWF', 'USD' => 'USD'], null, ['class' => 'form-control']) !!}
+    <select name="currency" id="currency" value="old('currency')" class="form-control">
+
+
+@foreach($currencies as $currency)
+<option value="{{$currency->currency}}">{{$currency->currency}}</option>
+@endforeach
+</select>
 </div>
 
 <!-- Status Field -->

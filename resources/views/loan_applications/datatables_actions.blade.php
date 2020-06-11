@@ -4,7 +4,7 @@
 if($enterprise){
 ?>
 
-<a href="{{ route('loanApplications.edit', $id) }}" class='btn btn-default btn-xs'>
+<a href="internal-funds/{{$id}}" onclick="centeredPopup(this.href,'myWindow','900','600','yes');return false" class='btn btn-default btn-xs'>
         <i class="glyphicon glyphicon-plus"></i> Internal Funds
     </a>
 <?php } ?>

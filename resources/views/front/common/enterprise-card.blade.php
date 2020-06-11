@@ -11,6 +11,18 @@
                         <?php 
                     $amountLend = \App\Models\LenderInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
                     $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
+
+                    $amountLoanInternalFunds = \App\Models\InternalFunder::where("type",'Loan')
+                    ->where('enterprise_id',$enterprise->id)->sum('fund');
+
+                    $amountDonateInternalFunds = \App\Models\InternalFunder::where("type",'Donation')
+                    ->where('enterprise_id',$enterprise->id)->sum('fund');
+
+                    $loan=intval($amountLend)+intval($amountLoanInternalFunds);
+
+                    $donate=intval($amountDonate)+intval($amountDonateInternalFunds);
+
+
                     if($enterprise->category=='Fully-Funded-Enterprises'){
                             ?>
                         <h6 class="label label-success">{{ $enterprise->category }}</h6>
@@ -45,39 +57,56 @@
 
                         {!!html_entity_decode(Str::limit($enterprise->fundraising_message, $limit = 64,$end))!!}
                     </p>
-                    <?php if(intval($enterprise->lender_initial_target) > 0){?>
+                    <?php if(intval($enterprise->lender_initial_target) > 0){ ?>
 
                     <div class="progress" style="height:8px;">
                         <div class="progress-bar"
-                            style="width:{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}%; background:#58d77a;"
+                            style="width:{{(intval($loan)*100)/intval($enterprise->lender_initial_target)}}%; background:#58d77a;"
                             role="progressbar"
-                            aria-valuenow="{{(intval($amountLend)*100)/intval($enterprise->lender_initial_target)}}"
+                            aria-valuenow="{{(intval($loan)*100)/intval($enterprise->lender_initial_target)}}"
                             aria-valuemin="0" aria-valuemax="100"></div>
 
                     </div>
                     <div class="text-center" style="color: #58d77a;font-weight:800">
+
+                   <?php if( (intval($enterprise->lender_initial_target)-$loan)  > 0){ ?>
+                    {{ number_format( intval($enterprise->lender_initial_target)-$loan, 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Loans Remaining
+                
+                   <?php }else{ ?>
+                    {{ number_format( $loan, 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Loan Target Reached
                    
-                    {{ number_format(intval($enterprise->lender_initial_target)-intval($amountLend), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} loans remaining</div>
+                    <?php }?>
+                    </div>
+                    <?php } ?>
+                    <?php if(intval($enterprise->donor_initial_target) > 0){ ?>
 
                     <div class="progress" style="height:8px;">
                         <div class="progress-bar"
-                            style="width:{{(intval($amountDonate)*100)/intval($enterprise->donor_initial_target)}}%;"
+                            style="width:{{(intval($donate)*100)/intval($enterprise->donor_initial_target)}}%;"
                             role="progressbar"
-                            aria-valuenow="{{(intval($amountDonate)*100)/intval($enterprise->donor_initial_target)}}"
+                            aria-valuenow="{{(intval($donate)*100)/intval($enterprise->donor_initial_target)}}"
                             aria-valuemin="0" aria-valuemax="100"></div>
 
                     </div>
-                    <div class="text-center" style="color: #58d77a;font-weight:800">
-                    {{ number_format( intval($enterprise->donor_initial_target)-intval($amountDonate), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} donations remaining</div>
+                    <div class="text-center" style="color: #007bff;font-weight:800">
+
+                    <?php if( (intval($enterprise->donor_initial_target)-$donate)  > 0){ ?>
+                    {{ number_format( intval($enterprise->donor_initial_target)-$donate, 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Donation remaining
+
+                    <?php }else{ ?>
+                    {{ number_format( $donate, 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Donation Target Reached
+
+                    <?php }?>
+                    </div>
                     <?php } ?>
 
-                </div>
+                    </div>
                 <div class="card-footer">
                     <table style="width:100%;margin-left:-10px">
                         <tr>
                             <?php if($enterprise->category!='Fully-Funded-Enterprises'){?>
 
-                            <?php if(intval($enterprise->lender_initial_target) > 0  && (intval($amountLend) < intval($enterprise->lender_initial_target) ) ){?>
+                            <?php if(intval($enterprise->lender_initial_target) > 0  && (intval($loan) < intval($enterprise->lender_initial_target) ) ){?>
                             <td>
                                 <a class="btn btn-sm btn-primary btn-block display-3"
                                     href="/lender-enterprise?lendEnterprise={{$enterprise->id}}">Lend

@@ -18,7 +18,7 @@
 <li class="{{ Request::is('funderManagerSessions*') ? 'active' : '' }}">
              <a href="{{ route('funderManagerSessions.index') }}"><i class="fa fa-edit"></i><span>Funder Managers</span></a>
         </li>
-
+      
             <li class="{{ Request::is('loanSessions*') ? 'active' : '' }}">
                   <a href="{{ route('loanSessions.index') }}"><i class="fa fa-edit"></i><span>Loans</span></a>
             </li>
@@ -241,7 +241,9 @@
 <li class="{{ Request::is('statements*') ? 'active' : '' }}">
     <a href="{{ route('statements.index') }}"><i class="fa fa-edit"></i><span>Statements</span></a>
 </li>
-
+<li class="{{ Request::is('currencies*') ? 'active' : '' }}">
+    <a href="{{ route('currencies.index') }}"><i class="fa fa-edit"></i><span>Currencies</span></a>
+</li>
 
 
 

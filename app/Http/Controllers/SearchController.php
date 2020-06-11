@@ -30,6 +30,46 @@ class SearchController extends Controller
 
         return view('front.search-enterprise')->with(['enterprises'=>$enterprises]);
     }
+    //findEnterprise
+
+    public function findEnterprise(Request $request)
+    {
+      
+        $enterprise=LoanApplication::where('code',$request->input('current_code'))->first();
+
+        if($enterprise){
+
+            if($enterprise->approved){
+                $amountLend = \App\Models\LenderInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
+                $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
+                $amountInternalFunds = \App\Models\InternalFunder::where("type",$request->input('choosenType'))
+                ->where('enterprise_id',$enterprise->id)->sum('fund');
+
+                return ['status'=>true,
+                 'enterprise'=>$enterprise,'amountLend'=>$amountLend?$amountLend:0,
+                'amountDonate'=>$amountDonate?$amountDonate:0,
+                'amountInternalFunds'=>$amountInternalFunds?$amountInternalFunds:0,
+                'message'=>'Found'];
+            }else{
+
+                return ['status'=>false,'enterprise'=>$enterprise,
+                'amountLend'=>null,
+                'amountDonate'=>null,
+                'amountInternalFunds'=>null,
+                 'message'=>'Enterprise ('.$enterprise->business_name.') found, but did not approved!'];
+            }
+           
+
+        }else{
+            return ['status'=>false,'enterprise'=>null,'amountLend'=>null,
+            'amountDonate'=>null,
+            'amountInternalFunds'=>null,
+            'message'=>'Enterprise could not found, try another code!'];
+        }
+        
+
+        
+    }
 
     //searchFillings
 
