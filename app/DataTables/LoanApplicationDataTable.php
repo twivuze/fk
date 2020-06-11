@@ -80,7 +80,8 @@ class LoanApplicationDataTable extends DataTable
             'region',
             'marital_status',
             'status',
-            'category'
+            'category',
+            'views'
         ];
     }
 

@@ -110,7 +110,8 @@ class LoanApplication extends Model
         'currency',
         'business_name',
         'fundraising_message',
-        'budget'
+        'budget',
+        'views'
     ];
 
     /**
@@ -157,7 +158,7 @@ class LoanApplication extends Model
         'session_id' => 'integer',
         'category' => 'string',
         'business_model_file'=>'string',
-        'views'
+        'views'=> 'integer',
     ];
 
     /**

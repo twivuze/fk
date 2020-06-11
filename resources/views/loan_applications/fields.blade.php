@@ -612,6 +612,14 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
     @endif
 </div>
 
+<?php if(Auth::check()  && Auth::user()->type=='Admin' ){ ?>
+    <div class="form-group col-sm-12">
+    {!! Form::label('views', 'views') !!}
+    {!! Form::number('views', old('views'), ['class' => 'form-control','id'=>'textarea']) !!}
+  
+</div>
+<?php }?>
+
 <!-- 'bootstrap / Toggle Switch Published Field' -->
 <?php if(Auth::check() && (Auth::user()->type=='Admin' || Auth::user()->type=='MicroFoundManager')){ ?>
 <div class="form-group col-sm-6 mr-5 ">

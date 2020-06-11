@@ -223,7 +223,7 @@ function ccMasking($number) {
 
 <!-- Description Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('more_details', 'More Details:') !!}
+    {!! Form::label('more_details', 'Full Bio:') !!}
     {!! Form::textarea('more_details', null, ['class' => 'form-control','id'=>'textarea']) !!}
 </div>
 

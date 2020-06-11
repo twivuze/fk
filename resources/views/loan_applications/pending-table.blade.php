@@ -9,7 +9,8 @@
             <th>Region </th>
             <th>Marital status</th>
             <th>Status</th>
-            <th>category</th>
+            <th>Category</th>
+            <th>Views</th>
            <th >Action</th>
        
          </tr>
@@ -29,6 +30,8 @@
                 <td>{!! $activeApplicant->marital_status !!}</td>
                 <td>{!! $activeApplicant->status !!}</td>
                 <td>{!! $activeApplicant->category !!}</td>
+                <td>{!! $activeApplicant->views !!}</td>
+                
                 <td>
                    
                 {!! Form::open(['route' => ['loanApplications.destroy', $activeApplicant->id], 'method' => 'delete']) !!}
