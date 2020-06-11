@@ -21,12 +21,12 @@
      $pending=\App\Models\LoanApplication::where('category','=','Enterprises-Awaiting-Funding')->where('approved',1)->orderBy('views','DESC')->take(3)->get();
      $shortlisted=\App\Models\LoanApplication::where('category','=','Fully-Funded-Enterprises')->where('approved',1)->orderBy('views','DESC')->take(3)->get();
      $diasporaBank=\App\Models\LoanApplication::where('category','=','Diaspora-Funded-Enterprises')->where('approved',1)->orderBy('views','DESC')->take(3)->get();
-     $alls=\App\Models\LoanApplication::get();
-     
-     foreach($alls as $loanApplication){
-        $loanApplication->code = str_pad($loanApplication->id, 6, '0', STR_PAD_LEFT);
-        $loanApplication->save();
-     }
+    //  $alls=\App\Models\LoanApplication::get();
+
+    //  foreach($alls as $loanApplication){
+    //     $loanApplication->code = str_pad($loanApplication->id, 6, '0', STR_PAD_LEFT);
+    //     $loanApplication->save();
+    //  }
     
 
    ?>
