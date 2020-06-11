@@ -111,7 +111,8 @@ class LoanApplication extends Model
         'business_name',
         'fundraising_message',
         'budget',
-        'views'
+        'views',
+        'code'
     ];
 
     /**
@@ -159,6 +160,7 @@ class LoanApplication extends Model
         'category' => 'string',
         'business_model_file'=>'string',
         'views'=> 'integer',
+        'code'=>'string'
     ];
 
     /**

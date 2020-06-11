@@ -122,8 +122,11 @@ class LoanApplicationController extends AppBaseController
         $input['business_certificate']=$docName1;
         $input['business_patent']=$docName2;
         $input['any_recent_transactions_documents']=$docName3;
+        //code
 
         $loanApplication = $this->loanApplicationRepository->create($input);
+        $loanApplication->code = str_pad($loanApplication->id, 6, '0', STR_PAD_LEFT);
+        $loanApplication->save();
 
         Flash::success('Loan Application saved successfully.');
 

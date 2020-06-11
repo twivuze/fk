@@ -2,6 +2,7 @@
     <table class="table" id="links-table">
         <thead>
         <tr>
+            <th>Code</th>
             <th>Full Name</th>
             <th>Email</th>
             <th>Address</th>
@@ -18,6 +19,8 @@
         <tbody>
         @foreach($diasporaBank as $activeApplicant)
             <tr>
+            
+               <td>{!! $activeApplicant->code !!}</td>
                 <td>{!! $activeApplicant->name !!}</td>
                 <td>{!! $activeApplicant->email !!}</td>
                 <td>{!! $activeApplicant->address !!}</td>

@@ -520,66 +520,6 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
     <hr>
 </div>
 
-<div class="form-group col-sm-12 {{ $errors->has('fundraising_message') ? ' has-error' : '' }}">
-    {!! Form::label('fundraising_message', 'Fundraising Message:') !!}
-    {!! Form::textarea('fundraising_message', old('fundraising_message'), ['class' => 'form-control']) !!}
-    @if ($errors->has('fundraising_message'))
-    <span class="help-block">
-        <strong>{{ $errors->first('fundraising_message') }}</strong>
-    </span>
-    @endif
-</div>
-
-<div class="form-group col-sm-12 {{ $errors->has('lender_initial_target') ? ' has-error' : '' }}">
-    {!! Form::label('lender_initial_target', 'Lender initial target:') !!}
-    {!! Form::number('lender_initial_target', old('lender_initial_target'), ['class' => 'form-control']) !!}
-    @if ($errors->has('lender_initial_target'))
-    <span class="help-block">
-        <strong>{{ $errors->first('lender_initial_target') }}</strong>
-    </span>
-    @endif
-</div>
-
-<div class="form-group col-sm-12 {{ $errors->has('donor_initial_target') ? ' has-error' : '' }}">
-    {!! Form::label('donor_initial_target', 'Donor initial target:') !!}
-    {!! Form::number('donor_initial_target', old('donor_initial_target'), ['class' => 'form-control']) !!}
-    @if ($errors->has('donor_initial_target'))
-    <span class="help-block">
-        <strong>{{ $errors->first('donor_initial_target') }}</strong>
-    </span>
-    @endif
-</div>
-
-<div class="form-group col-sm-12">
-    {!! Form::label('currency', 'Currency:') !!}
-    {!! Form::select('currency', ['RWF' => 'RWF', 'USD' => 'USD'], null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Status Field -->
-<div class="form-group col-sm-6">
-{!! Form::select('category', ['' => 'Filter By Funding Status'
-                ,'Enterprises-Awaiting-Funding' => 'Enterprises-Awaiting-Funding',
-                 'Diaspora-Funded-Enterprises' => 'Diaspora-Funded-Enterprises',
-                 'Fully-Funded-Enterprises' => 'Fully-Funded-Enterprises'],
-                  null, ['class' => 'form-control']) !!}
-</div>
-
-
-<div class="form-group col-sm-6">
-    {!! Form::label('business_category_id', 'Business Category:') !!}
-    <select name="business_category_id" id="business_category_id" class="form-control" required>
-
-        <?php if(isset($loanApplication->businessCategory)) {?>
-        <option value="{{$loanApplication->businessCategory->id}}">
-            {{$loanApplication->businessCategory->category}}</option>
-        <?php }else{ ?>
-        <option value="">Choose Business Category</option>
-        <?php } ?>
-        @foreach($businessCategories as $businessCategory)
-        <option value="{{$businessCategory->id}}"> {{$businessCategory->category}}</option>
-        @endforeach
-    </select>
-</div>
 <!-- What Is Integrity To You Field -->
 <div class="form-group col-sm-12 {{ $errors->has('short_summary') ? ' has-error' : '' }}">
     {!! Form::label('short_summary', 'Write a short Summary (MAX words - 500)') !!}
@@ -611,6 +551,80 @@ $businessCategories= \App\Models\BusinessCategory::where('used',1)->orderBy('id'
     </span>
     @endif
 </div>
+
+<div class="form-group col-sm-12 {{ $errors->has('fundraising_message') ? ' has-error' : '' }}">
+    {!! Form::label('fundraising_message', 'Fundraising Message:') !!}
+    {!! Form::textarea('fundraising_message', old('fundraising_message'), ['class' => 'form-control']) !!}
+    @if ($errors->has('fundraising_message'))
+    <span class="help-block">
+        <strong>{{ $errors->first('fundraising_message') }}</strong>
+    </span>
+    @endif
+</div>
+
+<div class="form-group col-sm-12 {{ $errors->has('lender_initial_target') ? ' has-error' : '' }}">
+    {!! Form::label('lender_initial_target', 'Loan initial target:') !!}
+    {!! Form::number('lender_initial_target', old('lender_initial_target'), ['class' => 'form-control']) !!}
+    @if ($errors->has('lender_initial_target'))
+    <span class="help-block">
+        <strong>{{ $errors->first('lender_initial_target') }}</strong>
+    </span>
+    @endif
+</div>
+
+
+<div class="form-group col-sm-12 {{ $errors->has('lender_initial_target') ? ' has-error' : '' }}">
+    {!! Form::label('lender_initial_target', 'Loan initial target:') !!}
+    {!! Form::number('lender_initial_target', old('lender_initial_target'), ['class' => 'form-control']) !!}
+    @if ($errors->has('lender_initial_target'))
+    <span class="help-block">
+        <strong>{{ $errors->first('lender_initial_target') }}</strong>
+    </span>
+    @endif
+</div>
+
+<div class="form-group col-sm-12 {{ $errors->has('donor_initial_target') ? ' has-error' : '' }}">
+    {!! Form::label('donor_initial_target', 'Donor initial target:') !!}
+    {!! Form::number('donor_initial_target', old('donor_initial_target'), ['class' => 'form-control']) !!}
+    @if ($errors->has('donor_initial_target'))
+    <span class="help-block">
+        <strong>{{ $errors->first('donor_initial_target') }}</strong>
+    </span>
+    @endif
+</div>
+
+<div class="form-group col-sm-12">
+    {!! Form::label('currency', 'Currency:') !!}
+    {!! Form::select('currency', ['RWF' => 'RWF', 'USD' => 'USD'], null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Status Field -->
+<div class="form-group col-sm-6">
+{!! Form::label('category', 'Category:') !!}
+{!! Form::select('category', ['' => 'Filter By Funding Status'
+                ,'Enterprises-Awaiting-Funding' => 'Enterprises-Awaiting-Funding',
+                 'Diaspora-Funded-Enterprises' => 'Diaspora-Funded-Enterprises',
+                 'Fully-Funded-Enterprises' => 'Fully-Funded-Enterprises'],
+                  null, ['class' => 'form-control']) !!}
+</div>
+
+
+<div class="form-group col-sm-6">
+    {!! Form::label('business_category_id', 'Business Category:') !!}
+    <select name="business_category_id" id="business_category_id" class="form-control" required>
+
+        <?php if(isset($loanApplication->businessCategory)) {?>
+        <option value="{{$loanApplication->businessCategory->id}}">
+            {{$loanApplication->businessCategory->category}}</option>
+        <?php }else{ ?>
+        <option value="">Choose Business Category</option>
+        <?php } ?>
+        @foreach($businessCategories as $businessCategory)
+        <option value="{{$businessCategory->id}}"> {{$businessCategory->category}}</option>
+        @endforeach
+    </select>
+</div>
+
 
 <?php if(Auth::check()  && Auth::user()->type=='Admin' ){ ?>
     <div class="form-group col-sm-12">

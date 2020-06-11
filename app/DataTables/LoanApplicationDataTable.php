@@ -73,6 +73,7 @@ class LoanApplicationDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'code',
             'name',
             'email',
             'address',
