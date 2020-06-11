@@ -56,7 +56,8 @@
 
                     </div>
                     <div class="text-center" style="color: #58d77a;font-weight:800">
-                    {{intval($enterprise->lender_initial_target)-intval($amountLend)}} {{$enterprise->currency?$enterprise->currency:'Rwf'}} loans remaining</div>
+                   
+                    {{ number_format(intval($enterprise->lender_initial_target)-intval($amountLend), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} loans remaining</div>
 
                     <div class="progress" style="height:8px;">
                         <div class="progress-bar"
@@ -67,7 +68,7 @@
 
                     </div>
                     <div class="text-center" style="color: #58d77a;font-weight:800">
-                        {{intval($enterprise->donor_initial_target)-intval($amountDonate)}} {{$enterprise->currency?$enterprise->currency:'Rwf'}} donations remaining</div>
+                    {{ number_format( intval($enterprise->donor_initial_target)-intval($amountDonate), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} donations remaining</div>
                     <?php } ?>
 
                 </div>

@@ -228,10 +228,10 @@ $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->
                         <table style="width:100%;border:0px solid">
                             <tr rowspan="2">
                                 <th>
-                                    <b>{{intval($amountLend)}} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Loans</b>
+                                    <b>{{ number_format(intval($amountLend), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Loans</b>
                                 </th>
                                 <th>
-                                    <b style="text-right; float:right">{{intval($enterprise->lender_initial_target)}} {{$enterprise->currency?$enterprise->currency:'Rwf'}}
+                                    <b style="text-right; float:right">{{ number_format(intval($enterprise->lender_initial_target), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}}
                                         Target</b>
 
 
@@ -249,7 +249,7 @@ $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->
 
                                     </div>
                                     <div class="text-center" style="color: #58d77a;font-weight:800">
-                                        {{intval($enterprise->lender_initial_target)-intval($amountLend)}}{{$enterprise->currency?$enterprise->currency:'Rwf'}} loans
+                                    {{ number_format(intval($enterprise->lender_initial_target)-intval($amountLend), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} loans
                                         remaining</div>
                                 </th>
 
@@ -267,10 +267,10 @@ $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->
                         <table style="width:100%;border:0px solid">
                             <tr rowspan="2">
                                 <th>
-                                    <b>{{intval($amountDonate)}} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Donations</b>
+                                    <b>{{ number_format(intval($amountDonate), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} Donations</b>
                                 </th>
                                 <th>
-                                    <b style="text-right; float:right">{{intval($enterprise->donor_initial_target)}} {{$enterprise->currency?$enterprise->currency:'Rwf'}}
+                                    <b style="text-right; float:right">{{ number_format(intval($enterprise->donor_initial_target), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}}
                                         Target</b>
 
 
@@ -288,7 +288,7 @@ $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->
 
                                     </div>
                                     <div class="text-center" style="color: #58d77a;font-weight:800">
-                                        {{intval($enterprise->donor_initial_target)-intval($amountDonate)}} {{$enterprise->currency?$enterprise->currency:'Rwf'}} donations
+                                    {{ number_format(intval($enterprise->donor_initial_target)-intval($amountDonate), 2) }} {{$enterprise->currency?$enterprise->currency:'Rwf'}} donations
                                         remaining</div>
                                 </th>
 
