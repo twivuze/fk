@@ -2,7 +2,7 @@
 ?>
 
 @extends('front.layouts.app',
-['title'=>$enterprise->business_name.' Enterprise',
+['title'=>$enterprise->business_name.' All Trust Consult - Enterprise',
 'description'=>$enterprise->short_summary,
 'icon' =>$enterprise->upload_passport_photo?'/thumbnail/'.$enterprise->upload_passport_photo:'/images/male.jpg'
 ]
