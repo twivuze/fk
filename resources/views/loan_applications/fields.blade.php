@@ -563,15 +563,7 @@ $currencies=\App\Models\Currency::orderBy('id','DESC')->get();
     @endif
 </div>
 
-<div class="form-group col-sm-12 {{ $errors->has('lender_initial_target') ? ' has-error' : '' }}">
-    {!! Form::label('lender_initial_target', 'Loan initial target:') !!}
-    {!! Form::number('lender_initial_target', old('lender_initial_target'), ['class' => 'form-control']) !!}
-    @if ($errors->has('lender_initial_target'))
-    <span class="help-block">
-        <strong>{{ $errors->first('lender_initial_target') }}</strong>
-    </span>
-    @endif
-</div>
+
 
 
 <div class="form-group col-sm-12 {{ $errors->has('lender_initial_target') ? ' has-error' : '' }}">

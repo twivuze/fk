@@ -1,4 +1,8 @@
-@extends('front.layouts.app')
+@extends('front.layouts.app',
+['title'=>'Fillings',
+'description'=>All Fillings'
+]
+)
 
 @section('content')
 <?php 

@@ -75,6 +75,7 @@ class LoanApplicationDataTable extends DataTable
         return [
             'code',
             'name',
+            'business_name',
             'email',
             'address',
             'country',

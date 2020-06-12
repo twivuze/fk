@@ -92,3 +92,9 @@ Route::resource('statements', 'StatementAPIController');
 Route::resource('internal_funders', 'InternalFunderAPIController');
 
 Route::resource('currencies', 'CurrencyAPIController');
+
+Route::resource('transfers', 'TransferAPIController');
+
+Route::resource('periods', 'PeriodAPIController');
+
+Route::resource('vistors', 'VistorsAPIController');

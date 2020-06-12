@@ -1,4 +1,8 @@
-@extends('front.layouts.app')
+@extends('front.layouts.app',
+['title'=>'Trainings &  Workshops Application',
+'description'=>'Trainings &  Workshops Application Form'
+]
+)
 
 @section('content')
 

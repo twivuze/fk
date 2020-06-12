@@ -4,7 +4,7 @@
         <div class="card p-3 col-12 col-md-6 col-lg-3">
             <div class="card-wrapper">
                 <div class="card-img"
-                    style="height:300px; width:100%; background-image: url('/thumbnail/{{$enterprise->upload_passport_photo}}'); background-repeat: no-repeat; background-size: cover;">
+                    style="height:300px; width:100%; background-image: url({{$enterprise->upload_passport_photo?'/thumbnail/'.$enterprise->upload_passport_photo:'/images/male.jpg' }}); background-repeat: no-repeat; background-size: cover;">
                    <div style="position:relative;top:280px;left:5;float:left">
                    <h6 class="label label-default">Views ({{$enterprise->views?$enterprise->views:0}})</h6></div>
                     <div style="position:relative;top:280px;right:5;float:right">

@@ -1,10 +1,16 @@
-@extends('front.layouts.app')
-
-@section('content')
-
 <?php 
 $filling = \App\Models\FillingCategory::find($id);
 $documents= \App\Models\FillingDocument::where('filling_category_id',$id)->paginate(24); ?>
+
+@extends('front.layouts.app',
+['title'=>$filling?$filling->name.'- Document(s)':'Document(s)',
+'description'=>'Fillings Documents'
+]
+)
+
+@section('content')
+
+
 
 
 

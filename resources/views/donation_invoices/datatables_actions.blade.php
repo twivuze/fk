@@ -1,8 +1,17 @@
 {!! Form::open(['route' => ['donationInvoices.destroy', $id], 'method' => 'delete']) !!}
 <div class='btn-group'>
 
+<?php $invoice= \App\Models\DonationInvoice::where('id',$id)->first();
+if($invoice){
+?>
+
+<a href="/enterprise-details/{{$invoice->enterprise_id}}" onclick="centeredPopup(this.href,'myWindow','900','600','yes');return false" class='btn btn-default btn-xs'>
+        <i class="fa fa-money"></i> 
+    </a>
+<?php } ?>
+
 <a href="#" class='btn btn-info btn-xs ' onclick="event.preventDefault(); printThis(<?php echo $id; ?>);">
-        <i class="glyphicon glyphicon-eye-open"></i> Download Invoice
+        <i class="glyphicon glyphicon-eye-open"></i> Invoice
     </a>
     <!-- <a href="{{ route('donationInvoices.show', $id) }}" class='btn btn-default btn-xs'>
         <i class="glyphicon glyphicon-eye-open"></i>

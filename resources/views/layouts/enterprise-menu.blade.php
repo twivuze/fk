@@ -29,6 +29,32 @@
 
 </li>
 
-<!-- <li class="{{ Request::is('messages*') ? 'active' : '' }}">
-    <a href="{{ route('messages.index') }}"><i class="fa fa-chat"></i><span>Messages</span></a>
-</li> -->
+<li class="nav-item  dropdown {{ (Request::is('lenderInvoices*') ||  Request::is('donationInvoices*') ||  Request::is('internalFunders*')) ? 'active' : '' }}">
+
+<a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+   <i class="fa fa-credit-card"></i> <span>Transactions</span>
+</a>
+
+<ul class="dropdown-menu dropdown-menu-right" data-widget="tree">
+
+<li class="{{ Request::is('lenderInvoices*') ? 'active' : '' }}">
+    <a href="{{ route('lenderInvoices.index') }}"><i class="fa fa-credit-card"></i><span>Lends</span></a>
+</li>
+<li class="{{ Request::is('donationInvoices*') ? 'active' : '' }}">
+    <a href="{{ route('donationInvoices.index') }}"><i class="fa fa-credit-card"></i><span>Donations</span></a>
+</li>
+
+<li class="{{ Request::is('internalFunders*') ? 'active' : '' }}">
+    <a href="{{ route('internalFunders.index') }}"><i class="fa fa-credit-card"></i><span>Internal Funders</span></a>
+</li>
+
+</ul>
+
+
+</li>
+<li class="{{ Request::is('transfers*') ? 'active' : '' }}">
+    <a href="{{ route('transfers.index') }}"><i class="fa fa-money"></i><span> Money Transfered</span></a>
+</li>
+<li class="{{ Request::is('fillingDocuments*') ? 'active' : '' }}">
+    <a href="{{ route('fillingDocuments.index') }}"><i class="fa fa-folder"></i><span>Filling Documents</span></a>
+</li>

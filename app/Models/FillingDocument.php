@@ -34,7 +34,8 @@ class FillingDocument extends Model
         'microfund_manager_id',
         'filling_category',
         'country',
-        'published'
+        'published',
+        'enterprise_id'
     ];
 
     /**

@@ -27,7 +27,7 @@
     <script src="https://cdn.tiny.cloud/1/dc3qfuqt55rrl2yp1i22827v9l0hh91figeq4aiya3dnbr9c/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
 
-    <!-- <link rel="stylesheet" href="/css/gallery-grid.css"> -->
+    <link rel="stylesheet" href="css/style.css">
 
   <script>tinymce.init({selector:'#textarea'}); tinymce.init({selector:'#textarea2'});</script>
 
@@ -229,6 +229,27 @@ function fundType(val) {
     $(".showBox").show();
 
 }
+//gracePeriod
+function transferType(val) {
+    $("#change_response_code").html("");
+    $("#current_code").val("");
+    
+        choosenType=val;
+    $(".Transfer").hide();
+    $(".showBox").show();
+   
+
+}
+
+
+function gracePeriod(val) {
+    if(val=='Yes'){
+        $(".grace_period").show();   
+    }else{
+        $(".grace_period").hide();    
+    }
+
+}
 
 function remainFund(val){
 
@@ -332,6 +353,100 @@ function findEnterprise(value,div) {
             }
 		})
     };
+
+    function viewEnterprise(value,div) {
+        $("#change_response_code").html("");
+        $("#currency").val("");
+        $("#enterprise_id").val("");
+        $("."+div).hide();
+        let current_code = value;
+        
+        $("#change_response_code").html("Wait while processing ...");
+	
+	    if(current_code === ''){
+	        $("#change_response_code").html("<span style = 'color: red'>Current Code is required</span>");
+	        return;
+		}
+	
+	    $.ajax({
+			url : '/find-enterprise',
+			method : 'GET',
+			data : {
+                current_code : current_code,
+                choosenType:choosenType
+			},
+			success : function (response) {
+				if(response.status==true){
+                    $("."+div).show();
+                    $(".funds").val(0);
+                    $("#currency").val(response.enterprise.currency?response.enterprise.currency:'Rwf');
+                   $("#enterprise_id").val(response.enterprise.id);
+                   $("#code").val(response.enterprise.code);
+                   $("#enterprise").val(response.enterprise.business_name?response.enterprise.business_name:name);
+                   if(div=='InternalFunder'){
+                    // fundType('Loan');
+                   }
+                   _enterprise=response.enterprise;
+                   funds=0;
+                   if(choosenType=='Loan'){
+                    funds= response.enterprise.lender_initial_target-response.amountLend-response.amountInternalFunds;
+                    totalFunds=parseFloat(response.amountLend)+parseFloat(response.amountInternalFunds)-parseFloat(response.amountTransfered);;
+                   }else{
+                     funds= response.enterprise.donor_initial_target-response.amountDonate-response.amountInternalFunds;
+                     totalFunds=parseFloat(response.amountDonate)+parseFloat(response.amountInternalFunds)-parseFloat(response.amountTransfered);
+                   }
+                   $(".funds").val(totalFunds);
+                   $(".btn-primary").removeClass('hidden');
+                   $(".funds").removeClass('hidden');
+                   if(totalFunds <= 0){
+                   
+                    // $(".funds").addClass('hidden');
+                    $(".btn-primary").addClass('hidden');
+                   }
+                   $(".remainfunds").html(`<h3 style="margin-left:15px">   Remaining Fund(s): ${response.enterprise.currency?response.enterprise.currency:'Rwf'} ${funds}</h3>, <h3 style="margin-left:15px">   Total Fund(s): ${response.enterprise.currency?response.enterprise.currency:'Rwf'} ${totalFunds}/${choosenType=='Loan'?response.enterprise.lender_initial_target:response.enterprise.donor_initial_target}</h3>`);
+
+                   $("#change_response_code").html("");
+                    $("#change_response_code").html(`
+                    <table class="table">
+                    <tr>
+                    <th>Enterprise</th>
+                    <th>Loan initial target</th>
+                    <th>Donor initial target</th>
+                    <th>Loan received</th>
+                    <th>Donation received</th>
+                    <th>Action</th>
+                    </tr>
+                    <tr>
+                    <th>${response.enterprise.business_name?response.enterprise.business_name:name}</th>
+                    <th>${response.enterprise.currency?response.enterprise.currency:'Rwf'} ${response.enterprise.lender_initial_target}</th>
+                    <th>${response.enterprise.currency?response.enterprise.currency:'Rwf'}  ${response.enterprise.donor_initial_target}</th>
+                    <th>${response.enterprise.currency?response.enterprise.currency:'Rwf'}  ${response.amountLend}</th>
+                    <th>${response.enterprise.currency?response.enterprise.currency:'Rwf'}  ${response.amountDonate}</th>
+                    <th>   <a href="/loanApplications/${response.enterprise.id}/edit" target="_blank" class='btn btn-default btn-xs'>
+                        <i class="glyphicon glyphicon-eye-open"></i> Edit
+                    </a></th>
+                    </tr>
+                    </table>
+                    `);
+					
+				}else{
+                    $("."+div).hide();
+					$("#change_response_code").html("<span style = 'color: red'>"+response.message+"</span>");
+				}
+				
+
+            }, error : function (e, d) {
+				$("#change_response_code").html(JSON.stringify(e));
+            }
+		})
+    };
+    $(document).ready(function() {
+    
+    $('[data-toggle=offcanvas]').click(function() {
+      $('.row-offcanvas').toggleClass('active');
+    });
+    
+  });
 </script>
 
     @stack('scripts')

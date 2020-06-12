@@ -5,7 +5,7 @@ namespace App\DataTables;
 use App\Models\InternalFunder;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
-
+use Auth;
 class InternalFunderDataTable extends DataTable
 {
     /**
@@ -29,7 +29,21 @@ class InternalFunderDataTable extends DataTable
      */
     public function query(InternalFunder $model)
     {
-        return $model->newQuery();
+        if(Auth::check() && Auth::user()->type=='Enterprise'){ 
+            $enterprise= \App\Models\LoanApplication::where('user_id',Auth::id())->orderBy('id','DESC')->first();
+            return $model->where('enterprise_id',$enterprise->id)->orderBy('id','DESC');
+    
+           }
+           else if(Auth::check() && Auth::user()->type=='MicroFoundManager'){ 
+            $manger= \App\Models\MicroFundApplication::where('user_id',Auth::id())->orderBy('id','DESC')->first();
+
+            $enterprise= \App\Models\LoanApplication::where('center_id',$manger->microfinance_center)->pluck('id');
+
+            return $model->whereIn('enterprise_id', $enterprise)->orderBy('id','DESC');
+    
+           }else if(Auth::check() && Auth::user()->type=='Admin'){ 
+            return $model->newQuery();
+           }
     }
 
     /**

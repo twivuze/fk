@@ -1,4 +1,8 @@
-@extends('front.layouts.app')
+@extends('front.layouts.app',
+['title'=>'Donate to '.$enterprise->business_name,
+'description'=>'Donate to '.$enterprise->business_name,
+]
+)
 
 @section('content')
 

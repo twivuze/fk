@@ -5,7 +5,7 @@ namespace App\DataTables;
 use App\Models\FillingDocument;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
-
+use Auth;
 class FillingDocumentDataTable extends DataTable
 {
     /**
@@ -29,10 +29,15 @@ class FillingDocumentDataTable extends DataTable
      */
     public function query(FillingDocument $model)
     {
-        $microFundApplication = \App\Models\MicroFundApplication::where('user_id',\Auth::id())->orderBy('id','DESC')->first();
-        if($microFundApplication){
+           if(Auth::check() && Auth::user()->type=='Enterprise'){ 
+            $enterprise= \App\Models\LoanApplication::where('user_id',Auth::id())->orderBy('id','DESC')->first();
+            return $model->where('enterprise_id',$enterprise->id)->orderBy('id','DESC');
+    
+           }else if(Auth::check() && Auth::user()->type=='MicroFoundManager'){ 
+            $microFundApplication = \App\Models\MicroFundApplication::where('user_id',\Auth::id())->orderBy('id','DESC')->first();
             return $model->where('microfund_manager_id',$microFundApplication->id);
-        }else{
+           
+        }else if(Auth::check() && Auth::user()->type=='Admin'){ 
             return $model->newQuery();
         }
         

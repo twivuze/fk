@@ -45,10 +45,14 @@ class SearchController extends Controller
                 $amountInternalFunds = \App\Models\InternalFunder::where("type",$request->input('choosenType'))
                 ->where('enterprise_id',$enterprise->id)->sum('fund');
 
+                $amountTransfered = \App\Models\Transfer::where("type",$request->input('choosenType'))
+                ->where('enterprise_id',$enterprise->id)->sum('amount');
+
                 return ['status'=>true,
                  'enterprise'=>$enterprise,'amountLend'=>$amountLend?$amountLend:0,
                 'amountDonate'=>$amountDonate?$amountDonate:0,
                 'amountInternalFunds'=>$amountInternalFunds?$amountInternalFunds:0,
+                'amountTransfered'=>$amountTransfered?$amountTransfered:0,
                 'message'=>'Found'];
             }else{
 
@@ -56,6 +60,7 @@ class SearchController extends Controller
                 'amountLend'=>null,
                 'amountDonate'=>null,
                 'amountInternalFunds'=>null,
+                'amountTransfered'=>null,
                  'message'=>'Enterprise ('.$enterprise->business_name.') found, but did not approved!'];
             }
            
@@ -64,6 +69,7 @@ class SearchController extends Controller
             return ['status'=>false,'enterprise'=>null,'amountLend'=>null,
             'amountDonate'=>null,
             'amountInternalFunds'=>null,
+            'amountTransfered'=>null,
             'message'=>'Enterprise could not found, try another code!'];
         }
         

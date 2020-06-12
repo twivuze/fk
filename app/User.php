@@ -37,5 +37,54 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    function interestProcessing($transfer){
+    $rate=0;
+    $totalRecover=$transfer->amount;
+    $totalInstalment=0;
+
+        if($transfer->recoverPeriod && $transfer->recoverPeriod->category=='day'){
+        
+        $rate=$transfer->recoverPeriod->period*$transfer->rate;
+        $totalRecover=$transfer->amount*$rate/100;
+
+                if($transfer->instalmentPeriod){
+                    $totalInstalment=$totalRecover*$transfer->instalmentPeriod->period;
+                }
+         }
+
+         if($transfer->recoverPeriod && $transfer->recoverPeriod->category=='month'){
+
+            $rate=$transfer->recoverPeriod->period*30*$transfer->rate;
+            $totalRecover=$transfer->amount*$rate/100;
+
+                if($transfer->instalmentPeriod && $transfer->instalmentPeriod->category=='month'){
+                    $totalInstalment=$totalRecover*$transfer->instalmentPeriod->period;
+                }
+
+                if($transfer->instalmentPeriod && $transfer->instalmentPeriod->category=='day'){
+                    $totalInstalment=$totalRecover*$transfer->instalmentPeriod->period/30;
+                }
+         }
+
+         if($transfer->recoverPeriod && $transfer->recoverPeriod->category=='year'){
+
+            $rate=$transfer->recoverPeriod->period*12*$transfer->rate;
+            $totalRecover=$transfer->amount*$rate/100;
+
+                if($transfer->instalmentPeriod && $transfer->instalmentPeriod->category=='year'){
+                    $totalInstalment=($totalRecover*$transfer->instalmentPeriod->period);
+                }
+
+                if($transfer->instalmentPeriod && $transfer->instalmentPeriod->category=='month'){
+                    $totalInstalment=( ($totalRecover*$transfer->instalmentPeriod->period) /12 );
+                }
+                if($transfer->instalmentPeriod && $transfer->instalmentPeriod->category=='day'){
+                    $totalInstalment=($totalRecover*$transfer->instalmentPeriod->period)/365;
+                }
+         }
+
+         return ['totalRecover'=>$totalRecover,'totalInstalment'=>$totalInstalment];
+    }
     
 }

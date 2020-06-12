@@ -1,6 +1,21 @@
 <?php
- $microFundApplication = \App\Models\MicroFundApplication::where('user_id',\Auth::id())->orderBy('id','DESC')->first();
- $center = \App\Models\Center::where('id',$microFundApplication->microfinance_center)->orderBy('id','DESC')->first();
+ $microFundApplication=null;
+ $center =null;
+if(Auth::user()->type=='Enterprise'){
+    $enterprise= \App\Models\LoanApplication::where('user_id',Auth::id())->orderBy('id','DESC')->first();
+   
+    $center = \App\Models\Center::where('id',$enterprise->microfinance_center)->orderBy('id','DESC')->first();
+
+    $microFundApplication = \App\Models\MicroFundApplication::where('microfinance_center',$enterprise->microfinance_center)->orderBy('id','DESC')->first();
+
+}else{
+
+    if(Auth::user()->type=='MicroFoundManager'){
+    $microFundApplication = \App\Models\MicroFundApplication::where('user_id',\Auth::id())->orderBy('id','DESC')->first();
+    $center = \App\Models\Center::where('id',$microFundApplication->microfinance_center)->orderBy('id','DESC')->first();
+    }
+}
+
  $fillings = \App\Models\FillingCategory::where('published',1)->orderBy('id','DESC')->get();
 ?>
 <!-- Name Field -->
@@ -65,7 +80,7 @@
     </span>
     @endif
 </div>
-
+<?php  if(Auth::check() && Auth::user()->type!='Enterprise'){ ?>
 <!-- 'bootstrap / Toggle Switch Published Field' -->
 <div class="form-group col-sm-6">
     {!! Form::label('published', 'Published:') !!}
@@ -74,10 +89,10 @@
         {!! Form::checkbox('published', 1, null,  ['data-toggle' => 'toggle']) !!}
     </label>
 </div>
+<?php  }?>
 
-
-{!! Form::hidden('microfund_manager_id', $microFundApplication->id, ['class' => 'form-control']) !!}
-    {!! Form::hidden('center_id', $microFundApplication->microfinance_center?$microFundApplication->microfinance_center:0, ['class' => 'form-control']) !!}
+{!! Form::hidden('microfund_manager_id', $microFundApplication?$microFundApplication->id:null, ['class' => 'form-control']) !!}
+    {!! Form::hidden('center_id', $microFundApplication?$microFundApplication->microfinance_center:null, ['class' => 'form-control']) !!}
 
 <hr>
 <!-- Submit Field -->

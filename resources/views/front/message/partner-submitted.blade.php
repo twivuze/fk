@@ -1,4 +1,8 @@
-@extends('front.layouts.app')
+@extends('front.layouts.app',
+['title'=>'Partner Application Form Submission',
+'description'=>'All Trust Consult is pleased to have you  as a potential partner'
+]
+)
 
 @section('content')
 

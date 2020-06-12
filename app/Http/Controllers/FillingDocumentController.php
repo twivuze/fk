@@ -68,6 +68,16 @@ class FillingDocumentController extends AppBaseController
         $fillings = \App\Models\FillingCategory::find($request->filling_category_id);
         $input['filling_category']=$fillings->name;
 
+        if(\Auth::check() && \Auth::user()->type=='Enterprise'){ 
+            $enterprise= \App\Models\LoanApplication::where('user_id',\Auth::id())->orderBy('id','DESC')->first();
+        $input['enterprise_id']= $enterprise->id;
+        $input['published']=0;
+        
+        }else{
+            $input['enterprise_id']=null;
+        }
+        
+
         $fillingDocument = $this->fillingDocumentRepository->create($input);
 
         Flash::success('Filling Document saved successfully.');

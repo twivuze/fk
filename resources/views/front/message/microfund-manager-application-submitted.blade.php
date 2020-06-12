@@ -1,4 +1,8 @@
-@extends('front.layouts.app')
+@extends('front.layouts.app',
+['title'=>'MicroFund Manager Form Submission',
+'description'=>'Thank you for applying as a MicroFund manager at All Trust Consult.'
+]
+)
 
 @section('content')
 

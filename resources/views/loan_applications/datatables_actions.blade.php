@@ -4,17 +4,17 @@
 if($enterprise){
 ?>
 
-<a href="internal-funds/{{$id}}" onclick="centeredPopup(this.href,'myWindow','900','600','yes');return false" class='btn btn-default btn-xs'>
-        <i class="glyphicon glyphicon-plus"></i> Internal Funds
+<a href="/enterprise-details/{{$id}}" onclick="centeredPopup(this.href,'myWindow','900','600','yes');return false" class='btn btn-default btn-xs'>
+        <i class="fa fa-money"></i> 
     </a>
 <?php } ?>
     <a href="{{ route('loanApplications.show', $id) }}" class='btn btn-default btn-xs'>
-        <i class="glyphicon glyphicon-eye-open"></i> View Details
+        <i class="glyphicon glyphicon-eye-open"></i>
     </a>
     <a href="{{ route('loanApplications.edit', $id) }}" class='btn btn-default btn-xs'>
-        <i class="glyphicon glyphicon-edit"></i> Edit 
+        <i class="glyphicon glyphicon-edit"></i> 
     </a>
-    {!! Form::button('<i class="glyphicon glyphicon-trash"></i> Delete', [
+    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
         'type' => 'submit',
         'class' => 'btn btn-danger btn-xs',
         'onclick' => "return confirm('Are you sure?')"

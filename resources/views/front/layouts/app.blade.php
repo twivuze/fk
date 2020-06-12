@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="generator" content="Ganza respcie">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel="shortcut icon" href="/assets/images/a-1-122x30.png" type="image/x-icon">
-    <meta name="description" content="">
+    <link rel="shortcut icon" href="{{isset($icon)?$icon:'/assets/images/a-1-122x30.png'}}" type="image/x-icon">
+
+    <title>{{isset($title)?$title:'All Trust Consult'}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{isset($description)?$description:'All Trust Consult'}}" />
+    <meta name="author" content="Ganza Respice" />
 
 
-    <title>Home</title>
     <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="/assets/facebook-plugin/style.css">
@@ -26,6 +29,8 @@
   <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
 
  
+  <?php $vistor=new App\Models\Vistors; 
+  $vistor->saveVistor(isset($title)?$title:'All Trust Consult') ?>
 
 
     @yield('css')
@@ -256,7 +261,7 @@
         <div class="row row-copirayt">
             <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-4">
                Powered by <br>
-               <img src="/images/guza.png" alt="" style="width:250px" srcset="">
+               <img src="/images/guza.png" alt="" style="width:150px;height:100px" srcset="">
             </p>
         </div>
     </div>

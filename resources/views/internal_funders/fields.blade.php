@@ -2,7 +2,8 @@
 
 <div class="form-group col-sm-12">
     {!! Form::label('type', 'Type:') !!}
-    {!! Form::select('type', ['' => '','Loan' => 'Loan', 'Donation' => 'Donation'],  old('type'), ['class' => 'form-control',
+    {!! Form::select('type', ['' => '','Loan' => 'Loan', 'Donation' => 'Donation'], 
+     old('type'), ['class' => 'form-control',
     "onchange"=>"fundType(this.value);"]) !!}
 </div>
 
@@ -13,7 +14,7 @@
      "onkeyup"=>"findEnterprise(this.value,'InternalFunder');",'id'=>'current_code']) !!}
 </div>
 
-<div style="margin-left:50px" id="change_response_code"></div>
+
 
 <div class="InternalFunder" style="display: none;">
 <div class="remainfunds"></div>

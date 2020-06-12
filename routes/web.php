@@ -190,6 +190,10 @@ Route::get('/lended-completed/{id}', function ($id) {
 Route::get('/donation-completed/{id}', function ($id) {
     return view('front.message.donation-completed')->with('id',$id);
 });
+
+Route::get('/enterprise-details/{id}', function ($id) {
+    return view('layouts.enterprise-details')->with('id',$id);
+});
 //
 //trainings-workshops-submitted
 Route::get('/trainings-workshops-submitted', function () {
@@ -307,3 +311,9 @@ Route::resource('statements', 'StatementController');
 Route::resource('internalFunders', 'InternalFunderController');
 
 Route::resource('currencies', 'CurrencyController');
+
+Route::resource('transfers', 'TransferController');
+
+Route::resource('periods', 'PeriodController');
+
+Route::resource('vistors', 'VistorsController');

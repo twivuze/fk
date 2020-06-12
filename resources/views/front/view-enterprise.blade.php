@@ -1,10 +1,15 @@
-@extends('front.layouts.app')
+<?php $enterprise= \App\Models\LoanApplication::where('id',$id)->where('approved',1)->orderBy('id','DESC')->first();
+?>
+
+@extends('front.layouts.app',
+['title'=>$enterprise->business_name.' Enterprise',
+'description'=>$enterprise->short_summary,
+]
+)
 
 @section('content')
 
-<?php $enterprise= \App\Models\LoanApplication::where('id',$id)->where('approved',1)->orderBy('id','DESC')->first();
 
-?>
 
 <?php
 if($enterprise){
@@ -57,7 +62,7 @@ $donate=intval($amountDonate)+intval($amountDonateInternalFunds);
             <div class="card p-3 col-sm-4">
                 <div class="profile-img">
                     <img class="rounded-circle" style="width:210px;height:200px"
-                        src="{{$enterprise->upload_passport_photo?'/thumbnail/'.$enterprise->upload_passport_photo:'/images/user.jpg' }}"
+                        src="{{$enterprise->upload_passport_photo?'/thumbnail/'.$enterprise->upload_passport_photo:'/images/male.jpg' }}"
                         alt="" />
 
                 </div>
