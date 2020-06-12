@@ -1,6 +1,6 @@
 @extends('front.layouts.app',
 ['title'=>'Fillings',
-'description'=>All Fillings'
+'description'=>'All Fillings'
 ]
 )
 
