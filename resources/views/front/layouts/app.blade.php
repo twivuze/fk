@@ -11,7 +11,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{isset($description)?$description:'All Trust Consult'}}" />
     <meta name="author" content="Ganza Respice" />
+    <meta property="og:image:width" content="1365">
+    <meta property="og:image:height" content="406">
+    <meta property="article:section" content="html">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
 
+    <meta property="og:title" content="{{isset($title)?$title:'All Trust Consult'}}">
+    <meta property="og:image" content="{{isset($icon)?$icon:'/assets/images/a-1-122x30.png'}}">
+    <meta property="og:description" content="{{isset($description)?$description:'All Trust Consult'}}">
+
+    <meta name="twitter:description" content="{{isset($description)?$description:'All Trust Consult'}}">
+    <meta name="twitter:title" content="{{isset($title)?$title:'All Trust Consult'}}">
+    <meta name="twitter:image" content="{{isset($icon)?$icon:'/assets/images/a-1-122x30.png'}}">
+    <meta name="twitter:card" content="{{isset($description)?$description:'All Trust Consult'}}">
 
     <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons2/mobirise2.css">
