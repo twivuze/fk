@@ -10,6 +10,8 @@ use App\Repositories\TransferRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use App\Models\Repayment;
+use App\User;
 
 class TransferController extends AppBaseController
 {
@@ -53,8 +55,44 @@ class TransferController extends AppBaseController
     {
         $input = $request->all();
 
-        $transfer = $this->transferRepository->create($input);
+        if(!$input['grace_period_to']){
+            $input['grace_period_to']=$input['grace_period_from'];
+        }
+        if(!$input['reminder_days']){
+            $input['reminder_days']=1;
+        }
+        if(!$input['rate']){
+            $input['rate']=1;
+        }
+       
 
+        $transfer = $this->transferRepository->create($input);
+        
+        if($transfer->type=='Loan'){
+        $user=new User();
+        $repay_code=\Illuminate\Support\Str::random(8);
+        $resp=$user->interestProcessing($transfer);
+      
+        $enterprise= \App\Models\LoanApplication::find($transfer->enterprise_id);
+        $repayment= new Repayment([
+            'loan_id'=>$transfer->id,
+            'enterprise_id'=>$transfer->enterprise_id,
+            'repay_code'=>$repay_code,
+            'currency'=>$transfer->currency,
+            'repayer'=>$transfer->enterprise,
+            'repay_date'=>$input['grace_period_to'],
+            'next_repay_date'=>$input['grace_period_to'],
+            'interest_amount'=>$resp['totalInstalment'],
+            'amount_without_interst'=>$resp['amountToPay'],
+            'total_amount'=>$resp['amountToPay']+$resp['totalInstalment'],
+            'repay_reminder_day'=>$transfer->reminder_days,
+            'center_id'=>$enterprise?$enterprise->microfinance_center?$enterprise->microfinance_center:0:0,
+            'did_repay'=>false,
+            'total_loan_remain_amount'=>$resp['totalRepayment'],
+        ]);
+        $repayment->save();
+        }
+     
         Flash::success('Transfer saved successfully.');
 
         return redirect(route('transfers.index'));

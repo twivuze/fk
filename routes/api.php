@@ -98,3 +98,5 @@ Route::resource('transfers', 'TransferAPIController');
 Route::resource('periods', 'PeriodAPIController');
 
 Route::resource('vistors', 'VistorsAPIController');
+
+Route::resource('repayments', 'RepaymentAPIController');

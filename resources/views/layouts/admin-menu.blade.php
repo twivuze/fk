@@ -152,14 +152,14 @@
 <ul class="dropdown-menu dropdown-menu-right" data-widget="tree">
 
 <li class="{{ Request::is('lenderInvoices*') ? 'active' : '' }}">
-    <a href="{{ route('lenderInvoices.index') }}"><i class="fa fa-creye-card"></i><span>Lends</span></a>
+    <a href="{{ route('lenderInvoices.index') }}"><i class="fa fa-creye-card"></i><span>Loans</span></a>
 </li>
 <li class="{{ Request::is('donationInvoices*') ? 'active' : '' }}">
     <a href="{{ route('donationInvoices.index') }}"><i class="fa fa-creye-card"></i><span>Donations</span></a>
 </li>
 
 <li class="{{ Request::is('internalFunders*') ? 'active' : '' }}">
-    <a href="{{ route('internalFunders.index') }}"><i class="fa fa-creye-card"></i><span> Internal Funders</span></a>
+    <a href="{{ route('internalFunders.index') }}"><i class="fa fa-creye-card"></i><span> Internal Funds</span></a>
 </li>
 
 </ul>
@@ -167,8 +167,13 @@
 
 </li>
 <li class="{{ Request::is('transfers*') ? 'active' : '' }}">
-    <a href="{{ route('transfers.index') }}"><i class="fa fa-money"></i><span>Money Transfered</span></a>
+    <a href="{{ route('transfers.index') }}"><i class="fa fa-money"></i><span>Funds Transfer</span></a>
 </li>
+
+<li class="{{ Request::is('repayments*') ? 'active' : '' }}">
+    <a href="{{ route('repayments.index') }}"><i class="fa fa-money"></i><span>Repayments</span></a>
+</li>
+
 <li class="{{ Request::is('periods*') ? 'active' : '' }}">
     <a href="{{ route('periods.index') }}"><i class="fa fa-eye"></i><span>Periods</span></a>
 </li>

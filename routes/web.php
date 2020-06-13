@@ -317,3 +317,5 @@ Route::resource('transfers', 'TransferController');
 Route::resource('periods', 'PeriodController');
 
 Route::resource('vistors', 'VistorsController');
+
+Route::resource('repayments', 'RepaymentController');

@@ -19,3 +19,5 @@
 <?php if(Auth::check() && Auth::user()->type=='Donor'){ ?>
     @include('layouts.donor-menu')
 <?php }?>
+
+

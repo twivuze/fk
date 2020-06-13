@@ -62,3 +62,6 @@
 <li class="{{ Request::is('transfers*') ? 'active' : '' }}">
     <a href="{{ route('transfers.index') }}"><i class="fa fa-money"></i><span>Money Transfered</span></a>
 </li>
+<li class="{{ Request::is('repayments*') ? 'active' : '' }}">
+    <a href="{{ route('repayments.index') }}"><i class="fa fa-money"></i><span>Repayments</span></a>
+</li>

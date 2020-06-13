@@ -3,11 +3,27 @@
               
                     $amountLend = \App\Models\LenderInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
                     $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
+                    $pendingRepayments=\App\Models\Repayment::where('enterprise_id',$enterprise->id)->
+                    where('status','current')->get();
+
+                    $outstandingRepayments=\App\Models\Repayment::where('enterprise_id',$enterprise->id)->
+                    where('status','current')->get();
 
                     $loanTransfered = \App\Models\Transfer::where('type','Loan')
-                    ->where('enterprise_id',$enterprise->id)->sum('amount');
+                    ->where('enterprise_id',$enterprise->id);
+                    $transfered=$loanTransfered->sum('amount');
+                    $user=new \App\User();
+                    $sub_total=array();
+                    $totalRecover=array();
+                        foreach($loanTransfered->get() as $transfer){
+                            $resp=$user->interestProcessing($transfer);
+                            array_push($sub_total, $resp['totalRepayment']);
+                            array_push($totalRecover, $resp['totalRecover'] );
+                        }
+
                     $donationsTransfered = \App\Models\Transfer::where('type','Donations')
                     ->where('enterprise_id',$enterprise->id)->sum('amount');
+
 
                     $amountLoanInternalFunds = \App\Models\InternalFunder::where("type",'Loan')
                     ->where('enterprise_id',$enterprise->id)->sum('fund');
@@ -18,14 +34,17 @@
                     $loan=intval($amountLend)+intval($amountLoanInternalFunds);
 
                     $donate=intval($amountDonate)+intval($amountDonateInternalFunds);
+
+                    $amountRepayment= \App\Models\Repayment::where('enterprise_id',$enterprise->id)
+                   -> where('status','successful')->sum('total_loan_remain_amount');
 ?>
 <br>
-<div class="print" style="margin-left:15px" class="float-right mt-4 ml-5" id="print-{{$enterprise->id}}">
+<!-- <div class="print" style="margin-left:15px" class="float-right mt-4 ml-5" id="print-{{$enterprise->id}}">
 							<a href="#" class="btn btn-info float-right"  onclick="event.preventDefault(); printThis(<?php echo $enterprise->id; ?>);">
 								<i class="fa fa-print"></i>
 								Print
 							</a>
-						</div>
+						</div> -->
 <section class="content-header" id="receipt-content-{{$enterprise->id}}">
 
     <div class="row">
@@ -57,9 +76,10 @@
                     Loans Transfered
                     <hr>
                     <h2 class="text-center">
-                    {{ number_format(intval($loanTransfered), 2) }}
+                    {{ number_format(doubleval(array_sum($sub_total)), 2) }}
                     </h2>
-
+                    <small style="float:right;font-weight:bold">{{ number_format(doubleval(array_sum($totalRecover)), 2) }} interset rate of {{ number_format(doubleval($transfered), 2) }}
+                    </small>
                 </div>
             </div>
         </div>
@@ -71,9 +91,10 @@
                     Repayments
                     <hr>
                     <h2 class="text-center">
-                    {{ number_format(intval(0), 2) }}
+                    {{ number_format(intval($amountRepayment), 2) }}
                     </h2>
-
+                    <small style="float:right;font-weight:bold">{{ number_format(doubleval(array_sum($totalRecover)), 2) }} interset rate of {{ number_format(doubleval($transfered), 2) }}
+                    </small>
                 </div>
             </div>
         </div>
@@ -84,9 +105,10 @@
                      Loans Balance Due
                     <hr>
                     <h2 class="text-center">
-                    {{ number_format(intval($loanTransfered-0), 2) }}
+                    {{ number_format(intval(doubleval(array_sum($sub_total))-intval($amountRepayment)), 2) }}
                     </h2>
-
+                    <small style="float:right;font-weight:bold">{{ number_format(doubleval(array_sum($totalRecover)), 2) }} interset rate of {{ number_format(doubleval($transfered), 2) }}
+                    </small>
                 </div>
             </div>
         </div>
@@ -172,9 +194,83 @@
                         </table>
 
 
+                        <section class="content-header">
+       
+       <br>
+        <h1 class="pull-right">
+           <!-- <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('centers.create') }}">Add New</a> -->
+        </h1>
+    </section>
+    <br>
+    <br>
+    <div class="content">
+        <div class="clearfix"></div>
+
+       
+
+        <div id="exTab1" class="">
+        <ul class="nav nav-pills">
+            <li class="active">
+                <a href="#1a"  data-toggle="tab">Pending Repayments</a>
+            </li>
+            <li><a href="#2a" data-toggle="tab">Outstanding Repayments</a>
+            </li>
+            <li><a href="#3a" data-toggle="tab">Loan(S) Transfer</a>
+            </li>
+          
+
+        </ul>
+
+        <div class="tab-content clearfix">
+            <div class="tab-pane active" id="1a">
+                <div class="box  box-warning">
+                    <div class="box-body">
+                    @include('analyitcs.repay',['repayments'=>$pendingRepayments])  
+                    </div>
+                </div>
+                <div class="text-center">
+
+                  
+
+                </div>
+            </div>
+            <div class="tab-pane" id="2a">
+                <div class="box box-danger">
+                    <div class="box-body">
+                    @include('analyitcs.repay',['repayments'=>$outstandingRepayments])   
+                    </div>
+
+                    <div class="text-center">
+                        
+                     </div>
+
+                </div>
+            </div>
+            <div class="tab-pane" id="3a">
+                <div class="box box-primary">
+                    <div class="box-body">
+                    @include('analyitcs.loan-transfer',['transfers'=>$loanTransfered->get()])  
+                    </div>
+
+                    <div class="text-center">
+                        
+                     </div>
+
+                </div>
+            </div>
+
+         
+        </div>
+    </div>
+
+    </div>
+
+
 
 
 </section>
+
+
 
 <script type="text/javascript">
 			var printThis = function(id){

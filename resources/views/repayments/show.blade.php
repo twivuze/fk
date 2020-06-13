@@ -3,15 +3,15 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Loan Transaction
+            Repayment
         </h1>
     </section>
     <div class="content">
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
-                    @include('lender_invoices.show_fields')
-                    <a href="{{ route('lenderInvoices.index') }}" class="btn btn-default">Back</a>
+                    @include('repayments.show_fields')
+                    <a href="{{ route('repayments.index') }}" class="btn btn-default">Back</a>
                 </div>
             </div>
         </div>

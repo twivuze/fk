@@ -362,7 +362,8 @@ function findEnterprise(value,div) {
         let current_code = value;
         
         $("#change_response_code").html("Wait while processing ...");
-	
+        //remainfunds
+        $(".remainfunds").html("");
 	    if(current_code === ''){
 	        $("#change_response_code").html("<span style = 'color: red'>Current Code is required</span>");
 	        return;

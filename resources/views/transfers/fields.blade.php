@@ -16,7 +16,7 @@ $periods=\App\Models\Period::orderBy('id','DESC')->get();
 <div class="form-group showBox" style="display:{{!isset($transfer)?'none':'block'}};">
     {!! Form::label('code', 'Enter Enterprise Code:') !!}
     {!! Form::text('code', null, ['class' => 'form-control',
-        "onchange"=>"viewEnterprise(this.value,'Transfer');",
+        "onpaste"=>"viewEnterprise(this.value,'Transfer');",
      "onkeyup"=>"viewEnterprise(this.value,'Transfer');",
     'id'=>'current_code']) !!}
 </div>
@@ -135,14 +135,14 @@ $periods=\App\Models\Period::orderBy('id','DESC')->get();
 
 <!-- Reminder Days Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('reminder_days', 'Reminder Days:') !!}
-    {!! Form::number('reminder_days', null, ['class' => 'form-control']) !!}
+    {!! Form::label('reminder_days', 'Reminder Day:') !!}
+    {!! Form::number('reminder_days', 1, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Rate Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('rate', 'Rate:') !!}
-    {!! Form::number('rate', null, ['class' => 'form-control']) !!}
+   %{!! Form::number('rate', 1, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Enterprise Id Field -->
