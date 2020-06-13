@@ -29,7 +29,7 @@ class RepaymentDataTable extends DataTable
      */
     public function query(Repayment $model)
     {
-        return $model->newQuery();
+        return $model->whereIn('status',['pending','successful','outstanding']);
     }
 
     /**

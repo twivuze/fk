@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login :: All Trust Consult</title>
+    <title>Repayment Invoice</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -32,6 +32,12 @@
     <![endif]-->
 
 </head>
+<?php 
+
+ $repayment = App\Models\Repayment::where('repay_code',$code)
+->where('status','successful')->where('did_repay',true)->first();
+$repaymentExist = App\Models\Repayment::where('repay_code',$code)->first();
+?>
 
 <body class="hold-transition login-page">
     <section class="mbr-section content4 cid-rYUfuivAPG mt-5" id="content4-2u">
@@ -41,56 +47,72 @@
                 <div class="title col-12 col-md-6">
                     <div class="login-box container">
                         <div class="login-logo text-center">
-                        <a href="/">
-                            <img src="/assets/images/a-122x30.png" alt="All Trust Consult" title="" style="width:200px;height:auto">
-                        </a>
+                            <a href="/">
+                                <img src="/assets/images/a-122x30.png" alt="All Trust Consult" title=""
+                                    style="width:200px;height:auto">
+                            </a>
                         </div>
 
                         <!-- /.login-logo -->
+                        <?php 
+                        if($repaymentExist){
+                        if(!$repayment){ ?>
                         <div class="login-box-body">
-                        <hr>
-                            <p class="login-box-msg">Sign in to start your session</p>
+                            <hr>
+                            <p class="login-box-msg">
+                            <h1>Enterprise: {{ $repaymentExist->repayer }}</h1>
+                            <h2>Repayment Invoice of {{ $repaymentExist->currency }} {{ $repaymentExist->total_amount }}</h2></p>
+                            <p class="login-box-msg"></p>
 
-                            <form method="post" action="{{ url('/login') }}">
+                            <form method="post" action="{{ url('/repayments') }}">
                                 @csrf
+                                <input type="hidden" name="id"  value="{{ $repaymentExist->id }}">
+                                <input type="hidden" name="total_amount"  value="{{ $repaymentExist->total_amount }}">
+                           
 
-                                <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}"
-                                        placeholder="Email">
+                                <div class="form-group has-feedback {{ $errors->has('amount') ? ' has-error' : '' }}">
+                                    <input type="text" class="form-control" name="amount" disabled="true" value="{{ $repaymentExist->total_amount }}"
+                                        placeholder="Amount">
                                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                                    @if ($errors->has('email'))
+                                    @if ($errors->has('amount'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('amount') }}</strong>
                                     </span>
                                     @endif
                                 </div>
 
-                                <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
-                                    <input type="password" class="form-control" placeholder="Password" name="password">
-                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                                    @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                    @endif
-                                    <input type="hidden" name="lendEnterprise"
-                                        value="{{\Request::get('lendEnterprise')}}">
-                                    <input type="hidden" name="donateEnterprise"
-                                        value="{{\Request::get('donateEnterprise')}}">
-                                </div>
+
                                 <div class="row">
-                               
+
                                     <div class="form-group col-12">
-                                        <button type="submit" style="margin-left:-1px" class="mr-3 btn btn-primary btn-block btn-flat">Sign In</button>
+                                        <button type="submit" style="margin-left:-1px"
+                                            class="mr-3 btn btn-primary btn-block btn-flat">Repay</button>
                                     </div>
                                     <!-- /.col -->
                                 </div>
                             </form>
 
-                            <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-                            <!-- <a href="{{ url('/register') }}" class="text-center">Register a new membership</a> -->
 
                         </div>
+                        <?php }else{ ?>
+                           
+                    <div class="alert alert-info alert-dismissible fade show mt-5 ml-5 text-center title"
+                        role="alert">
+                        <p>
+                        Invoice Repaid
+                        </p>
+                    </div>
+                    
+                        <?php }
+                        }else{
+                        ?>
+  <div class="alert alert-warning alert-dismissible fade show mt-5 ml-5 text-center title"
+                        role="alert">
+                        <p>
+                        Invoice Not Found
+                        </p>
+                    </div>
+                        <?php } ?>
                         <!-- /.login-box-body -->
                     </div>
 

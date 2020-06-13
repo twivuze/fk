@@ -41,6 +41,10 @@ Route::get('/fillings/{id}/documents', function ($id) {
     return view('front.documents')->with('id',$id);
 });
 
+Route::get('/repayment/{code}', function ($code) {
+    return view('repayment')->with('code',$code);
+});
+
 Route::group(['prefix' => 'apply'], function(){
 
     Route::get('/loan', function () {
@@ -185,6 +189,10 @@ Route::get('/conference-submitted', function () {
 
 Route::get('/lended-completed/{id}', function ($id) {
     return view('front.message.lended-completed')->with('id',$id);
+});
+
+Route::get('/repayment-completed/{id}', function ($id) {
+    return view('front.message.repayment-completed')->with('id',$id);
 });
 
 Route::get('/donation-completed/{id}', function ($id) {

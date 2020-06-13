@@ -48,7 +48,8 @@ class Repayment extends Model
         'repay_reminder_day',
         'center_id',
         'did_repay',
-        'total_loan_remain_amount'
+        'total_loan_remain_amount',
+        'reminder_date'
     ];
 
     /**
@@ -66,6 +67,7 @@ class Repayment extends Model
         'repayer' => 'string',
         'repay_date' => 'date',
         'next_repay_date' => 'date',
+        'reminder_date' => 'date',
         'interest_amount' => 'float',
         'amount_without_interst' => 'float',
         'total_amount' => 'float',
@@ -80,6 +82,10 @@ class Repayment extends Model
         return date('Y-m-d', strtotime($value));
     }
     public function getNextRepayDateAttribute($value)
+    {
+        return date('Y-m-d', strtotime($value));
+    }
+    public function getReminderDateAttribute($value)
     {
         return date('Y-m-d', strtotime($value));
     }

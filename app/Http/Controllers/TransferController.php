@@ -12,6 +12,7 @@ use App\Http\Controllers\AppBaseController;
 use Response;
 use App\Models\Repayment;
 use App\User;
+use Carbon\Carbon;
 
 class TransferController extends AppBaseController
 {
@@ -55,16 +56,31 @@ class TransferController extends AppBaseController
     {
         $input = $request->all();
 
+    
         if(!$input['grace_period_to']){
             $input['grace_period_to']=$input['grace_period_from'];
+        }else{
+
+            $date = Carbon::createFromFormat('Y-m-d', $input['grace_period_to']);
+            $date->day(Carbon::now()->day);
+
+            if (Carbon::now()->diffInDays($date, false) > 0) {
+                $input['grace_period_to'] = $date->format('Y-m-d');
+            }
         }
+
+
         if(!$input['reminder_days']){
             $input['reminder_days']=1;
         }
+
         if(!$input['rate']){
             $input['rate']=1;
         }
-       
+        $input['rate']=$input['rate']==0?1:$input['rate'];
+        $input['reminder_days']=$input['reminder_days']==0?1:$input['reminder_days'];
+     
+       \Log::info($input);
 
         $transfer = $this->transferRepository->create($input);
         
@@ -72,16 +88,31 @@ class TransferController extends AppBaseController
         $user=new User();
         $repay_code=\Illuminate\Support\Str::random(8);
         $resp=$user->interestProcessing($transfer);
-      
+
+    
+ 
         $enterprise= \App\Models\LoanApplication::find($transfer->enterprise_id);
+
+        if($transfer->instalmentPeriod && $transfer->instalmentPeriod->category=='day'){
+            $repay_date=$user->getNextDay($input['grace_period_to'],$transfer->instalmentPeriod->period);
+        }
+        if($transfer->instalmentPeriod && $transfer->instalmentPeriod->category=='month'){
+            $repay_date=$user->getNextMonth($input['grace_period_to'],$transfer->instalmentPeriod->period);
+        }
+
+        if($transfer->instalmentPeriod && $transfer->instalmentPeriod->category=='year'){
+            $repay_date=$user->getNextYear($input['grace_period_to'],$transfer->instalmentPeriod->period);
+        }
+
         $repayment= new Repayment([
+            'reminder_date'=>$user->getLastDay($repay_date),
             'loan_id'=>$transfer->id,
             'enterprise_id'=>$transfer->enterprise_id,
             'repay_code'=>$repay_code,
             'currency'=>$transfer->currency,
             'repayer'=>$transfer->enterprise,
-            'repay_date'=>$input['grace_period_to'],
-            'next_repay_date'=>$input['grace_period_to'],
+            'repay_date'=>$repay_date,
+            'next_repay_date'=>$repay_date,
             'interest_amount'=>$resp['totalInstalment'],
             'amount_without_interst'=>$resp['amountToPay'],
             'total_amount'=>$resp['amountToPay']+$resp['totalInstalment'],

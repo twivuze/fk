@@ -4,10 +4,10 @@
                     $amountLend = \App\Models\LenderInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
                     $amountDonate = \App\Models\DonationInvoice::where('enterprise_id',$enterprise->id)->sum('amount');
                     $pendingRepayments=\App\Models\Repayment::where('enterprise_id',$enterprise->id)->
-                    where('status','current')->get();
+                    where('status','pending')->get();
 
                     $outstandingRepayments=\App\Models\Repayment::where('enterprise_id',$enterprise->id)->
-                    where('status','current')->get();
+                    where('status','outstanding')->get();
 
                     $loanTransfered = \App\Models\Transfer::where('type','Loan')
                     ->where('enterprise_id',$enterprise->id);
@@ -36,7 +36,7 @@
                     $donate=intval($amountDonate)+intval($amountDonateInternalFunds);
 
                     $amountRepayment= \App\Models\Repayment::where('enterprise_id',$enterprise->id)
-                   -> where('status','successful')->sum('total_loan_remain_amount');
+                   ->where('status','successful')->sum('total_amount');
 ?>
 <br>
 <!-- <div class="print" style="margin-left:15px" class="float-right mt-4 ml-5" id="print-{{$enterprise->id}}">
@@ -45,9 +45,33 @@
 								Print
 							</a>
 						</div> -->
+                        <?php if(count($pendingRepayments) > 0){ ?>
+
+                        
+                        <div class="alert alert-warning mt-5 ml-5 text-center title"
+                        role="alert">
+                    
+                        {{count($pendingRepayments)}} Pending of Repayment Invoice(s).
+                    </div>
+                        <?php } ?>
+
+                        <?php if(count($outstandingRepayments) > 0){ ?>
+
+                        
+<div class="alert alert-danger mt-5 ml-5 text-center title"
+role="alert">
+
+{{count($outstandingRepayments)}} Outstanding of Repayment Invoice(s).
+</div>
+<?php } ?>
 <section class="content-header" id="receipt-content-{{$enterprise->id}}">
 
     <div class="row">
+
+    <div class="col-sm-12">
+   
+        </div>
+
     <div class="col-sm-12">
             <div class="box box-white">
                 <div class="box-body">
