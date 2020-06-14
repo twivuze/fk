@@ -122,7 +122,7 @@ $country = \App\Models\Vistors::select('country', \DB::raw('MAX(country) as coun
         <div class="col-sm-3">
             <div class="box box-success">
                 <div class="box-body">
-                    Total Donations Transfered
+                    Total Donations Received
                     <hr>
                     <h2 class="text-center">
                         {{ number_format(intval($donationsTransfered), 2) }}
@@ -136,7 +136,7 @@ $country = \App\Models\Vistors::select('country', \DB::raw('MAX(country) as coun
         <div class="col-sm-3">
             <div class="box box-primary">
                 <div class="box-body">
-                    Loans Transfered
+                    Loans Received
                     <hr>
                     <h2 class="text-center">
                         {{ number_format(doubleval(array_sum($sub_total)), 2) }}

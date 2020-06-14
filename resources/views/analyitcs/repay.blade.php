@@ -8,8 +8,8 @@
             <th>Re-paid Date</th> 
             <th>Rate</th>
             <th>Paid Amount</th>
-            <th colspan="2">Repayment Amount</th>
-            <th colspan="2">Interst </th>
+            <th colspan="2">Repayments</th>
+            <th colspan="2">Interst Rate</th>
          </tr>
          <tr>
             <th></th>
@@ -18,11 +18,12 @@
             <th></th>
             <th></th>
            
-            <th>Instalment </th>
-            <th>Recover Period </th>
-            
-            <th>Instalment </th>
-            <th>Recover Period </th>
+           
+            <th>Repayment Per Instalment </th>
+             <th>Total Repayments</th>
+
+            <th>Instalment Rate</th>
+            <th>Total Interst Rate</th>
            
          </tr>
 

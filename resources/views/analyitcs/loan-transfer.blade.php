@@ -4,7 +4,7 @@
         <tr>
             <th>Code</th>
             <th>Enterprise</th>
-            <th>Interst Rate</th>
+            <th>Rate</th>
             <th>Loans</th>
             <th colspan="2">Repayments</th>
             <th colspan="2">Interst Rate</th>
@@ -16,10 +16,10 @@
             <th></th>
            
             <th>Repayment Per Instalment </th>
-            <th>Total</th>
+             <th>Total Repayments</th>
 
             <th>Instalment Rate</th>
-            <th>TOT. Repayments</th>
+            <th>Total Interst Rate</th>
            
          </tr>
 

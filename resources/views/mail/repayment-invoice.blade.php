@@ -494,10 +494,10 @@ section {
                                       <tr>
                                           
                                       <th>Repayment Per Instalment </th>
-                                      <th>Total</th>
+                                      <th>Total Repayments</th>
 
                                       <th>Instalment Rate</th>
-                                      <th>TOT. Repayments</th>
+                                      <th>Total Interst Rate</th>
                                           
                                         </tr>
                                       </thead>
