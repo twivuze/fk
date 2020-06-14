@@ -112,7 +112,8 @@ class LoanApplication extends Model
         'fundraising_message',
         'budget',
         'views',
-        'code'
+        'code',
+        'gender'
     ];
 
     /**
@@ -160,7 +161,8 @@ class LoanApplication extends Model
         'category' => 'string',
         'business_model_file'=>'string',
         'views'=> 'integer',
-        'code'=>'string'
+        'code'=>'string',
+        'gender'=>'string',
     ];
 
     /**
@@ -174,6 +176,7 @@ class LoanApplication extends Model
         'email' =>  ['unique:users'],
         'address' => 'required',
         'country' => 'required',
+        'gender' => 'required',
         'region' => 'required',
         'national_identity_number' => 'required',
         'contact' => 'required',

@@ -53,6 +53,16 @@ $currencies=\App\Models\Currency::orderBy('id','DESC')->get();
     @endif
 </div>
 
+<div class="form-group col-sm-12 {{ $errors->has('gender') ? ' has-error' : '' }}">
+    {!! Form::label('gender', 'Gender') !!}
+    {!! Form::select('gender', ['' => 'Choose Gender', 'Male' => 'Female'], old('gender'), ['class' => 'form-control']) !!}
+    @if ($errors->has('gender'))
+    <span class="help-block">
+        <strong>{{ $errors->first('gender') }}</strong>
+    </span>
+    @endif
+</div>
+
 
 <!-- Address Field -->
 <div class="form-group col-sm-12 {{ $errors->has('address') ? ' has-error' : '' }}">
