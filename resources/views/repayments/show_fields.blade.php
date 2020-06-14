@@ -60,7 +60,7 @@
 
 <!-- Amount Without Interst Field -->
 <div class="form-group">
-    {!! Form::label('amount_without_interst', 'Amount Without Interst:') !!}
+    {!! Form::label('amount_without_interst', 'Amount Without Interest:') !!}
     <p>{{ $repayment->amount_without_interst }}</p>
 </div>
 

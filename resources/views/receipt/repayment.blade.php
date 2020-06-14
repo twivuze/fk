@@ -138,9 +138,9 @@
 										<table class="table" id="links-table">
                                         <thead>
                                         <tr>
-										<th>Interst Rate</th>
+										<th>Interest Rate</th>
 										<th colspan="2">Repayments</th>
-           								 <th colspan="2">Interst Rate</th>
+           								 <th colspan="2">Interest Rate</th>
                                       </tr>
                                       <tr>
                                             

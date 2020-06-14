@@ -7,7 +7,7 @@
             <th>Rate</th>
             <th>Loans</th>
             <th colspan="2">Repayments</th>
-            <th colspan="2">Interst Rate</th>
+            <th colspan="2">Interest Rate</th>
          </tr>
          <tr>
             <th></th>
@@ -19,7 +19,7 @@
              <th>Total Repayments</th>
 
             <th>Instalment Rate</th>
-            <th>Total Interst Rate</th>
+            <th>Total Interest Rate</th>
            
          </tr>
 

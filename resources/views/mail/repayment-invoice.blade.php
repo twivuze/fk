@@ -488,16 +488,16 @@ section {
                                   <table class="table" id="links-table">
                                         <thead>
                                         <tr>
-                                        <th colspan="2">Repayments</th>
-                                         <th colspan="2">Interst Rate</th>
+                                        <th colspan="2">Repayment</th>
+                                         <th colspan="2">Interest Rate</th>
                                       </tr>
                                       <tr>
                                           
                                       <th>Repayment Per Instalment </th>
-                                      <th>Total Repayments</th>
+                                      <th>Total Repayment</th>
 
                                       <th>Instalment Rate</th>
-                                      <th>Total Interst Rate</th>
+                                      <th>Total Interest Rate</th>
                                           
                                         </tr>
                                       </thead>
