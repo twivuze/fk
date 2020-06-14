@@ -5,10 +5,10 @@
         <th>Action</th>
             <th>Code</th>
             <th>Enterprise</th>
-            <th>Re-paid Date</th> 
+            <th>Due Date</th> 
             <th>Rate</th>
-            <th>Due Re-Paid</th>
-            <th colspan="2">Repayments</th>
+            <th>Due Re-Payment</th>
+            <th colspan="2">Repayment</th>
             <th colspan="2">Interst Rate</th>
          </tr>
          <tr>
@@ -21,7 +21,7 @@
            
            
             <th>Repayment Per Instalment </th>
-             <th>Total Repayments</th>
+             <th>Total Repayment</th>
 
             <th>Instalment Rate</th>
             <th>Total Interst Rate</th>
