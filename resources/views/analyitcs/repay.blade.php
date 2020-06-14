@@ -7,12 +7,11 @@
             <th>Enterprise</th>
             <th>Re-paid Date</th> 
             <th>Rate</th>
-            <th>Paid Amount</th>
+            <th>Due Re-Paid</th>
             <th colspan="2">Repayments</th>
             <th colspan="2">Interst Rate</th>
          </tr>
          <tr>
-            <th></th>
             <th></th>
             <th></th>
             <th></th>
