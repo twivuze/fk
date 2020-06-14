@@ -55,7 +55,7 @@ $currencies=\App\Models\Currency::orderBy('id','DESC')->get();
 
 <div class="form-group col-sm-12 {{ $errors->has('gender') ? ' has-error' : '' }}">
     {!! Form::label('gender', 'Gender') !!}
-    {!! Form::select('gender', ['' => 'Choose Gender', 'Male' => 'Female'], old('gender'), ['class' => 'form-control']) !!}
+    {!! Form::select('gender', ['' => 'Choose Gender', 'Male' => 'Male', 'Female' => 'Female'], old('gender'), ['class' => 'form-control']) !!}
     @if ($errors->has('gender'))
     <span class="help-block">
         <strong>{{ $errors->first('gender') }}</strong>
