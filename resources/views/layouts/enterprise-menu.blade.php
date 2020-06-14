@@ -53,7 +53,7 @@
 
 </li>
 <li class="{{ Request::is('transfers*') ? 'active' : '' }}">
-    <a href="{{ route('transfers.index') }}"><i class="fa fa-money"></i><span> Funds Transfer</span></a>
+    <a href="{{ route('transfers.index') }}"><i class="fa fa-money"></i><span> Funds Received</span></a>
 </li>
 <li class="{{ Request::is('fillingDocuments*') ? 'active' : '' }}">
     <a href="{{ route('fillingDocuments.index') }}"><i class="fa fa-folder"></i><span>Filling Documents</span></a>

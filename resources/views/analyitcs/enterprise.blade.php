@@ -83,7 +83,7 @@ role="alert">
     <div class="col-sm-3">
             <div class="box box-success">
                 <div class="box-body">
-                    Donations Transfered
+                    Donations Received
                     <hr>
                     <h2 class="text-center">
                     {{ number_format(intval($donationsTransfered), 2) }}
@@ -97,7 +97,7 @@ role="alert">
         <div class="col-sm-3">
             <div class="box box-primary">
                 <div class="box-body">
-                    Loans Transfered
+                    Loans Received
                     <hr>
                     <h2 class="text-center">
                     {{ number_format(doubleval(array_sum($sub_total)), 2) }}
@@ -239,7 +239,7 @@ role="alert">
             </li>
             <li><a href="#2a" data-toggle="tab">Outstanding Repayments</a>
             </li>
-            <li><a href="#3a" data-toggle="tab">Loan(S) Transfer</a>
+            <li><a href="#3a" data-toggle="tab">Loans Received</a>
             </li>
           
 

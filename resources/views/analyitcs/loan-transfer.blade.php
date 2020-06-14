@@ -4,10 +4,10 @@
         <tr>
             <th>Code</th>
             <th>Enterprise</th>
-            <th>Rate</th>
-            <th>Loan</th>
-            <th colspan="2">Repayment Amount</th>
-            <th colspan="2">Interst </th>
+            <th>Interst Rate</th>
+            <th>Loans</th>
+            <th colspan="2">Repayments</th>
+            <th colspan="2">Interst Rate</th>
          </tr>
          <tr>
             <th></th>
@@ -15,11 +15,11 @@
             <th></th>
             <th></th>
            
-            <th>Instalment </th>
-            <th>Recover Period </th>
-            
-            <th>Instalment </th>
-            <th>Recover Period </th>
+            <th>Repayment Per Instalment </th>
+            <th>Total</th>
+
+            <th>Instalment Rate</th>
+            <th>TOT. Repayments</th>
            
          </tr>
 

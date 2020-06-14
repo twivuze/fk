@@ -488,16 +488,16 @@ section {
                                   <table class="table" id="links-table">
                                         <thead>
                                         <tr>
-                                          <th colspan="2">Repayment Amount</th>
-                                          <th colspan="2">Interst </th>
+                                        <th colspan="2">Repayments</th>
+                                         <th colspan="2">Interst Rate</th>
                                       </tr>
                                       <tr>
                                           
-                                            <th>Instalment </th>
-                                            <th>Recover Period </th>
-                                            
-                                            <th>Instalment </th>
-                                            <th>Recover Period </th>
+                                      <th>Repayment Per Instalment </th>
+                                      <th>Total</th>
+
+                                      <th>Instalment Rate</th>
+                                      <th>TOT. Repayments</th>
                                           
                                         </tr>
                                       </thead>
