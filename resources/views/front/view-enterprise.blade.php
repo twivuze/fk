@@ -197,11 +197,11 @@ $donate=intval($amountDonate)+intval($amountDonateInternalFunds);
                                 <?php if($enterprise->category!='Fully-Funded-Enterprises'){ ?>
 
                                     <?php if(intval($enterprise->lender_initial_target) > 0  && (intval($loan) < intval($enterprise->lender_initial_target) ) ){?>
-                                <td>
+                                <!-- <td>
                                     <a class="btn btn-sm btn-primary btn-block display-3"
                                         href="/lender-enterprise?lendEnterprise={{$enterprise->id}}">Lend
                                     </a>
-                                </td>
+                                </td> -->
                                 <?php } } ?>
                                 <?php if(intval($enterprise->donor_initial_target) > 0 ){ ?>
                                 <td>
