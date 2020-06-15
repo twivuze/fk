@@ -60,12 +60,15 @@ class LoanApplicationController extends AppBaseController
         $docName1=null;
         $docName2=null;
         $docName3=null;
+
         if($request->file('upload_passport_photo')){
             $request->validate([
                 'upload_passport_photo' => 'required|image|mimes:jpeg,png,jpg',
             ]);
         
             $upload_passport_photo = $this->updateImage($request,'upload_passport_photo');  
+        }else{
+            $upload_passport_photo = $input['gender']=='Male'?'/images/male.jpg':'/images/female.jpg';;  
         }
 
         if($request->file('national_identity_copy')){

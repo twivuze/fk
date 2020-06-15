@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 
-                <!-- <div class="carousel-item ">
+                <div class="carousel-item ">
                     <div class="media-container-row">
                         <div class="col-md-12">
                             <div class="wrap-img ">
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <!-- <div class="carousel-item ">
                     <div class="media-container-row">
                         <div class="col-md-12">

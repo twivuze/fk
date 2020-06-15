@@ -137,42 +137,28 @@
 										<br>	<br>
 										<table class="table" id="links-table">
                                         <thead>
-                                        <tr>
-										<th>Interest Rate</th>
-										<th colspan="2">Repayments</th>
-           								 <th colspan="2">Interest Rate</th>
+                                      <tr>
+                                          
+                                      <th>Repayment per {{ $transfer->instalmentPeriod->name }} </th>
+                                       <th>{!! $transfer->currency !!}  {{$result['amountToPay']+$result['totalInstalment']}} </th>
                                       </tr>
                                       <tr>
-                                            
-                                            <th></th>
-                                          
-                                            <th>Repayment Per Instalment </th>
-											<th>Total</th>
-
-											<th>Instalment Rate</th>
-											<th>TOT. Repayments</th>
+                                      <th>Total Repayment per {{ $transfer->recoverPeriod->name }}</th> 
+                                      <th>{!! $transfer->currency !!}  {{$result['totalRepayment']}}</th>
+                                      </tr>
+                                      <tr>
+                                      <th>Total Interest Rate per {{ $transfer->instalmentPeriod->name }}</th>
+                                       <th>{{ $transfer->currency }} {{ $result['totalInstalment'] }} </th>
+                                      </tr>
+                                      <tr>
+                                      <th>Total Interest Rate per {{ $transfer->recoverPeriod->name }}</th>
+                                       <th>{{ $transfer->currency }} {{ $result['totalRecover']}} </th>
                                           
                                         </tr>
                                       </thead>
-                                       <tbody>
-                                       <tr>
-                                       <td> {!! $transfer->rate !!}%</td>
-                                          <td><b>{!! $transfer->currency !!}  {{$result['amountToPay']+$result['totalInstalment']}}
-                                          per 
-                                          <br>  <b>{{ $transfer->instalmentPeriod->name }}</b>
-                                          </td>
+                                      
+                                 </table>
 
-                                          <td><b>{!! $transfer->currency !!}  {{$result['totalRepayment']}}
-                                          per <br />  
-                                          <b>{{ $transfer->recoverPeriod->name }}</b></td>
-                                          <td><b>{{ $transfer->currency }} {{ $result['totalInstalment'] }} per </b>
-                                          <br>  <b>{{ $transfer->instalmentPeriod->name }}</b></td>
-                                          <td> <b>{{ $transfer->currency }} {{ $result['totalRecover']}} per </b><br />  
-                                          <b>{{ $transfer->recoverPeriod->name }}</b></td>
-
-                                          </tr>
-                                          </tbody>
-                                      </table>
                                     </div>
                                 </div>
 

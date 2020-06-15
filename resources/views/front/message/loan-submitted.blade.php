@@ -41,7 +41,11 @@
                         <br>
                         Best Regards!<br />
                         Your Friends in Business from All Trust Consult!
+
+                          
+                       
                     </div>
+
                     <div class="col-lg-3"></div>
                 </div>
             </div>

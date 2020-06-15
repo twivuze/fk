@@ -344,6 +344,8 @@ section {
                       
             Your loan repayment of {{$invoice->currency}} {{$invoice->total_amount}}) 
             to All Trust Consult has been completed successfully.
+            <br>
+            <br>
             Thank you for keeping your promise!<br>
             Your Friends in business from All Trust Consult!
             <?php } ?>
@@ -470,56 +472,46 @@ section {
                                     <div class="field">
                                         Subtotal <span>{{$invoice->currency}} {{$invoice->total_amount}}</span>
                                     </div>
+                                    <div class="field">
+                                      Rate <span> {!! $transfer->rate !!}%</span>
+                                    </div>
+
+                                    
                                     <?php 
                                   $interset = new \App\User();
                                   $transfer = \App\Models\Transfer::find($invoice->loan_id);
                                   $result = $interset->interestProcessing($transfer);
                                   ?>
-                                    <!-- <div class="field">
-								Shipping <span>$0.00</span>
-							</div> -->
-							<div class="field">
-								Rate <span> <td> {!! $transfer->rate !!}%</td></span>
-							</div>
+                                   
               
                                     <div class="field grand-total" style="font-weight:500">
                                         Total <span>{{$invoice->currency}} {{$invoice->total_amount}}</span>
                                   <br>	<br>
+
                                   <table class="table" id="links-table">
                                         <thead>
-                                        <tr>
-                                        <th colspan="2">Repayment</th>
-                                         <th colspan="2">Interest Rate</th>
-                                      </tr>
                                       <tr>
                                           
-                                      <th>Repayment Per Instalment </th>
-                                      <th>Total Repayment</th>
-
-                                      <th>Instalment Rate</th>
-                                      <th>Total Interest Rate</th>
+                                      <th>Repayment per {{ $transfer->instalmentPeriod->name }} </th>
+                                       <th>{!! $transfer->currency !!}  {{$result['amountToPay']+$result['totalInstalment']}} </th>
+                                      </tr>
+                                      <tr>
+                                      <th>Total Repayment per {{ $transfer->recoverPeriod->name }}</th> 
+                                      <th>{!! $transfer->currency !!}  {{$result['totalRepayment']}}</th>
+                                      </tr>
+                                      <tr>
+                                      <th>Total Interest Rate per {{ $transfer->instalmentPeriod->name }}</th>
+                                       <th>{{ $transfer->currency }} {{ $result['totalInstalment'] }} </th>
+                                      </tr>
+                                      <tr>
+                                      <th>Total  Interest Rate per {{ $transfer->recoverPeriod->name }}</th>
+                                       <th>{{ $transfer->currency }} {{ $result['totalRecover']}} </th>
                                           
                                         </tr>
                                       </thead>
-                                       <tbody>
-                                       <tr>
                                       
-                                          <td><b>{!! $transfer->currency !!}  {{$result['amountToPay']+$result['totalInstalment']}}
-                                          per 
-                                          <br>  <b>{{ $transfer->instalmentPeriod->name }}</b>
-                                          </td>
+                                 </table>
 
-                                          <td><b>{!! $transfer->currency !!}  {{$result['totalRepayment']}}
-                                          per <br />  
-                                          <b>{{ $transfer->recoverPeriod->name }}</b></td>
-                                          <td><b>{{ $transfer->currency }} {{ $result['totalInstalment'] }} per </b>
-                                          <br>  <b>{{ $transfer->instalmentPeriod->name }}</b></td>
-                                          <td> <b>{{ $transfer->currency }} {{ $result['totalRecover']}} per </b><br />  
-                                          <b>{{ $transfer->recoverPeriod->name }}</b></td>
-
-                                          </tr>
-                                          </tbody>
-                                      </table>
                                     </div>
                                 </div>
 
