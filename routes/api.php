@@ -100,3 +100,5 @@ Route::resource('periods', 'PeriodAPIController');
 Route::resource('vistors', 'VistorsAPIController');
 
 Route::resource('repayments', 'RepaymentAPIController');
+
+Route::resource('quotes', 'QuotesAPIController');

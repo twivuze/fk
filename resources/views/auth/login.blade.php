@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login :: All Trust Consult</title>
+    <title>Login :: Frank Rubaduka</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -34,7 +34,7 @@
 </head>
 
 <body class="hold-transition login-page">
-    <section class="mbr-section content4 cid-rYUfuivAPG mt-5" id="content4-2u">
+    <section class="mbr-section content4 cid-rYUfuivAPG mt-5 bg-white" id="content4-2u">
 
         <div class="container mt-5">
             <div class="media-container-row">
@@ -42,7 +42,7 @@
                     <div class="login-box container">
                         <div class="login-logo text-center">
                         <a href="/">
-                            <img src="/assets/images/a-122x30.png" alt="All Trust Consult" title="" style="width:200px;height:auto">
+                            <img src="assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.jpeg" alt="Frank Rubaduka" title="" style="width:200px;height:auto">
                         </a>
                         </div>
 
@@ -81,7 +81,8 @@
                                 <div class="row">
                                
                                     <div class="form-group col-12">
-                                        <button type="submit" style="margin-left:-1px" class="mr-3 btn btn-primary btn-block btn-flat">Sign In</button>
+                                        <button type="submit" style="margin-left:-1px" 
+                                        class="mr-3 btn btn-info btn-block btn-flat">Sign In</button>
                                     </div>
                                     <!-- /.col -->
                                 </div>

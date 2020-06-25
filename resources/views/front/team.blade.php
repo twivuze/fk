@@ -1,8 +1,9 @@
 @extends('front.layouts.app',
-['title'=>'Frank Rubaduka',
-'description'=>'Frank Rubaduka Website'
+['title'=>'Team',
+'description'=>'Team'
 ]
 )
+
 @section('content')
 
 

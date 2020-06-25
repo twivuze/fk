@@ -1,23 +1,16 @@
+<li class="{{ Request::is('home*') ? 'active' : '' }}">
+    <a href="/home"><i class="fa fa-th"></i><span>Dashboard</span></a>
+</li>
 
-<?php if(Auth::check() && Auth::user()->type=='Admin'){ ?>
-    @include('layouts.admin-menu')
-<?php }?>
+<li class="{{ Request::is('vistors*') ? 'active' : '' }}">
+    <a href="{{ route('vistors.index') }}"><i class="fa fa-eye"></i><span>Vistors</span></a>
+</li>
 
-<?php if(Auth::check() && Auth::user()->type=='MicroFoundManager'){ ?>
-    @include('layouts.microfund-menu')
-<?php }?>
+<li class="{{ Request::is('statements*') ? 'active' : '' }}">
+    <a href="{{ route('statements.index') }}"><i class="fa fa-edit"></i><span>Statements</span></a>
+</li>
 
-<?php if(Auth::check() && Auth::user()->type=='Enterprise'){ ?>
-    @include('layouts.enterprise-menu')
-<?php }?>
-
-<?php if(Auth::check() && Auth::user()->type=='Lender'){ ?>
-    @include('layouts.lender-menu')
-<?php }?>
-
-
-<?php if(Auth::check() && Auth::user()->type=='Donor'){ ?>
-    @include('layouts.donor-menu')
-<?php }?>
-
+<li class="{{ Request::is('quotes*') ? 'active' : '' }}">
+    <a href="{{ route('quotes.index') }}"><i class="fa fa-edit"></i><span>Quotes</span></a>
+</li>
 

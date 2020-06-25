@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>All Trust Consult</title>
+    <title>Frank Rubaduka</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link rel="shortcut icon" href="/assets/images/a-1-122x30.png" type="image/x-icon">
     <!-- Bootstrap 3.3.7 -->
@@ -42,7 +42,7 @@
 
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>All Trust Consult</b>
+                <b>Frank Rubaduka</b>
             </a>
 
             <!-- Header Navbar -->
@@ -52,7 +52,7 @@
                     <span class="sr-only">Toggle navigation</span>
                 </a>
                 
-                <b style="color:#fff;position:relative;top:15px">{{Auth::user()->type}}</b>
+                <b style="color:#fff;position:relative;top:15px">Admin</b>
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
@@ -61,7 +61,7 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="/images/logo.png"
+                                <img src="/assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.jpeg"
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{{ Auth::user()->name }}</span>
@@ -69,10 +69,10 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="/images/logo.png" style="width:80px;height:80px"
+                                    <img src="/assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.jpeg" style="width:80px;height:80px"
                                          class="img-circle" alt="User Image"/>
                                     <p>
-                                    {{Auth::user()->type}}
+                                    Admin
                                         
                                         <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
                                     </p>
@@ -108,7 +108,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer" style="max-height: 100px;text-align: center">
-            <strong>Copyright © 2020 <a href="#">All Trust Consult</a>.</strong> All rights reserved.
+            <strong>Copyright © 2020 <a href="#">Frank Rubaduka</a>.</strong> All rights reserved.
         </footer>
 
     </div>
@@ -128,7 +128,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                All Trust Consult
+                Frank Rubaduka
                 </a>
             </div>
 
@@ -171,284 +171,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
 
-<script src="/js/dropzone.js"></script>
 
-<script type="text/javascript">
-        Dropzone.options.dropzone =
-         {
-            maxFilesize: 12,
-            renameFile: function(file) {
-                var dt = new Date();
-                var time = dt.getTime();
-               return time+file.name;
-            },
-            acceptedFiles: ".jpeg,.jpg,.png,.gif",
-            addRemoveLinks: true,
-            timeout: 5000,
-            success: function(file, response) 
-            {
-                window.location.reload();
-            },
-            error: function(file, response)
-            {
-               return false;
-            }
-};
-
-
-</script>
-
-<script language="javascript">
-    var popupWindow = null;
-
-    function centeredPopup(url, winName, w, h, scroll) {
-        LeftPosition = (screen.width) ? (screen.width - w) / 2 : 0;
-        TopPosition = (screen.height) ? (screen.height - h) / 2 : 0;
-        settings =
-            'height=' + h + ',width=' + w + ',top=' + TopPosition + ',left=' + LeftPosition + ',scrollbars=' + scroll +
-            ',resizable,status=yes,toolbar=no, menubar=no, location=no, addressbar=no, '
-        popupWindow = window.open(url, winName, settings);
-
-
-        return popupWindow.focus();;
-    }
-
-
-$("#change_response_code").html("");
-let _enterprise=null;
-let funds=0;
-let totalFunds=0;
-let choosenType=null;
-
-function fundType(val) {
-    choosenType=val;
-    $("#change_response_code").html("");
-    $("#current_code").val("");
-    
-    $(".InternalFunder").hide();
-    $(".showBox").show();
-
-}
-//gracePeriod
-function transferType(val) {
-    $("#change_response_code").html("");
-    $("#current_code").val("");
-    
-        choosenType=val;
-    $(".Transfer").hide();
-    $(".showBox").show();
-   
-
-}
-
-
-function gracePeriod(val) {
-    if(val=='Yes'){
-        $(".grace_period").show();   
-    }else{
-        $(".grace_period").hide();    
-    }
-
-}
-
-function remainFund(val){
-
-    if(val){
-        let remain=funds-val;
-       
-        if(remain < 0){
-            remain=funds;
-            $(".funds").val(funds);
-        }
-        $(".remainfunds").html(`<h3 style="margin-left:15px"> Remaining Fund(s): ${_enterprise.currency?_enterprise.currency:'Rwf'} `+(remain)+'</h3>');
-    }else{
-        $(".remainfunds").html(`<h3 style="margin-left:15px"> Remaining Fund(s): ${_enterprise.currency?_enterprise.currency:'Rwf'} `+funds+'</h3>');
-    }
-    
-
-}
-function findEnterprise(value,div) {
-        $("#change_response_code").html("");
-        $("#currency").val("");
-        $("#enterprise_id").val("");
-        $("."+div).hide();
-        let current_code = value;
-        
-        $("#change_response_code").html("Wait while processing ...");
-	
-	    if(current_code === ''){
-	        $("#change_response_code").html("<span style = 'color: red'>Current Code is required</span>");
-	        return;
-		}
-	
-	    $.ajax({
-			url : '/find-enterprise',
-			method : 'GET',
-			data : {
-                current_code : current_code,
-                choosenType:choosenType
-			},
-			success : function (response) {
-				if(response.status==true){
-                    $("."+div).show();
-                    $(".funds").val(0);
-                    $("#currency").val(response.enterprise.currency?response.enterprise.currency:'Rwf');
-                   $("#enterprise_id").val(response.enterprise.id);
-                   $("#code").val(response.enterprise.code);
-                   $("#enterprise").val(response.enterprise.business_name?response.enterprise.business_name:name);
-                   if(div=='InternalFunder'){
-                    // fundType('Loan');
-                   }
-                   _enterprise=response.enterprise;
-                   funds=0;
-                   if(choosenType=='Loan'){
-                    funds= response.enterprise.lender_initial_target-response.amountLend-response.amountInternalFunds;
-                    totalFunds=parseFloat(response.amountLend)+parseFloat(response.amountInternalFunds);
-                   }else{
-                     funds= response.enterprise.donor_initial_target-response.amountDonate-response.amountInternalFunds;
-                     totalFunds=parseFloat(response.amountDonate)+parseFloat(response.amountInternalFunds);
-                   }
-                   $(".funds").val(funds);
-                   $(".btn-primary").removeClass('hidden');
-                   $(".funds").removeClass('hidden');
-                   if(funds <= 0){
-                   
-                    $(".funds").addClass('hidden');
-                    $(".btn-primary").addClass('hidden');
-                   }
-                   $(".remainfunds").html(`<h3 style="margin-left:15px">   Remaining Fund(s): ${response.enterprise.currency?response.enterprise.currency:'Rwf'} ${funds}</h3>, <h3 style="margin-left:15px">   Total Fund(s): ${response.enterprise.currency?response.enterprise.currency:'Rwf'} ${totalFunds}/${choosenType=='Loan'?response.enterprise.lender_initial_target:response.enterprise.donor_initial_target}</h3>`);
-
-                   $("#change_response_code").html("");
-                    $("#change_response_code").html(`
-                    <table class="table">
-                    <tr>
-                    <th>Enterprise</th>
-                    <th>Loan initial target</th>
-                    <th>Donor initial target</th>
-                    <th>Loan received</th>
-                    <th>Donation received</th>
-                    <th>Action</th>
-                    </tr>
-                    <tr>
-                    <th>${response.enterprise.business_name?response.enterprise.business_name:name}</th>
-                    <th>${response.enterprise.currency?response.enterprise.currency:'Rwf'} ${response.enterprise.lender_initial_target}</th>
-                    <th>${response.enterprise.currency?response.enterprise.currency:'Rwf'}  ${response.enterprise.donor_initial_target}</th>
-                    <th>${response.enterprise.currency?response.enterprise.currency:'Rwf'}  ${response.amountLend}</th>
-                    <th>${response.enterprise.currency?response.enterprise.currency:'Rwf'}  ${response.amountDonate}</th>
-                    <th>   <a href="/loanApplications/${response.enterprise.id}/edit" target="_blank" class='btn btn-default btn-xs'>
-                        <i class="glyphicon glyphicon-eye-open"></i> Edit
-                    </a></th>
-                    </tr>
-                    </table>
-                    `);
-					
-				}else{
-                    $("."+div).hide();
-					$("#change_response_code").html("<span style = 'color: red'>"+response.message+"</span>");
-				}
-				
-
-            }, error : function (e, d) {
-				$("#change_response_code").html(JSON.stringify(e));
-            }
-		})
-    };
-
-    function viewEnterprise(value,div) {
-        $("#change_response_code").html("");
-        $("#currency").val("");
-        $("#enterprise_id").val("");
-        $("."+div).hide();
-        let current_code = value;
-        
-        $("#change_response_code").html("Wait while processing ...");
-        //remainfunds
-        $(".remainfunds").html("");
-	    if(current_code === ''){
-	        $("#change_response_code").html("<span style = 'color: red'>Current Code is required</span>");
-	        return;
-		}
-	
-	    $.ajax({
-			url : '/find-enterprise',
-			method : 'GET',
-			data : {
-                current_code : current_code,
-                choosenType:choosenType
-			},
-			success : function (response) {
-				if(response.status==true){
-                    $("."+div).show();
-                    $(".funds").val(0);
-                    $("#currency").val(response.enterprise.currency?response.enterprise.currency:'Rwf');
-                   $("#enterprise_id").val(response.enterprise.id);
-                   $("#code").val(response.enterprise.code);
-                   $("#enterprise").val(response.enterprise.business_name?response.enterprise.business_name:name);
-                   if(div=='InternalFunder'){
-                    // fundType('Loan');
-                   }
-                   _enterprise=response.enterprise;
-                   funds=0;
-                   if(choosenType=='Loan'){
-                    funds= response.enterprise.lender_initial_target-response.amountLend-response.amountInternalFunds;
-                    totalFunds=parseFloat(response.amountLend)+parseFloat(response.amountInternalFunds)-parseFloat(response.amountTransfered);;
-                   }else{
-                     funds= response.enterprise.donor_initial_target-response.amountDonate-response.amountInternalFunds;
-                     totalFunds=parseFloat(response.amountDonate)+parseFloat(response.amountInternalFunds)-parseFloat(response.amountTransfered);
-                   }
-                   $(".funds").val(totalFunds);
-                   $(".btn-primary").removeClass('hidden');
-                   $(".funds").removeClass('hidden');
-                   if(totalFunds <= 0){
-                   
-                    // $(".funds").addClass('hidden');
-                    $(".btn-primary").addClass('hidden');
-                   }
-                   $(".remainfunds").html(`<h3 style="margin-left:15px">   Remaining Fund(s): ${response.enterprise.currency?response.enterprise.currency:'Rwf'} ${funds}</h3>, <h3 style="margin-left:15px">   Total Fund(s): ${response.enterprise.currency?response.enterprise.currency:'Rwf'} ${totalFunds}/${choosenType=='Loan'?response.enterprise.lender_initial_target:response.enterprise.donor_initial_target}</h3>`);
-
-                   $("#change_response_code").html("");
-                    $("#change_response_code").html(`
-                    <table class="table">
-                    <tr>
-                    <th>Enterprise</th>
-                    <th>Loan initial target</th>
-                    <th>Donor initial target</th>
-                    <th>Loan received</th>
-                    <th>Donation received</th>
-                    <th>Action</th>
-                    </tr>
-                    <tr>
-                    <th>${response.enterprise.business_name?response.enterprise.business_name:name}</th>
-                    <th>${response.enterprise.currency?response.enterprise.currency:'Rwf'} ${response.enterprise.lender_initial_target}</th>
-                    <th>${response.enterprise.currency?response.enterprise.currency:'Rwf'}  ${response.enterprise.donor_initial_target}</th>
-                    <th>${response.enterprise.currency?response.enterprise.currency:'Rwf'}  ${response.amountLend}</th>
-                    <th>${response.enterprise.currency?response.enterprise.currency:'Rwf'}  ${response.amountDonate}</th>
-                    <th>   <a href="/loanApplications/${response.enterprise.id}/edit" target="_blank" class='btn btn-default btn-xs'>
-                        <i class="glyphicon glyphicon-eye-open"></i> Edit
-                    </a></th>
-                    </tr>
-                    </table>
-                    `);
-					
-				}else{
-                    $("."+div).hide();
-					$("#change_response_code").html("<span style = 'color: red'>"+response.message+"</span>");
-				}
-				
-
-            }, error : function (e, d) {
-				$("#change_response_code").html(JSON.stringify(e));
-            }
-		})
-    };
-    $(document).ready(function() {
-    
-    $('[data-toggle=offcanvas]').click(function() {
-      $('.row-offcanvas').toggleClass('active');
-    });
-    
-  });
-</script>
 
     @stack('scripts')
 </body>

@@ -6,12 +6,12 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image" style="margin-top:5px;width:90px;height:45px">
-                <img src="/images/logo.png" style="width:100%;height:45px" class="img-circle"
+                <img src="/assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.jpeg" style="width:100%;height:45px" class="img-circle"
                      alt="User Image"/>
             </div>
             <div class="pull-left info">
                 @if (Auth::guest())
-                <p>All Trust Consult</p>
+                <p>Frank Rubaduka</p>
                 @else
                     <p>{{ Auth::user()->name}}</p>
                 @endif
