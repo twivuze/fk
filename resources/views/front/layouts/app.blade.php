@@ -27,7 +27,7 @@
     <meta name="twitter:card" content="{{isset($description)?$description:'All Trust Consult'}}">
 
     <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
-    <!-- <link rel="stylesheet" href="/assets/facebook-plugin/style.css"> -->
+    <link rel="stylesheet" href="/assets/facebook-plugin/style.css">
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
@@ -95,9 +95,14 @@
                         <a class="nav-link link text-secondary display-4" href="/past-quates">Past Quotes</a>
                     </li>
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
-                            href="#">His Books</a></li>
-                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
-                            href="#">Team</a></li>
+                            href="/his-books">His Books</a></li>
+                   
+                            <?php $team = \App\Models\TeamCategory::where('published',1)->orderBy('numbering','ASC')->first();?>
+                                <?php if( $team ){ ?>
+                                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
+                                    href="/all-teams">Team</a>
+                       <?php } ?>  
+
                             <?php if( $statement ){ ?>
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
                             href="/statement/{{$statement->id}}#{{$statement->id}}">Statements</a></li>
@@ -118,9 +123,9 @@
 
     <script src="/assets/web/assets/jquery/jquery.min.js"></script>
     <script src="/assets/popper/popper.min.js"></script>
-    <!-- <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5"></script>
+    <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5"></script>
     <script src="https://apis.google.com/js/plusone.js"></script>
-    <script src="/assets/facebook-plugin/facebook-script.js"></script> -->
+    <script src="/assets/facebook-plugin/facebook-script.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/tether/tether.min.js"></script>
     <script src="/assets/dropdown/js/nav-dropdown.js"></script>
@@ -133,9 +138,14 @@
     <script src="/assets/touchswipe/jquery.touch-swipe.min.js"></script>
     <script src="/assets/theme/js/script.js"></script>
     <script src="/assets/slidervideo/script.js"></script>
-    <script src="assets/formoid/formoid.min.js"></script>
+    <script src="/assets/formoid/formoid.min.js"></script>
 
+<script>
 
+$(document).on('click', '#addacomment', function(){
+    $('#addcomment').toggle();
+});
+</script>
 
 
     <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i

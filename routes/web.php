@@ -22,10 +22,20 @@ Route::get('/past-quates', function () {
     return view('front.past-quates');
 });
 
-Route::get('/team', function () {
-    return view('front.team');
+Route::get('/team/{id}', function ($id) {
+    return view('front.team')->with('id',$id);
 });
 
+Route::get('/all-teams', function () {
+    return view('front.all-teams');
+});
+Route::get('/team-members/{id}', function ($id) {
+    return view('front.teams')->with('id',$id);
+});
+///book/{{$book->id}}/details
+Route::get('/book/{id}/details', function ($id) {
+    return view('front.view-book')->with('id',$id);
+});
 Route::get('/his-books', function () {
     return view('front.his-books');
 });
@@ -63,3 +73,11 @@ Route::resource('vistors', 'VistorsController');
 
 
 Route::resource('quotes', 'QuotesController');
+
+Route::resource('teams', 'TeamController');
+
+Route::resource('teamCategories', 'TeamCategoryController');
+
+Route::resource('books', 'BooksController');
+
+Route::resource('bookReviews', 'BookReviewsController');

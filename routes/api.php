@@ -102,3 +102,9 @@ Route::resource('vistors', 'VistorsAPIController');
 Route::resource('repayments', 'RepaymentAPIController');
 
 Route::resource('quotes', 'QuotesAPIController');
+
+Route::resource('team_categories', 'TeamCategoryAPIController');
+
+Route::resource('books', 'BooksAPIController');
+
+Route::resource('book_reviews', 'BookReviewsAPIController');
