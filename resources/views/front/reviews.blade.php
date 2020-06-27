@@ -4,7 +4,6 @@
                                        
                                    
                                    
-                            if(count($reviews) > 0){
                                    ?>
 
 	<div class="row mt-5">
@@ -24,6 +23,7 @@
                     {!! Form::close() !!}
                
 	</div>
+    <?php if(count($reviews) > 0){ ?>
 	<hr>
     @foreach($reviews as $review)
 	<div class="row comment">
@@ -34,8 +34,9 @@
 	</div>
     @endforeach
 	<hr>
+    <?php } ?>
+    
     <div class="media-container-row" style="position:relative;top:30px;left:0;right:0">
 <span class="align-center">  {!! $reviews->links() !!}</span>
 </div>
 <!-- </div> -->
-<?php } ?>
