@@ -106,7 +106,7 @@ Facebook: 		https://www.facebook.com/yegobox
                                         style="color: #8d1212!important;">
                                         {{$team->name}}</b><br>
                                     <strong style=" color: #28a745!important;">{{$team->title}}</strong></div>
-                                <img class="img-fluid" src="{{$team->image}}" style="width:100%;">
+                                <img class="img-fluid" src="/{{$team->image}}" style="width:100%;">
                                 <div class="card-body text-success">
                                     <b class="card-text text-center mx-auto col-8"
                                         style="border-bottom:2px solid; text-align: center">{{$team->country}}</b><br>
