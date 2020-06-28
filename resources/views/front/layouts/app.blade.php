@@ -78,7 +78,7 @@
                 <div class="navbar-brand">
                     <span class="navbar-logo">
                         <a href="/">
-                            <img src="/assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.jpeg"
+                            <img src="/assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.png"
                                 alt="Mobirise" title="" style="height: 3.8rem;">
                         </a>
                     </span>
