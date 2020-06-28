@@ -42,7 +42,7 @@
                     <div class="login-box container">
                         <div class="login-logo text-center">
                         <a href="/">
-                            <img src="assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.jpeg" alt="Frank Rubaduka" title="" style="width:200px;height:auto">
+                            <img src="assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.png" alt="Frank Rubaduka" title="" style="width:200px;height:auto">
                         </a>
                         </div>
 

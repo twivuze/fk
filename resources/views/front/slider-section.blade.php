@@ -27,7 +27,7 @@
                         <div class="container container-slide">
                             <div class="image_wrapper">
                                 <div class="mbr-overlay" style="opacity: 0.4;"></div><img
-                                    src="/images/{{$quote->slider_image}}" alt="" title="">
+                                    src="/images/bg.jpg" alt="" title="">
                                 <div class="carousel-caption justify-content-center">
                                     <div class="col-10 align-left">
                                         <h2 class="mbr-fonts-style display-1">{{$quote->quote_owner}}</h2>
@@ -42,13 +42,35 @@
                     <?php $x++; ?>
 
                 @endforeach
+                @if (count($quotes) == 0)
+                <div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false"
+                        style="background-image: url(/images/bg.jpg);">
+                        <div class="container container-slide">
+                            <div class="image_wrapper">
+                                <div class="mbr-overlay" style="opacity: 0.4;"></div><img
+                                    src="/images/bg.jpg" alt="" title="">
+                                <div class="carousel-caption justify-content-center">
+                                    <div class="col-10 align-left">
+                                        <h2 class="mbr-fonts-style display-1"></h2>
+                                        <p class="lead mbr-text mbr-fonts-style display-5"></p>
+                                        <!-- <div class="mbr-section-btn" buttons="0"><a class="btn display-4 btn-success"
+                                                href="#">Book Frank</a> </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
         </div>
-        
+        @if (count($quotes) > 1)
         <a data-app-prevent-settings="" class="carousel-control carousel-control-prev" role="button"
             data-slide="prev" href="#slider1-0"><span aria-hidden="true" class="mbri-left mbr-iconfont"></span><span
                 class="sr-only">Previous</span></a><a data-app-prevent-settings=""
             class="carousel-control carousel-control-next" role="button" data-slide="next" href="#slider1-0"><span
                 aria-hidden="true" class="mbri-right mbr-iconfont"></span><span class="sr-only">Next</span></a>
+                @endif
+
     </div>
     </div>
 
