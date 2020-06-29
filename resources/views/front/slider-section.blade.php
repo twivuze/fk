@@ -1,5 +1,5 @@
 <?php 
-     $quotes=\App\Models\Quotes::whereRaw('Date(created_at) = CURDATE()')->where('publish',1)->paginate(3);
+     $quotes=\App\Models\Quotes::whereRaw('Date(quote_date) = CURDATE()')->where('publish',1)->where('enable_slider_show',1)->paginate(3);
     ?>
 <section class="carousel slide cid-s2U4JA5Vsr" data-interval="false" id="slider1-0" style="margin-top:20px">
 

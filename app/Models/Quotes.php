@@ -28,7 +28,9 @@ class Quotes extends Model
         'quote',
         'avatar',
         'slider_image',
-        'publish'
+        'publish',
+        'quote_date'
+        ,'enable_slider_show'
     ];
 
     /**
@@ -54,7 +56,8 @@ class Quotes extends Model
         'quote' => 'required',
         'avatar' => 'required',
         'slider_image' => 'required',
-        'publish' => 'required'
+        'publish' => 'required',
+        'quote_date' => 'required'
     ];
 
     

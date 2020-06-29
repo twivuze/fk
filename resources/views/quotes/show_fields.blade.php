@@ -42,6 +42,17 @@
     <p>{{ $quotes->publish?'Yes':'No' }}</p>
 </div>
 
+
+<div class="form-group">
+    {!! Form::label('enable_slider_show', 'Add Quote To SliderShow:') !!}
+    <p>{{ $quotes->enable_slider_show?'Yes':'No' }}</p>
+</div>
+
+<div class="form-group">
+    {!! Form::label('quote_date', Quote date:') !!}
+    <p>{{ $quotes->quote_date }}</p>
+</div>
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

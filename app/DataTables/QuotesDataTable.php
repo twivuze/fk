@@ -67,6 +67,7 @@ class QuotesDataTable extends DataTable
         return [
             'quote_owner',
             'quote',
+            'quote_date',
             'publish', 'updated_at'
         ];
     }
