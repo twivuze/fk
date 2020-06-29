@@ -39,7 +39,7 @@
             <div class="media-container-row mbr-white">
                 <div class="col-sm-6 copyright">
                     <p class="mbr-text mbr-fonts-style display-7">
-                        © Copyright 2020 DecideX Group - All Rights Reserved
+                        © Copyright 2020 Frank Rubaduka - All Rights Reserved
                     </p>
                 </div>
                 <div class="col-md-6">
