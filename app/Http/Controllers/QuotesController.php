@@ -158,7 +158,7 @@ class QuotesController extends AppBaseController
 
         if($request->file('slider_image')){
             $request->validate([
-                'slider_image' => 'required|image|mimes:jpeg,png,jpg',  
+                'slider_image' => 'required',  
             ]);
   
         $file1=$request->file('slider_image');

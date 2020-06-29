@@ -10,6 +10,11 @@
     {!! Form::textarea('quote', null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group col-sm-12">
+    {!! Form::label('quote_date', 'Quote date:') !!}
+    {!! Form::date('quote_date', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Avatar Field -->
 <div class="form-group col-sm-12">
     
@@ -45,6 +50,15 @@
         {!! Form::checkbox('publish', 1, null,  ['data-toggle' => 'toggle']) !!}
     </label>
 </div>
+
+<div class="form-group col-sm-12">
+    {!! Form::label('enable_slider_show', 'Add Quote To SliderShow:') !!}
+    <label class="checkbox-inline">
+        {!! Form::hidden('enable_slider_show', 0) !!}
+        {!! Form::checkbox('enable_slider_show', 1, null,  ['data-toggle' => 'toggle']) !!}
+    </label>
+</div>
+
 
 
 <!-- Submit Field -->
