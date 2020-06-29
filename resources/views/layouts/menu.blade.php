@@ -30,3 +30,7 @@
     <a href="{{ route('bookReviews.index') }}"><i class="fa fa-edit"></i><span>Book Reviews</span></a>
 </li> -->
 
+<li class="{{ Request::is('bookingRequests*') ? 'active' : '' }}">
+    <a href="{{ route('bookingRequests.index') }}"><i class="fa fa-edit"></i><span>Booking Requests</span></a>
+</li>
+

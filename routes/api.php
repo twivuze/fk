@@ -108,3 +108,5 @@ Route::resource('team_categories', 'TeamCategoryAPIController');
 Route::resource('books', 'BooksAPIController');
 
 Route::resource('book_reviews', 'BookReviewsAPIController');
+
+Route::resource('booking_requests', 'BookingRequestAPIController');
