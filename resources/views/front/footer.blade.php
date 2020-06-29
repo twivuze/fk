@@ -9,7 +9,7 @@
             <div class="col-12 col-md-3">
                 <div class="media-wrap">
                     <a href="/">
-                        <img src="/assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.jpeg" alt="Mobirise" title="">
+                        <img src="/assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.png" alt="Mobirise" title="">
                     </a>
                 </div>
             </div>
