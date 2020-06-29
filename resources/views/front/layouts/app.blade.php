@@ -131,7 +131,7 @@
                         <?php $photos = \App\Models\Photos::first();?>
                                 <?php if( $photos ){ ?>
                             <li class="nav-item"><a class="nav-link link text-secondary display-4"
-                            href="/protofolio">Protofolio</a></li>
+                            href="/protofolio">Portfolio</a></li>
                             <?php } ?> 
 
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
