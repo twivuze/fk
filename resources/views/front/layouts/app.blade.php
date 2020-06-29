@@ -115,7 +115,7 @@
                          <?php if( count($subsidiaryCompanies) > 0 ){ ?> 
                          <li class="nav-item dropdown text-left"><a
                             class="nav-link link text-secondary dropdown-toggle  display-4" href="#"
-                            data-toggle="dropdown-submenu" aria-expanded="false">Subsidiary Companies</a>
+                            data-toggle="dropdown-submenu" aria-expanded="false">His Companies</a>
                         <div class="dropdown-menu text-left">
                       
                             @foreach($subsidiaryCompanies AS $subsidiaryCompany)
