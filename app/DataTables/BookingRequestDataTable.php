@@ -29,7 +29,7 @@ class BookingRequestDataTable extends DataTable
      */
     public function query(BookingRequest $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->orderBy('id','DESC');
     }
 
     /**
