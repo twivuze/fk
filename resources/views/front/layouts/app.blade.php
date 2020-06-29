@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link rel="shortcut icon" href="{{isset($icon)?$icon:'/assets/images/a-1-122x30.png'}}" type="image/x-icon">
 
-    <title>{{isset($title)?$title:'All Trust Consult'}}</title>
+    <title>{{isset($title)?$title:'Frank Rubaduka'}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{isset($description)?$description:'All Trust Consult'}}" />
+    <meta name="description" content="{{isset($description)?$description:'Frank Rubaduka'}}" />
     <meta name="author" content="Ganza Respice" />
     <meta property="og:image:width" content="1365">
     <meta property="og:image:height" content="406">
@@ -17,14 +17,14 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="article">
 
-    <meta property="og:title" content="{{isset($title)?$title:'All Trust Consult'}}">
-    <meta property="og:image" content="{{isset($icon)?$icon:'/assets/images/a-1-122x30.png'}}">
-    <meta property="og:description" content="{{isset($description)?$description:'All Trust Consult'}}">
+    <meta property="og:title" content="{{isset($title)?$title:'Frank Rubaduka'}}">
+    <meta property="og:image" content="{{isset($icon)?$icon:'/images/mailLogo/a-1-122x30.png'}}">
+    <meta property="og:description" content="{{isset($description)?$description:'Frank Rubaduka'}}">
 
-    <meta name="twitter:description" content="{{isset($description)?$description:'All Trust Consult'}}">
-    <meta name="twitter:title" content="{{isset($title)?$title:'All Trust Consult'}}">
-    <meta name="twitter:image" content="{{isset($icon)?$icon:'/assets/images/a-1-122x30.png'}}">
-    <meta name="twitter:card" content="{{isset($description)?$description:'All Trust Consult'}}">
+    <meta name="twitter:description" content="{{isset($description)?$description:'Frank Rubaduka'}}">
+    <meta name="twitter:title" content="{{isset($title)?$title:'Frank Rubaduka'}}">
+    <meta name="twitter:image" content="{{isset($icon)?$icon:'/images/mailLogo/a-1-122x30.png'}}">
+    <meta name="twitter:card" content="{{isset($description)?$description:'Frank Rubaduka'}}">
 
     <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
     <link rel="stylesheet" href="/assets/facebook-plugin/style.css">
@@ -108,7 +108,7 @@
                             href="/statement/{{$statement->id}}#{{$statement->id}}">Statements</a></li>
                             <?php } ?>
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
-                            href="/#">Book Frank</a></li>
+                            href="/book-frank">Book Frank</a></li>
                 </ul>
 
             </div>

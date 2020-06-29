@@ -32,7 +32,7 @@ Route::get('/all-teams', function () {
 Route::get('/team-members/{id}', function ($id) {
     return view('front.teams')->with('id',$id);
 });
-///book/{{$book->id}}/details
+
 Route::get('/book/{id}/details', function ($id) {
     return view('front.view-book')->with('id',$id);
 });
@@ -42,6 +42,12 @@ Route::get('/his-books', function () {
 Route::get('/book-frank', function () {
     return view('front.book-frank');
 });
+
+
+Route::get('/booking-request-submitted', function () {
+    return view('front.booking-request-submitted');
+});
+
 
 Route::get('/statement/{id}', function ($id) {
     return view('front.statement')->with('id',$id);
@@ -81,3 +87,5 @@ Route::resource('teamCategories', 'TeamCategoryController');
 Route::resource('books', 'BooksController');
 
 Route::resource('bookReviews', 'BookReviewsController');
+
+Route::resource('bookingRequests', 'BookingRequestController');

@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Books;
+use App\Models\BookingRequest;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class BooksDataTable extends DataTable
+class BookingRequestDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,16 +18,16 @@ class BooksDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'books.datatables_actions');
+        return $dataTable->addColumn('action', 'booking_requests.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Books $model
+     * @param \App\Models\BookingRequest $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Books $model)
+    public function query(BookingRequest $model)
     {
         return $model->newQuery();
     }
@@ -65,15 +65,14 @@ class BooksDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'title',
-            'author',
-            'edition',
-            'publisher',
-            'ISBN',
-            'Length',
-            'Subjects',
-            'payment_type',
-            'price'
+            'full_name',
+            'address',
+            'email',
+            'street_address',
+            'phone_number',
+            'city',
+            'province',
+            'country'
         ];
     }
 
