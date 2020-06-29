@@ -28,7 +28,7 @@ if($statement){
             <div class="card p-3 col-sm-3">
                 <ul class="list-group mt-3">
                     <li class="list-group-item active"
-                        style="border:#073b4c !important;background:#073b4c!important;color:#fff!important">Statements</li>
+                        style="border:#073b4c !important;background:#073b4c!important;color:#fff!important">About</li>
 
                     @foreach($statements as $sts)
                     <?php if($sts->id==$id){?>

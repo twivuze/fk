@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/past-quates', function () {
+Route::get('/quates', function () {
     return view('front.past-quates');
 });
 
@@ -42,7 +42,9 @@ Route::get('/his-books', function () {
 Route::get('/book-frank', function () {
     return view('front.book-frank');
 });
-
+Route::get('/protofolio', function () {
+    return view('front.photos');
+});
 
 Route::get('/booking-request-submitted', function () {
     return view('front.booking-request-submitted');
@@ -89,3 +91,7 @@ Route::resource('books', 'BooksController');
 Route::resource('bookReviews', 'BookReviewsController');
 
 Route::resource('bookingRequests', 'BookingRequestController');
+
+Route::resource('photos', 'PhotosController');
+
+Route::resource('subsidiaryCompanies', 'SubsidiaryCompaniesController');

@@ -33,7 +33,7 @@
                                         <h2 class="mbr-fonts-style display-1">{{$quote->quote_owner}}</h2>
                                         <p class="lead mbr-text mbr-fonts-style display-5">{{$quote->quote}}</p>
                                         <div class="mbr-section-btn" buttons="0"><a class="btn display-4 btn-success"
-                                                href="#">Book Frank</a> </div>
+                                                href="/book-frank">Book Frank</a> </div>
                                     </div>
                                 </div>
                             </div>

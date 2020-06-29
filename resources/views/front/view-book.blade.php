@@ -224,5 +224,8 @@ if($book){
 }
 ?>
 
-@extends('front.footer')
+@include('front.footer')
+
+@endsection
+
 

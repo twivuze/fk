@@ -45,6 +45,8 @@
 
 </section>
 
-@extends('front.footer')
+@include('front.footer')
+
+@endsection
 
 

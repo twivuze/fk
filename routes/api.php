@@ -110,3 +110,5 @@ Route::resource('books', 'BooksAPIController');
 Route::resource('book_reviews', 'BookReviewsAPIController');
 
 Route::resource('booking_requests', 'BookingRequestAPIController');
+
+Route::resource('subsidiary_companies', 'SubsidiaryCompaniesAPIController');
