@@ -132,12 +132,22 @@
 <!-- Q1 Field -->
 <div class="form-group col-sm-12 col-lg-12 {{ $errors->has('q1') ? ' has-error' : '' }}">
     {!! Form::label('q1', 'What is the expected attendance at your event?') !!}<br>
-    <strong>If known, Kindly let us have the information about the date, location and time.</strong>
     {!! Form::textarea('q1', old('q1'), ['class' => 'form-control']) !!}
 
     @if ($errors->has('q1'))
     <span class="help-block">
         <strong>What is the expected attendance at your event?</strong>
+    </span>
+    @endif
+    
+</div>
+<div class="form-group col-sm-12 col-lg-12 {{ $errors->has('q3') ? ' has-error' : '' }}">
+    {!! Form::label('q3', 'If known, Kindly let us have the information about the date, location and time') !!}<br>
+    {!! Form::textarea('q3', old('q3'), ['class' => 'form-control']) !!}
+
+    @if ($errors->has('q3'))
+    <span class="help-block">
+        <strong>If known, Kindly let us have the information about the date, location and time</strong>
     </span>
     @endif
     

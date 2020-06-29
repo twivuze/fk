@@ -35,11 +35,11 @@
     <link rel="stylesheet" href="/assets/tether/tether.min.css">
     <link rel="stylesheet" href="/assets/dropdown/css/style.css">
     <link rel="stylesheet" href="/assets/theme/css/style.css">
+    <link rel="stylesheet" href="/assets/gallery/style.css">
     <link rel="preload" as="style" href="/assets/mobirise/css/mbr-additional.css">
     <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="/assets/socicon/css/styles.css">
-
-
+    
 
 
 
@@ -92,8 +92,9 @@
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link text-secondary display-4" href="/past-quates">Past Quotes</a>
+                        <a class="nav-link link text-secondary display-4" href="/quates">His Quotes</a>
                     </li>
+                   
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
                             href="/his-books">His Books</a></li>
                    
@@ -105,8 +106,34 @@
 
                             <?php if( $statement ){ ?>
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
-                            href="/statement/{{$statement->id}}#{{$statement->id}}">Statements</a></li>
+                            href="/statement/{{$statement->id}}#{{$statement->id}}">About</a></li>
                             <?php } ?>
+
+                            <?php $subsidiaryCompanies = \App\Models\SubsidiaryCompanies::where('published',1)->get();?>
+                           
+
+                         <?php if( count($subsidiaryCompanies) > 0 ){ ?> 
+                         <li class="nav-item dropdown text-left"><a
+                            class="nav-link link text-secondary dropdown-toggle  display-4" href="#"
+                            data-toggle="dropdown-submenu" aria-expanded="false">Subsidiary Companies</a>
+                        <div class="dropdown-menu text-left">
+                      
+                            @foreach($subsidiaryCompanies AS $subsidiaryCompany)
+                            <a class="dropdown-item text-secondary display-4 text-left" href="{{$subsidiaryCompany->url}}" target="_blank"
+                                aria-expanded="false">{{$subsidiaryCompany->name}}</a>
+
+                             @endforeach
+
+                        </div>
+                    </li>
+                    <?php } ?> 
+
+                        <?php $photos = \App\Models\Photos::first();?>
+                                <?php if( $photos ){ ?>
+                            <li class="nav-item"><a class="nav-link link text-secondary display-4"
+                            href="/protofolio">Protofolio</a></li>
+                            <?php } ?> 
+
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
                             href="/book-frank">Book Frank</a></li>
                 </ul>
@@ -115,6 +142,9 @@
         </nav>
     </section>
 
+    <!-- <div id="preloader"> 
+    	<div id="loader"></div>
+   </div>  -->
 
 
     @yield('content')
@@ -140,11 +170,31 @@
     <script src="/assets/slidervideo/script.js"></script>
     <script src="/assets/formoid/formoid.min.js"></script>
 
+  <script src="/assets/parallax/jarallax.min.js"></script>
+  <script src="/assets/mbr-clients-slider/mbr-clients-slider.js"></script>
+
+    
+
+
 <script>
+
+    
 
 $(document).on('click', '#addacomment', function(){
     $('#addcomment').toggle();
 });
+
+$(window).load(function() {
+
+// will first fade out the loading animation 
+  $("#loader").fadeOut("slow", function(){
+
+  // will fade out the whole DIV that covers the website.
+  $("#preloader").delay(300).fadeOut("slow");
+
+});       
+
+})
 </script>
 
 

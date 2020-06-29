@@ -76,6 +76,12 @@
     <p>{{ $bookingRequest->q2 }}</p>
 </div>
 
+
+<div class="form-group">
+    {!! Form::label('q3', 'If known, Kindly let us have the information about the date, location and time') !!}
+    <p>{{ $bookingRequest->q3 }}</p>
+</div> 
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

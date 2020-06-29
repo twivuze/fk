@@ -3381,3 +3381,130 @@ hr{
 .user{
   margin-right: 10px;
 }
+
+/** 
+ * ===================================================================
+ * 04. preloader - (_preloader-1.scss)
+ *
+ * ------------------------------------------------------------------- 
+ */
+ #preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #151515;
+	z-index: 800;
+	height: 100%;
+	width: 100%;
+}
+.no-js #preloader, .oldie #preloader {
+	display: none;
+}
+#loader {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	padding: 0;
+}
+#loader:before {
+	content: "";
+	border-top: 11px solid rgba(255, 255, 255, 0.1);
+	border-right: 11px solid rgba(255, 255, 255, 0.1);
+	border-bottom: 11px solid rgba(255, 255, 255, 0.1);
+	border-left: 11px solid #FF0077;
+	-webkit-animation: load 1.1s infinite linear;
+	animation: load 1.1s infinite linear;
+	display: block;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+}
+@-webkit-keyframes load {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes load {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+
+.cid-rYUqipJbaB {
+  padding-top: 0px;
+  padding-bottom: 60px;
+  background-color: #45505b;
+}
+.cid-rYUqipJbaB .mbr-slider .carousel-control {
+  background: #1b1b1b;
+}
+.cid-rYUqipJbaB .mbr-slider .carousel-control-prev {
+  left: 0;
+  margin-left: 2.5rem;
+}
+.cid-rYUqipJbaB .mbr-slider .carousel-control-next {
+  right: 0;
+  margin-right: 2.5rem;
+}
+.cid-rYUqipJbaB .mbr-slider .modal-body .close {
+  background: #1b1b1b;
+}
+.cid-rYUqipJbaB .mbr-gallery-item > div::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #554346;
+  opacity: 0;
+  -webkit-transition: 0.2s opacity ease-in-out;
+  transition: 0.2s opacity ease-in-out;
+  background: linear-gradient(to left, #554346, #45505b) !important;
+}
+.cid-rYUqipJbaB .mbr-gallery-item > div:hover .mbr-gallery-title::before {
+  background: transparent !important;
+}
+.cid-rYUqipJbaB .mbr-gallery-item > div:hover:before {
+  opacity: 0.7 !important;
+}
+.cid-rYUqipJbaB .mbr-gallery-title {
+  font-size: .9em;
+  position: absolute;
+  display: block;
+  width: 100%;
+  bottom: 0;
+  padding: 1rem;
+  color: #fff;
+  z-index: 2;
+}
+.cid-rYUqipJbaB .mbr-gallery-title:before {
+  content: " ";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  position: absolute;
+  background: #554346 !important;
+  opacity: 0.7;
+  -webkit-transition: 0.2s background ease-in-out;
+  transition: 0.2s background ease-in-out;
+  background: linear-gradient(to left, #554346, #45505b) !important;
+}

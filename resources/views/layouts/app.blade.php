@@ -172,6 +172,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
 
 
+    <script src="/js/dropzone.js"></script>
+
+<script type="text/javascript">
+        Dropzone.options.dropzone =
+         {
+            maxFilesize: 12,
+            renameFile: function(file) {
+                var dt = new Date();
+                var time = dt.getTime();
+               return time+file.name;
+            },
+            acceptedFiles: ".jpeg,.jpg,.png,.gif",
+            addRemoveLinks: true,
+            timeout: 5000,
+            success: function(file, response) 
+            {
+                window.location.reload();
+            },
+            error: function(file, response)
+            {
+               return false;
+            }
+};
+
+
+</script>
 
     @stack('scripts')
 </body>

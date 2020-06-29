@@ -18,7 +18,7 @@
 
     <div class="container">
         <h2 class="pb-3 mbr-fonts-style mbr-white align-center display-2">
-            Past Quotes</h2>
+            Quotes</h2>
 
         <div class="col-md-10 testimonials-container">
 
@@ -57,4 +57,7 @@
 
 
 
-@extends('front.footer')
+@include('front.footer')
+
+@endsection
+

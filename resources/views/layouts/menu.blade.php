@@ -34,3 +34,11 @@
     <a href="{{ route('bookingRequests.index') }}"><i class="fa fa-edit"></i><span>Booking Requests</span></a>
 </li>
 
+<li class="{{ Request::is('photos*') ? 'active' : '' }}">
+    <a href="{{ route('photos.create') }}"><i class="fa fa-edit"></i><span>Photos</span></a>
+</li>
+
+<li class="{{ Request::is('subsidiaryCompanies*') ? 'active' : '' }}">
+    <a href="{{ route('subsidiaryCompanies.index') }}"><i class="fa fa-edit"></i><span>Subsidiary Companies</span></a>
+</li>
+
