@@ -43,6 +43,7 @@ class BookingRequest extends Model
         'function',
         'q1',
         'q2',
+        'q3',
         'email'
     ];
 
