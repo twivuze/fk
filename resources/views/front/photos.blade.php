@@ -11,7 +11,7 @@
     <div class="container mt-5">
         <div class="media-container-row mt-5">
             <div class="title col-12 col-md-8">
-                <h2 class="align-center pb-3 mbr-fonts-style display-2" style="color:#fa8709">Photos</h2>
+                <h2 class="align-center pb-3 mbr-fonts-style display-2" style="color:#fa8709">Portfolio</h2>
 
             </div>
         </div>
