@@ -115,7 +115,7 @@
                                         <div class="card-block text-center">
                                             <a href="/team/{{$myTeam->id}}">
                                                 <div class="testimonial-photo text-center">
-                                                    <img src="/{{$myTeam->image}}">
+                                                    <img src="{{$myTeam->image}}">
                                                 </div>
                                             </a>
 
