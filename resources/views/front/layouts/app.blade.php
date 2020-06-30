@@ -87,12 +87,12 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link link text-secondary display-4" href="/">
                             Home</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
-                        <a class="nav-link link text-secondary display-4" href="/quates">His Quotes</a>
+                        <a class="nav-link link text-secondary display-4" href="/quates">Quotes</a>
                     </li>
                    
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
