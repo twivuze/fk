@@ -136,6 +136,40 @@
 
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
                             href="/book-frank">Book Frank</a></li>
+
+                            <li class="nav-item dropdown text-left"><a
+                            class="nav-link link text-secondary dropdown-toggle  display-4" href="#"
+                            data-toggle="dropdown-submenu" aria-expanded="false">Social Media</a>
+                        <div class="dropdown-menu text-left">
+                        <a class="dropdown-item text-secondary display-4 text-left" href="#" target="_blank"
+                                aria-expanded="false">
+                                <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span> Twitter</a>
+
+                                <a class="dropdown-item text-secondary display-4 text-left" href="#" target="_blank"
+                                aria-expanded="false">
+                                <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span> Youtube</a>
+
+                           
+                              <a class="dropdown-item text-secondary display-4 text-left" href="#" target="_blank"
+                                aria-expanded="false">
+                                <span class="socicon-linkedin socicon mbr-iconfont mbr-iconfont-social"></span> Linkedin</a>
+
+
+                                <a class="dropdown-item text-secondary display-4 text-left" href="#" target="_blank"
+                                aria-expanded="false">
+                                <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span> Facebook</a>
+
+                                <a class="dropdown-item text-secondary display-4 text-left" href="#" target="_blank"
+                                aria-expanded="false">
+                                <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span> Instagram</a>
+
+                                <a class="dropdown-item text-secondary display-4 text-left" href="#" target="_blank"
+                                aria-expanded="false">
+                                <span class="socicon-whatsapp socicon mbr-iconfont mbr-iconfont-social"></span> Whatsapp</a>
+
+
+                        </div>
+                    </li>
                 </ul>
 
             </div>

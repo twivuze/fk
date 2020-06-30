@@ -25,7 +25,7 @@
                     Contacts
                 </h5>
                 <p class="mbr-text">
-                    Email:rubadukafrank@gmail.com&nbsp;<br>Phone: +250 782 409 571&nbsp;<br>Available 24/7
+                    rubadukafrank@gmail.com&nbsp;<br> +250 782 409 571&nbsp;<br>Available 24/7
                 </p>
             </div>
            
@@ -64,6 +64,18 @@
                                 <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
                             </a>
                         </div>
+                        <div class="soc-item">
+                            <a href="#" target="_blank">
+                                <span class="socicon-linkedin socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+
+                        <div class="soc-item">
+                            <a href="#" target="_blank">
+                                <span class="socicon-whatsapp socicon mbr-iconfont mbr-iconfont-social"></span>
+                            </a>
+                        </div>
+                       
                        
                     </div>
                 </div>
