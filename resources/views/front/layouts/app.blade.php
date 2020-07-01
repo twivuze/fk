@@ -146,16 +146,16 @@
 
                                
                            
-                              <a class="dropdown-item text-secondary display-4 text-left" href="https://www.linkedin.com/in/rubaduka-frank-871708106/ " target="_blank"
+                              <a class="dropdown-item text-secondary display-4 text-left" href="https://www.linkedin.com/in/rubaduka-frank-871708106/" target="_blank"
                                 aria-expanded="false">
                                 <span class="socicon-linkedin socicon mbr-iconfont mbr-iconfont-social"></span> Linkedin</a>
 
 
-                                <a class="dropdown-item text-secondary display-4 text-left" href="https://web.facebook.com/kayumba.frank.3/  " target="_blank"
+                                <a class="dropdown-item text-secondary display-4 text-left" href="https://web.facebook.com/kayumba.frank.3/" target="_blank"
                                 aria-expanded="false">
                                 <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span> Facebook</a>
 
-                                <a class="dropdown-item text-secondary display-4 text-left" href="https://www.instagram.com/rubadukafrank/ " target="_blank"
+                                <a class="dropdown-item text-secondary display-4 text-left" href="https://www.instagram.com/rubadukafrank/" target="_blank"
                                 aria-expanded="false">
                                 <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span> Instagram</a>
 

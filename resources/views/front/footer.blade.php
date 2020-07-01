@@ -45,27 +45,27 @@
                 <div class="col-md-6">
                     <div class="social-list align-right">
                         <div class="soc-item">
-                            <a href="#" target="_blank">
+                            <a href="https://twitter.com/rubadukafrank" target="_blank">
                                 <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
                             </a>
                         </div>
                         <div class="soc-item">
-                            <a href="#" target="_blank">
+                            <a href="https://web.facebook.com/kayumba.frank.3/" target="_blank">
                                 <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
                             </a>
                         </div>
-                        <div class="soc-item">
+                        <!-- <div class="soc-item">
                             <a href="#" target="_blank">
                                 <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
                             </a>
-                        </div>
+                        </div> -->
                         <div class="soc-item">
-                            <a href="#" target="_blank">
+                            <a href="https://www.instagram.com/rubadukafrank/" target="_blank">
                                 <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
                             </a>
                         </div>
                         <div class="soc-item">
-                            <a href="#" target="_blank">
+                            <a href="https://www.linkedin.com/in/rubaduka-frank-871708106/" target="_blank">
                                 <span class="socicon-linkedin socicon mbr-iconfont mbr-iconfont-social"></span>
                             </a>
                         </div>
