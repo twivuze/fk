@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="soc-item">
-                            <a href="#" target="_blank">
+                            <a href="#" id="whatsapp-btn" >
                                 <span class="socicon-whatsapp socicon mbr-iconfont mbr-iconfont-social"></span>
                             </a>
                         </div>

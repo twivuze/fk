@@ -134,42 +134,40 @@
                             href="/protofolio">Portfolio</a></li>
                             <?php } ?> 
 
-                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
-                            href="/book-frank">Book Frank</a></li>
+                   
 
                             <li class="nav-item dropdown text-left"><a
                             class="nav-link link text-secondary dropdown-toggle  display-4" href="#"
-                            data-toggle="dropdown-submenu" aria-expanded="false">Social Media</a>
+                            data-toggle="dropdown-submenu" aria-expanded="false">Social</a>
                         <div class="dropdown-menu text-left">
-                        <a class="dropdown-item text-secondary display-4 text-left" href="#" target="_blank"
+                        <a class="dropdown-item text-secondary display-4 text-left" href="https://twitter.com/rubadukafrank" target="_blank"
                                 aria-expanded="false">
                                 <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span> Twitter</a>
 
-                                <a class="dropdown-item text-secondary display-4 text-left" href="#" target="_blank"
-                                aria-expanded="false">
-                                <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span> Youtube</a>
-
+                               
                            
-                              <a class="dropdown-item text-secondary display-4 text-left" href="#" target="_blank"
+                              <a class="dropdown-item text-secondary display-4 text-left" href="https://www.linkedin.com/in/rubaduka-frank-871708106/ " target="_blank"
                                 aria-expanded="false">
                                 <span class="socicon-linkedin socicon mbr-iconfont mbr-iconfont-social"></span> Linkedin</a>
 
 
-                                <a class="dropdown-item text-secondary display-4 text-left" href="#" target="_blank"
+                                <a class="dropdown-item text-secondary display-4 text-left" href="https://web.facebook.com/kayumba.frank.3/  " target="_blank"
                                 aria-expanded="false">
                                 <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span> Facebook</a>
 
-                                <a class="dropdown-item text-secondary display-4 text-left" href="#" target="_blank"
+                                <a class="dropdown-item text-secondary display-4 text-left" href="https://www.instagram.com/rubadukafrank/ " target="_blank"
                                 aria-expanded="false">
                                 <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span> Instagram</a>
 
-                                <a class="dropdown-item text-secondary display-4 text-left" href="#" target="_blank"
+                                <a class="dropdown-item text-secondary display-4 text-left" href="#" id="whatsapp-btn" 
                                 aria-expanded="false">
                                 <span class="socicon-whatsapp socicon mbr-iconfont mbr-iconfont-social"></span> Whatsapp</a>
 
 
                         </div>
                     </li>
+                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
+                            href="/book-frank">Book Frank</a></li>
                 </ul>
 
             </div>
@@ -207,7 +205,22 @@
   <script src="/assets/parallax/jarallax.min.js"></script>
   <script src="/assets/mbr-clients-slider/mbr-clients-slider.js"></script>
 
-    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.3/mobile-detect.min.js"></script>
+
+  <script>
+    var whatsapp_number = "+250785821562";
+    myWhatsappFunction();
+    function myWhatsappFunction() {
+      var md = new MobileDetect(window.navigator.userAgent);
+      if (md.mobile()) {
+        // mobile link
+        document.getElementById("whatsapp-btn").href = "https://wa.me/" + whatsapp_number+'&text=Hello Frank!';
+      } else {
+        // desktop link
+        document.getElementById("whatsapp-btn").href = "https://api.whatsapp.com/send?phone=" + whatsapp_number+'&text=Hello Frank!';
+      }
+    };
+  </script>
 
 
 <script>
