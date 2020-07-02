@@ -9,7 +9,7 @@
             <div class="col-12 col-md-4">
                 <div class="media-wrap mr-5">
                     <a href="/">
-                        <img style="margin-left:-50px!important" src="/assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.png" 
+                        <img  src="/images/logo.png" 
                          title="">
                     </a>
                 </div>
