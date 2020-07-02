@@ -42,3 +42,7 @@
     <a href="{{ route('subsidiaryCompanies.index') }}"><i class="fa fa-edit"></i><span>Subsidiary Companies</span></a>
 </li>
 
+<li class="{{ Request::is('letters*') ? 'active' : '' }}">
+    <a href="{{ route('letters.index') }}"><i class="fa fa-edit"></i><span>Letters</span></a>
+</li>
+

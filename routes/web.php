@@ -49,7 +49,9 @@ Route::get('/protofolio', function () {
 Route::get('/booking-request-submitted', function () {
     return view('front.booking-request-submitted');
 });
-
+Route::get('/letter/{id}', function ($id) {
+    return view('front.letter')->with('id',$id);
+});
 
 Route::get('/statement/{id}', function ($id) {
     return view('front.statement')->with('id',$id);
@@ -95,3 +97,5 @@ Route::resource('bookingRequests', 'BookingRequestController');
 Route::resource('photos', 'PhotosController');
 
 Route::resource('subsidiaryCompanies', 'SubsidiaryCompaniesController');
+
+Route::resource('letters', 'LettersController');

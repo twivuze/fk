@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="generator" content="Ganza respcie">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel="shortcut icon" href="{{isset($icon)?$icon:'/assets/images/a-1-122x30.png'}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{isset($icon)?$icon:'/assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.png'}}" type="image/x-icon">
 
     <title>{{isset($title)?$title:'Frank Rubaduka'}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,12 +18,12 @@
     <meta property="og:type" content="article">
 
     <meta property="og:title" content="{{isset($title)?$title:'Frank Rubaduka'}}">
-    <meta property="og:image" content="{{isset($icon)?$icon:'/images/mailLogo/a-1-122x30.png'}}">
+    <meta property="og:image" content="{{isset($icon)?$icon:'/assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.png'}}">
     <meta property="og:description" content="{{isset($description)?$description:'Frank Rubaduka'}}">
 
     <meta name="twitter:description" content="{{isset($description)?$description:'Frank Rubaduka'}}">
     <meta name="twitter:title" content="{{isset($title)?$title:'Frank Rubaduka'}}">
-    <meta name="twitter:image" content="{{isset($icon)?$icon:'/images/mailLogo/a-1-122x30.png'}}">
+    <meta name="twitter:image" content="{{isset($icon)?$icon:'/assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.png'}}">
     <meta name="twitter:card" content="{{isset($description)?$description:'Frank Rubaduka'}}">
 
     <link rel="stylesheet" href="/assets/web/assets/mobirise-icons/mobirise-icons.css">
@@ -48,7 +48,9 @@
     <?php $vistor=new App\Models\Vistors; 
         $vistor->saveVistor(isset($title)?$title:'Welcome');
    ?>
-<?php $statement = \App\Models\Statement::where('allow_to_apply',1)->orderBy('numbering','ASC')->first();
+<?php 
+$statement = \App\Models\Statement::where('allow_to_apply',1)->orderBy('numbering','ASC')->first();
+$letter = \App\Models\Letters::where('allow_to_apply',1)->orderBy('numbering','ASC')->first();
 ?>
 
     @yield('css')
@@ -78,7 +80,7 @@
                 <div class="navbar-brand">
                     <span class="navbar-logo">
                         <a href="/">
-                            <img src="/assets/images/9xzokvlpkrotwx8vivxy5s6gobvvod6vnvut0hul-192x266.png"
+                            <img src="/images/logo.png"
                                 alt="Mobirise" title="" style="height: 3.8rem;">
                         </a>
                     </span>
@@ -95,16 +97,7 @@
                         <a class="nav-link link text-secondary display-4" href="/quates">Quotes</a>
                     </li>
                    
-                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
-                            href="/his-books">His Books</a></li>
-                   
-                            <?php $team = \App\Models\TeamCategory::where('published',1)->orderBy('numbering','ASC')->first();?>
-                                <?php if( $team ){ ?>
-                                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
-                                    href="/all-teams">Team</a>
-                       <?php } ?>  
-
-                            <?php if( $statement ){ ?>
+                    <?php if( $statement ){ ?>
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
                             href="/statement/{{$statement->id}}#{{$statement->id}}">About</a></li>
                             <?php } ?>
@@ -127,6 +120,22 @@
                         </div>
                     </li>
                     <?php } ?> 
+
+                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
+                            href="/his-books">His Books</a></li>
+                            
+                   
+                            <?php $team = \App\Models\TeamCategory::where('published',1)->orderBy('numbering','ASC')->first();?>
+                                <?php if( $team ){ ?>
+                                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
+                                    href="/all-teams">Team</a>
+                       <?php } ?>  
+
+                     
+                    <?php if( $letter ){ ?>
+                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
+                            href="/letter/{{$letter->id}}#{{$letter->id}}">Letters</a></li>
+                            <?php } ?>
 
                         <?php $photos = \App\Models\Photos::first();?>
                                 <?php if( $photos ){ ?>
