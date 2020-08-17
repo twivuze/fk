@@ -24,8 +24,8 @@
 
 
         @foreach($quotes as $quote)
-            <div class="testimonials-item">
-                <a href="/quote/{{$quote->id}}">
+            <div class="testimonials-item" style="cursor:pointer" onclick="window.location.href='/quote/{{$quote->id}}'">
+                
                 <div class="user row">
                     <div class="col-lg-3 col-md-4">
                         <div class="user_image">
@@ -44,7 +44,7 @@
 
                     </div>
                 </div>
-                </a>
+             
             </div>
             @endforeach
             
