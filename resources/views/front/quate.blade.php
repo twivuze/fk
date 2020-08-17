@@ -1,14 +1,18 @@
+
+<?php 
+     $quote=\App\Models\Quotes::orderBy('updated_at','DESC')->where('id',$id)->first();
+     if(!$quote){return abort('404');}
+?>
 @extends('front.layouts.app',
-['title'=>'Past Quotes',
-'description'=>'All Past Quotes'
+['title'=>$quote->quote,
+'description'=>$quote->quote,
+'icon'=>'/thumbnail/'.$quote->avatar,
+''
 ]
 )
 
 @section('content')
 
-<?php 
-     $quotes=\App\Models\Quotes::orderBy('updated_at','DESC')->where('publish',1)->paginate(12);
-?>
 
 
 <section class="testimonials4 cid-s2Up6rkIw5" id="testimonials4-b">
@@ -16,16 +20,13 @@
 
 
 
-    <div class="container">
-        <h2 class="pb-3 mbr-fonts-style mbr-white align-center display-2">
-            Quotes</h2>
+    <div class="container mt-5">
+        
 
         <div class="col-md-10 testimonials-container">
 
 
-        @foreach($quotes as $quote)
             <div class="testimonials-item">
-                <a href="/quote/{{$quote->id}}">
                 <div class="user row">
                     <div class="col-lg-3 col-md-4">
                         <div class="user_image">
@@ -41,18 +42,16 @@
                         <div class="user_name mbr-bold mbr-fonts-style align-left pt-3 display-7">
                         {{$quote->quote_owner}}
                         </div>
-
+                       
                     </div>
                 </div>
-                </a>
             </div>
-            @endforeach
             
         </div>
     </div>
 
     <div class="media-container-row" style="position:relative;top:30px;left:0;right:0">
-<span class="align-center"> {!! $quotes->links() !!}</span>
+    <span class="align-center">   <a  class="align-center"  href="/quates">Load more ..</a> </span>
 </div>
 
 </section>
