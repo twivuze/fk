@@ -11,54 +11,48 @@
 ]
 )
 
-@section('content')
+<section class="header8 cid-rYMyQ3IifK" id="header8-1q">
+
+<section class="carousel slide cid-s2U4JA5Vsr" data-interval="false" id="slider1-0" style="margin-top:20px">
 
 
 
-<section class="testimonials4 cid-s2Up6rkIw5" id="testimonials4-b">
+    <div class="full-screen">
+        <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="carousel" data-interval="10000"
+            data-pause="true">
 
-
-
-
-    <div class="container mt-5">
-        
-
-        <div class="col-md-10 testimonials-container">
-
-
-            <div class="testimonials-item">
-                <div class="user row">
-                    <div class="col-lg-3 col-md-4">
-                        <div class="user_image">
-                            <img src="/thumbnail/{{$quote->avatar}}">
+          <div class="carousel-inner" role="listbox">
+                
+               
+                <div class="carousel-item slider-fullscreen-image active" data-bg-video-slide="false"
+                        style="background-image: url(/images/{{$quote->slider_image}});">
+                        <div class="container container-slide">
+                            <div class="image_wrapper">
+                                <div class="mbr-overlay" style="opacity: 0.4;"></div><img
+                                    src="/images/bg.jpg" alt="" title="">
+                                <div class="carousel-caption justify-content-center">
+                                    <div class="col-10 align-left">
+                                        <h2 class="mbr-fonts-style display-1">{{$quote->quote_owner}}</h2>
+                                        <p class="lead mbr-text mbr-fonts-style display-5">{{$quote->quote}}</p>
+                                        <div class="mbr-section-btn" buttons="0"><a class="btn display-4 btn-success"
+                                                href="/quates">Load more ..</a> </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="testimonials-caption col-lg-9 col-md-8">
-                        <div class="user_text ">
-                            <p class="mbr-fonts-style  display-7">
-                                <em>{{$quote->quote}}</em>
-                            </p>
-                        </div>
-                        <div class="user_name mbr-bold mbr-fonts-style align-left pt-3 display-7">
-                        {{$quote->quote_owner}}
-                        </div>
-                       
-                    </div>
-                </div>
-            </div>
-            
+                  
+               
+
         </div>
-    </div>
+      
 
-    <div class="media-container-row" style="position:relative;top:30px;left:0;right:0">
-    <span class="align-center">   <a  class="align-center"  href="/quates">Load more ..</a> </span>
-</div>
+    </div>
+    </div>
 
 </section>
 
 
+</section>
 
-@include('front.footer')
-
-@endsection
 
