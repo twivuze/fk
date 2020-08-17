@@ -21,6 +21,9 @@ Route::get('/', function () {
 Route::get('/quates', function () {
     return view('front.past-quates');
 });
+Route::get('/quote/{id}', function ($id) {
+    return view('front.quate')->with('id',$id);
+});
 
 Route::get('/team/{id}', function ($id) {
     return view('front.team')->with('id',$id);
