@@ -4,6 +4,11 @@
     {!! Form::text('quote_owner', null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group col-sm-12">
+    {!! Form::label('viewers', 'views:') !!}
+    {!! Form::number('viewers', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Quote Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('quote', 'Quote:') !!}

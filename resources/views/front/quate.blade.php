@@ -1,7 +1,11 @@
 
 <?php 
      $quote=\App\Models\Quotes::orderBy('updated_at','DESC')->where('id',$id)->first();
-     if(!$quote){return abort('404');}
+     if(!$quote){return abort('404');
+    
+    }
+    $quote->viewers=$quote->viewers+1;
+    $quote->save();
 ?>
 @extends('front.layouts.app',
 ['title'=>$quote->quote,
@@ -32,10 +36,16 @@
                                     src="/images/bg.jpg" alt="" title="">
                                 <div class="carousel-caption justify-content-center">
                                     <div class="col-10 align-left">
-                                        <h2 class="mbr-fonts-style display-1">{{$quote->quote_owner}}</h2>
-                                        <p class="lead mbr-text mbr-fonts-style display-5">{{$quote->quote}}</p>
+                                        <h2 class="mbr-fonts-style display-1">{{$quote->quote_owner}}
+                                        
+                                        </h2>
+                                        <p class="lead mbr-text mbr-fonts-style display-5">{{$quote->quote}}
+                                            <br>
+                                            <strong class="float-right">{{$quote->viewers}} views</strong>
+                                        </p>
                                         <div class="mbr-section-btn" buttons="0"><a class="btn display-4 btn-success"
-                                                href="/quates">Load more ..</a> </div>
+                                                href="/quates">Load more ..</a> 
+                                            </div>
                                     </div>
                                 </div>
                             </div>

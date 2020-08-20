@@ -30,7 +30,7 @@ class Quotes extends Model
         'slider_image',
         'publish',
         'quote_date'
-        ,'enable_slider_show'
+        ,'enable_slider_show','viewers'
     ];
 
     /**

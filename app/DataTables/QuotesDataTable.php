@@ -68,6 +68,7 @@ class QuotesDataTable extends DataTable
             'quote_owner',
             'quote',
             'quote_date',
+            'viewers',
             'publish', 'updated_at'
         ];
     }
