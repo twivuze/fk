@@ -31,7 +31,10 @@
                                 <div class="carousel-caption justify-content-center">
                                     <div class="col-10 align-left">
                                         <h2 class="mbr-fonts-style display-1">{{$quote->quote_owner}}</h2>
-                                        <p class="lead mbr-text mbr-fonts-style display-5">{{$quote->quote}}</p>
+                                        <p class="lead mbr-text mbr-fonts-style display-5">{{$quote->quote}}
+                                        <br>
+                                            <strong class="float-right">{{$quote->viewers}} views</strong>
+                                        </p>
                                         <div class="mbr-section-btn" buttons="0"><a class="btn display-4 btn-success"
                                                 href="/book-frank">Book Frank</a> </div>
                                     </div>

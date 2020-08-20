@@ -37,9 +37,10 @@
                             <p class="mbr-fonts-style  display-7">
                                 <em>{{$quote->quote}}</em>
                             </p>
+                            
                         </div>
                         <div class="user_name mbr-bold mbr-fonts-style align-left pt-3 display-7">
-                        {{$quote->quote_owner}}
+                        {{$quote->quote_owner}}  <strong class="float-right">{{$quote->viewers}} views</strong>
                         </div>
 
                     </div>
