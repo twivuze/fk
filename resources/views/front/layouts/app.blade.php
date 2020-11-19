@@ -175,6 +175,12 @@ $letter = \App\Models\Letters::where('allow_to_apply',1)->orderBy('numbering','A
 
                         </div>
                     </li>
+
+                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
+                            href="https://geniusgamez.com/">Play Game</a></li>
+                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
+                            href="https://thegeniusafrica.com/">Explore</a></li>
+
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
                             href="/book-frank">Book Frank</a></li>
                 </ul>
