@@ -97,10 +97,7 @@ $letter = \App\Models\Letters::where('allow_to_apply',1)->orderBy('numbering','A
                         <a class="nav-link link text-secondary display-4" href="/quates">Quotes</a>
                     </li>
                    
-                    <?php if( $statement ){ ?>
-                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
-                            href="/statement/{{$statement->id}}#{{$statement->id}}">About</a></li>
-                            <?php } ?>
+                   
 
                             <?php $subsidiaryCompanies = \App\Models\SubsidiaryCompanies::where('published',1)->get();?>
                            
@@ -137,11 +134,6 @@ $letter = \App\Models\Letters::where('allow_to_apply',1)->orderBy('numbering','A
                             href="/letter/{{$letter->id}}#{{$letter->id}}">Letters</a></li>
                             <?php } ?>
 
-                        <?php $photos = \App\Models\Photos::first();?>
-                                <?php if( $photos ){ ?>
-                            <li class="nav-item"><a class="nav-link link text-secondary display-4"
-                            href="/protofolio">Portfolio</a></li>
-                            <?php } ?> 
 
                    
 
@@ -178,11 +170,28 @@ $letter = \App\Models\Letters::where('allow_to_apply',1)->orderBy('numbering','A
 
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
                             href="https://geniusgamez.com/">Play Game</a></li>
-                    <li class="nav-item"><a class="nav-link link text-secondary display-4"
-                            href="https://thegeniusafrica.com/">Explore</a></li>
+                
 
                     <li class="nav-item"><a class="nav-link link text-secondary display-4"
                             href="/book-frank">Book Frank</a></li>
+
+                            <li class="nav-item dropdown text-left"><a class="nav-link link text-secondary dropdown-toggle  display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="false">more</a>
+                        <div class="dropdown-menu text-left">
+
+                            <?php if ($statement) { ?>
+                                <a class="dropdown-item text-secondary display-4 text-left" href="/statement/{{$statement->id}}#{{$statement->id}}" aria-expanded="false">About</a>
+                            <?php } ?>
+
+                            <?php $photos = \App\Models\Photos::first(); ?>
+                            <?php if ($photos) { ?>
+                                <a class="dropdown-item text-secondary display-4 text-left" href="/protofolio" aria-expanded="false">Portfolio</a>
+                            <?php } ?>
+                          <a class="dropdown-item text-secondary display-4 text-left"
+                            href="https://thegeniusafrica.com/" aria-expanded="false">Explore</a>
+
+
+                        </div>
+                    </li>
                 </ul>
 
             </div>
