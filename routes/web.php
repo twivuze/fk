@@ -56,6 +56,11 @@ Route::get('/letter/{id}', function ($id) {
     return view('front.letter')->with('id',$id);
 });
 
+Route::get('/download/{id}', function ($id) {
+    return view('front.download')->with('id',$id);
+});
+
+
 Route::get('/statement/{id}', function ($id) {
     return view('front.statement')->with('id',$id);
 });
