@@ -190,9 +190,9 @@ if($book){
        currency: 'RWF',
        payment_options: "card,mobilemoney",
        customer: {
-         email: "ericniyitanga08@gmail.com",
+         email: "frankrubaduka@gmail.com",
          phonenumber:"0788490714",
-         name: "Niyitanga",
+         name: "Frank Rubaduka",
        },
        callback: function (data) { 
         if(data && data.status.toLowerCase()=='successful'){
