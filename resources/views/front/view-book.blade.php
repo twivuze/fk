@@ -206,7 +206,7 @@ if($book){
        customizations: {
          title: "Pay now!",
          description: "",
-         logo: "https://thegeniusafrica.com/images/logo.png",
+         logo: "https://frankrubaduka.com/images/logo.png",
        },
      }); 
  
