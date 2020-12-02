@@ -192,7 +192,7 @@ $letter = \App\Models\Letters::where('allow_to_apply',1)->orderBy('numbering','A
 
                         </div>
                     </li>
-                </ul>
+                </ul> 
 
             </div>
         </nav>

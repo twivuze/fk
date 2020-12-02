@@ -114,3 +114,5 @@ Route::resource('booking_requests', 'BookingRequestAPIController');
 Route::resource('subsidiary_companies', 'SubsidiaryCompaniesAPIController');
 
 Route::resource('letters', 'LettersAPIController');
+
+Route::resource('transactions', 'TransactionAPIController');
