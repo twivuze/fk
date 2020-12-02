@@ -20,6 +20,16 @@
     {!! Form::date('quote_date', null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group col-sm-12">
+    {!! Form::label('url', 'Url Link:') !!}
+    {!! Form::text('url', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group col-sm-12">
+    {!! Form::label('button_name', 'Button name:') !!}
+    {!! Form::text('button_name', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Avatar Field -->
 <div class="form-group col-sm-12">
     

@@ -35,8 +35,11 @@
                                         <br>
                                             <strong class="float-right">{{$quote->viewers}} views</strong>
                                         </p>
-                                        <div class="mbr-section-btn" buttons="0"><a class="btn display-4 btn-success"
-                                                href="/book-frank">Book Frank</a> </div>
+                                        
+                                        @if($quote->button_name)
+                                        <div class="mbr-section-btn" buttons="0"><a class="btn display-4 btn-danger"
+                                                href="{{$quote->url}}" target="_blank">{{$quote->button_name}}</a> </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
