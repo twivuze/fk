@@ -102,3 +102,5 @@ Route::resource('photos', 'PhotosController');
 Route::resource('subsidiaryCompanies', 'SubsidiaryCompaniesController');
 
 Route::resource('letters', 'LettersController');
+
+Route::resource('transactions', 'TransactionController');
